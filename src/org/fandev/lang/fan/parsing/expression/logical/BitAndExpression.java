@@ -16,29 +16,33 @@
  */
 package org.fandev.lang.fan.parsing.expression.logical;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
 import static org.fandev.lang.fan.FanElementTypes.BIT_AND_EXPR;
 import static org.fandev.lang.fan.FanTokenTypes.AND;
+
 import org.fandev.lang.fan.parsing.expression.arithmetic.ShiftExpression;
-import org.fandev.lang.fan.parsing.expression.arithmetic.UnaryExpression;
+import com.intellij.lang.PsiBuilder;
+import com.intellij.psi.tree.TokenSet;
 
 /**
  * @author freds
  * @date Mar 1, 2009
  */
-public class BitAndExpression extends SeparatorRepeatExpression {
-    private static final BitAndExpression instance = new BitAndExpression();
+public class BitAndExpression extends SeparatorRepeatExpression
+{
+	private static final BitAndExpression instance = new BitAndExpression();
 
-    public BitAndExpression() {
-        super(BIT_AND_EXPR, TokenSet.create(AND));
-    }
+	public BitAndExpression()
+	{
+		super(BIT_AND_EXPR, TokenSet.create(AND));
+	}
 
-    public boolean innerParse(final PsiBuilder builder, final TokenSet stopper) {
-        return ShiftExpression.parse(builder, stopper);
-    }
+	public boolean innerParse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return ShiftExpression.parse(builder, stopper);
+	}
 
-    public static boolean parse(final PsiBuilder builder, final TokenSet stopper) {
-        return instance.parseThis(builder, stopper);
-    }
+	public static boolean parse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return instance.parseThis(builder, stopper);
+	}
 }

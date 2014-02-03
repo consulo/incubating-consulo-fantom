@@ -16,35 +16,41 @@
  */
 package org.fandev.lang.fan.parsing.expression.arithmetic;
 
-import com.intellij.lang.PsiBuilder;
+import static org.fandev.lang.fan.FanTokenTypes.LBRACE;
+import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
+
+import org.fandev.lang.fan.FanBundle;
+import org.fandev.lang.fan.FanElementTypes;
+import org.fandev.lang.fan.parsing.statements.Block;
 import org.fandev.lang.fan.parsing.types.FuncTypeSpec;
 import org.fandev.lang.fan.parsing.types.TypeType;
-import static org.fandev.lang.fan.parsing.util.ParserUtils.getToken;
-import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
-import org.fandev.lang.fan.parsing.statements.Block;
-import org.fandev.lang.fan.FanElementTypes;
-import org.fandev.lang.fan.FanBundle;
-import static org.fandev.lang.fan.FanTokenTypes.LBRACE;
+import com.intellij.lang.PsiBuilder;
 
 /**
  * @author freds
  * @date Mar 2, 2009
  */
-public class ClosureExpression {
-    public static boolean parse(final PsiBuilder builder) {
-        final PsiBuilder.Marker marker = builder.mark();
-        // TODO: [Question] Can it be a list of closures?
-        if (FuncTypeSpec.parseFuncType(builder, false) == TypeType.FUNCTION) {
-            removeNls(builder);
-            if (LBRACE == builder.getTokenType()) {
-                Block.parse(builder, FanElementTypes.CLOSURE_BODY);
-            } else {
-                builder.error(FanBundle.message("lcurly.expected"));
-            }
-            marker.done(FanElementTypes.CLOSURE_EXPR);
-            return true;
-        }
-        marker.rollbackTo();
-        return false;
-    }
+public class ClosureExpression
+{
+	public static boolean parse(final PsiBuilder builder)
+	{
+		final PsiBuilder.Marker marker = builder.mark();
+		// TODO: [Question] Can it be a list of closures?
+		if(FuncTypeSpec.parseFuncType(builder, false) == TypeType.FUNCTION)
+		{
+			removeNls(builder);
+			if(LBRACE == builder.getTokenType())
+			{
+				Block.parse(builder, FanElementTypes.CLOSURE_BODY);
+			}
+			else
+			{
+				builder.error(FanBundle.message("lcurly.expected"));
+			}
+			marker.done(FanElementTypes.CLOSURE_EXPR);
+			return true;
+		}
+		marker.rollbackTo();
+		return false;
+	}
 }

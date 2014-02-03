@@ -16,28 +16,33 @@
  */
 package org.fandev.lang.fan.parsing.expression.logical;
 
+import static org.fandev.lang.fan.FanElementTypes.RANGE_EXPR;
+import static org.fandev.lang.fan.FanTokenTypes.RANGE_SEP_EXCL;
+import static org.fandev.lang.fan.FanTokenTypes.RANGE_SEP_INCL;
+
 import com.intellij.lang.PsiBuilder;
 import com.intellij.psi.tree.TokenSet;
-import static org.fandev.lang.fan.FanElementTypes.RANGE_EXPR;
-import static org.fandev.lang.fan.FanTokenTypes.RANGE_SEP_INCL;
-import static org.fandev.lang.fan.FanTokenTypes.RANGE_SEP_EXCL;
 
 /**
  * @author freds
  * @date Mar 1, 2009
  */
-public class RangeExpression extends SeparatorRepeatExpression {
-    private static final RangeExpression instance = new RangeExpression();
+public class RangeExpression extends SeparatorRepeatExpression
+{
+	private static final RangeExpression instance = new RangeExpression();
 
-    public RangeExpression() {
-        super(RANGE_EXPR, TokenSet.create(RANGE_SEP_INCL, RANGE_SEP_EXCL));
-    }
+	public RangeExpression()
+	{
+		super(RANGE_EXPR, TokenSet.create(RANGE_SEP_INCL, RANGE_SEP_EXCL));
+	}
 
-    public boolean innerParse(final PsiBuilder builder, final TokenSet stopper) {
-        return BitOrExpression.parse(builder, stopper);
-    }
+	public boolean innerParse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return BitOrExpression.parse(builder, stopper);
+	}
 
-    public static boolean parse(final PsiBuilder builder, final TokenSet stopper) {
-        return instance.parseThis(builder, stopper);
-    }
+	public static boolean parse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return instance.parseThis(builder, stopper);
+	}
 }

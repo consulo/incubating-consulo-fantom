@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.psi.impl.statements;
 
-import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.api.statements.FanDefaultValue;
+import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import com.intellij.lang.ASTNode;
 
 /**
@@ -10,8 +10,10 @@ import com.intellij.lang.ASTNode;
  *
  * @author Dror Bereznitsky
  */
-public class FanDefaultValueImpl extends FanBaseElementImpl implements FanDefaultValue {
-    public FanDefaultValueImpl(final ASTNode astNode) {
-        super(astNode);
-    }
+public class FanDefaultValueImpl extends FanBaseElementImpl implements FanDefaultValue
+{
+	public FanDefaultValueImpl(final ASTNode astNode)
+	{
+		super(astNode);
+	}
 }

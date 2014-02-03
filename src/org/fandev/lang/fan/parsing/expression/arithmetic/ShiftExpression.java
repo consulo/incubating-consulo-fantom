@@ -15,28 +15,33 @@
 
 package org.fandev.lang.fan.parsing.expression.arithmetic;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
+import static org.fandev.lang.fan.FanElementTypes.SHIFT_EXPR;
 import static org.fandev.lang.fan.FanTokenTypes.GTGT;
 import static org.fandev.lang.fan.FanTokenTypes.LTLT;
-import static org.fandev.lang.fan.FanElementTypes.SHIFT_EXPR;
+
 import org.fandev.lang.fan.parsing.expression.logical.SeparatorRepeatExpression;
+import com.intellij.lang.PsiBuilder;
+import com.intellij.psi.tree.TokenSet;
 
 /**
  * @author ilyas
  */
-public class ShiftExpression extends SeparatorRepeatExpression {
-    private static final ShiftExpression instance = new ShiftExpression();
+public class ShiftExpression extends SeparatorRepeatExpression
+{
+	private static final ShiftExpression instance = new ShiftExpression();
 
-    public ShiftExpression() {
-        super(SHIFT_EXPR, TokenSet.create(GTGT, LTLT));
-    }
+	public ShiftExpression()
+	{
+		super(SHIFT_EXPR, TokenSet.create(GTGT, LTLT));
+	}
 
-    public boolean innerParse(final PsiBuilder builder, final TokenSet stopper) {
-        return AdditiveExpression.parse(builder, stopper);
-    }
+	public boolean innerParse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return AdditiveExpression.parse(builder, stopper);
+	}
 
-    public static boolean parse(final PsiBuilder builder, final TokenSet stopper) {
-        return instance.parseThis(builder, stopper);
-    }
+	public static boolean parse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return instance.parseThis(builder, stopper);
+	}
 }

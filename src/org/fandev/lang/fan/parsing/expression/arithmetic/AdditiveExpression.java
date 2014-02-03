@@ -15,30 +15,33 @@
 
 package org.fandev.lang.fan.parsing.expression.arithmetic;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
 import static org.fandev.lang.fan.FanElementTypes.ADD_EXPR;
-import static org.fandev.lang.fan.FanElementTypes.PREFIX_EXPR;
 import static org.fandev.lang.fan.FanTokenTypes.MINUS;
 import static org.fandev.lang.fan.FanTokenTypes.PLUS;
+
 import org.fandev.lang.fan.parsing.expression.logical.SeparatorRepeatExpression;
-import static org.fandev.lang.fan.parsing.util.ParserUtils.advanceNoNls;
+import com.intellij.lang.PsiBuilder;
+import com.intellij.psi.tree.TokenSet;
 
 /**
  * @author ilyas
  */
-public class AdditiveExpression extends SeparatorRepeatExpression {
-    private static final AdditiveExpression instance = new AdditiveExpression();
+public class AdditiveExpression extends SeparatorRepeatExpression
+{
+	private static final AdditiveExpression instance = new AdditiveExpression();
 
-    public AdditiveExpression() {
-        super(ADD_EXPR, TokenSet.create(PLUS, MINUS));
-    }
+	public AdditiveExpression()
+	{
+		super(ADD_EXPR, TokenSet.create(PLUS, MINUS));
+	}
 
-    public boolean innerParse(final PsiBuilder builder, final TokenSet stopper) {
-        return MultiplicativeExpression.parse(builder, stopper);
-    }
+	public boolean innerParse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return MultiplicativeExpression.parse(builder, stopper);
+	}
 
-    public static boolean parse(final PsiBuilder builder, final TokenSet stopper) {
-        return instance.parseThis(builder, stopper);
-    }
+	public static boolean parse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return instance.parseThis(builder, stopper);
+	}
 }

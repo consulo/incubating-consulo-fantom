@@ -8,5 +8,6 @@ import com.intellij.psi.PsiParameterList;
  *
  * @author Dror Bereznitsky
  */
-public interface FanParameterList extends PsiParameterList {
+public interface FanParameterList extends PsiParameterList
+{
 }

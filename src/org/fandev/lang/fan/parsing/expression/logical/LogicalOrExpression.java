@@ -15,26 +15,31 @@
 
 package org.fandev.lang.fan.parsing.expression.logical;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
 import static org.fandev.lang.fan.FanElementTypes.LOGICAL_OR_EXPR;
 import static org.fandev.lang.fan.FanTokenTypes.OROR;
+
+import com.intellij.lang.PsiBuilder;
+import com.intellij.psi.tree.TokenSet;
 
 /**
  * @author ilyas
  */
-public class LogicalOrExpression extends SeparatorRepeatExpression {
-    private static final LogicalOrExpression instance = new LogicalOrExpression();
+public class LogicalOrExpression extends SeparatorRepeatExpression
+{
+	private static final LogicalOrExpression instance = new LogicalOrExpression();
 
-    public LogicalOrExpression() {
-        super(LOGICAL_OR_EXPR, TokenSet.create(OROR));
-    }
+	public LogicalOrExpression()
+	{
+		super(LOGICAL_OR_EXPR, TokenSet.create(OROR));
+	}
 
-    public boolean innerParse(final PsiBuilder builder, final TokenSet stopper) {
-        return LogicalAndExpression.parse(builder, stopper);
-    }
+	public boolean innerParse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return LogicalAndExpression.parse(builder, stopper);
+	}
 
-    public static boolean parse(final PsiBuilder builder, final TokenSet stopper) {
-        return instance.parseThis(builder, stopper);
-    }
+	public static boolean parse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return instance.parseThis(builder, stopper);
+	}
 }

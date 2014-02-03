@@ -6,6 +6,7 @@ import com.intellij.psi.PsiModifierList;
  * @author Dror Bereznitsky
  * @date Apr 2, 2009 2:41:03 PM
  */
-public interface FanModifierList extends PsiModifierList {
-    
+public interface FanModifierList extends PsiModifierList
+{
+
 }

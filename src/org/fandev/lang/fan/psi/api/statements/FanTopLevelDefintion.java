@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.psi.api.statements;
 
-import com.intellij.psi.PsiElement;
 import org.fandev.lang.fan.psi.api.topLevel.FanTopStatement;
+import com.intellij.psi.PsiElement;
 
 /**
  * Date: Sep 26, 2009
@@ -9,5 +9,6 @@ import org.fandev.lang.fan.psi.api.topLevel.FanTopStatement;
  *
  * @author Dror Bereznitsky
  */
-public interface FanTopLevelDefintion extends FanTopStatement, PsiElement {
+public interface FanTopLevelDefintion extends FanTopStatement, PsiElement
+{
 }

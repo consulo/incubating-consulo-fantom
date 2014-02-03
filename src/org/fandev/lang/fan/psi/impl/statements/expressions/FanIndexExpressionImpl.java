@@ -9,12 +9,15 @@ import com.intellij.lang.ASTNode;
  *
  * @author Dror Bereznitsky
  */
-public class FanIndexExpressionImpl extends FanExpressionImpl implements FanIndexExpression {
-    public FanIndexExpressionImpl(final ASTNode astNode) {
-        super(astNode);
-    }
+public class FanIndexExpressionImpl extends FanExpressionImpl implements FanIndexExpression
+{
+	public FanIndexExpressionImpl(final ASTNode astNode)
+	{
+		super(astNode);
+	}
 
-    public int getIndex() {
-        return Integer.valueOf(getText());
-    }
+	public int getIndex()
+	{
+		return Integer.valueOf(getText());
+	}
 }

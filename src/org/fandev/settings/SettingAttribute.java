@@ -6,24 +6,29 @@ package org.fandev.settings;
  *
  * @author Dror Bereznitsky
  */
-public enum SettingAttribute {
-    BUILD_SCRIPT("buildScript", ""),
-    POD_FILE("podFile", "");
+public enum SettingAttribute
+{
+	BUILD_SCRIPT("buildScript", ""),
+	POD_FILE("podFile", "");
 
-    public final String attributeKey;
-    public final String defaultValue;
+	public final String attributeKey;
+	public final String defaultValue;
 
-    SettingAttribute(final String attributeKey, final String defaultValue) {
-        this.attributeKey = attributeKey;
-        this.defaultValue = defaultValue;
-    }
+	SettingAttribute(final String attributeKey, final String defaultValue)
+	{
+		this.attributeKey = attributeKey;
+		this.defaultValue = defaultValue;
+	}
 
-    public static SettingAttribute byAttributeKey(final String key) {
-        for (final SettingAttribute value : values()) {
-            if (value.attributeKey.equals(key)) {
-                return value;
-            }
-        }
-        return null;
-    }
+	public static SettingAttribute byAttributeKey(final String key)
+	{
+		for(final SettingAttribute value : values())
+		{
+			if(value.attributeKey.equals(key))
+			{
+				return value;
+			}
+		}
+		return null;
+	}
 }

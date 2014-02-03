@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.psi.api.statements.expressions;
 
-import org.jetbrains.annotations.Nullable;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Date: Sep 12, 2009
@@ -9,7 +9,8 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
  *
  * @author Dror Bereznitsky
  */
-public interface FanTypeReferenceExpression {
-    @Nullable
-    FanTypeDefinition getReferencedType();
+public interface FanTypeReferenceExpression
+{
+	@Nullable
+	FanTypeDefinition getReferencedType();
 }

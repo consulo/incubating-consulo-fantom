@@ -15,38 +15,45 @@
 
 package org.fandev.lang.fan.parsing.expression.logical;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
-import com.intellij.psi.tree.IElementType;
 import static org.fandev.lang.fan.FanElementTypes.RELATIONAL_EXPR;
 import static org.fandev.lang.fan.FanTokenTypes.RELATIONAL_OP;
+
 import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.parsing.types.TypeSpec;
+import com.intellij.lang.PsiBuilder;
+import com.intellij.psi.tree.IElementType;
+import com.intellij.psi.tree.TokenSet;
 
 /**
  * @author ilyas
  */
-public class RelationalExpression extends SeparatorRepeatExpression {
-    private static final RelationalExpression instance = new RelationalExpression();
+public class RelationalExpression extends SeparatorRepeatExpression
+{
+	private static final RelationalExpression instance = new RelationalExpression();
 
-    public RelationalExpression() {
-        super(RELATIONAL_EXPR, RELATIONAL_OP);
-    }
+	public RelationalExpression()
+	{
+		super(RELATIONAL_EXPR, RELATIONAL_OP);
+	}
 
-    public boolean innerParse(final PsiBuilder builder, final TokenSet stopper) {
-        return ElvisExpression.parse(builder, stopper);
-    }
+	public boolean innerParse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return ElvisExpression.parse(builder, stopper);
+	}
 
-    public static boolean parse(final PsiBuilder builder, final TokenSet stopper) {
-        return instance.parseThis(builder, stopper);
-    }
+	public static boolean parse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return instance.parseThis(builder, stopper);
+	}
 
-    @Override
-    protected boolean rheParse(final PsiBuilder builder, final TokenSet newStopper, final IElementType separator) {
-        // For as, is and isnot separators only type expected
-        if (FanTokenTypes.TYPE_COMPARE.contains(separator)) {
-            return TypeSpec.parse(builder);
-        }
-        return super.rheParse(builder, newStopper, separator);
-    }
+	@Override
+	protected boolean rheParse(final PsiBuilder builder, final TokenSet newStopper, final IElementType separator)
+	{
+		// For as, is and isnot separators only type expected
+		if(FanTokenTypes.TYPE_COMPARE.contains(separator))
+		{
+			return TypeSpec.parse(builder);
+		}
+		return super.rheParse(builder, newStopper, separator);
+	}
 }

@@ -23,6 +23,7 @@ import com.intellij.psi.tree.TokenSet;
  * @author freds
  * @date Apr 3, 2009
  */
-public interface ExpressionParser {
-    boolean innerParse(PsiBuilder builder, TokenSet stopper);
+public interface ExpressionParser
+{
+	boolean innerParse(PsiBuilder builder, TokenSet stopper);
 }

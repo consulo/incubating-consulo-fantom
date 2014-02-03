@@ -16,51 +16,72 @@
  */
 package org.fandev.lang.fan.parsing.expression.arithmetic;
 
-import com.intellij.lang.PsiBuilder;
-import static org.fandev.lang.fan.FanElementTypes.*;
-import static org.fandev.lang.fan.FanTokenTypes.*;
+import static org.fandev.lang.fan.FanElementTypes.ID_EXPR;
+import static org.fandev.lang.fan.FanElementTypes.POD_REFERENCE;
+import static org.fandev.lang.fan.FanTokenTypes.AT;
+import static org.fandev.lang.fan.FanTokenTypes.COLON_COLON;
+import static org.fandev.lang.fan.FanTokenTypes.IDENTIFIER_TOKENS_SET;
+import static org.fandev.lang.fan.FanTokenTypes.LPAR;
+import static org.fandev.lang.fan.FanTokenTypes.MULT;
+import static org.fandev.lang.fan.FanTokenTypes.NLS;
+import static org.fandev.lang.fan.FanTokenTypes.OR;
+import static org.fandev.lang.fan.parsing.util.ParserUtils.firstAfter;
+import static org.fandev.lang.fan.parsing.util.ParserUtils.getToken;
+import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
+
 import org.fandev.lang.fan.parsing.statements.expressions.arguments.Arguments;
-import static org.fandev.lang.fan.parsing.util.ParserUtils.*;
+import com.intellij.lang.PsiBuilder;
 
 /**
  * @author freds
  * @date Mar 2, 2009
  */
-public class IdExpression {
-    public static boolean parse(final PsiBuilder builder) {
-        final PsiBuilder.Marker marker = builder.mark();
-        // Remove @ for symbol
-        final boolean symbol = getToken(builder, AT);
-        // Remove * for field
-        final boolean field = getToken(builder, MULT);
-        if (IDENTIFIER_TOKENS_SET.contains(builder.getTokenType())) {
-            final PsiBuilder.Marker pod = builder.mark();
-            builder.advanceLexer();
-            if (builder.getTokenType() == COLON_COLON) {
-                // It was the Pod Name
-                pod.done(POD_REFERENCE);
-                builder.advanceLexer();
-                // Recursively call the IdExpression
-                parse(builder);
-            } else {
-                pod.drop();
-            }
-            if (!field && !symbol) {
-                boolean res = true;
-                while (!builder.eof() && res && firstAfter(builder, NLS) == LPAR) {
-                    removeNls(builder);
-                    res = Arguments.parse(builder);
-                }
-                if (firstAfter(builder, NLS) == OR) {
-                    removeNls(builder);
-                    ClosureExpression.parse(builder);
-                }
-            }
-            marker.done(ID_EXPR);
-            return true;
-        } else {
-            marker.rollbackTo();
-            return false;
-        }
-    }
+public class IdExpression
+{
+	public static boolean parse(final PsiBuilder builder)
+	{
+		final PsiBuilder.Marker marker = builder.mark();
+		// Remove @ for symbol
+		final boolean symbol = getToken(builder, AT);
+		// Remove * for field
+		final boolean field = getToken(builder, MULT);
+		if(IDENTIFIER_TOKENS_SET.contains(builder.getTokenType()))
+		{
+			final PsiBuilder.Marker pod = builder.mark();
+			builder.advanceLexer();
+			if(builder.getTokenType() == COLON_COLON)
+			{
+				// It was the Pod Name
+				pod.done(POD_REFERENCE);
+				builder.advanceLexer();
+				// Recursively call the IdExpression
+				parse(builder);
+			}
+			else
+			{
+				pod.drop();
+			}
+			if(!field && !symbol)
+			{
+				boolean res = true;
+				while(!builder.eof() && res && firstAfter(builder, NLS) == LPAR)
+				{
+					removeNls(builder);
+					res = Arguments.parse(builder);
+				}
+				if(firstAfter(builder, NLS) == OR)
+				{
+					removeNls(builder);
+					ClosureExpression.parse(builder);
+				}
+			}
+			marker.done(ID_EXPR);
+			return true;
+		}
+		else
+		{
+			marker.rollbackTo();
+			return false;
+		}
+	}
 }

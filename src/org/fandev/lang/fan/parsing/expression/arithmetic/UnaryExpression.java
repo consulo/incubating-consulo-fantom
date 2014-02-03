@@ -15,64 +15,64 @@
 
 package org.fandev.lang.fan.parsing.expression.arithmetic;
 
+import static org.fandev.lang.fan.FanElementTypes.PREFIX_EXPR;
+import static org.fandev.lang.fan.parsing.util.ParserUtils.advanceNoNls;
+
+import org.fandev.lang.fan.FanElementTypes;
+import org.fandev.lang.fan.FanTokenTypes;
+import org.fandev.lang.fan.parsing.expression.ExpressionParser;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.psi.tree.TokenSet;
-import org.fandev.lang.fan.FanElementTypes;
-import static org.fandev.lang.fan.FanElementTypes.PREFIX_EXPR;
-import org.fandev.lang.fan.FanTokenTypes;
-import static org.fandev.lang.fan.parsing.util.ParserUtils.advanceNoNls;
-import org.fandev.lang.fan.parsing.expression.ExpressionParser;
 
 /**
  * @author ilyas
  */
-public class UnaryExpression implements ExpressionParser {
+public class UnaryExpression implements ExpressionParser
+{
 
-    public static TokenSet PREFIXES = TokenSet.create(
-            FanTokenTypes.EXCL,
-            FanTokenTypes.PLUS,
-            FanTokenTypes.MINUS,
-            FanTokenTypes.TILDE,
-            FanTokenTypes.AND,
-            FanTokenTypes.PLUSPLUS,
-            FanTokenTypes.MINUSMINUS
-    );
+	public static TokenSet PREFIXES = TokenSet.create(FanTokenTypes.EXCL, FanTokenTypes.PLUS, FanTokenTypes.MINUS, FanTokenTypes.TILDE,
+			FanTokenTypes.AND, FanTokenTypes.PLUSPLUS, FanTokenTypes.MINUSMINUS);
 
-    private static TokenSet POSTFIXES = TokenSet.create(
-            FanTokenTypes.PLUSPLUS,
-            FanTokenTypes.MINUSMINUS
-    );
+	private static TokenSet POSTFIXES = TokenSet.create(FanTokenTypes.PLUSPLUS, FanTokenTypes.MINUSMINUS);
 
-    private static UnaryExpression instance = new UnaryExpression();
+	private static UnaryExpression instance = new UnaryExpression();
 
-    public static boolean parse(final PsiBuilder builder, final TokenSet stopper) {
-        boolean res = parsePrefixExpression(builder, stopper, instance);
-        if (!res) {
-            final PsiBuilder.Marker marker = builder.mark();
-            final TokenSet newStopper = TokenSet.orSet(stopper, POSTFIXES);
-            res = TermExpression.parse(builder, newStopper);
-            if (POSTFIXES.contains(builder.getTokenType())) {
-                builder.advanceLexer();
-                marker.done(FanElementTypes.POSTFIX_EXPR);
-            } else {
-                marker.done(FanElementTypes.UNARY_EXPR);
-            }
-        }
-        return res;
-    }
+	public static boolean parse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		boolean res = parsePrefixExpression(builder, stopper, instance);
+		if(!res)
+		{
+			final PsiBuilder.Marker marker = builder.mark();
+			final TokenSet newStopper = TokenSet.orSet(stopper, POSTFIXES);
+			res = TermExpression.parse(builder, newStopper);
+			if(POSTFIXES.contains(builder.getTokenType()))
+			{
+				builder.advanceLexer();
+				marker.done(FanElementTypes.POSTFIX_EXPR);
+			}
+			else
+			{
+				marker.done(FanElementTypes.UNARY_EXPR);
+			}
+		}
+		return res;
+	}
 
-    public static boolean parsePrefixExpression(final PsiBuilder builder, final TokenSet stopper, final ExpressionParser nextParser) {
-        if (PREFIXES.contains(builder.getTokenType())) {
-            final PsiBuilder.Marker marker = builder.mark();
-            advanceNoNls(builder);
-            nextParser.innerParse(builder, stopper);
-            marker.done(PREFIX_EXPR);
-            return true;
-        }
-        return false;
-    }
+	public static boolean parsePrefixExpression(final PsiBuilder builder, final TokenSet stopper, final ExpressionParser nextParser)
+	{
+		if(PREFIXES.contains(builder.getTokenType()))
+		{
+			final PsiBuilder.Marker marker = builder.mark();
+			advanceNoNls(builder);
+			nextParser.innerParse(builder, stopper);
+			marker.done(PREFIX_EXPR);
+			return true;
+		}
+		return false;
+	}
 
-    public boolean innerParse(final PsiBuilder builder, final TokenSet stopper) {
-        return ParenExpression.parse(builder, stopper);
-    }
+	public boolean innerParse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return ParenExpression.parse(builder, stopper);
+	}
 }

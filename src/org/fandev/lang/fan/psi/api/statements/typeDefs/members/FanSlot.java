@@ -16,19 +16,19 @@
  */
 package org.fandev.lang.fan.psi.api.statements.typeDefs.members;
 
+import org.fandev.lang.fan.psi.FanElement;
+import org.fandev.lang.fan.psi.api.modifiers.FanFacet;
+import org.fandev.lang.fan.psi.api.statements.FanTopLevelDefintion;
 import com.intellij.psi.PsiDocCommentOwner;
 import com.intellij.psi.PsiMember;
 import com.intellij.psi.PsiNameIdentifierOwner;
 import com.intellij.psi.PsiTypeParameterListOwner;
-import org.fandev.lang.fan.psi.FanElement;
-import org.fandev.lang.fan.psi.api.modifiers.FanFacet;
-import org.fandev.lang.fan.psi.api.statements.FanTopLevelDefintion;
 
 /**
  * @author freds
  * @date Jan 25, 2009
  */
-public interface FanSlot
-        extends FanElement, PsiMember, PsiTypeParameterListOwner, PsiNameIdentifierOwner, PsiDocCommentOwner, FanTopLevelDefintion {
-    FanFacet[] getFacets();
+public interface FanSlot extends FanElement, PsiMember, PsiTypeParameterListOwner, PsiNameIdentifierOwner, PsiDocCommentOwner, FanTopLevelDefintion
+{
+	FanFacet[] getFacets();
 }

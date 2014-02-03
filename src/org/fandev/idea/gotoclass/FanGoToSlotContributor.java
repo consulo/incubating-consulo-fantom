@@ -16,32 +16,33 @@
  */
 package org.fandev.idea.gotoclass;
 
+import java.util.Collection;
+
+import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
+import org.fandev.lang.fan.psi.stubs.index.FanSlotNameIndex;
 import com.intellij.navigation.ChooseByNameContributor;
 import com.intellij.navigation.NavigationItem;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.stubs.StubIndex;
-import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
-import org.fandev.lang.fan.psi.stubs.index.FanSlotNameIndex;
-
-import java.util.Collection;
 
 /**
  * @author freds
  * @date Jan 27, 2009
  */
-public class FanGoToSlotContributor implements ChooseByNameContributor {
-    public String[] getNames(final Project project, final boolean includeNonProjectItems) {
-        final Collection<String> slotNames = StubIndex.getInstance().getAllKeys(FanSlotNameIndex.KEY, project);
-        return slotNames.toArray(new String[0]);
-    }
+public class FanGoToSlotContributor implements ChooseByNameContributor
+{
+	public String[] getNames(final Project project, final boolean includeNonProjectItems)
+	{
+		final Collection<String> slotNames = StubIndex.getInstance().getAllKeys(FanSlotNameIndex.KEY, project);
+		return slotNames.toArray(new String[0]);
+	}
 
-    @SuppressWarnings({"SuspiciousToArrayCall"})
-    public NavigationItem[] getItemsByName(final String name, final String pattern, final Project project,
-           final boolean includeNonProjectItems) {
-        final GlobalSearchScope scope = includeNonProjectItems ? null : GlobalSearchScope.projectScope(project);
-        final Collection<FanSlot> slots =
-                StubIndex.getInstance().get(FanSlotNameIndex.KEY, name, project, scope);
-        return slots.toArray(new NavigationItem[0]);
-    }
+	@SuppressWarnings({"SuspiciousToArrayCall"})
+	public NavigationItem[] getItemsByName(final String name, final String pattern, final Project project, final boolean includeNonProjectItems)
+	{
+		final GlobalSearchScope scope = includeNonProjectItems ? null : GlobalSearchScope.projectScope(project);
+		final Collection<FanSlot> slots = StubIndex.getInstance().get(FanSlotNameIndex.KEY, name, project, scope);
+		return slots.toArray(new NavigationItem[0]);
+	}
 }

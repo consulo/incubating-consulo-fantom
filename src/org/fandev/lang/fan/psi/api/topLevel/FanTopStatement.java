@@ -8,5 +8,6 @@ import com.intellij.psi.PsiElement;
  *
  * @author Dror Bereznitsky
  */
-public interface FanTopStatement extends PsiElement {
+public interface FanTopStatement extends PsiElement
+{
 }

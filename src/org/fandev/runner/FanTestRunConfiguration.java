@@ -1,6 +1,9 @@
 package org.fandev.runner;
 
-import com.intellij.execution.configurations.*;
+import com.intellij.execution.configurations.ConfigurationFactory;
+import com.intellij.execution.configurations.ModuleBasedConfiguration;
+import com.intellij.execution.configurations.RunConfiguration;
+import com.intellij.execution.configurations.RunConfigurationModule;
 import com.intellij.openapi.options.SettingsEditor;
 
 /**
@@ -9,30 +12,35 @@ import com.intellij.openapi.options.SettingsEditor;
  *
  * @author Dror Bereznitsky
  */
-public class FanTestRunConfiguration extends FanPodRunConfiguration {
-    public FanTestRunConfiguration(final String name, final RunConfigurationModule runConfigurationModule, final ConfigurationFactory factory) {
-        super(name, runConfigurationModule, factory);
-    }
+public class FanTestRunConfiguration extends FanPodRunConfiguration
+{
+	public FanTestRunConfiguration(final String name, final RunConfigurationModule runConfigurationModule, final ConfigurationFactory factory)
+	{
+		super(name, runConfigurationModule, factory);
+	}
 
-    @Override
-    protected ModuleBasedConfiguration createInstance() {
-        return new FanTestRunConfiguration(getName(), new RunConfigurationModule(getConfigurationModule().getProject()), factory);
-    }
+	@Override
+	protected ModuleBasedConfiguration createInstance()
+	{
+		return new FanTestRunConfiguration(getName(), new RunConfigurationModule(getConfigurationModule().getProject()), factory);
+	}
 
-    @Override
-    public SettingsEditor<? extends RunConfiguration> getConfigurationEditor() {
-        return new FanTestRunConfigurationEditor();
-    }
+	@Override
+	public SettingsEditor<? extends RunConfiguration> getConfigurationEditor()
+	{
+		return new FanTestRunConfigurationEditor();
+	}
 
-    @Override
-    protected void setExecutable(final JavaParameters params) {
-        final String typeToExecute = getModuleName() +
-                (executableType == null || "".equals(executableType) ?  "" : "::" + executableType);
-        params.getProgramParametersList().add(typeToExecute);
-    }
+	@Override
+	protected void setExecutable(final JavaParameters params)
+	{
+		final String typeToExecute = getModuleName() + (executableType == null || "".equals(executableType) ? "" : "::" + executableType);
+		params.getProgramParametersList().add(typeToExecute);
+	}
 
-    @Override
-    protected String getMainClass() {
-        return "fanx.tools.Fant";
-    }
+	@Override
+	protected String getMainClass()
+	{
+		return "fanx.tools.Fant";
+	}
 }

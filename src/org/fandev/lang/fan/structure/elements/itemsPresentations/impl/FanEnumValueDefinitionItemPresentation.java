@@ -1,12 +1,11 @@
 package org.fandev.lang.fan.structure.elements.itemsPresentations.impl;
 
-import org.fandev.lang.fan.structure.elements.itemsPresentations.FanItemPresentation;
-import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
-import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanEnumValue;
-import org.fandev.icons.Icons;
-import com.intellij.psi.PsiElement;
+import javax.swing.Icon;
 
-import javax.swing.*;
+import org.fandev.icons.Icons;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanEnumValue;
+import org.fandev.lang.fan.structure.elements.itemsPresentations.FanItemPresentation;
+import com.intellij.psi.PsiElement;
 
 /**
  * Date: Apr 1, 2009
@@ -14,18 +13,22 @@ import javax.swing.*;
  *
  * @author Dror Bereznitsky
  */
-public class FanEnumValueDefinitionItemPresentation extends FanItemPresentation {
-    public FanEnumValueDefinitionItemPresentation(PsiElement myElement) {
-        super(myElement);
-    }
+public class FanEnumValueDefinitionItemPresentation extends FanItemPresentation
+{
+	public FanEnumValueDefinitionItemPresentation(PsiElement myElement)
+	{
+		super(myElement);
+	}
 
-    public String getPresentableText() {
-        final FanEnumValue element = (FanEnumValue) myElement;
-        return element.getName() + ":" + element.getContainingClass().getName();
-    }
+	public String getPresentableText()
+	{
+		final FanEnumValue element = (FanEnumValue) myElement;
+		return element.getName() + ":" + element.getContainingClass().getName();
+	}
 
-    @Override
-    public Icon getIcon(final boolean open) {
-        return Icons.FIELD;
-    }
+	@Override
+	public Icon getIcon(final boolean open)
+	{
+		return Icons.FIELD;
+	}
 }

@@ -1,10 +1,10 @@
 package org.fandev.lang.fan.structure.elements.impl;
 
+import org.fandev.lang.fan.structure.elements.FanStructureViewElement;
+import org.fandev.lang.fan.structure.elements.itemsPresentations.impl.FanEnumValueDefinitionItemPresentation;
 import com.intellij.ide.util.treeView.smartTree.TreeElement;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.psi.PsiElement;
-import org.fandev.lang.fan.structure.elements.FanStructureViewElement;
-import org.fandev.lang.fan.structure.elements.itemsPresentations.impl.FanEnumValueDefinitionItemPresentation;
 
 /**
  * Date: Apr 1, 2009
@@ -12,19 +12,23 @@ import org.fandev.lang.fan.structure.elements.itemsPresentations.impl.FanEnumVal
  *
  * @author Dror Bereznitsky
  */
-public class FanEnumValueDefinitionStructureViewElement extends FanStructureViewElement {
-    PsiElement myElement;
+public class FanEnumValueDefinitionStructureViewElement extends FanStructureViewElement
+{
+	PsiElement myElement;
 
-    protected FanEnumValueDefinitionStructureViewElement(final PsiElement myElement) {
-        super(myElement);
-        this.myElement = myElement;
-    }
+	protected FanEnumValueDefinitionStructureViewElement(final PsiElement myElement)
+	{
+		super(myElement);
+		this.myElement = myElement;
+	}
 
-    public ItemPresentation getPresentation() {
-        return new FanEnumValueDefinitionItemPresentation(myElement);
-    }
+	public ItemPresentation getPresentation()
+	{
+		return new FanEnumValueDefinitionItemPresentation(myElement);
+	}
 
-    public TreeElement[] getChildren() {
-        return new TreeElement[0];
-    }
+	public TreeElement[] getChildren()
+	{
+		return new TreeElement[0];
+	}
 }

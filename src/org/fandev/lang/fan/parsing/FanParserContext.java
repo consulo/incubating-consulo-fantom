@@ -23,16 +23,19 @@ import com.intellij.openapi.util.Key;
  * @author freds
  * @date Jan 21, 2009
  */
-public class FanParserContext {
-    private final static Key<FanParserContext> KEY = new Key<FanParserContext>("FanParser");
+public class FanParserContext
+{
+	private final static Key<FanParserContext> KEY = new Key<FanParserContext>("FanParser");
 
-    public static FanParserContext get(final PsiBuilder builder) {
-        FanParserContext context = builder.getUserData(KEY);
-        if (context == null) {
-            context = new FanParserContext();
-            builder.putUserData(KEY, context);
-        }
-        return context;
-    }
+	public static FanParserContext get(final PsiBuilder builder)
+	{
+		FanParserContext context = builder.getUserData(KEY);
+		if(context == null)
+		{
+			context = new FanParserContext();
+			builder.putUserData(KEY, context);
+		}
+		return context;
+	}
 
 }

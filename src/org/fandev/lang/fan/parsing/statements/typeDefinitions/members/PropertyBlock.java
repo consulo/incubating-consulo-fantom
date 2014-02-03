@@ -20,6 +20,7 @@ package org.fandev.lang.fan.parsing.statements.typeDefinitions.members;
  * @author freds
  * @date Apr 1, 2009
  */
-public enum PropertyBlock {
-    NONE, GETTER, SETTER
+public enum PropertyBlock
+{
+	NONE, GETTER, SETTER
 }

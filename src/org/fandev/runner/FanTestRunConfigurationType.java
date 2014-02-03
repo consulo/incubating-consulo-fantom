@@ -1,10 +1,9 @@
 package org.fandev.runner;
 
+import javax.swing.Icon;
+
 import org.fandev.icons.Icons;
 import org.jetbrains.annotations.NotNull;
-
-import javax.swing.*;
-
 import com.intellij.execution.configurations.ConfigurationTypeUtil;
 
 /**
@@ -13,31 +12,38 @@ import com.intellij.execution.configurations.ConfigurationTypeUtil;
  *
  * @author Dror Bereznitsky
  */
-public class FanTestRunConfigurationType extends FanRunConfigurationType {
-    public FanTestRunConfigurationType() {
-        super();
-        configurationFactory = new FanTestConfigurationFactory(this);
-    }
+public class FanTestRunConfigurationType extends FanRunConfigurationType
+{
+	public FanTestRunConfigurationType()
+	{
+		super();
+		configurationFactory = new FanTestConfigurationFactory(this);
+	}
 
-    public String getDisplayName() {
-        return "Fantom Test";
-    }
+	public String getDisplayName()
+	{
+		return "Fantom Test";
+	}
 
-    public String getConfigurationTypeDescription() {
-        return "Fantom Test";
-    }
+	public String getConfigurationTypeDescription()
+	{
+		return "Fantom Test";
+	}
 
-    public Icon getIcon() {
-        return Icons.FAN_16;
-    }
+	public Icon getIcon()
+	{
+		return Icons.FAN_16;
+	}
 
-    @NotNull
-    public String getId() {
-        return "FanTestRunConfiguration";
-    }
+	@NotNull
+	public String getId()
+	{
+		return "FanTestRunConfiguration";
+	}
 
-    public static FanTestRunConfigurationType getInstance() {
-        return ConfigurationTypeUtil.findConfigurationType(FanTestRunConfigurationType.class);
-    }
+	public static FanTestRunConfigurationType getInstance()
+	{
+		return ConfigurationTypeUtil.findConfigurationType(FanTestRunConfigurationType.class);
+	}
 }
 

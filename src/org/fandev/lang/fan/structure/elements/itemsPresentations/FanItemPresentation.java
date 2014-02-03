@@ -9,31 +9,35 @@ import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.psi.PsiElement;
 
 /**
- *
  * @author Dror Bereznitsky
  * @date Jan 7, 2009 4:49:41 PM
  */
-public abstract class FanItemPresentation implements ItemPresentation {
-    protected final PsiElement myElement;
+public abstract class FanItemPresentation implements ItemPresentation
+{
+	protected final PsiElement myElement;
 
-    protected FanItemPresentation(final PsiElement myElement) {
-        this.myElement = myElement;
-    }
+	protected FanItemPresentation(final PsiElement myElement)
+	{
+		this.myElement = myElement;
+	}
 
-    @Override
+	@Override
 	@Nullable
-    public String getLocationString() {
-        return null;
-    }
+	public String getLocationString()
+	{
+		return null;
+	}
 
-    @Override
+	@Override
 	@Nullable
-    public Icon getIcon(final boolean open) {
-        return IconDescriptorUpdaters.getIcon(myElement, 0);
-    }
+	public Icon getIcon(final boolean open)
+	{
+		return IconDescriptorUpdaters.getIcon(myElement, 0);
+	}
 
-    @Nullable
-    public TextAttributesKey getTextAttributesKey() {
-        return null;
-    }
+	@Nullable
+	public TextAttributesKey getTextAttributesKey()
+	{
+		return null;
+	}
 }

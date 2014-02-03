@@ -24,9 +24,7 @@ public interface FanHighlighterKeys
 
 	TextAttributesKey FAN_BRACES = TextAttributesKey.createTextAttributesKey(FanLanguage.INSTANCE, DefaultLanguageHighlighterColors.BRACES);
 
-	TextAttributesKey FAN_DOC_COMMENT = TextAttributesKey.createTextAttributesKey(FanLanguage.INSTANCE,
-			DefaultLanguageHighlighterColors.DOC_COMMENT);
+	TextAttributesKey FAN_DOC_COMMENT = TextAttributesKey.createTextAttributesKey(FanLanguage.INSTANCE, DefaultLanguageHighlighterColors.DOC_COMMENT);
 
-	TextAttributesKey FAN_LINE_COMMENT = TextAttributesKey.createTextAttributesKey(FanLanguage.INSTANCE,
-			DefaultLanguageHighlighterColors.LINE_COMMENT);
+	TextAttributesKey FAN_LINE_COMMENT = TextAttributesKey.createTextAttributesKey(FanLanguage.INSTANCE, DefaultLanguageHighlighterColors.LINE_COMMENT);
 }

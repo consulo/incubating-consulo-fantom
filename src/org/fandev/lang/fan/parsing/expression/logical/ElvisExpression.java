@@ -15,26 +15,31 @@
 
 package org.fandev.lang.fan.parsing.expression.logical;
 
+import static org.fandev.lang.fan.FanElementTypes.ELVIS_EXPR;
+import static org.fandev.lang.fan.FanTokenTypes.QUEST_COLON;
+
 import com.intellij.lang.PsiBuilder;
 import com.intellij.psi.tree.TokenSet;
-import static org.fandev.lang.fan.FanTokenTypes.QUEST_COLON;
-import static org.fandev.lang.fan.FanElementTypes.ELVIS_EXPR;
 
 /**
  * @author ilyas
  */
-public class ElvisExpression extends SeparatorRepeatExpression {
-    private static final ElvisExpression instance = new ElvisExpression();
+public class ElvisExpression extends SeparatorRepeatExpression
+{
+	private static final ElvisExpression instance = new ElvisExpression();
 
-    public ElvisExpression() {
-        super(ELVIS_EXPR, TokenSet.create(QUEST_COLON));
-    }
+	public ElvisExpression()
+	{
+		super(ELVIS_EXPR, TokenSet.create(QUEST_COLON));
+	}
 
-    public boolean innerParse(final PsiBuilder builder, final TokenSet stopper) {
-        return RangeExpression.parse(builder, stopper);
-    }
+	public boolean innerParse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return RangeExpression.parse(builder, stopper);
+	}
 
-    public static boolean parse(final PsiBuilder builder, final TokenSet stopper) {
-        return instance.parseThis(builder, stopper);
-  }
+	public static boolean parse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return instance.parseThis(builder, stopper);
+	}
 }

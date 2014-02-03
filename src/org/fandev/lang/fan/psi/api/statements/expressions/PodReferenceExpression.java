@@ -6,6 +6,7 @@ package org.fandev.lang.fan.psi.api.statements.expressions;
  *
  * @author Dror Bereznitsky
  */
-public interface PodReferenceExpression extends FanExpression {
-    public String getPodName();
+public interface PodReferenceExpression extends FanExpression
+{
+	public String getPodName();
 }

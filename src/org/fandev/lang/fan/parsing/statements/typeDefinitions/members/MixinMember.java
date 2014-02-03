@@ -15,11 +15,14 @@ import com.intellij.lang.PsiBuilder;
  * <li> Mixins can declare static const fields</li>
  * <li> Mixins can declare static constructors: static {}</li>
  * </ul>
+ *
  * @author Dror Bereznitsky
  * @date Jan 14, 2009 11:32:29 PM
  */
-public class MixinMember {
-    public static boolean parse(final PsiBuilder builder, final String className) {
-        return true;
-    }
+public class MixinMember
+{
+	public static boolean parse(final PsiBuilder builder, final String className)
+	{
+		return true;
+	}
 }

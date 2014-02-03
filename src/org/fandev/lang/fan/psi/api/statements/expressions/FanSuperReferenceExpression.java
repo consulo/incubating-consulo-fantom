@@ -6,5 +6,6 @@ package org.fandev.lang.fan.psi.api.statements.expressions;
  *
  * @author Dror Bereznitsky
  */
-public interface FanSuperReferenceExpression extends FanExpression, FanTypeReferenceExpression {
+public interface FanSuperReferenceExpression extends FanExpression, FanTypeReferenceExpression
+{
 }

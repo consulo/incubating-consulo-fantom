@@ -8,5 +8,6 @@ import com.intellij.psi.PsiParameter;
  *
  * @author Dror Bereznitsky
  */
-public interface FanFormal extends PsiParameter {
+public interface FanFormal extends PsiParameter
+{
 }

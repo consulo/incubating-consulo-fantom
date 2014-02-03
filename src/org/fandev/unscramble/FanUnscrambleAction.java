@@ -12,19 +12,22 @@ import com.intellij.openapi.project.Project;
  *
  * @author Dror Bereznitsky
  */
-public class FanUnscrambleAction extends AnAction {
-    public void actionPerformed(final AnActionEvent paramAnActionEvent) {
-        final Project localProject = PlatformDataKeys.PROJECT.getData(paramAnActionEvent.getDataContext());
+public class FanUnscrambleAction extends AnAction
+{
+	public void actionPerformed(final AnActionEvent paramAnActionEvent)
+	{
+		final Project localProject = PlatformDataKeys.PROJECT.getData(paramAnActionEvent.getDataContext());
 
-        final FanUnscrambleDialog localUnscrambleDialog = new FanUnscrambleDialog(localProject);
+		final FanUnscrambleDialog localUnscrambleDialog = new FanUnscrambleDialog(localProject);
 
-        localUnscrambleDialog.show();
-    }
+		localUnscrambleDialog.show();
+	}
 
-    public void update(final AnActionEvent paramAnActionEvent) {
-        final Presentation localPresentation = paramAnActionEvent.getPresentation();
+	public void update(final AnActionEvent paramAnActionEvent)
+	{
+		final Presentation localPresentation = paramAnActionEvent.getPresentation();
 
-        final Project localProject = PlatformDataKeys.PROJECT.getData(paramAnActionEvent.getDataContext());
-        localPresentation.setEnabled(localProject != null);
-    }
+		final Project localProject = PlatformDataKeys.PROJECT.getData(paramAnActionEvent.getDataContext());
+		localPresentation.setEnabled(localProject != null);
+	}
 }

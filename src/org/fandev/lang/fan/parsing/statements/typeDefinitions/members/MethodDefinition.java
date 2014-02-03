@@ -16,22 +16,26 @@
  */
 package org.fandev.lang.fan.parsing.statements.typeDefinitions.members;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
-import org.fandev.lang.fan.FanBundle;
-import org.fandev.lang.fan.FanElementTypes;
 import static org.fandev.lang.fan.FanElementTypes.METHOD_BODY;
 import static org.fandev.lang.fan.FanElementTypes.METHOD_DEFINITION;
-import static org.fandev.lang.fan.FanTokenTypes.*;
+import static org.fandev.lang.fan.FanTokenTypes.ABSTRACT_KEYWORD;
+import static org.fandev.lang.fan.FanTokenTypes.LBRACE;
+import static org.fandev.lang.fan.FanTokenTypes.NATIVE_KEYWORD;
+import static org.fandev.lang.fan.FanTokenTypes.SEPARATOR;
+import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
+import static org.fandev.lang.fan.parsing.util.ParserUtils.removeStoppers;
+
+import org.fandev.lang.fan.FanBundle;
+import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.parsing.auxiliary.facets.Facet;
 import org.fandev.lang.fan.parsing.auxiliary.modifiers.Modifiers;
-import org.fandev.lang.fan.parsing.statements.declaration.DeclarationType;
 import org.fandev.lang.fan.parsing.statements.Block;
+import org.fandev.lang.fan.parsing.statements.declaration.DeclarationType;
 import org.fandev.lang.fan.parsing.types.TypeParameters;
 import org.fandev.lang.fan.parsing.types.TypeSpec;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
-import static org.fandev.lang.fan.parsing.util.ParserUtils.removeStoppers;
+import com.intellij.lang.PsiBuilder;
+import com.intellij.psi.tree.TokenSet;
 
 /**
  * <p>Grammar Definition:<ul>
@@ -45,44 +49,53 @@ import static org.fandev.lang.fan.parsing.util.ParserUtils.removeStoppers;
  * @author Fred Simon
  * @date Jan 17, 2009
  */
-public class MethodDefinition {
-    public static boolean parse(final PsiBuilder builder, final boolean isBuiltInType) {
-        final PsiBuilder.Marker declMarker = builder.mark();
+public class MethodDefinition
+{
+	public static boolean parse(final PsiBuilder builder, final boolean isBuiltInType)
+	{
+		final PsiBuilder.Marker declMarker = builder.mark();
 
-        Facet.parse(builder);
+		Facet.parse(builder);
 
-        final TokenSet modifiers = Modifiers.parse(builder, DeclarationType.METHOD);
-        final boolean modifiersParsed = modifiers.getTypes().length > 0;
+		final TokenSet modifiers = Modifiers.parse(builder, DeclarationType.METHOD);
+		final boolean modifiersParsed = modifiers.getTypes().length > 0;
 
-        if (!TypeSpec.parse(builder)) {
-            declMarker.error(FanBundle.message("type.expected"));
-            return false;
-        }
+		if(!TypeSpec.parse(builder))
+		{
+			declMarker.error(FanBundle.message("type.expected"));
+			return false;
+		}
 
-        if (!ParserUtils.parseName(builder)) {
-            declMarker.drop();
-            return false;
-        }
+		if(!ParserUtils.parseName(builder))
+		{
+			declMarker.drop();
+			return false;
+		}
 
-        if (FanElementTypes.TYPE_PARAMETER_LIST != TypeParameters.parse(builder)) {
-            // TODO: Params (..) expected message
-            declMarker.error(FanBundle.message("type.expected"));
-            return false;
-        }
-        if (LBRACE.equals(builder.getTokenType())) {
-            Block.parse(builder, METHOD_BODY);
-            declMarker.done(METHOD_DEFINITION);
-            removeNls(builder);
-            return true;
-        } else {
-            // abstract or native method
-            if ((modifiersParsed && (modifiers.contains(ABSTRACT_KEYWORD) || modifiers.contains(NATIVE_KEYWORD))) || isBuiltInType) {
-                declMarker.done(METHOD_DEFINITION);
-                removeStoppers(builder, SEPARATOR, SEPARATOR);
-                return true;
-            }
-            declMarker.error(FanBundle.message("lcurly.expected"));
-            return false;
-        }
-    }
+		if(FanElementTypes.TYPE_PARAMETER_LIST != TypeParameters.parse(builder))
+		{
+			// TODO: Params (..) expected message
+			declMarker.error(FanBundle.message("type.expected"));
+			return false;
+		}
+		if(LBRACE.equals(builder.getTokenType()))
+		{
+			Block.parse(builder, METHOD_BODY);
+			declMarker.done(METHOD_DEFINITION);
+			removeNls(builder);
+			return true;
+		}
+		else
+		{
+			// abstract or native method
+			if((modifiersParsed && (modifiers.contains(ABSTRACT_KEYWORD) || modifiers.contains(NATIVE_KEYWORD))) || isBuiltInType)
+			{
+				declMarker.done(METHOD_DEFINITION);
+				removeStoppers(builder, SEPARATOR, SEPARATOR);
+				return true;
+			}
+			declMarker.error(FanBundle.message("lcurly.expected"));
+			return false;
+		}
+	}
 }

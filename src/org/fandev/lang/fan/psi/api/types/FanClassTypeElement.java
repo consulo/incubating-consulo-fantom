@@ -8,7 +8,8 @@ import org.jetbrains.annotations.NotNull;
  *
  * @author Dror Bereznitsky
  */
-public interface FanClassTypeElement extends FanTypeElement {
-    @NotNull
-    FanCodeReferenceElement getReferenceElement();
+public interface FanClassTypeElement extends FanTypeElement
+{
+	@NotNull
+	FanCodeReferenceElement getReferenceElement();
 }

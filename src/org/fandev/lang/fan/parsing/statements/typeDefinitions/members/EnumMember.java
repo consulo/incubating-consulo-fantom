@@ -22,8 +22,10 @@ import com.intellij.lang.PsiBuilder;
  * @author Fred Simon
  * @date Jan 14, 2009 11:58:24 PM
  */
-public class EnumMember {
-    public static boolean parse(final PsiBuilder builder, final String className) {
-        return true;
-    }
+public class EnumMember
+{
+	public static boolean parse(final PsiBuilder builder, final String className)
+	{
+		return true;
+	}
 }

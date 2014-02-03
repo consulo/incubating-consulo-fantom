@@ -15,26 +15,31 @@
 
 package org.fandev.lang.fan.parsing.expression.logical;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
 import static org.fandev.lang.fan.FanElementTypes.EQUALITY_EXPR;
 import static org.fandev.lang.fan.FanTokenTypes.EQUALITY_OP;
+
+import com.intellij.lang.PsiBuilder;
+import com.intellij.psi.tree.TokenSet;
 
 /**
  * @author ilyas
  */
-public class EqualityExpression extends SeparatorRepeatExpression {
-    private final static EqualityExpression instance = new EqualityExpression();
+public class EqualityExpression extends SeparatorRepeatExpression
+{
+	private final static EqualityExpression instance = new EqualityExpression();
 
-    public EqualityExpression() {
-        super(EQUALITY_EXPR, EQUALITY_OP);
-    }
+	public EqualityExpression()
+	{
+		super(EQUALITY_EXPR, EQUALITY_OP);
+	}
 
-    public boolean innerParse(final PsiBuilder builder, final TokenSet stopper) {
-        return RelationalExpression.parse(builder, stopper);
-    }
+	public boolean innerParse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return RelationalExpression.parse(builder, stopper);
+	}
 
-    public static boolean parse(final PsiBuilder builder, final TokenSet stopper) {
-        return instance.parseThis(builder, stopper);
-    }
+	public static boolean parse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return instance.parseThis(builder, stopper);
+	}
 }

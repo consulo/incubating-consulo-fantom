@@ -1,11 +1,11 @@
 package org.fandev.runner;
 
+import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.configurations.RunConfigurationModule;
 import com.intellij.openapi.project.Project;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Date: Sep 16, 2009
@@ -13,12 +13,15 @@ import org.jetbrains.annotations.NotNull;
  *
  * @author Dror Bereznitsky
  */
-public class FanTestConfigurationFactory extends ConfigurationFactory {
-    protected FanTestConfigurationFactory(@NotNull final ConfigurationType type) {
-        super(type);
-    }
+public class FanTestConfigurationFactory extends ConfigurationFactory
+{
+	protected FanTestConfigurationFactory(@NotNull final ConfigurationType type)
+	{
+		super(type);
+	}
 
-    public RunConfiguration createTemplateConfiguration(final Project project) {
-        return new FanTestRunConfiguration("Fantom Test", new RunConfigurationModule(project), this);
-    }
+	public RunConfiguration createTemplateConfiguration(final Project project)
+	{
+		return new FanTestRunConfiguration("Fantom Test", new RunConfigurationModule(project), this);
+	}
 }

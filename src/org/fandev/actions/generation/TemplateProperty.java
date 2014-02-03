@@ -6,17 +6,18 @@ package org.fandev.actions.generation;
  *
  * @author Dror Bereznitsky
  */
-public enum TemplateProperty {
-    NAME,
-    NAME_LOWER_CASE,
-    POD_SRC_DIRS,
-    POD_DEPENDS,
-    VERSION,
-    POD_RES_DIRS,
-    OUT_DIR,
-    DESCRIPTION,
-    DOC_API,
-    DOC_SRC,
-    INDEXES,
-    METAS,
+public enum TemplateProperty
+{
+	NAME,
+	NAME_LOWER_CASE,
+	POD_SRC_DIRS,
+	POD_DEPENDS,
+	VERSION,
+	POD_RES_DIRS,
+	OUT_DIR,
+	DESCRIPTION,
+	DOC_API,
+	DOC_SRC,
+	INDEXES,
+	METAS,
 }

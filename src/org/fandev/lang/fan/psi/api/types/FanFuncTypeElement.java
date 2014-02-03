@@ -1,6 +1,5 @@
 package org.fandev.lang.fan.psi.api.types;
 
-import org.fandev.lang.fan.psi.api.statements.params.FanFormal;
 import org.fandev.lang.fan.psi.api.statements.params.FanFormals;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 
@@ -10,10 +9,11 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
  *
  * @author Dror Bereznitsky
  */
-public interface FanFuncTypeElement extends FanTypeElement {
-    FanFormals getFormals();
+public interface FanFuncTypeElement extends FanTypeElement
+{
+	FanFormals getFormals();
 
-    FanTypeElement getReturnType();
+	FanTypeElement getReturnType();
 
-    FanTypeDefinition getFuncType();
+	FanTypeDefinition getFuncType();
 }

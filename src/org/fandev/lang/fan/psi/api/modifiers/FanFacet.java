@@ -16,15 +16,16 @@
  */
 package org.fandev.lang.fan.psi.api.modifiers;
 
-import com.intellij.psi.PsiElement;
 import org.fandev.lang.fan.psi.api.statements.expressions.FanExpression;
+import com.intellij.psi.PsiElement;
 
 /**
  * @author freds
  * @date Feb 17, 2009
  */
-public interface FanFacet extends PsiElement {
-    String getName();
+public interface FanFacet extends PsiElement
+{
+	String getName();
 
-    FanExpression getValue();
+	FanExpression getValue();
 }

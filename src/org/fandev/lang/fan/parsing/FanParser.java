@@ -15,43 +15,53 @@ import com.intellij.psi.tree.IElementType;
  * @author Dror
  * @date Dec 11, 2008 11:54:37 PM
  */
-public class FanParser implements PsiParser {
-    private final static Logger logger = Logger.getInstance(FanParser.class.getName());
+public class FanParser implements PsiParser
+{
+	private final static Logger logger = Logger.getInstance(FanParser.class.getName());
 
-    @Override
+	@Override
 	@NotNull
-    public ASTNode parse(@NotNull final IElementType root, @NotNull final PsiBuilder psiBuilder, @NotNull LanguageVersion languageVersion) {
-        psiBuilder.setDebugMode(true);
-        final PsiBuilder.Marker rootMarker = psiBuilder.mark();
+	public ASTNode parse(@NotNull final IElementType root, @NotNull final PsiBuilder psiBuilder, @NotNull LanguageVersion languageVersion)
+	{
+		psiBuilder.setDebugMode(true);
+		final PsiBuilder.Marker rootMarker = psiBuilder.mark();
 
-        CompilationUnit.parse(psiBuilder);
+		CompilationUnit.parse(psiBuilder);
 
-        // Make sure we ate it all
-        if (!psiBuilder.eof()) {
-            final PsiBuilder.Marker errorMark = psiBuilder.mark();
-            while (!psiBuilder.eof()) {
-                psiBuilder.advanceLexer();
-            }
-            errorMark.error(FanBundle.message("typedef.expected"));
-        }
+		// Make sure we ate it all
+		if(!psiBuilder.eof())
+		{
+			final PsiBuilder.Marker errorMark = psiBuilder.mark();
+			while(!psiBuilder.eof())
+			{
+				psiBuilder.advanceLexer();
+			}
+			errorMark.error(FanBundle.message("typedef.expected"));
+		}
 
-        rootMarker.done(root);
-        try {
-            return psiBuilder.getTreeBuilt();
-        } catch(BlockSupport.ReparsedSuccessfullyException e) {
-            throw e;
-        } catch (Throwable t) {
-            final StringBuilder sb = new StringBuilder();
-            while (!psiBuilder.eof()) {
-                sb.append(psiBuilder.getTokenText());
-                psiBuilder.advanceLexer();
-            }
-            logger.error("Parsing error, current offset is: " + psiBuilder.getCurrentOffset() + " Remaining text is: " +
-                    sb.toString(), t);
-            // Notice - this puts the application in an very unstable situation !!!
-            // The action that starts the parsing never finish and so other write actions are blocked for good
-            // ApplicationManager.getApplication().
-            throw new RuntimeException(t);
-        }
-    }
+		rootMarker.done(root);
+		try
+		{
+			return psiBuilder.getTreeBuilt();
+		}
+		catch(BlockSupport.ReparsedSuccessfullyException e)
+		{
+			throw e;
+		}
+		catch(Throwable t)
+		{
+			final StringBuilder sb = new StringBuilder();
+			while(!psiBuilder.eof())
+			{
+				sb.append(psiBuilder.getTokenText());
+				psiBuilder.advanceLexer();
+			}
+			logger.error("Parsing error, current offset is: " + psiBuilder.getCurrentOffset() + " Remaining text is: " +
+					sb.toString(), t);
+			// Notice - this puts the application in an very unstable situation !!!
+			// The action that starts the parsing never finish and so other write actions are blocked for good
+			// ApplicationManager.getApplication().
+			throw new RuntimeException(t);
+		}
+	}
 }

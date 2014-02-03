@@ -6,8 +6,10 @@ package org.fandev.runner;
  *
  * @author Dror Bereznitsky
  */
-public class FanTestRunConfigurationEditor extends FanPodRunConfigurationEditor{
-    public FanTestRunConfigurationEditor() {
-        super();
-    }
+public class FanTestRunConfigurationEditor extends FanPodRunConfigurationEditor
+{
+	public FanTestRunConfigurationEditor()
+	{
+		super();
+	}
 }

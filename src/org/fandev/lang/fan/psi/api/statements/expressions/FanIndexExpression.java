@@ -8,6 +8,7 @@ import com.intellij.psi.PsiElement;
  *
  * @author Dror Bereznitsky
  */
-public interface FanIndexExpression extends PsiElement {
-    public int getIndex();
+public interface FanIndexExpression extends PsiElement
+{
+	public int getIndex();
 }

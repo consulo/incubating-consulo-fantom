@@ -11,13 +11,14 @@ import com.intellij.psi.PsiFile;
  * @date Jan 7, 2009 2:49:39 PM
  */
 
-public interface FanFile extends PsiFile {
-    String getPodName();
+public interface FanFile extends PsiFile
+{
+	String getPodName();
 
-    FanTypeDefinition[] getTypeDefinitions();
+	FanTypeDefinition[] getTypeDefinitions();
 
-    @Nullable
-    FanTypeDefinition getTypeByName(@NotNull final String name);
+	@Nullable
+	FanTypeDefinition getTypeByName(@NotNull final String name);
 
-    public FanTopLevelDefintion[] getTopLevelDefinitions();
+	public FanTopLevelDefintion[] getTopLevelDefinitions();
 }

@@ -7,14 +7,18 @@ import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
 /**
  * Date: Mar 23, 2009
  * Time: 11:26:59 PM
+ *
  * @author Dror Bereznitsky
  */
-public class FanMixinDefinitionElementType extends FanTypeDefinitionElementType<FanMixinDefinition>{
-    public FanMixinDefinitionElementType() {
-        super("mixin definition");
-    }
+public class FanMixinDefinitionElementType extends FanTypeDefinitionElementType<FanMixinDefinition>
+{
+	public FanMixinDefinitionElementType()
+	{
+		super("mixin definition");
+	}
 
-    public FanMixinDefinition createPsi(final FanTypeDefinitionStub stub) {
-        return new FanMixinDefinitionImpl(stub);
-    }
+	public FanMixinDefinition createPsi(final FanTypeDefinitionStub stub)
+	{
+		return new FanMixinDefinitionImpl(stub);
+	}
 }

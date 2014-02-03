@@ -18,8 +18,9 @@ package org.fandev.lang.fan.parsing.types;
 
 /**
  * @author freds
-* @date Apr 3, 2009
-*/
-public enum TypeType {
-    NONE, SIMPE, LIST, MAP, FUNCTION;
+ * @date Apr 3, 2009
+ */
+public enum TypeType
+{
+	NONE, SIMPE, LIST, MAP, FUNCTION;
 }

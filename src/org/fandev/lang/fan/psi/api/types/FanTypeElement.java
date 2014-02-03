@@ -10,7 +10,8 @@ import com.intellij.psi.PsiType;
  *
  * @author Dror Bereznitsky
  */
-public interface FanTypeElement extends FanElement{
-    @NotNull
-    PsiType getType();
+public interface FanTypeElement extends FanElement
+{
+	@NotNull
+	PsiType getType();
 }

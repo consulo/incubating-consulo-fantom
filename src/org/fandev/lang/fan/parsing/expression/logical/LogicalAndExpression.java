@@ -15,26 +15,31 @@
 
 package org.fandev.lang.fan.parsing.expression.logical;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
 import static org.fandev.lang.fan.FanElementTypes.LOGICAL_AND_EXPR;
 import static org.fandev.lang.fan.FanTokenTypes.ANDAND;
+
+import com.intellij.lang.PsiBuilder;
+import com.intellij.psi.tree.TokenSet;
 
 /**
  * @author ilyas
  */
-public class LogicalAndExpression extends SeparatorRepeatExpression {
-    private final static LogicalAndExpression instance = new LogicalAndExpression();
+public class LogicalAndExpression extends SeparatorRepeatExpression
+{
+	private final static LogicalAndExpression instance = new LogicalAndExpression();
 
-    public LogicalAndExpression() {
-        super(LOGICAL_AND_EXPR, TokenSet.create(ANDAND));
-    }
+	public LogicalAndExpression()
+	{
+		super(LOGICAL_AND_EXPR, TokenSet.create(ANDAND));
+	}
 
-    public boolean innerParse(final PsiBuilder builder, final TokenSet stopper) {
-        return EqualityExpression.parse(builder, stopper);
-    }
+	public boolean innerParse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return EqualityExpression.parse(builder, stopper);
+	}
 
-    public static boolean parse(final PsiBuilder builder, final TokenSet stopper) {
-        return instance.parseThis(builder, stopper);
-    }
+	public static boolean parse(final PsiBuilder builder, final TokenSet stopper)
+	{
+		return instance.parseThis(builder, stopper);
+	}
 }

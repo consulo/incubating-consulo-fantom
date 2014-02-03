@@ -1,13 +1,12 @@
 package org.fandev.lang.fan.parsing.statements.typeDefinitions.members;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
-import org.fandev.lang.fan.FanBundle;
-import org.fandev.lang.fan.FanElementTypes;
 import static org.fandev.lang.fan.FanElementTypes.CTOR_DEFINITION;
 import static org.fandev.lang.fan.FanElementTypes.METHOD_BODY;
-import org.fandev.lang.fan.FanTokenTypes;
 import static org.fandev.lang.fan.FanTokenTypes.LBRACE;
+
+import org.fandev.lang.fan.FanBundle;
+import org.fandev.lang.fan.FanElementTypes;
+import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.parsing.auxiliary.facets.Facet;
 import org.fandev.lang.fan.parsing.auxiliary.modifiers.Modifiers;
 import org.fandev.lang.fan.parsing.statements.Block;
@@ -16,6 +15,8 @@ import org.fandev.lang.fan.parsing.statements.expressions.arguments.Arguments;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.ReferenceElement;
 import org.fandev.lang.fan.parsing.types.TypeParameters;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
+import com.intellij.lang.PsiBuilder;
+import com.intellij.psi.tree.TokenSet;
 
 /**
  * Grammar Definition:<ul>
@@ -30,57 +31,67 @@ import org.fandev.lang.fan.parsing.util.ParserUtils;
  * @author Fred Simon
  * @date Jan 14, 2009 11:51:37 PM
  */
-public class ConstructorDefinition {
+public class ConstructorDefinition
+{
 
-    public static boolean parse(final PsiBuilder builder, final boolean isBuiltInType) {
-        final PsiBuilder.Marker constructorMarker = builder.mark();
+	public static boolean parse(final PsiBuilder builder, final boolean isBuiltInType)
+	{
+		final PsiBuilder.Marker constructorMarker = builder.mark();
 
-        Facet.parse(builder);
+		Facet.parse(builder);
 
-        final TokenSet modifiers = Modifiers.parse(builder, DeclarationType.CONSTRUCTOR);
+		final TokenSet modifiers = Modifiers.parse(builder, DeclarationType.CONSTRUCTOR);
 
-        if (!FanTokenTypes.NEW_KEYWORD.equals(builder.getTokenType())) {
-            constructorMarker.error("Constructor should have <modifiers> new <id> ()");
-            return false;
-        }
+		if(!FanTokenTypes.NEW_KEYWORD.equals(builder.getTokenType()))
+		{
+			constructorMarker.error("Constructor should have <modifiers> new <id> ()");
+			return false;
+		}
 
-        ParserUtils.advanceNoNls(builder);
+		ParserUtils.advanceNoNls(builder);
 
-        if (!ParserUtils.parseName(builder)) {
-            constructorMarker.drop();
-            return false;
-        }
-        ParserUtils.removeNls(builder);
+		if(!ParserUtils.parseName(builder))
+		{
+			constructorMarker.drop();
+			return false;
+		}
+		ParserUtils.removeNls(builder);
 
-        // parameter list
-        if (FanElementTypes.TYPE_PARAMETER_LIST != TypeParameters.parse(builder)) {
-            builder.error(FanBundle.message("params.expected"));
-            constructorMarker.drop();
-            return false;
-        }
+		// parameter list
+		if(FanElementTypes.TYPE_PARAMETER_LIST != TypeParameters.parse(builder))
+		{
+			builder.error(FanBundle.message("params.expected"));
+			constructorMarker.drop();
+			return false;
+		}
 
-        // ctor chain
-        parseCtorChain(builder);
+		// ctor chain
+		parseCtorChain(builder);
 
-        ParserUtils.removeNls(builder);
+		ParserUtils.removeNls(builder);
 
-        if (LBRACE.equals(builder.getTokenType())) {
-            Block.parse(builder, METHOD_BODY);
-            constructorMarker.done(CTOR_DEFINITION);
-            ParserUtils.removeNls(builder);
-            return true;
-        } else if (isBuiltInType) {
-            constructorMarker.done(CTOR_DEFINITION);
-            ParserUtils.removeNls(builder);
-            return true;
-        } else {
-            constructorMarker.error(FanBundle.message("lcurly.expected"));
-            return false;
-        }
-    }
+		if(LBRACE.equals(builder.getTokenType()))
+		{
+			Block.parse(builder, METHOD_BODY);
+			constructorMarker.done(CTOR_DEFINITION);
+			ParserUtils.removeNls(builder);
+			return true;
+		}
+		else if(isBuiltInType)
+		{
+			constructorMarker.done(CTOR_DEFINITION);
+			ParserUtils.removeNls(builder);
+			return true;
+		}
+		else
+		{
+			constructorMarker.error(FanBundle.message("lcurly.expected"));
+			return false;
+		}
+	}
 
     /*
-        Constructor related methods
+		Constructor related methods
 
         <ctorDef>        :=  <facets> <ctorFlags> "new" <id> "(" <params> ")" [ctorChain] <methodBody>
         <ctorFlags>      :=  [<protection>]
@@ -90,32 +101,41 @@ public class ConstructorDefinition {
      */
 
 
-    private static boolean parseCtorChain(final PsiBuilder builder) {
-        if (FanTokenTypes.COLON == builder.getTokenType()) {
-            final PsiBuilder.Marker ctorChainMarker = builder.mark();
+	private static boolean parseCtorChain(final PsiBuilder builder)
+	{
+		if(FanTokenTypes.COLON == builder.getTokenType())
+		{
+			final PsiBuilder.Marker ctorChainMarker = builder.mark();
 
-            ParserUtils.advanceNoNls(builder);
-            if (FanTokenTypes.SUPER_KEYWORD == builder.getTokenType() ||
-                FanTokenTypes.THIS_KEYWORD == builder.getTokenType()) {
-                builder.advanceLexer();
-                // ["." <id>]
-                if (FanTokenTypes.DOT == builder.getTokenType()) {
-                    builder.advanceLexer();
-                    if (!ReferenceElement.parseReferenceElement(builder)) {
-                        ctorChainMarker.error(FanBundle.message("identifier.expected"));
-                    }
-                }
-                // "(" <args> ")"
-                if (Arguments.parse(builder)) {
-                    ctorChainMarker.done(FanElementTypes.CTOR_CHAIN);
-                    return true;
-                } else {
-                    ctorChainMarker.error(FanBundle.message("argument.expected"));
-                }
-            } else {
-                ctorChainMarker.error(FanBundle.message("super.or.this.expected"));
-            }
-        }
-        return false;
-    }
+			ParserUtils.advanceNoNls(builder);
+			if(FanTokenTypes.SUPER_KEYWORD == builder.getTokenType() || FanTokenTypes.THIS_KEYWORD == builder.getTokenType())
+			{
+				builder.advanceLexer();
+				// ["." <id>]
+				if(FanTokenTypes.DOT == builder.getTokenType())
+				{
+					builder.advanceLexer();
+					if(!ReferenceElement.parseReferenceElement(builder))
+					{
+						ctorChainMarker.error(FanBundle.message("identifier.expected"));
+					}
+				}
+				// "(" <args> ")"
+				if(Arguments.parse(builder))
+				{
+					ctorChainMarker.done(FanElementTypes.CTOR_CHAIN);
+					return true;
+				}
+				else
+				{
+					ctorChainMarker.error(FanBundle.message("argument.expected"));
+				}
+			}
+			else
+			{
+				ctorChainMarker.error(FanBundle.message("super.or.this.expected"));
+			}
+		}
+		return false;
+	}
 }

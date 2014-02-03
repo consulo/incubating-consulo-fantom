@@ -20,27 +20,30 @@ import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.impl.light.LightIdentifier;
-import com.intellij.lang.ASTNode;
 
 /**
  * @author freds
  * @date Jan 22, 2009
  */
-public class FanLightIdentifier extends LightIdentifier {
-    private PsiFile myFile;
-    private TextRange myRange;
+public class FanLightIdentifier extends LightIdentifier
+{
+	private PsiFile myFile;
+	private TextRange myRange;
 
-    public FanLightIdentifier(final PsiManager manager, final PsiFile file, final TextRange range) {
-        super(manager, file.getText().substring(range.getStartOffset(), range.getEndOffset()));
-        myFile = file;
-        myRange = range;
-    }
+	public FanLightIdentifier(final PsiManager manager, final PsiFile file, final TextRange range)
+	{
+		super(manager, file.getText().substring(range.getStartOffset(), range.getEndOffset()));
+		myFile = file;
+		myRange = range;
+	}
 
-    public TextRange getTextRange() {
-        return myRange;
-    }
+	public TextRange getTextRange()
+	{
+		return myRange;
+	}
 
-    public PsiFile getContainingFile() {
-        return myFile;
-    }
+	public PsiFile getContainingFile()
+	{
+		return myFile;
+	}
 }

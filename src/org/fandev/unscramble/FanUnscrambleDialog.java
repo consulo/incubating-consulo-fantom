@@ -1,5 +1,17 @@
 package org.fandev.unscramble;
 
+import java.awt.BorderLayout;
+import java.awt.Toolkit;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+import org.fandev.lang.fan.FanBundle;
+import org.fandev.runner.FanTypeFilter;
 import com.intellij.execution.ExecutionManager;
 import com.intellij.execution.Executor;
 import com.intellij.execution.executors.DefaultRunExecutor;
@@ -16,13 +28,6 @@ import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.unscramble.UnscrambleDialog;
-import org.fandev.lang.fan.FanBundle;
-import org.fandev.runner.FanTypeFilter;
-
-import javax.swing.*;
-import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
 
 /**
  * Date: Sep 23, 2009
@@ -30,97 +35,111 @@ import java.awt.datatransfer.Transferable;
  *
  * @author Dror Bereznitsky
  */
-public class FanUnscrambleDialog extends DialogWrapper {
-    private Project project;
-    private JPanel stackTracePanel;
-    private JTextArea strackTraceArea;
+public class FanUnscrambleDialog extends DialogWrapper
+{
+	private Project project;
+	private JPanel stackTracePanel;
+	private JTextArea strackTraceArea;
 
-    protected FanUnscrambleDialog(final Project project) {
-        super(false);
-        this.project = project;
+	protected FanUnscrambleDialog(final Project project)
+	{
+		super(false);
+		this.project = project;
 
-        setTitle(FanBundle.message("unscramble.dialog.title", new Object[0]));
-        init();
-    }
+		setTitle(FanBundle.message("unscramble.dialog.title", new Object[0]));
+		init();
+	}
 
-    protected JComponent createCenterPanel() {
-        stackTracePanel = new JPanel(new BorderLayout());
-        strackTraceArea = new JTextArea(20, 70);
-        final JScrollPane scrollPane = new JScrollPane(strackTraceArea,
-                JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        stackTracePanel.add(scrollPane, BorderLayout.CENTER);
+	protected JComponent createCenterPanel()
+	{
+		stackTracePanel = new JPanel(new BorderLayout());
+		strackTraceArea = new JTextArea(20, 70);
+		final JScrollPane scrollPane = new JScrollPane(strackTraceArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		stackTracePanel.add(scrollPane, BorderLayout.CENTER);
 
-        setText(FanUnscrambleDialog.getTextInClipboard());
-        return stackTracePanel;
-    }
+		setText(FanUnscrambleDialog.getTextInClipboard());
+		return stackTracePanel;
+	}
 
-    @Override
-    protected void doOKAction() {
-        super.doOKAction();
+	@Override
+	protected void doOKAction()
+	{
+		super.doOKAction();
 
-        // Create the console
-        final ConsoleView consoleView =
-                TextConsoleBuilderFactory.getInstance().createBuilder(project).getConsole();
-        consoleView.addMessageFilter(new FanTypeFilter(project));
-        consoleView.print(getText(), ConsoleViewContentType.NORMAL_OUTPUT);
+		// Create the console
+		final ConsoleView consoleView = TextConsoleBuilderFactory.getInstance().createBuilder(project).getConsole();
+		consoleView.addMessageFilter(new FanTypeFilter(project));
+		consoleView.print(getText(), ConsoleViewContentType.NORMAL_OUTPUT);
 
-        final DefaultActionGroup localDefaultActionGroup = new DefaultActionGroup();
+		final DefaultActionGroup localDefaultActionGroup = new DefaultActionGroup();
 
-        // Create the console panel
-        final MyConsolePanel consolePanel = new MyConsolePanel(consoleView, localDefaultActionGroup);
-        
-        final RunContentDescriptor runContentDescriptor = new RunContentDescriptor(consoleView, null, consolePanel, FanBundle.message("unscramble.unscrambled.stacktrace.tab", new Object[0])) {
-            public boolean isContentReuseProhibited() {
-                return true;
-            }
-        };
-        final Executor localExecutor = DefaultRunExecutor.getRunExecutorInstance();
+		// Create the console panel
+		final MyConsolePanel consolePanel = new MyConsolePanel(consoleView, localDefaultActionGroup);
 
-        localDefaultActionGroup.add(new CloseAction(localExecutor, runContentDescriptor, project));
+		final RunContentDescriptor runContentDescriptor = new RunContentDescriptor(consoleView, null, consolePanel,
+				FanBundle.message("unscramble.unscrambled.stacktrace.tab", new Object[0]))
+		{
+			public boolean isContentReuseProhibited()
+			{
+				return true;
+			}
+		};
+		final Executor localExecutor = DefaultRunExecutor.getRunExecutorInstance();
 
-        final AnAction[] arrayOfAnAction = consoleView.createConsoleActions();
-        int i1 = arrayOfAnAction.length;
-        for (int i2 = 0; i2 < i1; ++i2) {
-            final AnAction localAnAction = arrayOfAnAction[i2];
-            localDefaultActionGroup.add(localAnAction);
-        }
+		localDefaultActionGroup.add(new CloseAction(localExecutor, runContentDescriptor, project));
 
-        ExecutionManager.getInstance(project).getContentManager().showRunContent(localExecutor, runContentDescriptor);
-    }
+		final AnAction[] arrayOfAnAction = consoleView.createConsoleActions();
+		int i1 = arrayOfAnAction.length;
+		for(int i2 = 0; i2 < i1; ++i2)
+		{
+			final AnAction localAnAction = arrayOfAnAction[i2];
+			localDefaultActionGroup.add(localAnAction);
+		}
 
-    protected void setText(final String text) {
-        strackTraceArea.setText(text);
-    }
+		ExecutionManager.getInstance(project).getContentManager().showRunContent(localExecutor, runContentDescriptor);
+	}
 
-    protected String getText() {
-        return strackTraceArea.getText();
-    }
+	protected void setText(final String text)
+	{
+		strackTraceArea.setText(text);
+	}
 
-    public static String getTextInClipboard() {
-        String str = null;
-        try {
-            final Transferable localTransferable = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(UnscrambleDialog.class);
+	protected String getText()
+	{
+		return strackTraceArea.getText();
+	}
 
-            if (localTransferable != null) {
-                str = (String) localTransferable.getTransferData(DataFlavor.stringFlavor);
-            }
-        }
-        catch (Exception localException) {
-        }
-        return str;
-    }
+	public static String getTextInClipboard()
+	{
+		String str = null;
+		try
+		{
+			final Transferable localTransferable = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(UnscrambleDialog.class);
 
-    private static final class MyConsolePanel extends JPanel {
-        public MyConsolePanel(final ExecutionConsole executionConsole, final ActionGroup actionGroup) {
-            super(new BorderLayout());
+			if(localTransferable != null)
+			{
+				str = (String) localTransferable.getTransferData(DataFlavor.stringFlavor);
+			}
+		}
+		catch(Exception localException)
+		{
+		}
+		return str;
+	}
 
-            final JPanel panel = new JPanel(new BorderLayout());
+	private static final class MyConsolePanel extends JPanel
+	{
+		public MyConsolePanel(final ExecutionConsole executionConsole, final ActionGroup actionGroup)
+		{
+			super(new BorderLayout());
 
-            panel.add(ActionManager.getInstance().createActionToolbar("unknown", actionGroup, false).getComponent());
+			final JPanel panel = new JPanel(new BorderLayout());
 
-            add(panel, BorderLayout.WEST);
+			panel.add(ActionManager.getInstance().createActionToolbar("unknown", actionGroup, false).getComponent());
 
-            add(executionConsole.getComponent(), BorderLayout.CENTER);
-        }
-    }
+			add(panel, BorderLayout.WEST);
+
+			add(executionConsole.getComponent(), BorderLayout.CENTER);
+		}
+	}
 }

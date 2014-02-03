@@ -9,8 +9,10 @@ import com.intellij.lang.ASTNode;
  *
  * @author Dror Bereznitsky
  */
-public class FanExpressionImpl extends FanBaseElementImpl {
-    public FanExpressionImpl(final ASTNode astNode) {
-        super(astNode);
-    }
+public class FanExpressionImpl extends FanBaseElementImpl
+{
+	public FanExpressionImpl(final ASTNode astNode)
+	{
+		super(astNode);
+	}
 }

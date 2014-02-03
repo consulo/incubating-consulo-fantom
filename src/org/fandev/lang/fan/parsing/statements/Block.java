@@ -16,47 +16,60 @@
  */
 package org.fandev.lang.fan.parsing.statements;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.IElementType;
-import org.fandev.lang.fan.FanBundle;
 import static org.fandev.lang.fan.FanBundle.message;
 import static org.fandev.lang.fan.FanElementTypes.WITH_BLOCK_EXPR;
 import static org.fandev.lang.fan.FanTokenTypes.LBRACE;
 import static org.fandev.lang.fan.FanTokenTypes.RBRACE;
-import org.fandev.lang.fan.parsing.util.ParserUtils;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.getToken;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
+
+import org.fandev.lang.fan.FanBundle;
+import org.fandev.lang.fan.parsing.util.ParserUtils;
+import com.intellij.lang.PsiBuilder;
+import com.intellij.psi.tree.IElementType;
 
 /**
  * @author freds
  * @date Feb 24, 2009
  */
-public class Block {
-    public static boolean parse(final PsiBuilder builder, final IElementType statementType) {
-        final PsiBuilder.Marker m = builder.mark();
-        if (getToken(builder, LBRACE)) {
-            removeNls(builder);
-            while (!builder.eof() && !RBRACE.equals(builder.getTokenType())) {
-                if (!Statement.parse(builder, statementType == WITH_BLOCK_EXPR)) {
-                    // Eat until RBRACE in force
-                    builder.error(FanBundle.message("rcurly.expected"));
-                    ParserUtils.advanceNoNls(builder);
-                } else {
-                    removeNls(builder);
-                }
-            }
-            getToken(builder, RBRACE, message("rcurly.expected"));
-            m.done(statementType);
-            return true;
-        } else {
-            // Try one statement block
-            if (Statement.parse(builder)) {
-                m.done(statementType);
-                return true;
-            } else {
-                m.drop();
-                return false;
-            }
-        }
-    }
+public class Block
+{
+	public static boolean parse(final PsiBuilder builder, final IElementType statementType)
+	{
+		final PsiBuilder.Marker m = builder.mark();
+		if(getToken(builder, LBRACE))
+		{
+			removeNls(builder);
+			while(!builder.eof() && !RBRACE.equals(builder.getTokenType()))
+			{
+				if(!Statement.parse(builder, statementType == WITH_BLOCK_EXPR))
+				{
+					// Eat until RBRACE in force
+					builder.error(FanBundle.message("rcurly.expected"));
+					ParserUtils.advanceNoNls(builder);
+				}
+				else
+				{
+					removeNls(builder);
+				}
+			}
+			getToken(builder, RBRACE, message("rcurly.expected"));
+			m.done(statementType);
+			return true;
+		}
+		else
+		{
+			// Try one statement block
+			if(Statement.parse(builder))
+			{
+				m.done(statementType);
+				return true;
+			}
+			else
+			{
+				m.drop();
+				return false;
+			}
+		}
+	}
 }

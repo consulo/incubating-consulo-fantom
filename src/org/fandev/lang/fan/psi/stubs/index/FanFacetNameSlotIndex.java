@@ -16,19 +16,20 @@
  */
 package org.fandev.lang.fan.psi.stubs.index;
 
+import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
 import com.intellij.psi.stubs.StringStubIndexExtension;
 import com.intellij.psi.stubs.StubIndexKey;
-import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
 
 /**
  * @author freds
  * @date Jan 27, 2009
  */
-public class FanFacetNameSlotIndex extends StringStubIndexExtension<FanSlot> {
-    public static final StubIndexKey<String, FanSlot> KEY =
-            StubIndexKey.createIndexKey("fan.facet.slot");
+public class FanFacetNameSlotIndex extends StringStubIndexExtension<FanSlot>
+{
+	public static final StubIndexKey<String, FanSlot> KEY = StubIndexKey.createIndexKey("fan.facet.slot");
 
-    public StubIndexKey<String, FanSlot> getKey() {
-        return KEY;
-    }
+	public StubIndexKey<String, FanSlot> getKey()
+	{
+		return KEY;
+	}
 }

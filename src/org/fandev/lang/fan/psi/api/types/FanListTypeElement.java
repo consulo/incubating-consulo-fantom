@@ -8,8 +8,9 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
  *
  * @author Dror Bereznitsky
  */
-public interface FanListTypeElement extends FanTypeElement{
-    FanTypeDefinition getListType();
+public interface FanListTypeElement extends FanTypeElement
+{
+	FanTypeDefinition getListType();
 
-    FanClassTypeElement getTypeElement();
+	FanClassTypeElement getTypeElement();
 }

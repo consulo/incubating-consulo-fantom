@@ -8,5 +8,6 @@ import org.fandev.lang.fan.psi.FanElement;
  *
  * @author Dror Bereznitsky
  */
-public interface FanDefaultValue extends FanElement {
+public interface FanDefaultValue extends FanElement
+{
 }

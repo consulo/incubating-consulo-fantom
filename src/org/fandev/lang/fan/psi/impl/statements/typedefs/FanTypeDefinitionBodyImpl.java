@@ -10,8 +10,10 @@ import com.intellij.lang.ASTNode;
  *
  * @author Dror Bereznitsky
  */
-public class FanTypeDefinitionBodyImpl extends FanBaseElementImpl implements FanTypeDefinitionBody {
-    public FanTypeDefinitionBodyImpl(final ASTNode astNode) {
-        super(astNode);
-    }
+public class FanTypeDefinitionBodyImpl extends FanBaseElementImpl implements FanTypeDefinitionBody
+{
+	public FanTypeDefinitionBodyImpl(final ASTNode astNode)
+	{
+		super(astNode);
+	}
 }

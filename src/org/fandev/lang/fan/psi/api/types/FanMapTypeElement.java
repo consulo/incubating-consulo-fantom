@@ -8,6 +8,7 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
  *
  * @author Dror Bereznitsky
  */
-public interface FanMapTypeElement extends FanTypeElement{
-    FanTypeDefinition getMapType();
+public interface FanMapTypeElement extends FanTypeElement
+{
+	FanTypeDefinition getMapType();
 }

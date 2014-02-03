@@ -6,5 +6,6 @@ package org.fandev.module;
  *
  * @author Dror Bereznitsky
  */
-public class FanProject {
+public class FanProject
+{
 }

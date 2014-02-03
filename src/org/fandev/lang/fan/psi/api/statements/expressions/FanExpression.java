@@ -17,12 +17,12 @@
 package org.fandev.lang.fan.psi.api.statements.expressions;
 
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiType;
 
 /**
  * @author freds
  * @date Feb 17, 2009
  */
-public interface FanExpression extends PsiElement {
-    //public PsiType evaluate();
+public interface FanExpression extends PsiElement
+{
+	//public PsiType evaluate();
 }

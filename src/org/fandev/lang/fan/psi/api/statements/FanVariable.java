@@ -8,5 +8,6 @@ import com.intellij.psi.PsiVariable;
  *
  * @author Dror Bereznitsky
  */
-public interface FanVariable extends PsiVariable {
+public interface FanVariable extends PsiVariable
+{
 }

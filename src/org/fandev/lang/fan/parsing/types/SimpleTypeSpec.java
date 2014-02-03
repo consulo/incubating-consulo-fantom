@@ -16,52 +16,62 @@
  */
 package org.fandev.lang.fan.parsing.types;
 
-import com.intellij.lang.PsiBuilder;
-import org.fandev.lang.fan.FanElementTypes;
 import static org.fandev.lang.fan.FanTokenTypes.FAN_SYS_TYPE;
 import static org.fandev.lang.fan.FanTokenTypes.IDENTIFIER_TOKENS_SET;
+
+import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.ReferenceElement;
+import com.intellij.lang.PsiBuilder;
 
 /**
  * @author freds
  * @date Apr 3, 2009
  */
-public class SimpleTypeSpec {
+public class SimpleTypeSpec
+{
 
-    public static TypeType parseSimpleType(final PsiBuilder builder, final boolean forLiteral) {
-        if (FAN_SYS_TYPE == builder.getTokenType()) {
-            return parseBuiltInType(builder, forLiteral);
-        } else if (IDENTIFIER_TOKENS_SET.contains(builder.getTokenType())) {
-            return parseClassOrInterfaceType(builder, forLiteral);
-        }
-        return TypeType.NONE;
-    }
+	public static TypeType parseSimpleType(final PsiBuilder builder, final boolean forLiteral)
+	{
+		if(FAN_SYS_TYPE == builder.getTokenType())
+		{
+			return parseBuiltInType(builder, forLiteral);
+		}
+		else if(IDENTIFIER_TOKENS_SET.contains(builder.getTokenType()))
+		{
+			return parseClassOrInterfaceType(builder, forLiteral);
+		}
+		return TypeType.NONE;
+	}
 
-    public static TypeType parseBuiltInType(final PsiBuilder builder, final boolean forLiteral) {
-        final PsiBuilder.Marker builtInTypeMarker = builder.mark();
+	public static TypeType parseBuiltInType(final PsiBuilder builder, final boolean forLiteral)
+	{
+		final PsiBuilder.Marker builtInTypeMarker = builder.mark();
 
-        if (!ReferenceElement.parseReferenceElement(builder)) {
-            builtInTypeMarker.drop();
-            return TypeType.NONE;
-        }
+		if(!ReferenceElement.parseReferenceElement(builder))
+		{
+			builtInTypeMarker.drop();
+			return TypeType.NONE;
+		}
 
-        final PsiBuilder.Marker arrMarker = builtInTypeMarker.precede();
-        builtInTypeMarker.done(FanElementTypes.CLASS_TYPE_ELEMENT);
-        TypeType result = TypeSpec.endOfTypeParse(builder, arrMarker, forLiteral, TypeType.SIMPE);
-        
-        return result;
-    }
+		final PsiBuilder.Marker arrMarker = builtInTypeMarker.precede();
+		builtInTypeMarker.done(FanElementTypes.CLASS_TYPE_ELEMENT);
+		TypeType result = TypeSpec.endOfTypeParse(builder, arrMarker, forLiteral, TypeType.SIMPE);
 
-    static TypeType parseClassOrInterfaceType(final PsiBuilder builder, final boolean forLiteral) {
-        final PsiBuilder.Marker arrMarker = builder.mark();
-        final PsiBuilder.Marker typeElementMarker = builder.mark();
+		return result;
+	}
 
-        if (!ReferenceElement.parseReferenceElement(builder)) {
-            typeElementMarker.drop();
-            arrMarker.rollbackTo();
-            return TypeType.NONE;
-        }
-        typeElementMarker.done(FanElementTypes.CLASS_TYPE_ELEMENT);
-        return TypeSpec.endOfTypeParse(builder, arrMarker, forLiteral, TypeType.SIMPE);
-    }
+	static TypeType parseClassOrInterfaceType(final PsiBuilder builder, final boolean forLiteral)
+	{
+		final PsiBuilder.Marker arrMarker = builder.mark();
+		final PsiBuilder.Marker typeElementMarker = builder.mark();
+
+		if(!ReferenceElement.parseReferenceElement(builder))
+		{
+			typeElementMarker.drop();
+			arrMarker.rollbackTo();
+			return TypeType.NONE;
+		}
+		typeElementMarker.done(FanElementTypes.CLASS_TYPE_ELEMENT);
+		return TypeSpec.endOfTypeParse(builder, arrMarker, forLiteral, TypeType.SIMPE);
+	}
 }

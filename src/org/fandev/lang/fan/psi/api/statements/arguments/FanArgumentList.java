@@ -9,8 +9,9 @@ import org.jetbrains.annotations.NotNull;
  *
  * @author Dror Bereznitsky
  */
-public interface FanArgumentList extends FanElement {
-    FanArgument[] getArguments();
+public interface FanArgumentList extends FanElement
+{
+	FanArgument[] getArguments();
 
-    int indexOf(@NotNull final FanArgument arg);
+	int indexOf(@NotNull final FanArgument arg);
 }

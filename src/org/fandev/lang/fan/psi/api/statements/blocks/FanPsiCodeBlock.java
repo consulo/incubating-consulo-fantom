@@ -1,8 +1,8 @@
 package org.fandev.lang.fan.psi.api.statements.blocks;
 
+import org.fandev.lang.fan.psi.FanElement;
 import com.intellij.psi.PsiCodeBlock;
 import com.intellij.psi.PsiElement;
-import org.fandev.lang.fan.psi.FanElement;
 
 /**
  * Date: Oct 1, 2009
@@ -10,8 +10,9 @@ import org.fandev.lang.fan.psi.FanElement;
  *
  * @author Dror Bereznitsky
  */
-public interface FanPsiCodeBlock extends FanElement, PsiCodeBlock {
-    public PsiElement getLeftBrace();
+public interface FanPsiCodeBlock extends FanElement, PsiCodeBlock
+{
+	public PsiElement getLeftBrace();
 
-    public PsiElement getRightBrace();
+	public PsiElement getRightBrace();
 }

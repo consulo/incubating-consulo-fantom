@@ -16,19 +16,20 @@
  */
 package org.fandev.lang.fan.psi.stubs.index;
 
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import com.intellij.psi.stubs.StringStubIndexExtension;
 import com.intellij.psi.stubs.StubIndexKey;
-import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 
 /**
  * @author freds
  * @date Jan 27, 2009
  */
-public class FanShortClassNameIndex extends StringStubIndexExtension<FanTypeDefinition> {
-    public static final StubIndexKey<String, FanTypeDefinition> KEY =
-            StubIndexKey.createIndexKey("fan.class.shortName");
+public class FanShortClassNameIndex extends StringStubIndexExtension<FanTypeDefinition>
+{
+	public static final StubIndexKey<String, FanTypeDefinition> KEY = StubIndexKey.createIndexKey("fan.class.shortName");
 
-    public StubIndexKey<String, FanTypeDefinition> getKey() {
-        return KEY;
-    }
+	public StubIndexKey<String, FanTypeDefinition> getKey()
+	{
+		return KEY;
+	}
 }

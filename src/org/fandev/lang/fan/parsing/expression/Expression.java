@@ -16,58 +16,78 @@
  */
 package org.fandev.lang.fan.parsing.expression;
 
+import static org.fandev.lang.fan.FanElementTypes.ASSIGN_EXPRESSION;
+import static org.fandev.lang.fan.FanElementTypes.ASSIGN_LEFT_EXPR;
+import static org.fandev.lang.fan.FanElementTypes.ASSIGN_RIGHT_EXPR;
+import static org.fandev.lang.fan.FanElementTypes.CONDITION_EXPR;
+import static org.fandev.lang.fan.FanElementTypes.COND_EXPR;
+import static org.fandev.lang.fan.FanElementTypes.COND_FALSE_BLOCK;
+import static org.fandev.lang.fan.FanElementTypes.COND_TRUE_BLOCK;
+import static org.fandev.lang.fan.FanTokenTypes.ASSIGN_OP;
+import static org.fandev.lang.fan.FanTokenTypes.COLON;
+import static org.fandev.lang.fan.FanTokenTypes.NLS;
+import static org.fandev.lang.fan.FanTokenTypes.QUEST;
+import static org.fandev.lang.fan.parsing.util.ParserUtils.advanceNoNls;
+import static org.fandev.lang.fan.parsing.util.ParserUtils.firstAfter;
+import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
+
+import org.fandev.lang.fan.parsing.expression.logical.LogicalOrExpression;
+import org.fandev.lang.fan.parsing.util.ParserUtils;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
-import static org.fandev.lang.fan.FanElementTypes.*;
-import static org.fandev.lang.fan.FanTokenTypes.*;
-import org.fandev.lang.fan.parsing.expression.logical.LogicalOrExpression;
-import org.fandev.lang.fan.parsing.expression.arithmetic.UnaryExpression;
-import org.fandev.lang.fan.parsing.util.ParserUtils;
-import static org.fandev.lang.fan.parsing.util.ParserUtils.*;
 
 /**
  * @author freds
  * @date Jan 13, 2009
  */
-public class Expression {
+public class Expression
+{
 
-    public static boolean parseExpr(final PsiBuilder builder, final TokenSet stopper, final IElementType expressionType) {
-        final PsiBuilder.Marker m = builder.mark();
-        final TokenSet newStopper = TokenSet.orSet(stopper, ASSIGN_OP, TokenSet.create(QUEST));
-        boolean res = LogicalOrExpression.parse(builder, newStopper);
-        if (!res) {
-            m.drop();
-            return false;
-        }
-        if (firstAfter(builder, NLS) == QUEST) {
-            final PsiBuilder.Marker condExprMarker = m.precede();
-            final PsiBuilder.Marker exprWrapper = condExprMarker.precede();
-            m.done(CONDITION_EXPR);
-            removeNls(builder);
-            advanceNoNls(builder);
-            res = parseExpr(builder, TokenSet.orSet(stopper, TokenSet.create(COLON)), COND_TRUE_BLOCK);
-            final IElementType firstAfter = firstAfter(builder, NLS);
-            if (res && firstAfter == COLON) {
-                removeNls(builder);
-                ParserUtils.advanceNoNls(builder);
-                final PsiBuilder.Marker falseBlock = builder.mark();
-                res = parseExpr(builder, stopper, COND_FALSE_BLOCK);
-                falseBlock.done(COND_FALSE_BLOCK);
-            }
-            condExprMarker.done(COND_EXPR);
-            exprWrapper.done(expressionType);
-        } else if (ASSIGN_OP.contains(builder.getTokenType())) {
-            final PsiBuilder.Marker assignExprMarker = m.precede();
-            final PsiBuilder.Marker exprWrapper = assignExprMarker.precede();
-            m.done(ASSIGN_LEFT_EXPR);
-            advanceNoNls(builder);
-            res = parseExpr(builder, stopper, ASSIGN_RIGHT_EXPR);
-            assignExprMarker.done(ASSIGN_EXPRESSION);
-            exprWrapper.done(expressionType);
-        } else {
-            m.done(expressionType);
-        }
-        return res;
-    }
+	public static boolean parseExpr(final PsiBuilder builder, final TokenSet stopper, final IElementType expressionType)
+	{
+		final PsiBuilder.Marker m = builder.mark();
+		final TokenSet newStopper = TokenSet.orSet(stopper, ASSIGN_OP, TokenSet.create(QUEST));
+		boolean res = LogicalOrExpression.parse(builder, newStopper);
+		if(!res)
+		{
+			m.drop();
+			return false;
+		}
+		if(firstAfter(builder, NLS) == QUEST)
+		{
+			final PsiBuilder.Marker condExprMarker = m.precede();
+			final PsiBuilder.Marker exprWrapper = condExprMarker.precede();
+			m.done(CONDITION_EXPR);
+			removeNls(builder);
+			advanceNoNls(builder);
+			res = parseExpr(builder, TokenSet.orSet(stopper, TokenSet.create(COLON)), COND_TRUE_BLOCK);
+			final IElementType firstAfter = firstAfter(builder, NLS);
+			if(res && firstAfter == COLON)
+			{
+				removeNls(builder);
+				ParserUtils.advanceNoNls(builder);
+				final PsiBuilder.Marker falseBlock = builder.mark();
+				res = parseExpr(builder, stopper, COND_FALSE_BLOCK);
+				falseBlock.done(COND_FALSE_BLOCK);
+			}
+			condExprMarker.done(COND_EXPR);
+			exprWrapper.done(expressionType);
+		}
+		else if(ASSIGN_OP.contains(builder.getTokenType()))
+		{
+			final PsiBuilder.Marker assignExprMarker = m.precede();
+			final PsiBuilder.Marker exprWrapper = assignExprMarker.precede();
+			m.done(ASSIGN_LEFT_EXPR);
+			advanceNoNls(builder);
+			res = parseExpr(builder, stopper, ASSIGN_RIGHT_EXPR);
+			assignExprMarker.done(ASSIGN_EXPRESSION);
+			exprWrapper.done(expressionType);
+		}
+		else
+		{
+			m.done(expressionType);
+		}
+		return res;
+	}
 }

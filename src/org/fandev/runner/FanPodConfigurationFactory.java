@@ -12,12 +12,15 @@ import com.intellij.openapi.project.Project;
  *
  * @author Dror Bereznitsky
  */
-public class FanPodConfigurationFactory extends ConfigurationFactory {
-    protected FanPodConfigurationFactory(@org.jetbrains.annotations.NotNull final ConfigurationType type) {
-        super(type);
-    }
+public class FanPodConfigurationFactory extends ConfigurationFactory
+{
+	protected FanPodConfigurationFactory(@org.jetbrains.annotations.NotNull final ConfigurationType type)
+	{
+		super(type);
+	}
 
-    public RunConfiguration createTemplateConfiguration(final Project project) {
-        return new FanPodRunConfiguration("Fantom Pod", new RunConfigurationModule(project), this);
-    }
+	public RunConfiguration createTemplateConfiguration(final Project project)
+	{
+		return new FanPodRunConfiguration("Fantom Pod", new RunConfigurationModule(project), this);
+	}
 }
