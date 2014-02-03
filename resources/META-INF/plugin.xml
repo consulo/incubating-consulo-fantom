@@ -1,17 +1,12 @@
-<!DOCTYPE idea-plugin PUBLIC "Plugin/DTD" "http://plugins.intellij.net/plugin.dtd">
-<idea-plugin version="2" use-idea-classloader="true" url="http://wiki.jfrog.org/confluence/display/FANP/Home">
+<idea-plugin version="2">
     <name>FAN Support</name>
     <description>FAN programming language support</description>
     <version>0.0.7</version>
     <category>Custom Languages</category>
-    <vendor logo="/icons/fileTypes/fan.PNG"
-            url="http://wiki.jfrog.org/confluence/display/FANP/Home">Dror Bereznitsky and Fred Simon
-    </vendor>
-    <idea-version since-build="9000"/>
-    <change-notes>
-        http://wiki.jfrog.org/confluence/display/FANP/Release+Notes+-+Fan+Idea+Plugin+-+Version+0.0.7
-    </change-notes>
+    <vendor>Dror Bereznitsky and Fred Simon </vendor>
     <resource-bundle>org.fandev.lang.fan.FanBundle</resource-bundle>
+	<depends config-file="java.xml" optional="true">org.consulo.java</depends>
+
     <extensions defaultExtensionNs="com.intellij">
         <projectImportProvider implementation="org.fandev.module.FanProjectImportProvider"/>
         <projectImportBuilder implementation="org.fandev.module.wizard.FanProjectBuilder"/>
@@ -47,7 +42,6 @@
         <lang.findUsagesProvider language="Fantom" implementationClass="org.fandev.findUsages.FanFindUsagesProvider"/>
 
         <compiler implementation="org.fandev.compiler.FanCompiler"/>
-        <debuggerClassFilterProvider implementation="org.fandev.debugger.FanDebuggerClassFilterProvider"/>        
 
         <quoteHandler fileType="Fan" className="org.fandev.lang.fan.editor.FanQuoteHandler"/>
 

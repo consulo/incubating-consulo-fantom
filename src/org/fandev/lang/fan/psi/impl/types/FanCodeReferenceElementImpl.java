@@ -1,25 +1,29 @@
 package org.fandev.lang.fan.psi.impl.types;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.roots.ContentIterator;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.*;
-import com.intellij.psi.impl.source.resolve.ResolveCache;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.consulo.psi.PsiPackage;
+import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.FanFileType;
+import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.FanResolveResult;
 import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.FanReferenceElementImpl;
 import org.fandev.lang.fan.psi.impl.FanResolveResultImpl;
-import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.utils.PsiUtil;
-import org.fandev.index.FanIndex;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
-import java.util.ArrayList;
+import com.intellij.lang.ASTNode;
+import com.intellij.openapi.roots.ContentIterator;
+import com.intellij.openapi.roots.ProjectRootManager;
+import com.intellij.openapi.vfs.VirtualFile;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiFile;
+import com.intellij.psi.PsiManager;
+import com.intellij.psi.ResolveResult;
+import com.intellij.psi.impl.source.resolve.ResolveCache;
+import com.intellij.psi.stubs.IStubElementType;
+import com.intellij.psi.stubs.StubElement;
 
 /**
  * @author Dror Bereznitsky
@@ -119,7 +123,7 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
                 final List<FanResolveResult> results = new ArrayList<FanResolveResult>();
                 ProjectRootManager.getInstance(manager.getProject()).getFileIndex().iterateContent(new ContentIterator() {
                     public boolean processFile(final VirtualFile virtualFile) {
-                        if (FanFileType.FAN_FILE_TYPE == virtualFile.getFileType()) {
+                        if (FanFileType.INSTANCE == virtualFile.getFileType()) {
                             final FanFile psiFile = (FanFile) manager.findFile(virtualFile);
                             final PsiClass[] classes = psiFile.getClasses();
                             for (final PsiClass aClass : classes) {

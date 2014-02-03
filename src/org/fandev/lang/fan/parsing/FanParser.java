@@ -1,14 +1,15 @@
 package org.fandev.lang.fan.parsing;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.lang.PsiParser;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.text.BlockSupport;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.topLevel.CompilationUnit;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.lang.ASTNode;
+import com.intellij.lang.LanguageVersion;
+import com.intellij.lang.PsiBuilder;
+import com.intellij.lang.PsiParser;
+import com.intellij.openapi.diagnostic.Logger;
+import com.intellij.psi.text.BlockSupport;
+import com.intellij.psi.tree.IElementType;
 
 /**
  * @author Dror
@@ -17,8 +18,9 @@ import org.jetbrains.annotations.NotNull;
 public class FanParser implements PsiParser {
     private final static Logger logger = Logger.getInstance(FanParser.class.getName());
 
-    @NotNull
-    public ASTNode parse(final IElementType root, final PsiBuilder psiBuilder) {
+    @Override
+	@NotNull
+    public ASTNode parse(@NotNull final IElementType root, @NotNull final PsiBuilder psiBuilder, @NotNull LanguageVersion languageVersion) {
         psiBuilder.setDebugMode(true);
         final PsiBuilder.Marker rootMarker = psiBuilder.mark();
 

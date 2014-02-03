@@ -16,53 +16,60 @@
  */
 package org.fandev.idea.gotoclass;
 
+import java.util.Collection;
+import java.util.Set;
+
+import org.fandev.index.FanIndex;
+import org.fandev.lang.fan.psi.FanFile;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
+import org.fandev.lang.fan.psi.stubs.index.FanShortClassNameIndex;
 import com.intellij.navigation.ChooseByNameContributor;
 import com.intellij.navigation.NavigationItem;
 import com.intellij.openapi.project.Project;
+import com.intellij.psi.PsiFile;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.stubs.StubIndex;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiClass;
-import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
-import org.fandev.lang.fan.psi.stubs.index.FanShortClassNameIndex;
-import org.fandev.lang.fan.psi.FanFile;
-import org.fandev.index.FanIndex;
-
-import java.util.Collection;
-import java.util.Set;
 
 /**
  * @author freds
  * @date Jan 27, 2009
  */
-public class FanGoToClassContributor implements ChooseByNameContributor {
-    public String[] getNames(final Project project, final boolean includeNonProjectItems) {
-        final Collection<String> classNames = StubIndex.getInstance().getAllKeys(FanShortClassNameIndex.KEY, project);
-        if (includeNonProjectItems) {
-            final FanIndex fanIndex = (FanIndex) project.getComponent(FanIndex.COMPONENT_NAME);
-            classNames.addAll(fanIndex.getAllTypeNames());
-        }
-        return classNames.toArray(new String[0]);
-    }
+public class FanGoToClassContributor implements ChooseByNameContributor
+{
+	@Override
+	public String[] getNames(final Project project, final boolean includeNonProjectItems)
+	{
+		final Collection<String> classNames = StubIndex.getInstance().getAllKeys(FanShortClassNameIndex.KEY, project);
+		if(includeNonProjectItems)
+		{
+			final FanIndex fanIndex = (FanIndex) project.getComponent(FanIndex.COMPONENT_NAME);
+			classNames.addAll(fanIndex.getAllTypeNames());
+		}
+		return classNames.toArray(new String[0]);
+	}
 
-    @SuppressWarnings({"SuspiciousToArrayCall"})
-    public NavigationItem[] getItemsByName(final String name, final String pattern, final Project project,
-            final boolean includeNonProjectItems) {
-        final GlobalSearchScope scope = includeNonProjectItems ? null : GlobalSearchScope.projectScope(project);
-        final Collection<FanTypeDefinition> classes =
-                StubIndex.getInstance().get(FanShortClassNameIndex.KEY, name, project, scope);
-        if (includeNonProjectItems) {
-            final FanIndex fanIndex = (FanIndex) project.getComponent(FanIndex.COMPONENT_NAME);
-            final Set<PsiFile> psiFileSet = fanIndex.getAllPsiFiles();
-            for (final PsiFile psiFile : psiFileSet) {
-                final PsiClass[] psiFileClasses = ((FanFile)psiFile).getClasses();
-                for (final PsiClass aClass : psiFileClasses) {
-                    if (aClass.getName().equals(name)) {
-                        classes.add((FanTypeDefinition)aClass);
-                    }
-                }
-            }
-        }
-        return classes.toArray(new NavigationItem[0]);
-    }
+	@Override
+	@SuppressWarnings({"SuspiciousToArrayCall"})
+	public NavigationItem[] getItemsByName(final String name, final String pattern, final Project project, final boolean includeNonProjectItems)
+	{
+		final GlobalSearchScope scope = includeNonProjectItems ? null : GlobalSearchScope.projectScope(project);
+		final Collection<FanTypeDefinition> classes = StubIndex.getInstance().get(FanShortClassNameIndex.KEY, name, project, scope);
+		if(includeNonProjectItems)
+		{
+			final FanIndex fanIndex = (FanIndex) project.getComponent(FanIndex.COMPONENT_NAME);
+			final Set<PsiFile> psiFileSet = fanIndex.getAllPsiFiles();
+			for(final PsiFile psiFile : psiFileSet)
+			{
+				final FanTypeDefinition[] psiFileClasses = ((FanFile) psiFile).getTypeDefinitions();
+				for(final FanTypeDefinition aClass : psiFileClasses)
+				{
+					if(aClass.getName().equals(name))
+					{
+						classes.add(aClass);
+					}
+				}
+			}
+		}
+		return classes.toArray(new NavigationItem[0]);
+	}
 }

@@ -1,12 +1,12 @@
 package org.fandev.lang.fan.structure.elements.itemsPresentations;
 
+import javax.swing.Icon;
+
+import org.jetbrains.annotations.Nullable;
+import com.intellij.ide.IconDescriptorUpdaters;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.util.Iconable;
 import com.intellij.psi.PsiElement;
-import org.jetbrains.annotations.Nullable;
-
-import javax.swing.*;
 
 /**
  *
@@ -20,14 +20,16 @@ public abstract class FanItemPresentation implements ItemPresentation {
         this.myElement = myElement;
     }
 
-    @Nullable
+    @Override
+	@Nullable
     public String getLocationString() {
         return null;
     }
 
-    @Nullable
+    @Override
+	@Nullable
     public Icon getIcon(final boolean open) {
-        return myElement.getIcon(Iconable.ICON_FLAG_OPEN);
+        return IconDescriptorUpdaters.getIcon(myElement, 0);
     }
 
     @Nullable

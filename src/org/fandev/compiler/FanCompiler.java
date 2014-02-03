@@ -18,8 +18,6 @@ import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiManager;
 import com.intellij.util.Chunk;
 import com.intellij.util.io.ZipUtil;
 import org.fandev.lang.fan.FanBundle;
@@ -48,7 +46,7 @@ public class FanCompiler implements TranslatingCompiler {
     }
 
     public boolean isCompilableFile(final VirtualFile file, final CompileContext context) {
-        return FanFileType.FAN_FILE_TYPE.equals(file.getFileType());
+        return FanFileType.INSTANCE.equals(file.getFileType());
     }
 
     public void compile(final CompileContext compileContext, final Chunk<Module> moduleChunk, final VirtualFile[] virtualFiles, final OutputSink outputSink) {
@@ -114,7 +112,7 @@ public class FanCompiler implements TranslatingCompiler {
     }
 
     public boolean validateConfiguration(final CompileScope compileScope) {
-        final VirtualFile[] files = compileScope.getFiles(FanFileType.FAN_FILE_TYPE, true);
+        final VirtualFile[] files = compileScope.getFiles(FanFileType.INSTANCE, true);
         if (files.length == 0) {
             return true;
         }

@@ -1,48 +1,57 @@
 package org.fandev.lang.fan;
 
-import com.intellij.openapi.fileTypes.LanguageFileType;
-import com.intellij.openapi.fileTypes.FileTypeManager;
-import com.intellij.openapi.fileTypes.FileTypes;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.NonNls;
-import org.fandev.icons.Icons;
+import javax.swing.Icon;
 
-import javax.swing.*;
+import org.fandev.icons.Icons;
+import org.jetbrains.annotations.NonNls;
+import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.fileTypes.LanguageFileType;
 
 /**
- *
  * @author Dror
  * @date Dec 12, 2008 12:01:51 AM
  */
-public class FanFileType extends LanguageFileType {
-    public static final FanFileType FAN_FILE_TYPE = new FanFileType();
-    @NonNls public static final String DEFAULT_EXTENSION = "fan";
-    
-    private FanFileType() {
-        super(FanLanguage.FAN_LANGUAGE);
-    }
+public class FanFileType extends LanguageFileType
+{
+	public static final FanFileType INSTANCE = new FanFileType();
+	@NonNls
+	public static final String DEFAULT_EXTENSION = "fan";
 
-    @NotNull
-    public String getName() {
-        return "Fantom";
-    }
+	private FanFileType()
+	{
+		super(FanLanguage.INSTANCE);
+	}
 
-    @NotNull
-    public String getDescription() {
-        return FanBundle.message("fan.filetype.description");
-    }
+	@Override
+	@NotNull
+	public String getName()
+	{
+		return "Fantom";
+	}
 
-    @NotNull
-    public String getDefaultExtension() {
-        return DEFAULT_EXTENSION;
-    }
+	@Override
+	@NotNull
+	public String getDescription()
+	{
+		return FanBundle.message("fan.filetype.description");
+	}
 
-    public Icon getIcon() {
-        return Icons.FAN_16;
-    }
+	@Override
+	@NotNull
+	public String getDefaultExtension()
+	{
+		return DEFAULT_EXTENSION;
+	}
 
-    @Override
-    public boolean isJVMDebuggingSupported() {
-        return true;
-    }
+	@Override
+	public Icon getIcon()
+	{
+		return Icons.FAN_16;
+	}
+
+
+	public boolean isJVMDebuggingSupported()
+	{
+		return true;
+	}
 }

@@ -1,7 +1,9 @@
 package org.fandev.lang.fan;
 
-import com.intellij.openapi.fileTypes.*;
 import org.jetbrains.annotations.NotNull;
+import com.intellij.openapi.fileTypes.FileTypeConsumer;
+import com.intellij.openapi.fileTypes.FileTypeFactory;
+import com.intellij.openapi.fileTypes.LanguageFileType;
 
 /**
  *
@@ -9,7 +11,9 @@ import org.jetbrains.annotations.NotNull;
  * @date Dec 12, 2008 12:00:55 AM
  */
 public class FanSupportLoader extends FileTypeFactory {
-    public static final LanguageFileType FAN = FanFileType.FAN_FILE_TYPE;
+	@Deprecated
+    public static final LanguageFileType FAN = FanFileType.INSTANCE;
+	@Deprecated
     public static final PodFileType POD = PodFileType.POD_FILE_TYPE;
 
     @Override

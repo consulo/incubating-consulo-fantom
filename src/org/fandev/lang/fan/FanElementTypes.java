@@ -1,23 +1,33 @@
 package org.fandev.lang.fan;
 
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.IFileElementType;
-import org.fandev.lang.fan.psi.api.statements.typeDefs.*;
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanBuildScriptDefinition;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanClassDefinition;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanEnumDefinition;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanInheritanceClause;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanMixinDefinition;
 import org.fandev.lang.fan.psi.stubs.FanReferenceListStub;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
-import org.fandev.lang.fan.psi.stubs.elements.*;
 import org.fandev.lang.fan.psi.stubs.elements.FanBuildScriptDefinitionElementType;
+import org.fandev.lang.fan.psi.stubs.elements.FanClassDefinitionElementType;
+import org.fandev.lang.fan.psi.stubs.elements.FanConstructorElementType;
+import org.fandev.lang.fan.psi.stubs.elements.FanEnumDefinitionElementType;
+import org.fandev.lang.fan.psi.stubs.elements.FanFieldElementType;
+import org.fandev.lang.fan.psi.stubs.elements.FanInheritanceClauseElementType;
+import org.fandev.lang.fan.psi.stubs.elements.FanMethodElementType;
+import org.fandev.lang.fan.psi.stubs.elements.FanMixinDefinitionElementType;
 import org.fandev.lang.fan.types.FanFileElementType;
-
-import java.util.Collection;
-import java.util.Arrays;
+import com.intellij.psi.tree.IElementType;
+import com.intellij.psi.tree.IFileElementType;
 
 /**
  * @author Dror
  * @date Dec 11, 2008 11:58:30 PM
  */
 public interface FanElementTypes {
-    IFileElementType FILE = new FanFileElementType(FanSupportLoader.FAN.getLanguage());
+    IFileElementType FILE = new FanFileElementType(FanLanguage.INSTANCE);
 
     FanStubElementType<FanTypeDefinitionStub, FanClassDefinition>
             CLASS_DEFINITION = new FanClassDefinitionElementType();

@@ -14,7 +14,7 @@ import org.fandev.lang.fan.FanFileType;
  */
 public class FanOverrideMethodsHandler implements LanguageCodeInsightActionHandler {
     public boolean isValidFor(final Editor editor, final PsiFile psiFile) {
-        return psiFile != null && FanFileType.FAN_FILE_TYPE.equals(psiFile.getFileType());
+        return psiFile != null && FanFileType.INSTANCE.equals(psiFile.getFileType());
     }
 
     public void invoke(final Project project, final Editor editor, final PsiFile file) {

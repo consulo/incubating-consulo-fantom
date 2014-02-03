@@ -4,6 +4,7 @@ package org.fandev.utils;
  * @author Dror Bereznitsky
  * @date Jan 19, 2009 12:00:46 PM
  */
+@Deprecated
 public class TextUtil {
     public static final String EMPTY_STRING = "";
     

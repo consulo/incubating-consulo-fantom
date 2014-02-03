@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
  * @date Jan 19, 2009 2:57:10 PM
  */
 public class FanSdkChooserPanel extends JComponent {
-    private JdkChooserPanel myJdkChooser;
+    private SdkChooserPanel myJdkChooser;
 
     public FanSdkChooserPanel(final Project project) {
         myJdkChooser = new JdkChooserPanel(project);

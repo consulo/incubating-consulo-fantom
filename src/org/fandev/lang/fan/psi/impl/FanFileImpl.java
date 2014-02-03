@@ -111,11 +111,6 @@ public class FanFileImpl extends PsiFileBase implements FanFile {
         return null;
     }
 
-    @NotNull
-    public PsiClass[] getClasses() {
-        return getTypeDefinitions();
-    }
-
     public String getPackageName() {
         return podName;
     }

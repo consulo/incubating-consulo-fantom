@@ -5,7 +5,6 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.psi.*;
 import org.jetbrains.annotations.Nullable;
 import org.fandev.lang.fan.psi.api.topLevel.FanTopStatement;
-import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.FanFileType;
 
@@ -30,7 +29,7 @@ public class FanPsiElementFactory {
 
     @Nullable
     public FanTopStatement createTopElementFromText(final String text) {
-        final PsiFile dummyFile = PsiFileFactory.getInstance(myProject).createFileFromText(DUMMY + FanFileType.FAN_FILE_TYPE.getDefaultExtension(),
+        final PsiFile dummyFile = PsiFileFactory.getInstance(myProject).createFileFromText(DUMMY + FanFileType.INSTANCE.getDefaultExtension(),
                 text);
         final PsiElement firstChild = dummyFile.getFirstChild();
         if (!(firstChild instanceof FanTopStatement)){
@@ -53,7 +52,7 @@ public class FanPsiElementFactory {
     }
 
     private FanFile createDummyFile(final String s, final boolean isPhisical) {
-        return (FanFile) PsiFileFactory.getInstance(myProject).createFileFromText("DUMMY__." + FanFileType.FAN_FILE_TYPE.getDefaultExtension(), FanFileType.FAN_FILE_TYPE, s, System.currentTimeMillis(), isPhisical);
+        return (FanFile) PsiFileFactory.getInstance(myProject).createFileFromText("DUMMY__." + FanFileType.INSTANCE.getDefaultExtension(), FanFileType.INSTANCE, s, System.currentTimeMillis(), isPhisical);
     }
 
     private FanFile createDummyFile(String s) {
