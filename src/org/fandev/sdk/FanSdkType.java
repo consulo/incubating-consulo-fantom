@@ -29,10 +29,9 @@ import com.intellij.openapi.vfs.VirtualFile;
  * @author Dror Bereznitsky
  * @date Jan 18, 2009 4:27:47 PM
  */
-public class FanSdkType extends SdkType implements ApplicationComponent
+public class FanSdkType extends SdkType
 {
 	private static final String FAN_SDK_NAME = "FAN_SDK";
-	private static final String FAN_SDK_TYPE = "FanSdkType";
 
 	public static final String FAN_LAUNCHER_WIN = "fan.exe";
 	public static final String FAN_LAUNCHER_UNIX = "fan";
@@ -62,12 +61,6 @@ public class FanSdkType extends SdkType implements ApplicationComponent
 	}
 
 	@Override
-	public Icon getIconForAddAction()
-	{
-		return getIcon();
-	}
-
-	@Override
 	public String getVersionString(@NotNull final String sdkHome)
 	{
 		FanUtil.setFanHome(sdkHome);
@@ -91,6 +84,7 @@ public class FanSdkType extends SdkType implements ApplicationComponent
 		return "";
 	}
 
+	@Override
 	public String suggestHomePath()
 	{
 		final String path = findFanLauncher();
@@ -115,26 +109,31 @@ public class FanSdkType extends SdkType implements ApplicationComponent
 		throw new IllegalStateException(FanBundle.message("os.not.supported"));
 	}
 
+	@Override
 	public boolean isValidSdkHome(final String path)
 	{
 		return (new File(path + File.separator + getFanLauncherPath())).exists();
 	}
 
+	@Override
 	public String suggestSdkName(final String currentSdkName, final String sdkHome)
 	{
 		return "Fantom SDK " + getVersionString(sdkHome);
 	}
 
+	@Override
 	public AdditionalDataConfigurable createAdditionalDataConfigurable(final SdkModel sdkModel, final SdkModificator sdkModificator)
 	{
-		return new FanSdkConfigurable();
+		return null;
 	}
 
+	@Override
 	public void saveAdditionalData(final SdkAdditionalData additionalData, final Element additional)
 	{
 
 	}
 
+	@Override
 	public String getPresentableName()
 	{
 		return FanBundle.message("fan.sdk.title");
@@ -143,22 +142,6 @@ public class FanSdkType extends SdkType implements ApplicationComponent
 	public static FanSdkType getInstance()
 	{
 		return ApplicationManager.getApplication().getComponent(FanSdkType.class);
-	}
-
-	@NotNull
-	public String getComponentName()
-	{
-		return FAN_SDK_TYPE;
-	}
-
-	public void initComponent()
-	{
-		// init code goes here
-	}
-
-	public void disposeComponent()
-	{
-		// dispose code goes here
 	}
 
 	@Override

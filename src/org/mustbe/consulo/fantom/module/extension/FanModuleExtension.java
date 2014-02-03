@@ -6,6 +6,6 @@ import org.consulo.module.extension.ModuleExtensionWithSdk;
  * @author VISTALL
  * @since 03.02.14
  */
-public interface FantomModuleExtension<T extends FantomModuleExtension<T>> extends ModuleExtensionWithSdk<T>
+public interface FanModuleExtension<T extends FanModuleExtension<T>> extends ModuleExtensionWithSdk<T>
 {
 }

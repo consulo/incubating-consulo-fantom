@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.psi.FanFile;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import com.intellij.ide.projectView.SelectableTreeStructureProvider;
 import com.intellij.ide.projectView.ViewSettings;
 import com.intellij.ide.projectView.impl.nodes.ClassTreeNode;
@@ -57,8 +58,8 @@ public class FanTreeStructureProvider implements SelectableTreeStructureProvider
 		for(final PsiFile typeVirtualFile : types)
 		{
 			final FanFile psiFile = (FanFile) typeVirtualFile;
-			final PsiClass[] classes = psiFile.getClasses();
-			for(final PsiClass aClass : classes)
+			final FanTypeDefinition[] classes = psiFile.getTypeDefinitions();
+			for(final FanTypeDefinition aClass : classes)
 			{
 				result.add(new FanTypeTreeNode(myProject, aClass, settings));
 			}

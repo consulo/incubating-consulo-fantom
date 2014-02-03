@@ -1,7 +1,6 @@
 package org.fandev.lang.fan.psi.api.statements.typeDefs;
 
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanEnumValue;
-import com.intellij.psi.PsiClass;
 
 /**
  * Date: Mar 28, 2009
@@ -9,7 +8,7 @@ import com.intellij.psi.PsiClass;
  *
  * @author Dror Bereznitsky
  */
-public interface FanEnumDefinition extends FanTypeDefinition, PsiClass
+public interface FanEnumDefinition extends FanTypeDefinition
 {
 	FanEnumValue[] getEnumValues();
 }

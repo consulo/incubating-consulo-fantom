@@ -57,14 +57,10 @@ public class FanCompiler implements TranslatingCompiler
 		return FanFileType.INSTANCE.equals(file.getFileType());
 	}
 
-	public void compile(final CompileContext compileContext, final Chunk<Module> moduleChunk, final VirtualFile[] virtualFiles,
-			final OutputSink outputSink)
-	{
-		System.out.println("In compile(CompileContext compileContext, Chunk<Module> moduleChunk, VirtualFile[] virtualFiles, " +
-				"OutputSink outputSink)");
-	}
 
-	public void compile(final CompileContext context, final VirtualFile[] files, final OutputSink sink)
+
+	public void compile(final CompileContext context, final Chunk<Module> moduleChunk, final VirtualFile[] files,
+			final OutputSink sink)
 	{
 		Set<VirtualFile> toRecompile = new HashSet<VirtualFile>();
 		Set<TranslatingCompiler.OutputItem> successfullyCompiled = new HashSet<TranslatingCompiler.OutputItem>();

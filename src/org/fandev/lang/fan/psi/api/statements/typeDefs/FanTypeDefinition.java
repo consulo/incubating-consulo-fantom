@@ -17,7 +17,7 @@ import com.intellij.util.IncorrectOperationException;
  * @author Dror Bereznitsky
  * @date Jan 7, 2009 5:42:21 PM
  */
-public interface FanTypeDefinition extends StubBasedPsiElement<FanTypeDefinitionStub>, PsiNamedElement, PsiClass, FanTopLevelDefintion,
+public interface FanTypeDefinition extends StubBasedPsiElement<FanTypeDefinitionStub>, PsiNamedElement, FanTopLevelDefintion,
 		FanTopStatement
 {
 	@NotNull

@@ -65,34 +65,11 @@
                         serviceImplementation="org.fandev.lang.fan.psi.FanPsiElementFactory"/>
     </extensions>
 
-    <application-components>
-        <component>
-            <implementation-class>org.fandev.lang.fan.FanLoader</implementation-class>
-        </component>
-        <component>
-            <implementation-class>org.fandev.sdk.FanSdkType</implementation-class>
-        </component>
-        <component>
-            <implementation-class>org.fandev.module.FanModuleType</implementation-class>
-        </component>
-    </application-components>
-
     <project-components>
         <component>
             <implementation-class>org.fandev.index.FanIndex</implementation-class>
         </component>
     </project-components>
-
-    <module-components>
-        <component>
-            <implementation-class>org.fandev.module.FanModuleConfigurationEditorProvider</implementation-class>
-            <option name="type" value="FAN_MODULE"/>
-        </component>
-        <component>
-            <implementation-class>org.fandev.module.FanModuleSettings</implementation-class>
-            <option name="type" value="FAN_MODULE"/>
-        </component>
-    </module-components>
 
     <actions>
         <action id="org.fandev.actions.execution.RunFanScriptAction"

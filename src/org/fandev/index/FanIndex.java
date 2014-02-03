@@ -11,17 +11,18 @@ import org.fandev.lang.fan.PodFileType;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.stubs.index.FanShortClassNameIndex;
-import org.fandev.module.FanModuleType;
 import org.fandev.sdk.FanSdkType;
 import org.fandev.utils.FanUtil;
 import org.fandev.utils.VirtualFileUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.mustbe.consulo.fantom.module.extension.FanModuleExtension;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
+import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.roots.ModifiableRootModel;
@@ -29,9 +30,7 @@ import com.intellij.openapi.roots.ModuleRootManager;
 import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.roots.libraries.Library;
 import com.intellij.openapi.roots.libraries.LibraryTable;
-import com.intellij.openapi.vfs.JarFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.stubs.StubIndex;
@@ -270,9 +269,10 @@ public class FanIndex implements ProjectComponent
 		final Module[] modules = ModuleManager.getInstance(project).getModules();
 		for(final Module module : modules)
 		{
-			if(module.getModuleType() == FanModuleType.getInstance())
+			FanModuleExtension extension = ModuleUtilCore.getExtension(module, FanModuleExtension.class);
+			if(extension != null)
 			{
-				final Sdk sdk = FanUtil.getSdk(module);
+				final Sdk sdk = extension.getSdk();
 				if(sdk == null)
 				{
 					logger.warn("Module " + module.getName() + " has no valid Fantom sdk");
@@ -311,8 +311,7 @@ public class FanIndex implements ProjectComponent
 					{
 						try
 						{
-							final VirtualFile jarFile = VirtualFileManager.getInstance().findFileByUrl(JarFileSystem.PROTOCOL_PREFIX + libFile.getPath() + JarFileSystem
-									.JAR_SEPARATOR);
+
 							final String libName = libFile.getName();
 							if(!libNameToTypesSet.containsKey(libName))
 							{
