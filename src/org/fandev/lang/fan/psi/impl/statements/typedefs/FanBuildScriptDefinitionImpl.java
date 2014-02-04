@@ -112,12 +112,6 @@ public class FanBuildScriptDefinitionImpl extends FanTypeDefinitionImpl implemen
 	}
 
 	@NotNull
-	public PsiMethod[] getMethods()
-	{
-		return FanMethod.EMPTY_ARRAY;
-	}
-
-	@NotNull
 	public FanMethod[] getFanMethods()
 	{
 		return FanMethod.EMPTY_ARRAY;

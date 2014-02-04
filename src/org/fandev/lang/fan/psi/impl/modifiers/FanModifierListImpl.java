@@ -1,12 +1,10 @@
 package org.fandev.lang.fan.psi.impl.modifiers;
 
 import org.fandev.lang.fan.FanTokenTypes;
+import org.fandev.lang.fan.psi.api.modifiers.FanModifier;
 import org.fandev.lang.fan.psi.api.modifiers.FanModifierList;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.ASTNode;
-import com.intellij.util.IncorrectOperationException;
 
 /**
  * @author Dror Bereznitsky
@@ -19,11 +17,12 @@ public class FanModifierListImpl extends FanBaseElementImpl implements FanModifi
 		super(astNode);
 	}
 
-	public boolean hasModifierProperty(@Modifier final String modifier)
+	@Override
+	public boolean hasModifierProperty(final String modifier)
 	{
 		// If no protection keyword is specified, the class defaults to public
 		// If no protection keyword is specified, the slot defaults to public
-		if(modifier.equals(PsiModifier.PUBLIC))
+		if(modifier.equals(FanModifier.PUBLIC))
 		{
 			return findChildByType(FanTokenTypes.PRIVATE_KEYWORD) == null &&
 					findChildByType(FanTokenTypes.PROTECTED_KEYWORD) == null &&
@@ -34,17 +33,18 @@ public class FanModifierListImpl extends FanBaseElementImpl implements FanModifi
 	}
 
 	//TODO check if we can extends this beyond the modifier set we have in PsiModifier
-	public boolean hasExplicitModifier(@Modifier final String name)
+	@Override
+	public boolean hasExplicitModifier(final String name)
 	{
-		if(name.equals(PsiModifier.PUBLIC))
+		if(name.equals(FanModifier.PUBLIC))
 		{
 			return findChildByType(FanTokenTypes.PUBLIC_KEYWORD) != null;
 		}
-		if(name.equals(PsiModifier.ABSTRACT))
+		if(name.equals(FanModifier.ABSTRACT))
 		{
 			return findChildByType(FanTokenTypes.ABSTRACT_KEYWORD) != null;
 		}
-		if(name.equals(PsiModifier.NATIVE))
+		if(name.equals(FanModifier.NATIVE))
 		{
 			return findChildByType(FanTokenTypes.NATIVE_KEYWORD) != null;
 		}
@@ -53,65 +53,26 @@ public class FanModifierListImpl extends FanBaseElementImpl implements FanModifi
 
 	private boolean hasOtherModifiers(final String name)
 	{
-		if(name.equals(PsiModifier.PRIVATE))
+		if(name.equals(FanModifier.PRIVATE))
 		{
 			return findChildByType(FanTokenTypes.PRIVATE_KEYWORD) != null;
 		}
-		if(name.equals(PsiModifier.PROTECTED))
+		if(name.equals(FanModifier.PROTECTED))
 		{
 			return findChildByType(FanTokenTypes.PROTECTED_KEYWORD) != null;
 		}
-		if(name.equals(PsiModifier.PACKAGE_LOCAL))
+		if(name.equals(FanModifier.PACKAGE_LOCAL))
 		{
 			return findChildByType(FanTokenTypes.INTERNAL_KEYWORD) != null;
 		}
-		if(name.equals(PsiModifier.STATIC))
+		if(name.equals(FanModifier.STATIC))
 		{
 			return findChildByType(FanTokenTypes.STATIC_KEYWORD) != null;
 		}
-		if(name.equals(PsiModifier.FINAL))
+		if(name.equals(FanModifier.FINAL))
 		{
 			return findChildByType(FanTokenTypes.FINAL_KEYWORD) != null;
 		}
-		return name.equals(PsiModifier.VOLATILE) && findChildByType(FanTokenTypes.VOLATILE_KEYWORD) != null;
-	}
-
-	public void setModifierProperty(@Modifier final String name, final boolean value) throws IncorrectOperationException
-	{
-		//TODO implement
-	}
-
-	public void checkSetModifierProperty(@Modifier final String name, final boolean value) throws IncorrectOperationException
-	{
-		//TODO implement
-	}
-
-	@NotNull
-	public PsiAnnotation[] getAnnotations()
-	{
-		return PsiAnnotation.EMPTY_ARRAY;
-	}
-
-	@Nullable
-	public PsiAnnotation findAnnotation(@NotNull final String qualifiedName)
-	{
-		return null;
-	}
-
-	@NotNull
-	public PsiAnnotation[] getApplicableAnnotations()
-	{
-		return new PsiAnnotation[0];
-	}
-
-	@NotNull
-	public PsiAnnotation addAnnotation(@NotNull final String qualifiedName)
-	{
-		return null;
-	}
-
-	public String toString()
-	{
-		return "Modifiers";
+		return name.equals(FanModifier.VOLATILE) && findChildByType(FanTokenTypes.VOLATILE_KEYWORD) != null;
 	}
 }

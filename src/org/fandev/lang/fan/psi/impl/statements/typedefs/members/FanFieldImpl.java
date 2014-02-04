@@ -20,6 +20,7 @@ import javax.swing.Icon;
 
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanElementTypes;
+import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
 import org.fandev.lang.fan.psi.api.types.FanTypeElement;
 import org.fandev.lang.fan.psi.stubs.FanFieldStub;
@@ -62,25 +63,15 @@ public class FanFieldImpl extends FanSlotElementImpl<FanFieldStub> implements Fa
 		return "";
 	}
 
-	public void setInitializer(@Nullable final PsiExpression initializer) throws IncorrectOperationException
-	{
-		// TODO
-	}
-
 	@NotNull
-	public PsiType getType()
+	public FanType getType()
 	{
 		final FanTypeElement classTypeElement = findTypeElement();
 		if(classTypeElement != null)
 		{
 			return classTypeElement.getType();
 		}
-		return Bottom.BOTTOM;
-	}
-
-	public PsiType getTypeNoResolve()
-	{
-		return getType();
+		return FanType.BOTTOM;
 	}
 
 	protected FanTypeElement findTypeElement()
@@ -99,32 +90,5 @@ public class FanFieldImpl extends FanSlotElementImpl<FanFieldStub> implements Fa
 			}
 		}
 		return classTypeElement;
-	}
-
-
-	public PsiTypeElement getTypeElement()
-	{
-		final PsiElement typeEl = findChildByType(FanElementTypes.TYPE);
-		return null;
-	}
-
-	public PsiExpression getInitializer()
-	{
-		final PsiElement initEl = findChildByType(FanElementTypes.FIELD_DEFAULT);
-		return null;
-	}
-
-	public boolean hasInitializer()
-	{
-		return false;
-	}
-
-	public void normalizeDeclaration() throws IncorrectOperationException
-	{
-	}
-
-	public Object computeConstantValue()
-	{
-		return null;
 	}
 }

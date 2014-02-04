@@ -1,6 +1,6 @@
 package org.fandev.lang.fan.psi.api.statements.params;
 
-import com.intellij.psi.PsiParameter;
+import org.fandev.lang.fan.psi.api.statements.FanVariable;
 
 /**
  * Date: Aug 20, 2009
@@ -8,6 +8,6 @@ import com.intellij.psi.PsiParameter;
  *
  * @author Dror Bereznitsky
  */
-public interface FanFormal extends PsiParameter
+public interface FanFormal extends FanVariable
 {
 }

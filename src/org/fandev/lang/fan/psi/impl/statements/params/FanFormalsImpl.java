@@ -5,7 +5,6 @@ import org.fandev.lang.fan.psi.api.statements.params.FanFormals;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiParameter;
 
 /**
  * Date: Aug 20, 2009
@@ -20,15 +19,17 @@ public class FanFormalsImpl extends FanBaseElementImpl implements FanFormals
 		super(astNode);
 	}
 
+	@Override
 	@NotNull
-	public PsiParameter[] getParameters()
+	public FanFormal[] getParameters()
 	{
 		return findChildrenByClass(FanFormal.class);
 	}
 
-	public int getParameterIndex(final PsiParameter psiParameter)
+	@Override
+	public int getParameterIndex(final FanFormal psiParameter)
 	{
-		final PsiParameter[] parameters = getParameters();
+		final FanFormal[] parameters = getParameters();
 		for(int i = 0; i < parameters.length; i++)
 		{
 			if(parameters[i].equals(psiParameter))
@@ -40,6 +41,7 @@ public class FanFormalsImpl extends FanBaseElementImpl implements FanFormals
 		return -1;
 	}
 
+	@Override
 	public int getParametersCount()
 	{
 		return getParameters().length;

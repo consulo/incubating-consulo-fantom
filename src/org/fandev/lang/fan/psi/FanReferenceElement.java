@@ -4,7 +4,6 @@ import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiPolyVariantReference;
 import com.intellij.psi.PsiQualifiedReference;
-import com.intellij.psi.PsiType;
 
 /**
  * @author Dror Bereznitsky
@@ -15,5 +14,5 @@ public interface FanReferenceElement extends FanElement, PsiQualifiedReference, 
 	PsiElement getReferenceNameElement();
 
 	@NotNull
-	PsiType[] getTypeArguments();
+	FanType[] getTypeArguments();
 }

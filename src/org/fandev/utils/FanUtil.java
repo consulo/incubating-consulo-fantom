@@ -9,6 +9,7 @@ import java.util.List;
 import org.fandev.actions.generation.FanTemplatesFactory;
 import org.fandev.actions.generation.TemplateProperty;
 import org.fandev.lang.fan.psi.FanFile;
+import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.FanVariable;
 import org.fandev.lang.fan.psi.api.statements.expressions.FanClosureExpression;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanBuildScriptDefinition;
@@ -250,12 +251,12 @@ public class FanUtil
 		return isOfType(element, FanBuildScriptDefinition.class);
 	}
 
-	public static boolean isFanMapType(final PsiType element)
+	public static boolean isFanMapType(final FanType element)
 	{
 		return isOfType(element, FanMapType.class);
 	}
 
-	public static boolean isFanListType(final PsiType element)
+	public static boolean isFanListType(final FanType element)
 	{
 		return isOfType(element, FanListReferenceType.class);
 	}
@@ -265,7 +266,7 @@ public class FanUtil
 		return element != null && type.isAssignableFrom(element.getClass());
 	}
 
-	public static boolean isOfType(final PsiType element, final Class<?> type)
+	public static boolean isOfType(final FanType element, final Class<?> type)
 	{
 		return element != null && type.isAssignableFrom(element.getClass());
 	}

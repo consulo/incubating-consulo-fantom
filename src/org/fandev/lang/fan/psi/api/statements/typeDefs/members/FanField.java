@@ -16,12 +16,12 @@
  */
 package org.fandev.lang.fan.psi.api.statements.typeDefs.members;
 
-import com.intellij.psi.PsiField;
+import org.fandev.lang.fan.psi.api.statements.FanVariable;
 
 /**
  * @author freds
  * @date Jan 23, 2009
  */
-public interface FanField extends FanSlot, PsiField
+public interface FanField extends FanSlot, FanVariable
 {
 }

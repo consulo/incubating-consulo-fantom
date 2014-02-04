@@ -1,12 +1,12 @@
 package org.fandev.lang.fan.psi.impl.types;
 
+import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.types.FanClassTypeElement;
 import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanClassReferenceType;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiType;
 
 /**
  * Date: Jul 3, 2009
@@ -33,7 +33,7 @@ public class FanClassTypeElementImpl extends FanBaseElementImpl implements FanCl
 	}
 
 	@NotNull
-	public PsiType getType()
+	public FanType getType()
 	{
 		return new FanClassReferenceType(getReferenceElement());
 	}

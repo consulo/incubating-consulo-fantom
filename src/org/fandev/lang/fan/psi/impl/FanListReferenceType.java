@@ -1,5 +1,6 @@
 package org.fandev.lang.fan.psi.impl;
 
+import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.types.FanClassTypeElement;
 import org.fandev.lang.fan.psi.api.types.FanListTypeElement;
@@ -28,7 +29,7 @@ public class FanListReferenceType extends PsiArrayType
 		return element.getListType();
 	}
 
-	public PsiType getType()
+	public FanType getType()
 	{
 		return element.getType();
 	}

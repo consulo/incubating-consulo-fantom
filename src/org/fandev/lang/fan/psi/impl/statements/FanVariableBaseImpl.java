@@ -1,10 +1,10 @@
 package org.fandev.lang.fan.psi.impl.statements;
 
 import org.fandev.lang.fan.FanElementTypes;
+import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.FanVariable;
 import org.fandev.lang.fan.psi.api.types.FanTypeElement;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
-import org.fandev.lang.fan.psi.impl.synthetic.FanLightIdentifier;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -33,10 +33,10 @@ public abstract class FanVariableBaseImpl<T extends StubElement> extends FanBase
 	}
 
 	@NotNull
-	public PsiType getType()
+	public FanType getType()
 	{
-		final PsiType type = getDeclaredType();
-		return type != null ? type : Bottom.BOTTOM;
+		final FanType type = getDeclaredType();
+		return type != null ? type : FanType.BOTTOM;
 	}
 
 	@Nullable
@@ -46,7 +46,7 @@ public abstract class FanVariableBaseImpl<T extends StubElement> extends FanBase
 	}
 
 	@Nullable
-	public PsiType getDeclaredType()
+	public FanType getDeclaredType()
 	{
 		final FanTypeElement typeElement = getTypeElementFan();
 		if(typeElement != null)
@@ -57,63 +57,25 @@ public abstract class FanVariableBaseImpl<T extends StubElement> extends FanBase
 		return null;
 	}
 
-	public PsiIdentifier getNameIdentifier()
+	public PsiElement getNameIdentifier()
 	{
-		final PsiElement ident = findChildByType(FanElementTypes.ID_EXPR);
-		assert ident != null;
-		return new FanLightIdentifier(getManager(), getContainingFile(), ident.getTextRange());
+		return findChildByType(FanElementTypes.ID_EXPR);
 	}
 
 	@Override
 	public String getName()
 	{
-		return getNameIdentifier().getText();
-	}
-
-	@Nullable
-	public PsiModifierList getModifierList()
-	{
-		//TODO [Dror] implement
+		final PsiElement identifier = getNameIdentifier();
+		if(identifier != null)
+		{
+			return identifier.getText();
+		}
 		return null;
-	}
-
-	public boolean hasModifierProperty(@Modifier final String property)
-	{
-		final PsiModifierList modifierList = getModifierList();
-		return modifierList != null && modifierList.hasModifierProperty(property);
 	}
 
 	public PsiElement setName(@NonNls final String name) throws IncorrectOperationException
 	{
 		//TODO [Dror] implement
 		return this;
-	}
-
-	@Nullable
-	public PsiTypeElement getTypeElement()
-	{
-		return null;
-	}
-
-	@Nullable
-	public PsiExpression getInitializer()
-	{
-		return null;
-	}
-
-	public boolean hasInitializer()
-	{
-		return false;
-	}
-
-	@Nullable
-	public Object computeConstantValue()
-	{
-		return null;
-	}
-
-	public void normalizeDeclaration() throws IncorrectOperationException
-	{
-
 	}
 }

@@ -1,8 +1,8 @@
 package org.fandev.lang.fan.psi.api.statements.params;
 
 import org.fandev.lang.fan.psi.api.statements.FanDefaultValue;
+import org.fandev.lang.fan.psi.api.statements.FanVariable;
 import org.jetbrains.annotations.Nullable;
-import com.intellij.psi.PsiParameter;
 
 /**
  * Date: Apr 29, 2009
@@ -10,7 +10,7 @@ import com.intellij.psi.PsiParameter;
  *
  * @author Dror Bereznitsky
  */
-public interface FanParameter extends PsiParameter
+public interface FanParameter extends FanVariable
 {
 	@Nullable
 	public FanDefaultValue getDefaultValue();

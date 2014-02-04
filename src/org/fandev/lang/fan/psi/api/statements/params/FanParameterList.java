@@ -1,6 +1,7 @@
 package org.fandev.lang.fan.psi.api.statements.params;
 
-import com.intellij.psi.PsiParameterList;
+import org.fandev.lang.fan.psi.FanElement;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Date: Jul 8, 2009
@@ -8,6 +9,12 @@ import com.intellij.psi.PsiParameterList;
  *
  * @author Dror Bereznitsky
  */
-public interface FanParameterList extends PsiParameterList
+public interface FanParameterList extends FanElement
 {
+	@NotNull
+	FanParameter[] getParameters();
+
+	int getParameterIndex(final FanParameter psiParameter);
+
+	int getParametersCount();
 }

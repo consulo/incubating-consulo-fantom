@@ -60,26 +60,21 @@ public abstract class FanSlotElementImpl<T extends NamedStub> extends FanBaseEle
 
 	public int getTextOffset()
 	{
-		final PsiIdentifier identifier = getNameIdentifier();
+		final PsiElement identifier = getNameIdentifier();
 		return identifier == null ? 0 : identifier.getTextRange().getStartOffset();
 	}
 
 	@Override
 	public String getName()
 	{
-		final PsiIdentifier psiId = getNameIdentifier();
+		final PsiElement psiId = getNameIdentifier();
 		return psiId == null ? null : psiId.getText();
 	}
 
 	@Nullable
-	public PsiIdentifier getNameIdentifier()
+	public PsiElement getNameIdentifier()
 	{
-		final PsiElement element = findChildByType(FanElementTypes.NAME_ELEMENT);
-		if(element != null)
-		{
-			return new FanLightIdentifier(getManager(), getContainingFile(), element.getTextRange());
-		}
-		return null;
+		return findChildByType(FanElementTypes.NAME_ELEMENT);
 	}
 
 	public PsiElement setName(@NonNls final String name) throws IncorrectOperationException

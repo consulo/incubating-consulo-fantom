@@ -2,12 +2,12 @@ package org.fandev.lang.fan.psi.impl;
 
 import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.psi.FanReferenceElement;
+import org.fandev.lang.fan.psi.FanType;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
-import com.intellij.psi.PsiType;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.StubElement;
 import com.intellij.util.IncorrectOperationException;
@@ -82,7 +82,7 @@ public abstract class FanReferenceElementImpl extends FanBaseElementImpl impleme
 	}
 
 	@NotNull
-	public PsiType[] getTypeArguments()
+	public FanType[] getTypeArguments()
 	{
 		/*final FanTypeArgumentList typeArgsList = getTypeArgumentList();
         if (typeArgsList == null) return PsiType.EMPTY_ARRAY;
@@ -96,6 +96,6 @@ public abstract class FanReferenceElementImpl extends FanBaseElementImpl impleme
 
         return result;*/
 
-		return PsiType.EMPTY_ARRAY;
+		return FanType.EMPTY_ARRAY;
 	}
 }

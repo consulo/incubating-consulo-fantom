@@ -5,7 +5,6 @@ import org.fandev.lang.fan.psi.api.statements.params.FanParameterList;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiParameter;
 
 /**
  * Date: Jul 8, 2009
@@ -20,15 +19,17 @@ public class FanParameterListImpl extends FanBaseElementImpl implements FanParam
 		super(astNode);
 	}
 
+	@Override
 	@NotNull
-	public PsiParameter[] getParameters()
+	public FanParameter[] getParameters()
 	{
 		return findChildrenByClass(FanParameter.class);
 	}
 
-	public int getParameterIndex(final PsiParameter psiParameter)
+	@Override
+	public int getParameterIndex(final FanParameter psiParameter)
 	{
-		final PsiParameter[] parameters = getParameters();
+		final FanParameter[] parameters = getParameters();
 		for(int i = 0; i < parameters.length; i++)
 		{
 			if(parameters[i].equals(psiParameter))
@@ -40,6 +41,7 @@ public class FanParameterListImpl extends FanBaseElementImpl implements FanParam
 		return -1;
 	}
 
+	@Override
 	public int getParametersCount()
 	{
 		return getParameters().length;
