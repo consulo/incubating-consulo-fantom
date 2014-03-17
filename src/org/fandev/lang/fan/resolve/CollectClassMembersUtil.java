@@ -1,21 +1,5 @@
 package org.fandev.lang.fan.resolve;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
-import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
-import com.intellij.openapi.util.Key;
-import com.intellij.openapi.util.Pair;
-import com.intellij.psi.infos.CandidateInfo;
-import com.intellij.psi.util.CachedValue;
-import com.intellij.psi.util.CachedValueProvider;
-import com.intellij.psi.util.PsiModificationTracker;
-import com.intellij.psi.util.TypeConversionUtil;
-import com.intellij.util.containers.HashMap;
-import com.intellij.util.containers.HashSet;
-
 /**
  * Date: Sep 29, 2009
  * Time: 11:27:44 PM
@@ -24,7 +8,7 @@ import com.intellij.util.containers.HashSet;
  */
 public class CollectClassMembersUtil
 {
-	private static final Key<CachedValue<Pair<Map<String, CandidateInfo>, Map<String, List<CandidateInfo>>>>> CACHED_MEMBERS = Key.create
+/*	private static final Key<CachedValue<Pair<Map<String, CandidateInfo>, Map<String, List<CandidateInfo>>>>> CACHED_MEMBERS = Key.create
 			("CACHED_CLASS_MEMBERS");
 
 	private static final Key<CachedValue<Pair<Map<String, CandidateInfo>, Map<String, List<CandidateInfo>>>>> CACHED_MEMBERS_INCLUDING_SYNTHETIC = Key
@@ -126,5 +110,5 @@ public class CollectClassMembersUtil
 		{
 			methods.add(new CandidateInfo(method, substitutor));
 		}
-	}
+	}    */
 }

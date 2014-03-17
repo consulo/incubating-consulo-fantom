@@ -22,6 +22,7 @@ public class FanMapTypeElementImpl extends FanBaseElementImpl implements FanMapT
 		super(astNode);
 	}
 
+	@Override
 	@NotNull
 	public FanType getType()
 	{
@@ -33,6 +34,7 @@ public class FanMapTypeElementImpl extends FanBaseElementImpl implements FanMapT
 		return null;
 	}
 
+	@Override
 	public FanTypeDefinition getMapType()
 	{
 		return getFanTypeByName("Map");

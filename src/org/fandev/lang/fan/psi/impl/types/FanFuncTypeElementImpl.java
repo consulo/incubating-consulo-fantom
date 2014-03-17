@@ -1,5 +1,6 @@
 package org.fandev.lang.fan.psi.impl.types;
 
+import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.params.FanFormals;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.types.FanFuncTypeElement;
@@ -8,7 +9,6 @@ import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanFuncType;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiType;
 
 /**
  * Date: Jul 19, 2009
@@ -23,17 +23,20 @@ public class FanFuncTypeElementImpl extends FanBaseElementImpl implements FanFun
 		super(astNode);
 	}
 
+	@Override
 	@NotNull
-	public PsiType getType()
+	public FanType getType()
 	{
 		return new FanFuncType(this);
 	}
 
+	@Override
 	public FanFormals getFormals()
 	{
 		return findChildByClass(FanFormals.class);
 	}
 
+	@Override
 	public FanTypeElement getReturnType()
 	{
 		final FanTypeElement returnType = findChildByClass(FanTypeElement.class);
@@ -44,6 +47,7 @@ public class FanFuncTypeElementImpl extends FanBaseElementImpl implements FanFun
 		return returnType;
 	}
 
+	@Override
 	public FanTypeDefinition getFuncType()
 	{
 		return getFanTypeByName("Func");

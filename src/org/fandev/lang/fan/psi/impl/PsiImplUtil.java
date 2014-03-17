@@ -1,15 +1,5 @@
 package org.fandev.lang.fan.psi.impl;
 
-import java.util.List;
-
-import org.jetbrains.annotations.Nullable;
-import com.intellij.psi.PsiArrayType;
-import com.intellij.psi.PsiMethod;
-import com.intellij.psi.PsiType;
-import com.intellij.psi.infos.CandidateInfo;
-import com.intellij.psi.util.MethodSignature;
-import com.intellij.psi.util.TypeConversionUtil;
-
 /**
  * Date: Sep 29, 2009
  * Time: 11:30:53 PM
@@ -18,7 +8,7 @@ import com.intellij.psi.util.TypeConversionUtil;
  */
 public class PsiImplUtil
 {
-	public static PsiMethod[] mapToMethods(@Nullable final List<CandidateInfo> list)
+/*	public static PsiMethod[] mapToMethods(@Nullable final List<CandidateInfo> list)
 	{
 		if(list == null)
 		{
@@ -80,5 +70,5 @@ public class PsiImplUtil
 		}
 
 		return true;
-	}
+	}    */
 }

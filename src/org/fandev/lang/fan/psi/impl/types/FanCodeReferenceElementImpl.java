@@ -8,7 +8,10 @@ import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.FanFileType;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.FanResolveResult;
+import org.fandev.lang.fan.psi.api.modifiers.FanModifier;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.FanReferenceElementImpl;
 import org.fandev.lang.fan.psi.impl.FanResolveResultImpl;
@@ -59,17 +62,18 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 	@Override
 	public PsiElement resolve()
 	{
-		final ResolveResult[] results = getManager().getResolveCache().resolveWithCaching(this, RESOLVER, false, false);
+		final ResolveResult[] results = ResolveCache.getInstance(getProject()).resolveWithCaching(this, RESOLVER, false, false);
 		return results.length == 1 ? results[0].getElement() : null;
 	}
 
+	@NotNull
 	@Override
 	public String getCanonicalText()
 	{
 		final PsiElement resolved = resolve();
-		if(resolved instanceof PsiClass)
+		if(resolved instanceof FanTypeDefinition)
 		{
-			return ((PsiClass) resolved).getQualifiedName();
+			return ((FanTypeDefinition) resolved).getQualifiedName();
 		}
 		if(resolved instanceof PsiPackage)
 		{
@@ -84,6 +88,7 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 		return getManager().areElementsEquivalent(psiElement, resolve());
 	}
 
+	@NotNull
 	@Override
 	public Object[] getVariants()
 	{
@@ -91,22 +96,22 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 		if(qualifier != null)
 		{
 			final PsiElement resolve = qualifier.resolve();
-			if(resolve instanceof PsiClass)
+			if(resolve instanceof FanTypeDefinition)
 			{
-				final PsiClass clazz = (PsiClass) resolve;
+				final FanTypeDefinition clazz = (FanTypeDefinition) resolve;
 				final List<PsiElement> result = new ArrayList<PsiElement>();
 
-				for(final PsiField field : clazz.getFields())
+				for(final FanField field : clazz.getFanFields())
 				{
-					if(field.hasModifierProperty(PsiModifier.STATIC))
+					if(field.hasModifierProperty(FanModifier.STATIC))
 					{
 						result.add(field);
 					}
 				}
 
-				for(final PsiMethod method : clazz.getMethods())
+				for(final FanMethod method : clazz.getFanMethods())
 				{
-					if(method.hasModifierProperty(PsiModifier.STATIC))
+					if(method.hasModifierProperty(FanModifier.STATIC))
 					{
 						result.add(method);
 					}
@@ -128,12 +133,13 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 	@NotNull
 	public ResolveResult[] multiResolve(final boolean incompleteCode)
 	{
-		return getManager().getResolveCache().resolveWithCaching(this, RESOLVER, false, incompleteCode);
+		return ResolveCache.getInstance(getProject()).resolveWithCaching(this, RESOLVER, false, incompleteCode);
 	}
 
 	private static class FanResolver implements ResolveCache.PolyVariantResolver<FanCodeReferenceElementImpl>
 	{
 
+		@NotNull
 		@Override
 		public ResolveResult[] resolve(final FanCodeReferenceElementImpl fanCodeReferenceElement, final boolean incompleteCode)
 		{

@@ -8,7 +8,6 @@ import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanListReferenceType;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiType;
 
 /**
  * Date: Jul 17, 2009
@@ -23,6 +22,7 @@ public class FanListTypeElementImpl extends FanBaseElementImpl implements FanLis
 		super(astNode);
 	}
 
+	@Override
 	@NotNull
 	public FanType getType()
 	{
@@ -30,12 +30,14 @@ public class FanListTypeElementImpl extends FanBaseElementImpl implements FanLis
 		return new FanListReferenceType(this, fanTypeElem.getType());
 	}
 
+	@Override
 	@NotNull
 	public FanClassTypeElement getTypeElement()
 	{
 		return findChildByClass(FanClassTypeElement.class);
 	}
 
+	@Override
 	public FanTypeDefinition getListType()
 	{
 		return getFanTypeByName("List");

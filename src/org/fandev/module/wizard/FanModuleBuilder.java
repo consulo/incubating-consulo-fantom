@@ -141,7 +141,7 @@ public class FanModuleBuilder extends ModuleBuilder implements SourcePathsBuilde
 		}
 		else
 		{
-			modifiableRootModel.inheritSdk();
+			//modifiableRootModel.inheritSdk();
 		}
 
 		setupContentRoot(modifiableRootModel);

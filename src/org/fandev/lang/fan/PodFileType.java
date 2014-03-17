@@ -23,6 +23,12 @@ public class PodFileType extends ArchiveFileType
 	}
 
 	@Override
+	public String getProtocol()
+	{
+		return "zip";
+	}
+
+	@Override
 	public Icon getIcon()
 	{
 		return Icons.FAN_16;

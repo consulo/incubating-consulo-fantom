@@ -21,17 +21,20 @@ public class FanClassTypeElementImpl extends FanBaseElementImpl implements FanCl
 		super(astNode);
 	}
 
+	@Override
 	public String toString()
 	{
 		return "Class Type element";
 	}
 
+	@Override
 	@NotNull
 	public FanCodeReferenceElement getReferenceElement()
 	{
 		return findChildByClass(FanCodeReferenceElement.class);
 	}
 
+	@Override
 	@NotNull
 	public FanType getType()
 	{

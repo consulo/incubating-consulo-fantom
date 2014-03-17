@@ -2,18 +2,20 @@ package org.fandev.lang.fan.projectView;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Set;
 
 import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
+import org.jetbrains.annotations.Nullable;
+import com.intellij.ide.projectView.PresentationData;
 import com.intellij.ide.projectView.SelectableTreeStructureProvider;
 import com.intellij.ide.projectView.ViewSettings;
-import com.intellij.ide.projectView.impl.nodes.ClassTreeNode;
+import com.intellij.ide.projectView.impl.nodes.BasePsiNode;
 import com.intellij.ide.projectView.impl.nodes.NamedLibraryElement;
 import com.intellij.ide.util.treeView.AbstractTreeNode;
 import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 
@@ -76,18 +78,24 @@ public class FanTreeStructureProvider implements SelectableTreeStructureProvider
 		return null;
 	}
 
-	private class FanTypeTreeNode extends ClassTreeNode
+	private class FanTypeTreeNode extends BasePsiNode<FanTypeDefinition>
 	{
-		private FanTypeTreeNode(final Project project, final PsiClass psiClass, final ViewSettings viewSettings)
+		private FanTypeTreeNode(final Project project, final FanTypeDefinition psiClass, final ViewSettings viewSettings)
 		{
 			super(project, psiClass, viewSettings);
 		}
 
-		// original calcTooltip causes a major slow down
+		@Nullable
 		@Override
-		protected String calcTooltip()
+		protected Collection<AbstractTreeNode> getChildrenImpl()
 		{
-			return ""; //TODO [Dror] return a proper tooltip value
+			return Collections.emptyList();
+		}
+
+		@Override
+		protected void updateImpl(PresentationData presentationData)
+		{
+			presentationData.setPresentableText(getValue().getName());
 		}
 	}
 }
