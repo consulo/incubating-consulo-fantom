@@ -1,38 +1,18 @@
 package org.fandev.lang.fan.psi.impl.statements.typedefs;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-
 import javax.swing.Icon;
 
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanElementTypes;
+import org.fandev.lang.fan.psi.api.modifiers.FanModifier;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanClassDefinition;
-import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanConstructor;
-import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
-import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
-import org.fandev.lang.fan.psi.impl.PsiImplUtil;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
-import org.fandev.lang.fan.resolve.CollectClassMembersUtil;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.util.Pair;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.impl.InheritanceImplUtil;
-import com.intellij.psi.infos.CandidateInfo;
-import com.intellij.psi.javadoc.PsiDocComment;
 import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.util.MethodSignature;
-import com.intellij.psi.util.TypeConversionUtil;
 import com.intellij.util.IncorrectOperationException;
 
 /**
@@ -53,9 +33,10 @@ public class FanClassDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 		super(astNode);
 	}
 
+	@Override
 	protected Icon getIconInner()
 	{
-		if(hasModifierProperty(PsiModifier.ABSTRACT))
+		if(hasModifierProperty(FanModifier.ABSTRACT))
 		{
 			return Icons.ABSTRACT_CLASS;
 		}
@@ -65,17 +46,20 @@ public class FanClassDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 		}
 	}
 
+	@Override
 	public String toString()
 	{
 		return "Class definition";
 	}
 
+	@Override
 	public PsiElement setName(@NonNls final String name) throws IncorrectOperationException
 	{
 		// TODO rename
 		return this;
 	}
 
+	@Override
 	public boolean isInterface()
 	{
 		return false;
@@ -86,14 +70,10 @@ public class FanClassDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 		return false;
 	}
 
+	@Override
 	public boolean isEnum()
 	{
 		return false;
-	}
-
-	public PsiClass[] getInterfaces()
-	{
-		return PsiClass.EMPTY_ARRAY;
 	}
 
 	@Override
@@ -105,19 +85,7 @@ public class FanClassDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 		super.subtreeChanged();
 	}
 
-	@NotNull
-	public PsiField[] getFields()
-	{
-		return getFanFields();
-	}
-
-	@NotNull
-	public PsiMethod[] getMethods()
-	{
-		return getFanMethods();
-	}
-
-	@NotNull
+/*	@NotNull
 	public PsiMethod[] getConstructors()
 	{
 		final Set<PsiMethod> constructors = new HashSet<PsiMethod>();
@@ -168,18 +136,6 @@ public class FanClassDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 
 		allMethods.addAll(Arrays.asList(clazz.getMethods()));
 
-        /*final PsiField[] fields = clazz.getFields();
-		for (final PsiField field : fields) {
-            if (field instanceof FanField) {
-                final FanField fanField = (FanField) field;
-                if (fanField.isProperty()) {
-                    final PsiMethod[] getters = fanField.getGetters();
-                    if (getters.length > 0) allMethods.addAll(Arrays.asList(getters));
-                    final PsiMethod setter = fanField.getSetter();
-                    if (setter != null) allMethods.add(setter);
-                }
-            }
-        }*/
 
 		final PsiClass[] supers = clazz.getSupers();
 		for(final PsiClass aSuper : supers)
@@ -363,51 +319,15 @@ public class FanClassDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 	public boolean isInheritorDeep(final PsiClass baseClass, @Nullable final PsiClass classToByPass)
 	{
 		return InheritanceImplUtil.isInheritorDeep(this, baseClass, classToByPass);
-	}
+	}   */
 
-	public PsiClass getContainingClass()
+	@Override
+	public FanTypeDefinition getContainingClass()
 	{
 		return null;
 	}
 
-	@NotNull
-	public Collection<HierarchicalMethodSignature> getVisibleSignatures()
-	{
-		return Collections.emptyList();
-	}
-
-	public PsiDocComment getDocComment()
-	{
-		return null;
-	}
-
-	public boolean isDeprecated()
-	{
-		return false;
-	}
-
-	public boolean hasTypeParameters()
-	{
-		return getTypeParameters().length > 0;
-	}
-
-	public PsiTypeParameterList getTypeParameterList()
-	{
-		return findChildByClass(PsiTypeParameterList.class);
-	}
-
-	@NotNull
-	public PsiTypeParameter[] getTypeParameters()
-	{
-		final PsiTypeParameterList list = getTypeParameterList();
-		if(list != null)
-		{
-			return list.getTypeParameters();
-		}
-
-		return PsiTypeParameter.EMPTY_ARRAY;
-	}
-
+	@Override
 	protected IElementType getBodyElementType()
 	{
 		return FanElementTypes.CLASS_BODY;

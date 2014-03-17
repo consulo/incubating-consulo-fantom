@@ -1,25 +1,17 @@
 package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import javax.swing.Icon;
 
 import org.fandev.icons.Icons;
+import org.fandev.lang.fan.psi.FanType;
+import org.fandev.lang.fan.psi.api.statements.blocks.FanPsiCodeBlock;
 import org.fandev.lang.fan.psi.api.statements.params.FanParameterList;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.api.types.FanTypeElement;
-import org.fandev.lang.fan.psi.impl.PsiImplUtil;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.impl.PsiSuperMethodImplUtil;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.NamedStub;
-import com.intellij.psi.util.MethodSignature;
-import com.intellij.psi.util.MethodSignatureBackedByPsiMethod;
-import com.intellij.psi.util.MethodSignatureUtil;
 
 /**
  * @author Dror Bereznitsky
@@ -43,46 +35,40 @@ public abstract class FanMethodBaseImpl<T extends NamedStub> extends FanSlotElem
 		return Icons.METHOD;
 	}
 
-	public PsiType getReturnType()
+	@Override
+	@NotNull
+	public FanType getReturnType()
 	{
 		final FanTypeElement typeElement = findChildByClass(FanTypeElement.class);
 		if(typeElement != null)
 		{
 			return typeElement.getType();
 		}
-		return PsiType.VOID;
-	}
-
-	public PsiType getReturnTypeNoResolve()
-	{
-		return getReturnType();
-	}
-
-	public PsiTypeElement getReturnTypeElement()
-	{
-		return null;
+		return FanType.VOID;
 	}
 
 	@NotNull
-	public PsiParameterList getParameterList()
+	@Override
+	public FanParameterList getParameterList()
 	{
 		final FanParameterList parameterList = findChildByClass(FanParameterList.class);
 		assert parameterList != null;
 		return parameterList;
 	}
 
-	@NotNull
-	public PsiReferenceList getThrowsList()
+	@Override
+	public FanPsiCodeBlock getBody()
 	{
-		return null;  //To change body of implemented methods use File | Settings | File Templates.
+		return findChildByClass(FanPsiCodeBlock.class);
 	}
 
-	public PsiCodeBlock getBody()
+	@Override
+	public void setBlock(FanPsiCodeBlock newBlock)
 	{
-		return findChildByClass(PsiCodeBlock.class);
+
 	}
 
-	public boolean isVarArgs()
+/*	public boolean isVarArgs()
 	{
 		return false;
 	}
@@ -103,7 +89,8 @@ public abstract class FanMethodBaseImpl<T extends NamedStub> extends FanSlotElem
 		}
 
 		final Set<PsiMethod> methods = new HashSet<PsiMethod>();
-		findSuperMethodRecursilvely(methods, containingClass, false, new HashSet<PsiClass>(), createMethodSignature(this), new HashSet<MethodSignature>());
+		findSuperMethodRecursilvely(methods, containingClass, false, new HashSet<PsiClass>(), createMethodSignature(this),
+				new HashSet<MethodSignature>());
 
 		return methods.toArray(new PsiMethod[0]);
 	}
@@ -114,7 +101,8 @@ public abstract class FanMethodBaseImpl<T extends NamedStub> extends FanSlotElem
 		final PsiClass containingClass = getContainingClass();
 
 		final Set<PsiMethod> methods = new HashSet<PsiMethod>();
-		findSuperMethodRecursilvely(methods, containingClass, false, new HashSet<PsiClass>(), createMethodSignature(this), new HashSet<MethodSignature>());
+		findSuperMethodRecursilvely(methods, containingClass, false, new HashSet<PsiClass>(), createMethodSignature(this),
+				new HashSet<MethodSignature>());
 
 		return methods.toArray(new PsiMethod[0]);
 	}
@@ -123,7 +111,8 @@ public abstract class FanMethodBaseImpl<T extends NamedStub> extends FanSlotElem
 	public PsiMethod[] findSuperMethods(final PsiClass parentClass)
 	{
 		final Set<PsiMethod> methods = new HashSet<PsiMethod>();
-		findSuperMethodRecursilvely(methods, parentClass, false, new HashSet<PsiClass>(), createMethodSignature(this), new HashSet<MethodSignature>());
+		findSuperMethodRecursilvely(methods, parentClass, false, new HashSet<PsiClass>(), createMethodSignature(this),
+				new HashSet<MethodSignature>());
 		return methods.toArray(new PsiMethod[0]);
 	}
 
@@ -143,14 +132,6 @@ public abstract class FanMethodBaseImpl<T extends NamedStub> extends FanSlotElem
 		}
 
 		return result;
-	}
-
-	/*
-  * @deprecated use {@link #findDeepestSuperMethods()} instead
-  */
-	public PsiMethod findDeepestSuperMethod()
-	{
-		return null;
 	}
 
 	@NotNull
@@ -231,5 +212,5 @@ public abstract class FanMethodBaseImpl<T extends NamedStub> extends FanSlotElem
 			findSuperMethodRecursilvely(methods, resolvedSuperClass, allowStatic, visited, signature, discoveredSupers);
 			discoveredSupers.removeAll(supers);
 		}
-	}
+	} */
 }

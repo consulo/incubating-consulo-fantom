@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.psi.impl;
 
 import org.fandev.index.FanIndex;
-import org.fandev.lang.fan.FanSupportLoader;
+import org.fandev.lang.fan.FanLanguage;
 import org.fandev.lang.fan.psi.FanElement;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
@@ -29,10 +29,11 @@ public class FanBaseElementImpl<T extends StubElement> extends StubBasedPsiEleme
 		super(astNode);
 	}
 
+	@Override
 	@NotNull
 	public Language getLanguage()
 	{
-		return FanSupportLoader.FAN.getLanguage();
+		return FanLanguage.INSTANCE;
 	}
 
 	@Override

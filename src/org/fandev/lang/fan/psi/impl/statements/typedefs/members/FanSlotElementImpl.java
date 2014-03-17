@@ -20,33 +20,30 @@ import javax.swing.Icon;
 
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.modifiers.FanFacet;
+import org.fandev.lang.fan.psi.api.modifiers.FanModifierList;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMember;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.modifiers.FanModifierListImpl;
-import org.fandev.lang.fan.psi.impl.synthetic.FanLightIdentifier;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import com.intellij.ide.IconDescriptorUpdaters;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.util.Iconable;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNameIdentifierOwner;
-import com.intellij.psi.impl.ElementBase;
-import com.intellij.psi.impl.ElementPresentationUtil;
-import com.intellij.psi.javadoc.PsiDocComment;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.NamedStub;
-import com.intellij.ui.RowIcon;
 import com.intellij.util.IncorrectOperationException;
-import com.intellij.util.VisibilityIcons;
 
 /**
  * @author freds
  * @date Jan 24, 2009
  */
-public abstract class FanSlotElementImpl<T extends NamedStub> extends FanBaseElementImpl<T> implements PsiMember, PsiTypeParameterListOwner,
-		PsiNameIdentifierOwner, PsiDocCommentOwner
+public abstract class FanSlotElementImpl<T extends NamedStub> extends FanBaseElementImpl<T> implements FanMember, PsiNameIdentifierOwner
 {
 	protected FanSlotElementImpl(final T t, @NotNull final IStubElementType iStubElementType)
 	{
@@ -58,6 +55,7 @@ public abstract class FanSlotElementImpl<T extends NamedStub> extends FanBaseEle
 		super(astNode);
 	}
 
+	@Override
 	public int getTextOffset()
 	{
 		final PsiElement identifier = getNameIdentifier();
@@ -71,52 +69,45 @@ public abstract class FanSlotElementImpl<T extends NamedStub> extends FanBaseEle
 		return psiId == null ? null : psiId.getText();
 	}
 
+	@Override
 	@Nullable
 	public PsiElement getNameIdentifier()
 	{
 		return findChildByType(FanElementTypes.NAME_ELEMENT);
 	}
 
+	@Override
 	public PsiElement setName(@NonNls final String name) throws IncorrectOperationException
 	{
 		//TODO implement method
 		return this;
 	}
 
-	public PsiClass getContainingClass()
+	@Override
+	public FanTypeDefinition getContainingClass()
 	{
 		// Parent is body, grand parent is class
 		final PsiElement parent = getParent().getParent();
-		if(parent instanceof PsiClass)
+		if(parent instanceof FanTypeDefinition)
 		{
-			return (PsiClass) parent;
+			return (FanTypeDefinition) parent;
 		}
 		throw new IllegalStateException("Have a slot " + getName() + " with no class: " + this);
 	}
 
-	public PsiDocComment getDocComment()
-	{
-		// TODO
-		return null;
-	}
-
-	public boolean isDeprecated()
-	{
-		// TODO
-		return false;
-	}
-
+	@Override
 	@Nullable
-	public PsiModifierList getModifierList()
+	public FanModifierList getModifierList()
 	{
 		final FanModifierListImpl list = findChildByClass(FanModifierListImpl.class);
 		assert list != null;
 		return list;
 	}
 
-	public boolean hasModifierProperty(@Modifier final String name)
+	@Override
+	public boolean hasModifierProperty(final String name)
 	{
-		final PsiModifierList modifiers = getModifierList();
+		final FanModifierList modifiers = getModifierList();
 		if(modifiers != null)
 		{
 			return modifiers.hasModifierProperty(name);
@@ -124,37 +115,20 @@ public abstract class FanSlotElementImpl<T extends NamedStub> extends FanBaseEle
 		return false;
 	}
 
-	public boolean hasTypeParameters()
+	@Override
+	public boolean hasExplicitModifier(String name)
 	{
-		// Always false in Fan
+		final FanModifierList modifiers = getModifierList();
+		if(modifiers != null)
+		{
+			return modifiers.hasExplicitModifier(name);
+		}
 		return false;
-	}
-
-	public PsiTypeParameterList getTypeParameterList()
-	{
-		// Always null in Fan
-		return null;
-	}
-
-	@NotNull
-	public PsiTypeParameter[] getTypeParameters()
-	{
-		return PsiTypeParameter.EMPTY_ARRAY;  //To change body of implemented methods use File | Settings | File Templates.
 	}
 
 	public FanFacet[] getFacets()
 	{
 		return new FanFacet[0];
-	}
-
-	@Nullable
-	public Icon getIcon(final int flags)
-	{
-		final Icon icon = getIconInner();
-		final boolean isLocked = (flags & ICON_FLAG_READ_STATUS) != 0 && !isWritable();
-		final RowIcon rowIcon = ElementBase.createLayeredIcon(icon, ElementPresentationUtil.getFlags(this, isLocked));
-		VisibilityIcons.setVisibilityIcon(getModifierList(), rowIcon);
-		return rowIcon;
 	}
 
 	protected abstract Icon getIconInner();
@@ -164,24 +138,27 @@ public abstract class FanSlotElementImpl<T extends NamedStub> extends FanBaseEle
 	{
 		return new ItemPresentation()
 		{
+			@Override
 			public String getPresentableText()
 			{
 				return getName();
 			}
 
+			@Override
 			@Nullable
 			public String getLocationString()
 			{
-				final PsiClass clazz = getContainingClass();
+				final FanTypeDefinition clazz = getContainingClass();
 				final String name = clazz.getQualifiedName();
 				assert name != null;
 				return "(in " + name + ")";
 			}
 
+			@Override
 			@Nullable
 			public Icon getIcon(final boolean open)
 			{
-				return FanSlotElementImpl.this.getIcon(Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
+				return IconDescriptorUpdaters.getIcon(FanSlotElementImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
 			}
 
 			@Nullable

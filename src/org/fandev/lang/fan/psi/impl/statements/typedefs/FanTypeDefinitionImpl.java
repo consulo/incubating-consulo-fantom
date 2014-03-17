@@ -7,6 +7,7 @@ import javax.swing.Icon;
 
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.FanTokenTypes;
+import org.fandev.lang.fan.psi.FanClassType;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.modifiers.FanModifierList;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanClassDefinition;
@@ -20,11 +21,10 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
 import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanClassReferenceType;
-import org.fandev.lang.fan.psi.impl.synthetic.FanLightIdentifier;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
-import org.fandev.utils.PsiUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import com.intellij.ide.IconDescriptorUpdaters;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.diagnostic.Logger;
@@ -32,12 +32,9 @@ import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.util.Iconable;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
-import com.intellij.psi.impl.ElementBase;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.tree.IElementType;
-import com.intellij.ui.RowIcon;
 import com.intellij.util.IncorrectOperationException;
-import com.intellij.util.VisibilityIcons;
 
 /**
  * @author Dror Bereznitsky
@@ -66,11 +63,13 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 	{
 		return new ItemPresentation()
 		{
+			@Override
 			public String getPresentableText()
 			{
 				return getName();
 			}
 
+			@Override
 			@Nullable
 			public String getLocationString()
 			{
@@ -84,10 +83,11 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 				return "";
 			}
 
+			@Override
 			@Nullable
 			public Icon getIcon(final boolean open)
 			{
-				return FanTypeDefinitionImpl.this.getIcon(Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
+				return IconDescriptorUpdaters.getIcon(FanTypeDefinitionImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
 			}
 
 			@Nullable
@@ -98,11 +98,12 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		};
 	}
 
+	@Override
 	@NotNull
-	public PsiClassType[] getExtendsListTypes()
+	public FanClassType[] getExtendsListTypes()
 	{
-		final List<PsiClassType> extendsTypes = getReferenceListTypes(getInheritanceClause());
-		return extendsTypes.toArray(new PsiClassType[0]);
+		final List<FanClassType> extendsTypes = getReferenceListTypes(getInheritanceClause());
+		return extendsTypes.toArray(new FanClassType[0]);
 	}
 
 	@Nullable
@@ -111,16 +112,10 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return findChildByClass(FanInheritanceClause.class);
 	}
 
-	@NotNull
-	public PsiClassType[] getImplementsListTypes()
+	public FanTypeDefinition getSuperClass()
 	{
-		return new PsiClassType[0];
-	}
-
-	public PsiClass getSuperClass()
-	{
-		final PsiClassType[] superTypes = getSuperTypes();
-		for(final PsiClassType psiClassType : superTypes)
+		final FanClassType[] superTypes = getSuperTypes();
+		for(final FanClassType psiClassType : superTypes)
 		{
 			final FanTypeDefinition fanType = (FanTypeDefinition) psiClassType.resolve();
 			if(fanType instanceof FanClassDefinition)
@@ -135,47 +130,38 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return null;
 	}
 
+	@Override
 	public FanTypeDefinition getSuperType()
 	{
-		return (FanTypeDefinition) getSuperClass();
+		return getSuperClass();
 	}
 
 	@NotNull
-	public PsiClass[] getSupers()
+	public FanTypeDefinition[] getSupers()
 	{
-		final PsiClassType[] superTypes = getSuperTypes();
-		final List<PsiClass> result = new ArrayList<PsiClass>();
-		for(final PsiClassType superType : superTypes)
+		final FanClassType[] superTypes = getSuperTypes();
+		final List<FanTypeDefinition> result = new ArrayList<FanTypeDefinition>();
+		for(final FanClassType superType : superTypes)
 		{
-			final PsiClass superClass = superType.resolve();
+			final FanTypeDefinition superClass = superType.resolve();
 			if(superClass != null)
 			{
 				result.add(superClass);
 			}
 		}
 
-		return result.toArray(new PsiClass[0]);
+		return result.toArray(new FanTypeDefinition[0]);
 	}
 
 	@NotNull
-	public PsiClassType[] getSuperTypes()
+	public FanClassType[] getSuperTypes()
 	{
 		return getExtendsListTypes();
 	}
 
-	public PsiReferenceList getExtendsList()
+	private static List<FanClassType> getReferenceListTypes(@Nullable FanReferenceList list)
 	{
-		return null;
-	}
-
-	public PsiReferenceList getImplementsList()
-	{
-		return null;
-	}
-
-	private static List<PsiClassType> getReferenceListTypes(@Nullable FanReferenceList list)
-	{
-		final ArrayList<PsiClassType> types = new ArrayList<PsiClassType>();
+		final ArrayList<FanClassType> types = new ArrayList<FanClassType>();
 		if(list != null)
 		{
 			for(final FanCodeReferenceElement ref : list.getReferenceElements())
@@ -186,6 +172,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return types;
 	}
 
+	@Override
 	@NotNull
 	public String getPodName()
 	{
@@ -198,63 +185,50 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return "NotFanFile";
 	}
 
+	@Override
 	public int getTextOffset()
 	{
-		final PsiIdentifier identifier = getNameIdentifier();
+		final PsiElement identifier = getNameIdentifier();
 		return identifier == null ? 0 : identifier.getTextRange().getStartOffset();
 	}
 
 	@Override
 	public String getName()
 	{
-		final PsiIdentifier id = this.getNameIdentifier();
+		final PsiElement id = this.getNameIdentifier();
 		return id != null ? id.getText() : "NO NAME";
 	}
 
+	@Override
 	@Nullable
-	public PsiIdentifier getNameIdentifier()
+	public PsiElement getNameIdentifier()
 	{
-		PsiElement element = null;
-		try
-		{
-			element = findChildByType(FanElementTypes.NAME_ELEMENT);
-		}
-		catch(Exception e)
-		{
-			logger.error("Error looking for name element for " + this, e);
-		}
-		if(element != null)
-		{
-			return new FanLightIdentifier(getManager(), getContainingFile(), element.getTextRange());
-		}
-		return null;
+		return findChildByType(FanElementTypes.NAME_ELEMENT);
 	}
 
+	@Override
 	public String getQualifiedName()
 	{
 		return getPodName() + "::" + getName();
 	}
 
-	public PsiModifierList getModifierList()
+	public FanModifierList getModifierList()
 	{
 		return findChildByClass(FanModifierList.class);
 	}
 
-	public boolean hasModifierProperty(@Modifier final String name)
+	public boolean hasModifierProperty(final String name)
 	{
 		return getModifierList().hasModifierProperty(name);
 	}
 
-	@Nullable
-	public Icon getIcon(final int flags)
+	@Override
+	public boolean hasExplicitModifier(String name)
 	{
-		final Icon icon = getIconInner();
-		final boolean isLocked = (flags & ICON_FLAG_READ_STATUS) != 0 && !isWritable();
-		final RowIcon rowIcon = ElementBase.createLayeredIcon(icon, PsiUtil.getFlags(this, isLocked));
-		VisibilityIcons.setVisibilityIcon(getModifierList(), rowIcon);
-		return rowIcon;
+		return getModifierList().hasExplicitModifier(name);
 	}
 
+	@Override
 	@NotNull
 	public FanMethod[] getFanMethods()
 	{
@@ -274,6 +248,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return fanMethods;
 	}
 
+	@Override
 	@NotNull
 	public FanField[] getFanFields()
 	{
@@ -293,6 +268,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return fanFields;
 	}
 
+	@Override
 	@NotNull
 	public FanSlot[] getSlots()
 	{
@@ -316,6 +292,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return fanSlots;
 	}
 
+	@Override
 	public FanField getFieldByName(final String name)
 	{
 		final FanField[] fields = getFanFields();
@@ -329,6 +306,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return null;
 	}
 
+	@Override
 	public FanMethod getMethodByName(final String name)
 	{
 		final FanMethod[] methods = getFanMethods();
@@ -342,6 +320,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return null;
 	}
 
+	@Override
 	@NotNull
 	public FanSlot[] getSlots(final String modifier)
 	{
@@ -356,6 +335,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return slots.toArray(new FanSlot[0]);
 	}
 
+	@Override
 	@NotNull
 	public FanMethod[] getFanMethods(final String modifier)
 	{
@@ -370,6 +350,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return methods.toArray(new FanMethod[0]);
 	}
 
+	@Override
 	@NotNull
 	public FanField[] getFanFields(final String modifier)
 	{
@@ -384,16 +365,19 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return fields.toArray(new FanField[0]);
 	}
 
+	@Override
 	public String getJavaQualifiedName()
 	{
 		return "fan." + getPodName() + "." + getName();
 	}
 
+	@Override
 	public FanTypeDefinitionBody getBodyElement()
 	{
 		return (FanTypeDefinitionBody) findChildByType(getBodyElementType());
 	}
 
+	@Override
 	public PsiElement addMemberDeclaration(@NotNull final PsiElement decl, final PsiElement anchorBefore) throws IncorrectOperationException
 	{
 

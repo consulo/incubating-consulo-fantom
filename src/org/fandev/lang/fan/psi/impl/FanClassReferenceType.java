@@ -1,10 +1,10 @@
 package org.fandev.lang.fan.psi.impl;
 
+import org.fandev.lang.fan.psi.FanClassType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.pom.java.LanguageLevel;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.ResolveResult;
 import com.intellij.psi.search.GlobalSearchScope;
@@ -15,28 +15,23 @@ import com.intellij.psi.search.GlobalSearchScope;
  *
  * @author Dror Bereznitsky
  */
-public class FanClassReferenceType extends PsiClassType
+public class FanClassReferenceType implements FanClassType
 {
 	private final FanCodeReferenceElement myReferenceElement;
 
 	public FanClassReferenceType(final FanCodeReferenceElement ref)
 	{
-		this(LanguageLevel.JDK_1_6, ref);
-	}
-
-	public FanClassReferenceType(final LanguageLevel languageLevel, final FanCodeReferenceElement ref)
-	{
-		super(languageLevel);
 		this.myReferenceElement = ref;
 	}
 
-	public PsiClass resolve()
+	@Override
+	public FanTypeDefinition resolve()
 	{
 		final ResolveResult[] results = multiResolve();
 		if(results.length == 1)
 		{
 			final PsiElement only = results[0].getElement();
-			return only instanceof PsiClass ? (PsiClass) only : null;
+			return only instanceof FanTypeDefinition ? (FanTypeDefinition) only : null;
 		}
 
 		return null;
@@ -44,7 +39,7 @@ public class FanClassReferenceType extends PsiClassType
 
 	public FanTypeDefinition resolveFanType()
 	{
-		return (FanTypeDefinition) resolve();
+		return resolve();
 	}
 
 	//reference resolve is cached
@@ -58,25 +53,7 @@ public class FanClassReferenceType extends PsiClassType
 		return myReferenceElement.getReferenceName();
 	}
 
-	@NotNull
-	public PsiType[] getParameters()
-	{
-		//todo
-		return PsiType.EMPTY_ARRAY;
-	}
-
-	@NotNull
-	public ClassResolveResult resolveGenerics()
-	{
-		return ClassResolveResult.EMPTY;
-	}
-
-	@NotNull
-	public PsiClassType rawType()
-	{
-		return this;
-	}
-
+	@Override
 	public String getPresentableText()
 	{
 		return myReferenceElement.getReferenceName();
@@ -107,16 +84,5 @@ public class FanClassReferenceType extends PsiClassType
 	public GlobalSearchScope getResolveScope()
 	{
 		return myReferenceElement.getResolveScope();
-	}
-
-	@NotNull
-	public LanguageLevel getLanguageLevel()
-	{
-		return myLanguageLevel;
-	}
-
-	public PsiClassType setLanguageLevel(final LanguageLevel languageLevel)
-	{
-		return new FanClassReferenceType(languageLevel, myReferenceElement);
 	}
 }

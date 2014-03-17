@@ -21,7 +21,4 @@ public interface FanVariable extends FanElement, PsiNamedElement, PsiNameIdentif
 
 	@Nullable
 	FanType getDeclaredType();
-
-	@NotNull
-	PsiElement getDeclarationScope();
 }

@@ -2,23 +2,24 @@ package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
 import javax.swing.Icon;
 
-import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanElementTypes;
+import org.fandev.lang.fan.psi.FanType;
+import org.fandev.lang.fan.psi.api.modifiers.FanModifierList;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanEnumDefinition;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanEnumValue;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanEnumReferenceType;
-import org.fandev.lang.fan.psi.impl.synthetic.FanLightIdentifier;
 import org.fandev.lang.fan.psi.stubs.FanEnumValueStub;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import com.intellij.ide.IconDescriptorUpdaters;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.util.Iconable;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.javadoc.PsiDocComment;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.util.IncorrectOperationException;
 
@@ -40,83 +41,49 @@ public class FanEnumValueImpl extends FanBaseElementImpl<FanEnumValueStub> imple
 		super(astNode);
 	}
 
-	public void setInitializer(@Nullable final PsiExpression initializer) throws IncorrectOperationException
-	{
-		//TODO implement
-	}
-
+	@Override
 	@NotNull
-	public PsiType getType()
+	public FanType getType()
 	{
 		return new FanEnumReferenceType((FanEnumDefinition) getContainingClass());
 	}
 
-	public PsiType getTypeNoResolve()
+	@Nullable
+	@Override
+	public FanType getDeclaredType()
 	{
 		return getType();
-	}
-
-	public PsiTypeElement getTypeElement()
-	{
-		//TODO implement
-		return null;
 	}
 
 	@Override
 	public int getTextOffset()
 	{
-		final PsiIdentifier identifier = getNameIdentifier();
+		final PsiElement identifier = getNameIdentifier();
 		return identifier == null ? 0 : identifier.getTextRange().getStartOffset();
-	}
-
-	public PsiExpression getInitializer()
-	{
-		//TODO implement
-		return null;
-	}
-
-	public boolean hasInitializer()
-	{
-		//TODO implement
-		return false;
-	}
-
-	public void normalizeDeclaration() throws IncorrectOperationException
-	{
-		//TODO implement
-	}
-
-	@Nullable
-	public Object computeConstantValue()
-	{
-		return null;
 	}
 
 	@Override
 	public String getName()
 	{
-		final PsiIdentifier psiId = getNameIdentifier();
+		final PsiElement psiId = getNameIdentifier();
 		return psiId == null ? null : psiId.getText();
 	}
 
+	@Override
 	@NotNull
-	public PsiIdentifier getNameIdentifier()
+	public PsiElement getNameIdentifier()
 	{
-		final PsiElement element = findChildByType(FanElementTypes.NAME_ELEMENT);
-		if(element != null)
-		{
-			return new FanLightIdentifier(getManager(), getContainingFile(), element.getTextRange());
-		}
-		return null;
+		return findChildByType(FanElementTypes.NAME_ELEMENT);
 	}
 
-	public PsiClass getContainingClass()
+	@Override
+	public FanTypeDefinition getContainingClass()
 	{
 		// Parent is body, grand parent is class
 		final PsiElement parent = getParent().getParent();
 		if(parent instanceof FanEnumDefinition)
 		{
-			return (PsiClass) parent;
+			return (FanTypeDefinition) parent;
 		}
 		throw new IllegalStateException("Have an enum value " + getName() + " with no enum: " + this);
 	}
@@ -126,35 +93,31 @@ public class FanEnumValueImpl extends FanBaseElementImpl<FanEnumValueStub> imple
 		return false;
 	}
 
+	@Override
 	@Nullable
-	public PsiModifierList getModifierList()
+	public FanModifierList getModifierList()
 	{
 		return null;
 	}
 
-	public boolean hasModifierProperty(@Modifier final String name)
+	@Override
+	public boolean hasModifierProperty(final String name)
 	{
 		// TODO
 		return false;
 	}
 
-	public PsiElement setName(@NonNls final String name) throws IncorrectOperationException
+	@Override
+	public boolean hasExplicitModifier(String name)
 	{
-		//TODO implement method
-		return this;
-	}
-
-	@Nullable
-	public PsiDocComment getDocComment()
-	{
-		//TODO implement method
-		return null;
+		return false;
 	}
 
 	@Override
-	public Icon getIcon(final int flags)
+	public PsiElement setName(@NotNull @NonNls final String name) throws IncorrectOperationException
 	{
-		return Icons.ENUM;
+		//TODO implement method
+		return this;
 	}
 
 	@Override
@@ -162,24 +125,27 @@ public class FanEnumValueImpl extends FanBaseElementImpl<FanEnumValueStub> imple
 	{
 		return new ItemPresentation()
 		{
+			@Override
 			public String getPresentableText()
 			{
 				return getName();
 			}
 
+			@Override
 			@Nullable
 			public String getLocationString()
 			{
-				final PsiClass clazz = getContainingClass();
+				final FanTypeDefinition clazz = getContainingClass();
 				final String name = clazz.getQualifiedName();
 				assert name != null;
 				return "(in " + name + ")";
 			}
 
+			@Override
 			@Nullable
 			public Icon getIcon(final boolean open)
 			{
-				return FanEnumValueImpl.this.getIcon(Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
+				return IconDescriptorUpdaters.getIcon(FanEnumValueImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
 			}
 
 			@Nullable

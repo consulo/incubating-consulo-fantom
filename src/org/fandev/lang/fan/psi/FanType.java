@@ -9,7 +9,23 @@ import org.consulo.lombok.annotations.ArrayFactoryFields;
 @ArrayFactoryFields
 public interface FanType
 {
-	public static final FanType BOTTOM = new FanType()
+	FanType BOTTOM = new FanType()
 	{
+		@Override
+		public String getPresentableText()
+		{
+			return "bottom";
+		}
 	};
+
+	FanType VOID = new FanType()
+	{
+		@Override
+		public String getPresentableText()
+		{
+			return "void";
+		}
+	};
+
+	String getPresentableText();
 }

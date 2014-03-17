@@ -3,7 +3,6 @@ package org.fandev.lang.fan.psi.impl;
 import org.fandev.lang.fan.psi.FanElement;
 import org.fandev.lang.fan.psi.api.FanResolveResult;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiSubstitutor;
 
 /**
  * @author Dror Bereznitsky
@@ -14,22 +13,20 @@ public class FanResolveResultImpl implements FanResolveResult
 	private PsiElement myElement;
 	private boolean myIsAccessible;
 	private boolean myIsStaticsOK;
-	private PsiSubstitutor mySubstitutor;
 
 	private FanElement myCurrentFileResolveContext;
 
 	public FanResolveResultImpl(final PsiElement element, final boolean isAccessible)
 	{
-		this(element, null, PsiSubstitutor.EMPTY, isAccessible, true);
+		this(element, null, isAccessible, true);
 	}
 
-	public FanResolveResultImpl(final PsiElement element, final FanElement context, final PsiSubstitutor substitutor, final boolean isAccessible,
+	public FanResolveResultImpl(final PsiElement element, final FanElement context, final boolean isAccessible,
 			final boolean staticsOK)
 	{
 		myCurrentFileResolveContext = context;
 		myElement = element;
 		myIsAccessible = isAccessible;
-		mySubstitutor = substitutor;
 		myIsStaticsOK = staticsOK;
 	}
 
@@ -46,10 +43,5 @@ public class FanResolveResultImpl implements FanResolveResult
 	public boolean isAccessible()
 	{
 		return myIsAccessible;
-	}
-
-	public PsiSubstitutor getSubstitutor()
-	{
-		return mySubstitutor;
 	}
 }

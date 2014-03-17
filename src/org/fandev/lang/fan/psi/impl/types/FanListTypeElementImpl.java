@@ -1,5 +1,6 @@
 package org.fandev.lang.fan.psi.impl.types;
 
+import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.types.FanClassTypeElement;
 import org.fandev.lang.fan.psi.api.types.FanListTypeElement;
@@ -23,7 +24,7 @@ public class FanListTypeElementImpl extends FanBaseElementImpl implements FanLis
 	}
 
 	@NotNull
-	public PsiType getType()
+	public FanType getType()
 	{
 		final FanClassTypeElement fanTypeElem = getTypeElement();
 		return new FanListReferenceType(this, fanTypeElem.getType());

@@ -1,13 +1,8 @@
 package org.fandev.lang.fan.psi.impl;
 
+import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.types.FanFuncTypeElement;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import com.intellij.psi.PsiAnnotation;
-import com.intellij.psi.PsiType;
-import com.intellij.psi.PsiTypeVisitor;
-import com.intellij.psi.search.GlobalSearchScope;
 
 /**
  * Date: Jul 19, 2009
@@ -15,18 +10,17 @@ import com.intellij.psi.search.GlobalSearchScope;
  *
  * @author Dror Bereznitsky
  */
-public class FanFuncType extends PsiType
+public class FanFuncType implements FanType
 {
 	private FanFuncTypeElement element;
 
 	// TODO [Dror] maybe find something better as the constructor argument
 	public FanFuncType(final FanFuncTypeElement element)
 	{
-		super(PsiAnnotation.EMPTY_ARRAY);
 		this.element = element;
 	}
 
-	public PsiType getReturnType()
+	public FanType getReturnType()
 	{
 		return element.getReturnType().getType();
 	}
@@ -54,26 +48,5 @@ public class FanFuncType extends PsiType
 	public boolean isValid()
 	{
 		return false;  //To change body of implemented methods use File | Settings | File Templates.
-	}
-
-	public boolean equalsToText(@NonNls final String s)
-	{
-		return false;  //To change body of implemented methods use File | Settings | File Templates.
-	}
-
-	public <A> A accept(final PsiTypeVisitor<A> aPsiTypeVisitor)
-	{
-		return null;  //To change body of implemented methods use File | Settings | File Templates.
-	}
-
-	public GlobalSearchScope getResolveScope()
-	{
-		return null;  //To change body of implemented methods use File | Settings | File Templates.
-	}
-
-	@NotNull
-	public PsiType[] getSuperTypes()
-	{
-		return new PsiType[0];
 	}
 }

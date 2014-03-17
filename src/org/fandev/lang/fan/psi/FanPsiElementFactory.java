@@ -1,7 +1,9 @@
 package org.fandev.lang.fan.psi;
 
 import org.fandev.lang.fan.FanFileType;
+import org.fandev.lang.fan.psi.api.statements.blocks.FanPsiCodeBlock;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.api.topLevel.FanTopStatement;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.components.ServiceManager;
@@ -45,7 +47,7 @@ public class FanPsiElementFactory
 		return (FanTopStatement) firstChild;
 	}
 
-	public PsiCodeBlock createMethodBodyFromText(final String text)
+	public FanPsiCodeBlock createMethodBodyFromText(final String text)
 	{
 		final StringBuilder sb = new StringBuilder();
 		sb.append("class foo {\n");
@@ -54,7 +56,7 @@ public class FanPsiElementFactory
 		sb.append("}");
 		final FanFile file = createDummyFile(sb.toString());
 		final FanTypeDefinition type = (FanTypeDefinition) file.getTopLevelDefinitions()[0];
-		final PsiMethod method = type.getMethods()[0];
+		final FanMethod method = type.getFanMethods()[0];
 		return method.getBody();
 	}
 

@@ -27,14 +27,8 @@ import org.fandev.lang.fan.psi.stubs.FanFieldStub;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.Bottom;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiExpression;
-import com.intellij.psi.PsiType;
-import com.intellij.psi.PsiTypeElement;
 import com.intellij.psi.StubBasedPsiElement;
 import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.util.IncorrectOperationException;
 
 /**
  * @author freds
@@ -72,6 +66,13 @@ public class FanFieldImpl extends FanSlotElementImpl<FanFieldStub> implements Fa
 			return classTypeElement.getType();
 		}
 		return FanType.BOTTOM;
+	}
+
+	@Nullable
+	@Override
+	public FanType getDeclaredType()
+	{
+		return getType();
 	}
 
 	protected FanTypeElement findTypeElement()

@@ -1,14 +1,10 @@
 package org.fandev.lang.fan.psi.impl;
 
+import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.types.FanMapTypeElement;
 import org.fandev.lang.fan.psi.api.types.FanTypeElement;
-import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import com.intellij.psi.PsiAnnotation;
-import com.intellij.psi.PsiType;
-import com.intellij.psi.PsiTypeVisitor;
-import com.intellij.psi.search.GlobalSearchScope;
+import com.intellij.psi.PsiElement;
 
 /**
  * Date: Jul 21, 2009
@@ -16,7 +12,7 @@ import com.intellij.psi.search.GlobalSearchScope;
  *
  * @author Dror Bereznitsky
  */
-public class FanMapType extends PsiType
+public class FanMapType implements FanType
 {
 	private final FanTypeElement keyType;
 	private final FanTypeElement valueType;
@@ -25,7 +21,6 @@ public class FanMapType extends PsiType
 
 	public FanMapType(final FanMapTypeElement element, final FanTypeElement keyType, final FanTypeElement valueType)
 	{
-		super(new PsiAnnotation[0]);
 		this.element = element;
 		this.keyType = keyType;
 		this.valueType = valueType;
@@ -42,6 +37,12 @@ public class FanMapType extends PsiType
 		return text;
 	}
 
+	@Override
+	public PsiElement resolve()
+	{
+		return null;
+	}
+
 	public String getCanonicalText()
 	{
 		return text;
@@ -55,26 +56,5 @@ public class FanMapType extends PsiType
 	public boolean isValid()
 	{
 		return true;
-	}
-
-	public boolean equalsToText(@NonNls final String s)
-	{
-		return false;  //To change body of implemented methods use File | Settings | File Templates.
-	}
-
-	public <A> A accept(final PsiTypeVisitor<A> aPsiTypeVisitor)
-	{
-		return null;  //To change body of implemented methods use File | Settings | File Templates.
-	}
-
-	public GlobalSearchScope getResolveScope()
-	{
-		return null;  //To change body of implemented methods use File | Settings | File Templates.
-	}
-
-	@NotNull
-	public PsiType[] getSuperTypes()
-	{
-		return new PsiType[0];  //To change body of implemented methods use File | Settings | File Templates.
 	}
 }

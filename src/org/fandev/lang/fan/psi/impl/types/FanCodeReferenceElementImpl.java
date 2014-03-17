@@ -8,6 +8,7 @@ import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.FanFileType;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.FanResolveResult;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.FanReferenceElementImpl;
 import org.fandev.lang.fan.psi.impl.FanResolveResultImpl;
@@ -43,22 +44,26 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 		super(astNode);
 	}
 
+	@Override
 	public String toString()
 	{
 		return "Reference element";
 	}
 
+	@Override
 	public PsiElement getQualifier()
 	{
 		return this;
 	}
 
+	@Override
 	public PsiElement resolve()
 	{
 		final ResolveResult[] results = getManager().getResolveCache().resolveWithCaching(this, RESOLVER, false, false);
 		return results.length == 1 ? results[0].getElement() : null;
 	}
 
+	@Override
 	public String getCanonicalText()
 	{
 		final PsiElement resolved = resolve();
@@ -73,11 +78,13 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 		return null;
 	}
 
+	@Override
 	public boolean isReferenceTo(final PsiElement psiElement)
 	{
 		return getManager().areElementsEquivalent(psiElement, resolve());
 	}
 
+	@Override
 	public Object[] getVariants()
 	{
 		final FanCodeReferenceElement qualifier = (FanCodeReferenceElement) getQualifier();
@@ -111,11 +118,13 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 		return new Object[]{};
 	}
 
+	@Override
 	public boolean isSoft()
 	{
 		return false;
 	}
 
+	@Override
 	@NotNull
 	public ResolveResult[] multiResolve(final boolean incompleteCode)
 	{
@@ -125,6 +134,7 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 	private static class FanResolver implements ResolveCache.PolyVariantResolver<FanCodeReferenceElementImpl>
 	{
 
+		@Override
 		public ResolveResult[] resolve(final FanCodeReferenceElementImpl fanCodeReferenceElement, final boolean incompleteCode)
 		{
 			if(fanCodeReferenceElement.getReferenceName() == null)
@@ -147,13 +157,14 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 				final List<FanResolveResult> results = new ArrayList<FanResolveResult>();
 				ProjectRootManager.getInstance(manager.getProject()).getFileIndex().iterateContent(new ContentIterator()
 				{
+					@Override
 					public boolean processFile(final VirtualFile virtualFile)
 					{
 						if(FanFileType.INSTANCE == virtualFile.getFileType())
 						{
 							final FanFile psiFile = (FanFile) manager.findFile(virtualFile);
-							final PsiClass[] classes = psiFile.getClasses();
-							for(final PsiClass aClass : classes)
+							final FanTypeDefinition[] classes = psiFile.getTypeDefinitions();
+							for(final FanTypeDefinition aClass : classes)
 							{
 								if(refName.equals(aClass.getName()))
 								{
@@ -176,8 +187,8 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 				if(typeFile != null)
 				{
 					final FanFile psiFile = (FanFile) typeFile;
-					final PsiClass[] classes = psiFile.getClasses();
-					for(final PsiClass aClass : classes)
+					final FanTypeDefinition[] classes = psiFile.getTypeDefinitions();
+					for(final FanTypeDefinition aClass : classes)
 					{
 						try
 						{

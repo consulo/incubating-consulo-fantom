@@ -8,7 +8,9 @@ import java.util.Set;
 
 import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.psi.FanFile;
+import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.FanResolveResult;
+import org.fandev.lang.fan.psi.api.modifiers.FanModifier;
 import org.fandev.lang.fan.psi.api.statements.FanVariable;
 import org.fandev.lang.fan.psi.api.statements.expressions.FanClosureExpression;
 import org.fandev.lang.fan.psi.api.statements.expressions.FanExpression;
@@ -18,12 +20,16 @@ import org.fandev.lang.fan.psi.api.statements.expressions.FanSuperReferenceExpre
 import org.fandev.lang.fan.psi.api.statements.expressions.FanThisReferenceExpression;
 import org.fandev.lang.fan.psi.api.statements.expressions.FanTypeReferenceExpression;
 import org.fandev.lang.fan.psi.api.statements.expressions.PodReferenceExpression;
+import org.fandev.lang.fan.psi.api.statements.params.FanFormal;
 import org.fandev.lang.fan.psi.api.statements.params.FanFormals;
+import org.fandev.lang.fan.psi.api.statements.params.FanParameter;
+import org.fandev.lang.fan.psi.api.statements.params.FanParameterList;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanEnumDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanConstructor;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanEnumValue;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMember;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.impl.FanClassReferenceType;
 import org.fandev.lang.fan.psi.impl.FanFuncType;
@@ -69,11 +75,13 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 		super(astNode);
 	}
 
+	@Override
 	public PsiElement getQualifier()
 	{
 		return this;
 	}
 
+	@Override
 	public boolean isReferenceTo(final PsiElement psiElement)
 	{
 		for(final Object obj : getVariants())
@@ -86,12 +94,15 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 		return false;
 	}
 
-	public PsiElement setName(@NonNls final String s) throws IncorrectOperationException
+	@Override
+	public PsiElement setName(@NotNull @NonNls final String s) throws IncorrectOperationException
 	{
 		//TODO [Dror] implement
 		return null;
 	}
 
+	@NotNull
+	@Override
 	public Object[] getVariants()
 	{
 		final List<PsiElement> result = new ArrayList<PsiElement>();
@@ -111,34 +122,41 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 		return new Object[0];
 	}
 
+	@Override
 	public boolean isSoft()
 	{
 		return false;
 	}
 
+	@NotNull
+	@Override
 	public String getCanonicalText()
 	{
 		return null;
 	}
 
+	@Override
 	@NotNull
 	//incomplete means we do not take arguments into consideration
 	public ResolveResult[] multiResolve(final boolean incompleteCode)
 	{
-		return getManager().getResolveCache().resolveWithCaching(this, RESOLVER, false, incompleteCode);
+		return ResolveCache.getInstance(getProject()).resolveWithCaching(this, RESOLVER, false, incompleteCode);
 	}
 
+	@Override
 	public PsiElement resolve()
 	{
-		final ResolveResult[] results = getManager().getResolveCache().resolveWithCaching(this, RESOLVER, false, false);
+		final ResolveResult[] results = ResolveCache.getInstance(getProject()).resolveWithCaching(this, RESOLVER, false, false);
 		return results.length == 1 ? results[0].getElement() : null;
 	}
 
+	@Override
 	public FanExpression getQualifierExpression()
 	{
 		return findChildByClass(FanExpression.class);
 	}
 
+	@Override
 	@NotNull
 	public FanResolveResult[] getSameNameVariants()
 	{
@@ -148,7 +166,9 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 	private static class OurResolver implements ResolveCache.PolyVariantResolver<FanReferenceExpressionImpl>
 	{
 		//TODO [Dror] refactor this complex, ugly, HUGE method !!!
-		public FanResolveResult[] resolve(final FanReferenceExpressionImpl refExpr, final boolean incompleteCode)
+		@NotNull
+		@Override
+		public FanResolveResult[] resolve(@NotNull final FanReferenceExpressionImpl refExpr, final boolean incompleteCode)
 		{
 			final List<FanResolveResult> results = new ArrayList<FanResolveResult>();
 
@@ -190,7 +210,7 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 					{
 						final FanFormals fanFormals = ((FanClosureExpression) containingBlock).getFunction().getFormals();
 						final String toMatch = stripRefElement(hint.idElement);
-						for(final PsiParameter formal : fanFormals.getParameters())
+						for(final FanFormal formal : fanFormals.getParameters())
 						{
 							if(toMatch.equals(formal.getName()))
 							{
@@ -213,8 +233,8 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 					}
 					else if(FanUtil.isFanMethod(containingBlock))
 					{
-						final PsiParameterList params = ((FanMethod) containingBlock).getParameterList();
-						for(final PsiParameter param : params.getParameters())
+						final FanParameterList params = ((FanMethod) containingBlock).getParameterList();
+						for(final FanParameter param : params.getParameters())
 						{
 							String elementText = hint.idElement.getText();
 							if(elementText.indexOf("(") != -1)
@@ -239,7 +259,7 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 					else if(FanUtil.isPsiCodeBlock(containingBlock))
 					{
 						// Look for a local variable inside code block
-						List<PsiVariable> variables;
+						List<FanVariable> variables;
 						if(hint.gotoDecleration && !hint.fieldOrMethodeRef && !hint.isMethodRef)
 						{
 							variables = findVariablesByName(hint.idElement, containingBlock, true);
@@ -255,10 +275,10 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 							variables = findVariablesByName(hint.idElement, containingBlock, true);
 							if(variables.size() > 0)
 							{
-								final PsiType type = variables.get(0).getType();
+								final FanType type = variables.get(0).getType();
 								if(type instanceof FanFuncType)
 								{
-									final PsiType returnType = ((FanFuncType) type).getReturnType();
+									final FanType returnType = ((FanFuncType) type).getReturnType();
 									return new FanResolveResult[]{new FanResolveResultImpl(((FanClassReferenceType) returnType).resolveFanType(), true)};
 								}
 								//break;
@@ -269,7 +289,7 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 							variables = findVariablesByName(hint.idElement, containingBlock, false);
 							if(variables.size() > 0)
 							{
-								results.addAll(Arrays.asList(createResults(refExpr, variables.toArray(new PsiVariable[0]))));
+								results.addAll(Arrays.asList(createResults(refExpr, variables.toArray(new FanVariable[0]))));
 								//break;
 							}
 						}
@@ -279,7 +299,7 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 							variables = findVariablesByName(hint.idElement, containingBlock, true);
 							if(variables.size() > 0)
 							{
-								final PsiType type = variables.get(0).getType();
+								final FanType type = variables.get(0).getType();
 								if(type instanceof FanClassReferenceType)
 								{
 									referenceType = (FanClassReferenceType) type;
@@ -292,7 +312,7 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 					{
 						// Look for a field inside the Fan type hierarchy
 						FanTypeDefinition myClass = (FanTypeDefinition) containingBlock;
-						while(myClass instanceof PsiClass)
+						while(myClass instanceof FanTypeDefinition)
 						{
 							if(hint.isMethodRef && !hint.fieldOrMethodeRef)
 							{
@@ -361,7 +381,7 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 			}
 
 			final PsiElement typeProvider = ((FanReferenceExpression) hint.idElement).resolve();
-			PsiType type = null;
+			FanType type = null;
 			if(FanUtil.isFanMethod(typeProvider))
 			{
 				type = ((FanMethod) typeProvider).getReturnType();
@@ -393,7 +413,7 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 				// if this is a function call than use the function return type
 				if(hint.idElement.getText().contains("("))
 				{
-					final PsiType returnType = ((FanFuncType) type).getReturnType();
+					final FanType returnType = ((FanFuncType) type).getReturnType();
 					typeDefinition = ((FanClassReferenceType) returnType).resolveFanType();
 				}
 				else
@@ -426,9 +446,9 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 			for(final PsiElement elem : element)
 			{
 				boolean isAccessible = true;
-				if(PsiMember.class.isAssignableFrom(elem.getClass()))
+				if(FanMember.class.isAssignableFrom(elem.getClass()))
 				{
-					isAccessible = PsiUtil.isAccessible(refExpr, (PsiMember) elem);
+					isAccessible = PsiUtil.isAccessible(refExpr, (FanMember) elem);
 				}
 				results.add(new FanResolveResultImpl(elem, isAccessible));
 			}
@@ -445,8 +465,8 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 			boolean isSuperType = false;
 			while(typeDefinition != null)
 			{
-				final FanMethod[] methods = hint.isStatic ? typeDefinition.getFanMethods(PsiModifier.STATIC) : typeDefinition.getFanMethods();
-				for(final PsiMethod method : methods)
+				final FanMethod[] methods = hint.isStatic ? typeDefinition.getFanMethods(FanModifier.STATIC) : typeDefinition.getFanMethods();
+				for(final FanMethod method : methods)
 				{
 					if((!hint.gotoDecleration && method.getName().startsWith(hint.toMatch)) || (hint.gotoDecleration && method.getName().equals(hint.toMatch)))
 					{
@@ -461,8 +481,8 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 				}
 				if(!hint.isMethodRef)
 				{
-					final FanField[] fields = hint.isStatic ? typeDefinition.getFanFields(PsiModifier.STATIC) : typeDefinition.getFanFields();
-					for(final PsiField psiField : fields)
+					final FanField[] fields = hint.isStatic ? typeDefinition.getFanFields(FanModifier.STATIC) : typeDefinition.getFanFields();
+					for(final FanField psiField : fields)
 					{
 						if((!hint.gotoDecleration && psiField.getName().startsWith(hint.toMatch)) || (hint.gotoDecleration && psiField.getName().equals(hint.toMatch)))
 						{
@@ -489,31 +509,31 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 			}
 		}
 
-		private List<PsiVariable> findVariablesByName(final PsiElement idElement, final PsiElement containingBlock, final boolean exectMatch)
+		private List<FanVariable> findVariablesByName(final PsiElement idElement, final PsiElement containingBlock, final boolean exectMatch)
 		{
-			final List<PsiVariable> variables = new ArrayList<PsiVariable>();
+			final List<FanVariable> variables = new ArrayList<FanVariable>();
 			final String toMatch = stripRefElement(idElement);
 			for(final PsiElement psiElement : containingBlock.getChildren())
 			{
-				if(psiElement instanceof PsiVariable)
+				if(psiElement instanceof FanVariable)
 				{
-					final String name = ((PsiVariable) psiElement).getName();
+					final String name = ((FanVariable) psiElement).getName();
 					if(name != null)
 					{
 						if(name.equals(toMatch))
 						{
 							if(variables.size() > 0)
 							{
-								variables.set(0, (PsiVariable) psiElement);
+								variables.set(0, (FanVariable) psiElement);
 							}
 							else
 							{
-								variables.add((PsiVariable) psiElement);
+								variables.add((FanVariable) psiElement);
 							}
 						}
 						else if(name.startsWith(toMatch) && !exectMatch)
 						{
-							variables.add((PsiVariable) psiElement);
+							variables.add((FanVariable) psiElement);
 						}
 					}
 				}

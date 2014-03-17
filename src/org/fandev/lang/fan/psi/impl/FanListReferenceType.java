@@ -5,8 +5,6 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.types.FanClassTypeElement;
 import org.fandev.lang.fan.psi.api.types.FanListTypeElement;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.psi.PsiArrayType;
-import com.intellij.psi.PsiType;
 
 /**
  * Date: Jul 17, 2009
@@ -14,14 +12,16 @@ import com.intellij.psi.PsiType;
  *
  * @author Dror Bereznitsky
  */
-public class FanListReferenceType extends PsiArrayType
+public class FanListReferenceType implements FanType
 {
 	private FanListTypeElement element;
+	@NotNull
+	private final FanType myInnerType;
 
-	public FanListReferenceType(final FanListTypeElement element, @NotNull final PsiType psiType)
+	public FanListReferenceType(final FanListTypeElement element, @NotNull final FanType innerType)
 	{
-		super(psiType);
 		this.element = element;
+		myInnerType = innerType;
 	}
 
 	public FanTypeDefinition getListType()
@@ -37,5 +37,11 @@ public class FanListReferenceType extends PsiArrayType
 	public FanClassTypeElement getTypeElement()
 	{
 		return element.getTypeElement();
+	}
+
+	@Override
+	public String getPresentableText()
+	{
+		return myInnerType.getPresentableText() + "[]";
 	}
 }

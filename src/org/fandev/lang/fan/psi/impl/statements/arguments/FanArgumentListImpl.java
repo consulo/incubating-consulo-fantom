@@ -25,11 +25,13 @@ public class FanArgumentListImpl extends FanBaseElementImpl implements FanArgume
 		return "Arguments";
 	}
 
+	@Override
 	public FanArgument[] getArguments()
 	{
 		return findChildrenByClass(FanArgument.class);
 	}
 
+	@Override
 	public int indexOf(@NotNull final FanArgument arg)
 	{
 		final FanArgument[] arguments = getArguments();

@@ -1,22 +1,16 @@
 package org.fandev.lang.fan.psi.impl.statements.typedefs;
 
-import java.util.Collection;
-import java.util.List;
-
 import javax.swing.Icon;
 
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanMixinDefinition;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.ASTNode;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.util.Pair;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.javadoc.PsiDocComment;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.util.IncorrectOperationException;
 
@@ -28,8 +22,6 @@ import com.intellij.util.IncorrectOperationException;
  */
 public class FanMixinDefinitionImpl extends FanTypeDefinitionImpl implements FanMixinDefinition
 {
-	private final static Logger logger = Logger.getInstance("org.fandev.lang.fan.psi.impl.statements.typedefs.FanMixinDefinitionImpl");
-
 	public FanMixinDefinitionImpl(final FanTypeDefinitionStub stubElement)
 	{
 		super(stubElement, FanElementTypes.CLASS_DEFINITION);
@@ -40,17 +32,20 @@ public class FanMixinDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 		super(astNode);
 	}
 
+	@Override
 	public String toString()
 	{
 		return "Mixin definition";
 	}
 
-	public PsiElement setName(@NonNls final String name) throws IncorrectOperationException
+	@Override
+	public PsiElement setName(@NotNull @NonNls final String name) throws IncorrectOperationException
 	{
 		// TODO rename
 		return this;
 	}
 
+	@Override
 	public boolean isInterface()
 	{
 		return false;
@@ -61,14 +56,10 @@ public class FanMixinDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 		return false;
 	}
 
+	@Override
 	public boolean isEnum()
 	{
 		return false;
-	}
-
-	public PsiClass[] getInterfaces()
-	{
-		return PsiClass.EMPTY_ARRAY;
 	}
 
 	@Override
@@ -80,162 +71,20 @@ public class FanMixinDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 		super.subtreeChanged();
 	}
 
-	@NotNull
-	public PsiField[] getFields()
-	{
-		return getFanFields();
-	}
-
-	@NotNull
-	public PsiMethod[] getMethods()
-	{
-		return getFanMethods();
-	}
-
-	// Mixins cannot declare constructors
-	@NotNull
-	public PsiMethod[] getConstructors()
-	{
-		return PsiMethod.EMPTY_ARRAY;
-	}
-
-	@NotNull
-	public PsiClass[] getInnerClasses()
-	{
-		return PsiClass.EMPTY_ARRAY;
-	}
-
-	@NotNull
-	public PsiClassInitializer[] getInitializers()
-	{
-		return PsiClassInitializer.EMPTY_ARRAY;
-	}
-
-	@NotNull
-	public PsiField[] getAllFields()
-	{
-		return PsiField.EMPTY_ARRAY;
-	}
-
-	@NotNull
-	public PsiMethod[] getAllMethods()
-	{
-		return PsiMethod.EMPTY_ARRAY;
-	}
-
-	@NotNull
-	public PsiClass[] getAllInnerClasses()
-	{
-		return PsiClass.EMPTY_ARRAY;
-	}
-
-	public PsiField findFieldByName(@NonNls final String name, final boolean checkBases)
-	{
-		return null;
-	}
-
-	public PsiMethod findMethodBySignature(final PsiMethod patternMethod, final boolean checkBases)
+	@Override
+	public FanTypeDefinition getContainingClass()
 	{
 		return null;
 	}
 
 	@NotNull
-	public PsiMethod[] findMethodsBySignature(final PsiMethod patternMethod, final boolean checkBases)
-	{
-		return PsiMethod.EMPTY_ARRAY;
-	}
-
-	@NotNull
-	public PsiMethod[] findMethodsByName(@NonNls final String name, final boolean checkBases)
-	{
-		return PsiMethod.EMPTY_ARRAY;
-	}
-
-	@NotNull
-	public List<Pair<PsiMethod, PsiSubstitutor>> findMethodsAndTheirSubstitutorsByName(@NonNls final String name, final boolean checkBases)
-	{
-		return null;
-	}
-
-	@NotNull
-	public List<Pair<PsiMethod, PsiSubstitutor>> getAllMethodsAndTheirSubstitutors()
-	{
-		return null;
-	}
-
-	public PsiClass findInnerClassByName(@NonNls final String name, final boolean checkBases)
-	{
-		return null;
-	}
-
-	public PsiJavaToken getLBrace()
-	{
-		return null;
-	}
-
-	public PsiJavaToken getRBrace()
-	{
-		return null;
-	}
-
-	public PsiElement getScope()
-	{
-		return null;
-	}
-
-	public boolean isInheritor(@NotNull final PsiClass baseClass, final boolean checkDeep)
-	{
-		return false;
-	}
-
-	public boolean isInheritorDeep(final PsiClass baseClass, @Nullable final PsiClass classToByPass)
-	{
-		return false;
-	}
-
-	public PsiClass getContainingClass()
-	{
-		return null;
-	}
-
-	@NotNull
-	public Collection<HierarchicalMethodSignature> getVisibleSignatures()
-	{
-		return null;
-	}
-
-	public PsiDocComment getDocComment()
-	{
-		return null;
-	}
-
-	public boolean isDeprecated()
-	{
-		return false;
-	}
-
-	public boolean hasTypeParameters()
-	{
-		return false;
-	}
-
-	public PsiTypeParameterList getTypeParameterList()
-	{
-		return null;
-	}
-
-	@NotNull
-	public PsiTypeParameter[] getTypeParameters()
-	{
-		return PsiTypeParameter.EMPTY_ARRAY;
-	}
-
 	@Override
 	protected Icon getIconInner()
 	{
 		return Icons.MIXIN;
 	}
 
+	@Override
 	protected IElementType getBodyElementType()
 	{
 		return FanElementTypes.MIXIN_BODY;

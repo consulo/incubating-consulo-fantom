@@ -20,11 +20,13 @@ public class FanArgumentImpl extends FanBaseElementImpl implements FanArgument
 		super(astNode);
 	}
 
+	@Override
 	public int getIndex()
 	{
 		return getArgumentList().indexOf(this);
 	}
 
+	@Override
 	@NotNull
 	public FanArgumentList getArgumentList()
 	{

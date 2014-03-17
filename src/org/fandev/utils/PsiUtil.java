@@ -1,8 +1,11 @@
 package org.fandev.utils;
 
+import org.fandev.lang.fan.psi.api.modifiers.FanModifierListOwner;
 import org.fandev.lang.fan.psi.api.statements.FanTopLevelDefintion;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMember;
 import org.jetbrains.annotations.Nullable;
-import com.intellij.compiler.CompilerConfiguration;
+import com.intellij.openapi.compiler.CompilerManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectRootManager;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -15,27 +18,27 @@ import com.intellij.psi.PsiFile;
  */
 public class PsiUtil
 {
-	public static boolean isAccessible(final PsiElement place, final PsiMember member)
+	public static boolean isAccessible(final PsiElement place, final FanMember member)
 	{
-		return com.intellij.psi.util.PsiUtil.isAccessible(member, place, null);
+		return true; //TODO [VISTALL]
 	}
 
-	public static int getFlags(final PsiModifierListOwner paramPsiModifierListOwner, final boolean paramBoolean)
+	public static int getFlags(final FanModifierListOwner paramPsiModifierListOwner, final boolean paramBoolean)
 	{
 		final PsiFile localPsiFile = paramPsiModifierListOwner.getContainingFile();
 
 		final VirtualFile localVirtualFile = (localPsiFile == null) ? null : localPsiFile.getVirtualFile();
 
-		final int enumFlag = ((paramPsiModifierListOwner instanceof PsiClass) && (((PsiClass) paramPsiModifierListOwner).isEnum())) ? 1 : 0;
+		final int enumFlag = ((paramPsiModifierListOwner instanceof FanTypeDefinition) && (((FanTypeDefinition) paramPsiModifierListOwner).isEnum())) ? 1 : 0;
 
 		int mainFlag = (((paramPsiModifierListOwner.hasModifierProperty("final")) && (enumFlag == 0)) ? 1024 : 0) |
 				(((paramPsiModifierListOwner.hasModifierProperty("static")) && (enumFlag == 0)) ? 512 : 0) |
 				((paramBoolean) ? 2048 : 0) |
 				((isExcluded(localVirtualFile, paramPsiModifierListOwner.getProject())) ? 4096 : 0);
 
-		if(paramPsiModifierListOwner instanceof PsiClass)
+		if(paramPsiModifierListOwner instanceof FanTypeDefinition)
 		{
-			if((paramPsiModifierListOwner.hasModifierProperty("abstract")) && (!(((PsiClass) paramPsiModifierListOwner).isInterface())))
+			if((paramPsiModifierListOwner.hasModifierProperty("abstract")) && (!(((FanTypeDefinition) paramPsiModifierListOwner).isInterface())))
 			{
 				mainFlag |= 256;
 			}
@@ -46,7 +49,7 @@ public class PsiUtil
 	public static boolean isExcluded(final VirtualFile paramVirtualFile, final Project paramProject)
 	{
 		return ((paramVirtualFile != null) && (ProjectRootManager.getInstance(paramProject).getFileIndex().isInSource(paramVirtualFile)) &&
-				(CompilerConfiguration.getInstance(paramProject).isExcludedFromCompilation(paramVirtualFile)));
+				(CompilerManager.getInstance(paramProject).isExcludedFromCompilation(paramVirtualFile)));
 	}
 
 	@Nullable

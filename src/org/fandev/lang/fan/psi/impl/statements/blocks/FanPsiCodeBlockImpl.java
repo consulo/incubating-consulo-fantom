@@ -18,12 +18,11 @@ package org.fandev.lang.fan.psi.impl.statements.blocks;
 
 import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.psi.api.statements.blocks.FanPsiCodeBlock;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanStatement;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiJavaToken;
-import com.intellij.psi.PsiStatement;
 
 /**
  * @author freds
@@ -36,10 +35,11 @@ public class FanPsiCodeBlockImpl extends ASTWrapperPsiElement implements FanPsiC
 		super(node);
 	}
 
+	@Override
 	@NotNull
-	public PsiStatement[] getStatements()
+	public FanStatement[] getStatements()
 	{
-		return findChildrenByClass(PsiStatement.class);
+		return findChildrenByClass(FanStatement.class);
 	}
 
 	public PsiElement getFirstBodyElement()
@@ -52,21 +52,13 @@ public class FanPsiCodeBlockImpl extends ASTWrapperPsiElement implements FanPsiC
 		return null;
 	}
 
-	public PsiJavaToken getLBrace()
-	{
-		return null;
-	}
-
-	public PsiJavaToken getRBrace()
-	{
-		return null;
-	}
-
+	@Override
 	public PsiElement getLeftBrace()
 	{
 		return findChildByType(FanTokenTypes.LBRACE);
 	}
 
+	@Override
 	public PsiElement getRightBrace()
 	{
 		return findChildByType(FanTokenTypes.RBRACE);

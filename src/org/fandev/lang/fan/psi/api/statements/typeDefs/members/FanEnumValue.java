@@ -1,6 +1,6 @@
 package org.fandev.lang.fan.psi.api.statements.typeDefs.members;
 
-import com.intellij.psi.PsiField;
+import org.fandev.lang.fan.psi.api.statements.FanVariable;
 
 /**
  * Date: Mar 31, 2009
@@ -8,6 +8,6 @@ import com.intellij.psi.PsiField;
  *
  * @author Dror Bereznitsky
  */
-public interface FanEnumValue extends PsiField
+public interface FanEnumValue extends FanVariable, FanMember
 {
 }

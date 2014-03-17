@@ -4,7 +4,6 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanConstructor;
 import org.fandev.lang.fan.psi.stubs.FanConstructorStub;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiMethodReceiver;
 import com.intellij.psi.StubBasedPsiElement;
 import com.intellij.psi.stubs.IStubElementType;
 
@@ -28,10 +27,5 @@ public class FanConstructorImpl extends FanMethodBaseImpl<FanConstructorStub> im
 	public boolean isConstructor()
 	{
 		return true;
-	}
-
-	public PsiMethodReceiver getMethodReceiver()
-	{
-		return null;
 	}
 }

@@ -1,7 +1,8 @@
 package org.fandev.lang.fan.psi.api.statements.blocks;
 
 import org.fandev.lang.fan.psi.FanElement;
-import com.intellij.psi.PsiCodeBlock;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanStatement;
+import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.PsiElement;
 
 /**
@@ -10,8 +11,11 @@ import com.intellij.psi.PsiElement;
  *
  * @author Dror Bereznitsky
  */
-public interface FanPsiCodeBlock extends FanElement, PsiCodeBlock
+public interface FanPsiCodeBlock extends FanElement
 {
+	@NotNull
+	FanStatement[] getStatements();
+
 	public PsiElement getLeftBrace();
 
 	public PsiElement getRightBrace();
