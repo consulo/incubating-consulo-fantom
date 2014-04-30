@@ -8,17 +8,12 @@ import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.utils.FanUtil;
 import org.fandev.utils.OSUtil;
-import org.jdom.Element;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.projectRoots.AdditionalDataConfigurable;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkAdditionalData;
-import com.intellij.openapi.projectRoots.SdkModel;
 import com.intellij.openapi.projectRoots.SdkModificator;
 import com.intellij.openapi.projectRoots.SdkType;
 import com.intellij.openapi.roots.OrderRootType;
@@ -119,18 +114,6 @@ public class FanSdkType extends SdkType
 	public String suggestSdkName(final String currentSdkName, final String sdkHome)
 	{
 		return "Fantom SDK " + getVersionString(sdkHome);
-	}
-
-	@Override
-	public AdditionalDataConfigurable createAdditionalDataConfigurable(final SdkModel sdkModel, final SdkModificator sdkModificator)
-	{
-		return null;
-	}
-
-	@Override
-	public void saveAdditionalData(final SdkAdditionalData additionalData, final Element additional)
-	{
-
 	}
 
 	@Override

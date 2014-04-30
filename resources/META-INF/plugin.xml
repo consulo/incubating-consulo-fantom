@@ -8,9 +8,6 @@
 	<depends config-file="java.xml" optional="true">org.consulo.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <projectImportProvider implementation="org.fandev.module.FanProjectImportProvider"/>
-        <projectImportBuilder implementation="org.fandev.module.wizard.FanProjectBuilder"/>
-        
         <errorHandler implementation="com.intellij.diagnostic.ITNReporter"/>
         <colorSettingsPage implementation="org.fandev.lang.fan.highlighting.FanColorsAndFontsPage"/>
 

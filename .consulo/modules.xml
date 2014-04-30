@@ -14,7 +14,7 @@
         <orderEntry type="module-extension-sdk" extension-id="java" />
         <orderEntry type="module-extension-sdk" extension-id="consulo-plugin" />
         <orderEntry type="sourceFolder" forTests="false" />
-        <orderEntry type="module-library">
+        <orderEntry type="module-library" exported="">
           <library>
             <CLASSES>
               <root url="jar://$MODULE_DIR$/lib/sys.jar!/" />
@@ -34,19 +34,20 @@
         <orderEntry type="module-extension-sdk" extension-id="java" />
         <orderEntry type="module-extension-sdk" extension-id="consulo-plugin" />
         <orderEntry type="sourceFolder" forTests="false" />
+        <orderEntry type="module" module-name="consulo-fantom" />
         <orderEntry type="module-library">
           <library name="consulo:Java">
             <CLASSES>
               <root url="jar://$MODULE_DIR$/../../dep/java/lib/java-manifest.jar!/" />
               <root url="jar://$MODULE_DIR$/../../dep/java/lib/java-rt.jar!/" />
               <root url="jar://$MODULE_DIR$/../../dep/java/lib/java.jar!/" />
+              <root url="jar://$MODULE_DIR$/../../dep/java/lib/jdi.jar!/" />
               <root url="jar://$MODULE_DIR$/../../dep/java/lib/jdk-annotations.jar!/" />
             </CLASSES>
             <DOCUMENTATION />
             <SOURCES />
           </library>
         </orderEntry>
-        <orderEntry type="module" module-name="consulo-fantom" />
       </module>
     </modules>
   </component>

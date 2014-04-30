@@ -4,7 +4,6 @@ import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.types.FanMapTypeElement;
 import org.fandev.lang.fan.psi.api.types.FanTypeElement;
-import com.intellij.psi.PsiElement;
 
 /**
  * Date: Jul 21, 2009
@@ -35,12 +34,6 @@ public class FanMapType implements FanType
 	public String getPresentableText()
 	{
 		return text;
-	}
-
-	@Override
-	public PsiElement resolve()
-	{
-		return null;
 	}
 
 	public String getCanonicalText()

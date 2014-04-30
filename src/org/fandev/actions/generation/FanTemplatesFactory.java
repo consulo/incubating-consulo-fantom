@@ -7,9 +7,9 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.fandev.PodModel;
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanBundle;
-import org.fandev.module.pod.PodModel;
 import org.fandev.utils.VirtualFileUtil;
 import org.jetbrains.annotations.NonNls;
 import com.intellij.ide.fileTemplates.FileTemplate;

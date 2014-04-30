@@ -1,11 +1,9 @@
 package org.fandev.runner;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
 import java.awt.GridLayout;
 
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListCellRenderer;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -13,9 +11,11 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 
 import org.jetbrains.annotations.NotNull;
+import com.intellij.icons.AllIcons;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SettingsEditor;
+import com.intellij.ui.ListCellRendererWrapper;
 import com.intellij.ui.RawCommandLineEditor;
 
 /**
@@ -85,19 +85,17 @@ public abstract class FanRunConfigurationEditor extends SettingsEditor<FanRunCon
 	{
 		myModulesBox.setModel(myModulesModel);
 
-		myModulesBox.setRenderer(new DefaultListCellRenderer()
+		myModulesBox.setRenderer(new ListCellRendererWrapper<Object>()
 		{
-			public Component getListCellRendererComponent(final JList list, final Object value, final int index, final boolean isSelected,
-					final boolean cellHasFocus)
+			@Override
+			public void customize(JList list, Object value, int index, boolean selected, boolean hasFocus)
 			{
-				super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 				final Module module = (Module) value;
 				if(module != null)
 				{
-					setIcon(module.getModuleType().getNodeIcon(false));
+					setIcon(AllIcons.Nodes.Module);
 					setText(module.getName());
 				}
-				return this;
 			}
 		});
 

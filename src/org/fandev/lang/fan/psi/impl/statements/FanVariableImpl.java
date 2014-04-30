@@ -43,11 +43,4 @@ public class FanVariableImpl extends FanVariableBaseImpl implements FanVariable
 		}
 		return type;
 	}
-
-	@NotNull
-	@Override
-	public PsiElement getDeclarationScope()
-	{
-		return getParent();
-	}
 }

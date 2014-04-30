@@ -3,17 +3,21 @@ package org.fandev.runner;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.consulo.compiler.ModuleCompilerPathsManager;
 import org.fandev.index.FanIndex;
-import org.fandev.module.FanModuleType;
 import org.fandev.sdk.FanSdkType;
 import org.fandev.utils.FanUtil;
 import org.fandev.utils.TextUtil;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.mustbe.consulo.fantom.module.extension.FanModuleExtension;
+import org.mustbe.consulo.roots.impl.ProductionContentFolderTypeProvider;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.Executor;
 import com.intellij.execution.configurations.ConfigurationFactory;
+import com.intellij.execution.configurations.JavaCommandLineState;
+import com.intellij.execution.configurations.JavaParameters;
 import com.intellij.execution.configurations.ModuleBasedConfiguration;
 import com.intellij.execution.configurations.RunConfigurationModule;
 import com.intellij.execution.configurations.RunProfileState;
@@ -22,13 +26,14 @@ import com.intellij.execution.filters.TextConsoleBuilderFactory;
 import com.intellij.execution.runners.ExecutionEnvironment;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
+import com.intellij.openapi.module.ModuleUtilCore;
+import com.intellij.openapi.projectRoots.JavaSdk;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.roots.ModuleRootManager;
-import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.util.JDOMExternalizer;
 import com.intellij.openapi.util.WriteExternalException;
-import com.intellij.openapi.vfs.VirtualFile;
+import fan.sys.Env;
+import fan.sys.Map;
 
 /**
  * Date: Sep 5, 2009
@@ -60,7 +65,7 @@ public abstract class FanRunConfiguration extends ModuleBasedConfiguration
 
 				final JavaParameters params = new JavaParameters();
 
-				params.setJdk(FanUtil.createFanJdk(getSdk()));
+				params.setJdk(createFanJdk(getSdk()));
 				params.getVMParametersList().add("-Dfan.home=" + getSdk().getHomePath());
 				params.getVMParametersList().add("-Djava.library.path=" + FanSdkType.getExtDir(getSdk()));
 				params.getVMParametersList().add("-Dfan.debug=true");
@@ -78,6 +83,25 @@ public abstract class FanRunConfiguration extends ModuleBasedConfiguration
 		textConsoleBuilder.addFilter(new FanTypeFilter(getProject()));
 		state.setConsoleBuilder(textConsoleBuilder);
 		return state;
+	}
+
+	public static java.io.File getJdkHome(final Sdk moduleSdk)
+	{
+		FanUtil.setFanHome(moduleSdk);
+		final Map env = Env.cur().vars();
+		String fanJavaHome = (String) env.get("java.home");
+		if(fanJavaHome != null)
+		{
+			// Fallback to current Java version
+			fanJavaHome = System.getProperty("java.home");
+		}
+		return new java.io.File(fanJavaHome);
+	}
+
+
+	public static Sdk createFanJdk(final Sdk moduleSdk)
+	{
+		return JavaSdk.getInstance().createJdk("Fantom JDK", getJdkHome(moduleSdk).getAbsolutePath());
 	}
 
 	protected String getMainClass()
@@ -107,7 +131,7 @@ public abstract class FanRunConfiguration extends ModuleBasedConfiguration
 		final ArrayList<Module> res = new ArrayList<Module>();
 		for(final Module module : modules)
 		{
-			if(module.getModuleType() instanceof FanModuleType)
+			if(ModuleUtilCore.getExtension(module, FanModuleExtension.class) != null)
 			{
 				res.add(module);
 			}
@@ -122,7 +146,7 @@ public abstract class FanRunConfiguration extends ModuleBasedConfiguration
 		{
 			if(FanUtil.isFanModuleType(module))
 			{
-				return ModuleRootManager.getInstance(module).getSdk();
+				return ModuleUtilCore.getSdk(module, FanModuleExtension.class);
 			}
 		}
 		return null;
@@ -142,12 +166,7 @@ public abstract class FanRunConfiguration extends ModuleBasedConfiguration
 
 	protected String getModuleOutDir()
 	{
-		final VirtualFile[] outRootDirs = ModuleRootManager.getInstance(getModule()).getRootPaths(OrderRootType.CLASSES_AND_OUTPUT);
-		if(outRootDirs != null && outRootDirs.length > 0)
-		{
-			return outRootDirs[0].getPath();
-		}
-		return null;
+		return ModuleCompilerPathsManager.getInstance(getModule()).getCompilerOutputUrl(ProductionContentFolderTypeProvider.getInstance());
 	}
 
 	@Nullable

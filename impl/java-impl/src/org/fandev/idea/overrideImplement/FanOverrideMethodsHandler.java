@@ -21,7 +21,7 @@ public class FanOverrideMethodsHandler implements LanguageCodeInsightActionHandl
 
 	public void invoke(final Project project, final Editor editor, final PsiFile file)
 	{
-		FanOverrideImplementUtil.invokeOverrideImplement(project, editor, file, false);
+	//	FanOverrideImplementUtil.invokeOverrideImplement(project, editor, file, false);
 	}
 
 	public boolean startInWriteAction()

@@ -2,15 +2,13 @@ package org.fandev.utils;
 
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.fandev.actions.generation.FanTemplatesFactory;
-import org.fandev.actions.generation.TemplateProperty;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.FanVariable;
+import org.fandev.lang.fan.psi.api.statements.blocks.FanPsiCodeBlock;
 import org.fandev.lang.fan.psi.api.statements.expressions.FanClosureExpression;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanBuildScriptDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanEnumDefinition;
@@ -19,28 +17,17 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.impl.FanListReferenceType;
 import org.fandev.lang.fan.psi.impl.FanMapType;
-import org.fandev.module.FanModuleType;
-import org.fandev.module.pod.PodModel;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.intellij.openapi.application.ApplicationManager;
+import org.mustbe.consulo.fantom.module.extension.FanModuleExtension;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.projectRoots.JavaSdk;
+import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.roots.ModuleRootManager;
-import com.intellij.openapi.util.Computable;
 import com.intellij.openapi.util.Pair;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileManager;
 import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.codeStyle.VariableKind;
-import com.intellij.psi.impl.file.PsiDirectoryFactory;
 import com.intellij.psi.util.PsiTreeUtil;
-import fan.sys.Env;
-import fan.sys.Map;
 
 /**
  * @author Dror Bereznitsky
@@ -57,24 +44,18 @@ public class FanUtil
 
 	public static boolean isFanModuleType(@Nullable final Module module)
 	{
-		return module != null && FanModuleType.getInstance() == module.getModuleType();
+		return module != null && ModuleUtilCore.getExtension(module, FanModuleExtension.class) != null;
 	}
 
-	public static Sdk getSdk(final Module module)
+	@Deprecated
+	public static Sdk getFanSdk(final Module module)
 	{
-		if(module != null)
-		{
-			if(FanUtil.isFanModuleType(module))
-			{
-				return ModuleRootManager.getInstance(module).getSdk();
-			}
-		}
-		return null;
+		return ModuleUtilCore.getSdk(module, FanModuleExtension.class);
 	}
 
 	public static void setFanHome(final Module module)
 	{
-		setFanHome(getSdk(module));
+		setFanHome(getFanSdk(module));
 	}
 
 	public static void setFanHome(@NotNull final Sdk moduleSdk)
@@ -105,90 +86,6 @@ public class FanUtil
 		return null;
 	}
 
-	public static java.io.File getJdkHome(final Sdk moduleSdk)
-	{
-		setFanHome(moduleSdk);
-		final Map env = Env.cur().vars();
-		String fanJavaHome = (String) env.get("java.home");
-		if(fanJavaHome != null)
-		{
-			// Fallback to current Java version
-			fanJavaHome = System.getProperty("java.home");
-		}
-		return new java.io.File(fanJavaHome);
-	}
-
-	public static Sdk createFanJdk(final Sdk moduleSdk)
-	{
-		return JavaSdk.getInstance().createJdk("Fantom JDK", getJdkHome(moduleSdk).getAbsolutePath());
-	}
-
-	public static VariableKind getVariableKind(@NotNull final PsiVariable paramPsiVariable)
-	{
-		if(paramPsiVariable instanceof PsiField)
-		{
-			if(paramPsiVariable.hasModifierProperty("static"))
-			{
-				if(paramPsiVariable.hasModifierProperty("final"))
-				{
-					return VariableKind.STATIC_FINAL_FIELD;
-				}
-				return VariableKind.STATIC_FIELD;
-			}
-			return VariableKind.FIELD;
-		}
-
-		if(paramPsiVariable instanceof PsiParameter)
-		{
-			if(((PsiParameter) paramPsiVariable).getDeclarationScope() instanceof PsiForeachStatement)
-			{
-				return VariableKind.LOCAL_VARIABLE;
-			}
-			return VariableKind.PARAMETER;
-		}
-		if(paramPsiVariable instanceof PsiLocalVariable)
-		{
-			return VariableKind.LOCAL_VARIABLE;
-		}
-		return VariableKind.LOCAL_VARIABLE;
-	}
-
-	public static VirtualFile generateBuildScript(final String contentPath, final Project project, final PodModel pod)
-	{
-		final VirtualFile contentEntryPath = VirtualFileManager.getInstance().refreshAndFindFileByUrl(VirtualFileUtil.constructLocalUrl(contentPath));
-		VirtualFile buildScript = null;
-		try
-		{
-			buildScript = ApplicationManager.getApplication().runWriteAction(new Computable<VirtualFile>()
-			{
-				public VirtualFile compute()
-				{
-					final EnumMap<TemplateProperty, String> parameters = new EnumMap<TemplateProperty, String>(TemplateProperty.class);
-					parameters.put(TemplateProperty.NAME, pod.getName());
-					parameters.put(TemplateProperty.VERSION, pod.getVersion());
-					parameters.put(TemplateProperty.DESCRIPTION, pod.getDescription());
-					parameters.put(TemplateProperty.OUT_DIR, "`" + pod.getOutDir() + "`");
-					parameters.put(TemplateProperty.DOC_API, String.valueOf(pod.getDocApi()));
-					parameters.put(TemplateProperty.DOC_SRC, String.valueOf(pod.getDocSrc()));
-					parameters.put(TemplateProperty.POD_DEPENDS, listToString(pod.getDependencies()));
-					parameters.put(TemplateProperty.POD_SRC_DIRS, listPairToUrl(pod.getSrcDirs()));
-					parameters.put(TemplateProperty.POD_RES_DIRS, listPairToUrl(pod.getResDirs()));
-					parameters.put(TemplateProperty.METAS, listPairToString(pod.getMetas()));
-					parameters.put(TemplateProperty.INDEXES, listPairToString(pod.getIndexes()));
-
-					final PsiFile buildScript = FanTemplatesFactory.createFromTemplate(PsiDirectoryFactory.getInstance(project).createDirectory(contentEntryPath),
-							pod.getBuildScriptName(), "FanBuildScript.fan", parameters);
-					return buildScript.getVirtualFile();
-				}
-			});
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		pod.setBuildScriptFile(buildScript);
-		return buildScript;
-	}
 
 	@Nullable
 	public static FanTypeDefinition getContainingType(@NotNull final PsiElement element)
@@ -218,7 +115,7 @@ public class FanUtil
 
 	public static boolean isPsiCodeBlock(final PsiElement element)
 	{
-		return isOfType(element, PsiCodeBlock.class);
+		return isOfType(element, FanPsiCodeBlock.class);
 	}
 
 	public static boolean isFanMethod(final PsiElement element)

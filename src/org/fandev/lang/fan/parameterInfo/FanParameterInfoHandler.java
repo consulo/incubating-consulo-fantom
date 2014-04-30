@@ -1,21 +1,19 @@
 package org.fandev.lang.fan.parameterInfo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.fandev.lang.fan.psi.FanElement;
+import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.FanResolveResult;
 import org.fandev.lang.fan.psi.api.statements.FanDefaultValue;
 import org.fandev.lang.fan.psi.api.statements.FanVariable;
 import org.fandev.lang.fan.psi.api.statements.arguments.FanArgument;
 import org.fandev.lang.fan.psi.api.statements.expressions.FanReferenceExpression;
 import org.fandev.lang.fan.psi.api.statements.params.FanParameter;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanConstructor;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.codeInsight.CodeInsightSettings;
-import com.intellij.codeInsight.completion.JavaCompletionUtil;
 import com.intellij.codeInsight.lookup.LookupElement;
-import com.intellij.codeInsight.lookup.LookupItem;
 import com.intellij.lang.parameterInfo.CreateParameterInfoContext;
 import com.intellij.lang.parameterInfo.ParameterInfoContext;
 import com.intellij.lang.parameterInfo.ParameterInfoHandler;
@@ -41,7 +39,7 @@ public class FanParameterInfoHandler implements ParameterInfoHandler<FanElement,
 
 	public Object[] getParametersForLookup(final LookupElement item, final ParameterInfoContext context)
 	{
-		final List<? extends PsiElement> elements = JavaCompletionUtil.getAllPsiElements((LookupItem) item);
+		/*final List<? extends PsiElement> elements = JavaCompletionUtil.getAllPsiElements((LookupItem) item);
 
 		if(elements != null)
 		{
@@ -54,7 +52,7 @@ public class FanParameterInfoHandler implements ParameterInfoHandler<FanElement,
 				}
 			}
 			return methods.toArray(new Object[0]);
-		}
+		}   */
 
 		return null;
 	}
@@ -117,14 +115,14 @@ public class FanParameterInfoHandler implements ParameterInfoHandler<FanElement,
 
 		final StringBuffer buffer = new StringBuffer();
 
-		if(element instanceof PsiMethod)
+		if(element instanceof FanMethod)
 		{
 			final FanMethod method = (FanMethod) element;
 			if(settings.SHOW_FULL_SIGNATURES_IN_PARAMETER_INFO)
 			{
-				if(!method.isConstructor())
+				if(!(method instanceof FanConstructor))
 				{
-					final PsiType returnType = method.getReturnType();
+					final FanType returnType = method.getReturnType();
 					if(returnType != null)
 					{
 						buffer.append(returnType.getPresentableText());
@@ -137,18 +135,17 @@ public class FanParameterInfoHandler implements ParameterInfoHandler<FanElement,
 
 			final int currentParameter = context.getCurrentParameterIndex();
 
-			final PsiParameter[] parms = method.getParameterList().getParameters();
+			final FanParameter[] parms = method.getParameterList().getParameters();
 			int numParams = parms.length;
 			if(numParams > 0)
 			{
-				final PsiSubstitutor substitutor = resolveResult.getSubstitutor();
 				for(int j = 0; j < numParams; j++)
 				{
-					final FanParameter parm = (FanParameter) parms[j];
+					final FanParameter parm = parms[j];
 
 					final int startOffset = buffer.length();
 
-					appendParameterText(parm, substitutor, buffer);
+					appendParameterText(parm, buffer);
 
 					final int endOffset = buffer.length();
 
@@ -175,17 +172,17 @@ public class FanParameterInfoHandler implements ParameterInfoHandler<FanElement,
 			}
 
 		}
-		else if(element instanceof PsiClass)
+		else if(element instanceof FanTypeDefinition)
 		{
 			buffer.append("no parameters");
 		}
 		else if(element instanceof FanVariable)
 		{
-			final PsiType type = ((FanVariable) element).getType();
+			final FanType type = ((FanVariable) element).getType();
 			//TODO [dror] hanlde closures here
 		}
 
-		final boolean isDeprecated = resolveResult instanceof PsiDocCommentOwner && ((PsiDocCommentOwner) resolveResult).isDeprecated();
+		final boolean isDeprecated = false;//resolveResult instanceof PsiDocCommentOwner && ((PsiDocCommentOwner) resolveResult).isDeprecated();
 
 		context.setupUIComponentPresentation(buffer.toString(), highlightStartOffset, highlightEndOffset, !context.isUIComponentEnabled(),
 				isDeprecated, false, context.getDefaultParameterColor());
@@ -211,11 +208,10 @@ public class FanParameterInfoHandler implements ParameterInfoHandler<FanElement,
 		return null;
 	}
 
-	private void appendParameterText(final FanParameter parameter, final PsiSubstitutor substitutor, final StringBuffer buffer)
+	private void appendParameterText(final FanParameter parameter, final StringBuffer buffer)
 	{
-		final PsiType t = parameter.getType();
-		final PsiType paramType = substitutor.substitute(t);
-		buffer.append(paramType.getPresentableText());
+		final FanType t = parameter.getType();
+		buffer.append(t.getPresentableText());
 		final String name = parameter.getName();
 		if(name != null)
 		{

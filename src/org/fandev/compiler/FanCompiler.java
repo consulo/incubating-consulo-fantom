@@ -3,15 +3,10 @@ package org.fandev.compiler;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
-import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.FanFileType;
-import org.fandev.module.FanModuleSettings;
 import org.fandev.sdk.FanSdkType;
 import org.fandev.utils.FanUtil;
 import org.fandev.utils.VirtualFileUtil;
@@ -22,15 +17,12 @@ import com.intellij.execution.process.ProcessEvent;
 import com.intellij.execution.process.ProcessListener;
 import com.intellij.openapi.compiler.CompileContext;
 import com.intellij.openapi.compiler.CompileScope;
+import com.intellij.openapi.compiler.CompilerManager;
 import com.intellij.openapi.compiler.CompilerMessageCategory;
 import com.intellij.openapi.compiler.TranslatingCompiler;
-import com.intellij.openapi.module.JavaModuleType;
+import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.roots.ModuleRootManager;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.ui.Messages;
 import com.intellij.openapi.util.Key;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -62,7 +54,7 @@ public class FanCompiler implements TranslatingCompiler
 	public void compile(final CompileContext context, final Chunk<Module> moduleChunk, final VirtualFile[] files,
 			final OutputSink sink)
 	{
-		Set<VirtualFile> toRecompile = new HashSet<VirtualFile>();
+		/*Set<VirtualFile> toRecompile = new HashSet<VirtualFile>();
 		Set<TranslatingCompiler.OutputItem> successfullyCompiled = new HashSet<TranslatingCompiler.OutputItem>();
 		final Set<Module> modulesToBuild = new HashSet<Module>();
 		final Map<Module, List<VirtualFile>> moduleToFile = new HashMap<Module, List<VirtualFile>>();
@@ -80,7 +72,7 @@ public class FanCompiler implements TranslatingCompiler
 
 		for(final Module moduleToBuild : modulesToBuild)
 		{
-			final Sdk moduleSdk = FanUtil.getSdk(moduleToBuild);
+			final Sdk moduleSdk = FanUtil.getFanSdk(moduleToBuild);
 			if(moduleSdk == null)
 			{
 				// Not a fan module
@@ -126,7 +118,21 @@ public class FanCompiler implements TranslatingCompiler
 			sink.add(moduleSdk.getHomePath() + "/lib", successfullyCompiled, toRecompile.toArray(new VirtualFile[0]));
 			toRecompile = new HashSet<VirtualFile>();
 			successfullyCompiled = new HashSet<TranslatingCompiler.OutputItem>();
-		}
+		}   */
+	}
+
+	@NotNull
+	@Override
+	public FileType[] getInputFileTypes()
+	{
+		return new FileType[0];
+	}
+
+	@NotNull
+	@Override
+	public FileType[] getOutputFileTypes()
+	{
+		return new FileType[0];
 	}
 
 	@NotNull
@@ -137,7 +143,7 @@ public class FanCompiler implements TranslatingCompiler
 
 	public boolean validateConfiguration(final CompileScope compileScope)
 	{
-		final VirtualFile[] files = compileScope.getFiles(FanFileType.INSTANCE, true);
+		/*final VirtualFile[] files = compileScope.getFiles(FanFileType.INSTANCE, true);
 		if(files.length == 0)
 		{
 			return true;
@@ -191,9 +197,15 @@ public class FanCompiler implements TranslatingCompiler
 						FanBundle.message("cannot.compile"));
 			}
 			return false;
-		}
+		}    */
 
 		return true;
+	}
+
+	@Override
+	public void init(@NotNull CompilerManager compilerManager)
+	{
+
 	}
 
 	class FanCompileProcessListener implements ProcessListener
@@ -212,7 +224,7 @@ public class FanCompiler implements TranslatingCompiler
 			this.context = context;
 			this.module = module;
 			this.jstubParams = new ArrayList<String>();
-			this.jstubParams.add(VirtualFileUtil.buildUrl(FanUtil.getSdk(module).getHomePath(), FanSdkType.getJStubPath()));
+			this.jstubParams.add(VirtualFileUtil.buildUrl(FanUtil.getFanSdk(module).getHomePath(), FanSdkType.getJStubPath()));
 			if(SystemInfo.isUnix)
 			{
 				jstubParams.add("jstub");

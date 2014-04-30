@@ -1,12 +1,12 @@
 package org.fandev.lang.fan.psi.impl;
 
+import org.fandev.PodModel;
 import org.fandev.lang.fan.FanSupportLoader;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.statements.FanTopLevelDefintion;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanClassDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
-import org.fandev.module.pod.PodModel;
 import org.fandev.utils.VirtualFileUtil;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.extapi.psi.PsiFileBase;
