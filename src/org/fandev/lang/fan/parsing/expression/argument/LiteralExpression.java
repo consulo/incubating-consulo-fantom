@@ -16,7 +16,6 @@
  */
 package org.fandev.lang.fan.parsing.expression.argument;
 
-import static org.fandev.lang.fan.FanBundle.message;
 import static org.fandev.lang.fan.FanElementTypes.*;
 import static org.fandev.lang.fan.FanTokenTypes.*;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.advanceNoNls;
@@ -249,14 +248,14 @@ public class LiteralExpression
 			case LIST:
 				if(!RBRACKET_COMMA.contains(builder.getTokenType()))
 				{
-					builder.error(message("comma.rbracket.expected"));
+					builder.error(FanBundle.message("comma.rbracket.expected"));
 					litType = LiteralType.ERROR;
 				}
 				break;
 			case MAP:
 				if(!COLON.equals(builder.getTokenType()))
 				{
-					builder.error(message("colon.expected"));
+					builder.error(FanBundle.message("colon.expected"));
 					litType = LiteralType.ERROR;
 				}
 				break;
@@ -273,7 +272,7 @@ public class LiteralExpression
 				}
 				else
 				{
-					builder.error(message("literal.listOrMap.expected"));
+					builder.error(FanBundle.message("literal.listOrMap.expected"));
 					litType = LiteralType.ERROR;
 				}
 		}
@@ -293,7 +292,7 @@ public class LiteralExpression
 			else if(litType != LiteralType.LIST)
 			{
 				// TODO: An error for me ???
-				// builder.error(message("literal.list.unexpected"));
+				// builder.error(FanBundle.message("literal.list.unexpected"));
 				// Forcing list literal anyway
 				res = LiteralType.LIST;
 			}
@@ -311,7 +310,7 @@ public class LiteralExpression
 			}
 			else if(litType != LiteralType.MAP)
 			{
-				builder.error(message("literal.map.unexpected"));
+				builder.error(FanBundle.message("literal.map.unexpected"));
 				// Forcing map literal anyway
 				res = LiteralType.MAP;
 			}

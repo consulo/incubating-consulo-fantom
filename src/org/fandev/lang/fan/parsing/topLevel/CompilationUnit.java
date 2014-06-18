@@ -1,6 +1,5 @@
 package org.fandev.lang.fan.parsing.topLevel;
 
-import static org.fandev.lang.fan.FanBundle.message;
 import static org.fandev.lang.fan.FanElementTypes.FFI_NAME;
 import static org.fandev.lang.fan.FanElementTypes.ID_EXPR;
 import static org.fandev.lang.fan.FanElementTypes.NAME_ELEMENT;
@@ -18,6 +17,7 @@ import static org.fandev.lang.fan.FanTokenTypes.SHABENG;
 import static org.fandev.lang.fan.FanTokenTypes.USING_KEYWORD;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.getToken;
 
+import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.typeDefs.TypeDefinition;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
 import com.intellij.lang.PsiBuilder;
@@ -47,7 +47,7 @@ public class CompilationUnit
 			final PsiBuilder.Marker shBeng = builder.mark();
 			if(!ParserUtils.advanceTo(builder, EOL))
 			{
-				shBeng.error(message("separator.expected"));
+				shBeng.error(FanBundle.message("separator.expected"));
 				return;
 			}
 			else
@@ -82,7 +82,7 @@ public class CompilationUnit
 			// A FFI import
 			builder.advanceLexer();
 			final PsiBuilder.Marker ffiMark = builder.mark();
-			if(getToken(builder, IDENTIFIER_TOKENS_SET, message("identifier.expected")))
+			if(getToken(builder, IDENTIFIER_TOKENS_SET, FanBundle.message("identifier.expected")))
 			{
 				ffiMark.done(FFI_NAME);
 			}
@@ -90,7 +90,7 @@ public class CompilationUnit
 			{
 				ffiMark.drop();
 			}
-			getToken(builder, RBRACKET, message("rbrack.expected"));
+			getToken(builder, RBRACKET, FanBundle.message("rbrack.expected"));
 		}
 
 		// A list of id with dots :)
@@ -98,7 +98,7 @@ public class CompilationUnit
 		final PsiBuilder.Marker podRefMark = builder.mark();
 		do
 		{
-			getToken(builder, IDENTIFIER_TOKENS_SET, message("identifier.expected"));
+			getToken(builder, IDENTIFIER_TOKENS_SET, FanBundle.message("identifier.expected"));
 		}
 		while(getToken(builder, DOT));
 		podRefMark.done(POD_REFERENCE);
@@ -107,7 +107,7 @@ public class CompilationUnit
 		{
 			final PsiBuilder.Marker usingType = builder.mark();
 			final PsiBuilder.Marker m = builder.mark();
-			getToken(builder, IDENTIFIER_TOKENS_SET, message("identifier.expected"));
+			getToken(builder, IDENTIFIER_TOKENS_SET, FanBundle.message("identifier.expected"));
 			m.done(NAME_ELEMENT);
 			usingType.done(ID_EXPR);
 		}
@@ -116,14 +116,14 @@ public class CompilationUnit
 		if(getToken(builder, AS_KEYWORD))
 		{
 			final PsiBuilder.Marker m = builder.mark();
-			getToken(builder, IDENTIFIER_TOKENS_SET, message("identifier.expected"));
+			getToken(builder, IDENTIFIER_TOKENS_SET, FanBundle.message("identifier.expected"));
 			m.done(USING_AS_NAME);
 		}
 		usingStatement.done(USING_STATEMENT);
 
 		if(!EOL.contains(builder.getTokenType()))
 		{
-			builder.error(message("separator.expected"));
+			builder.error(FanBundle.message("separator.expected"));
 			ParserUtils.advanceTo(builder, EOL);
 		}
 		else

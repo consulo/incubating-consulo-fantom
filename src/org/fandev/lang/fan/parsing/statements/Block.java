@@ -16,7 +16,6 @@
  */
 package org.fandev.lang.fan.parsing.statements;
 
-import static org.fandev.lang.fan.FanBundle.message;
 import static org.fandev.lang.fan.FanElementTypes.WITH_BLOCK_EXPR;
 import static org.fandev.lang.fan.FanTokenTypes.LBRACE;
 import static org.fandev.lang.fan.FanTokenTypes.RBRACE;
@@ -53,7 +52,7 @@ public class Block
 					removeNls(builder);
 				}
 			}
-			getToken(builder, RBRACE, message("rcurly.expected"));
+			getToken(builder, RBRACE, FanBundle.message("rcurly.expected"));
 			m.done(statementType);
 			return true;
 		}

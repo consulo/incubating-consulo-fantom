@@ -16,7 +16,6 @@
  */
 package org.fandev.lang.fan.parsing.expression.arithmetic;
 
-import static org.fandev.lang.fan.FanBundle.message;
 import static org.fandev.lang.fan.FanElementTypes.CAST_EXPR;
 import static org.fandev.lang.fan.FanElementTypes.EXPRESSION;
 import static org.fandev.lang.fan.FanElementTypes.GROUPED_EXPR;
@@ -25,6 +24,7 @@ import static org.fandev.lang.fan.FanTokenTypes.RPAR;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.getToken;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
 
+import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.expression.Expression;
 import org.fandev.lang.fan.parsing.statements.Statement;
 import org.fandev.lang.fan.parsing.types.TypeSpec;
@@ -58,7 +58,7 @@ public class ParenExpression
 				// Eat the ( again
 				ParserUtils.advanceNoNls(builder);
 				res = Expression.parseExpr(builder, Statement.RPAR_STOPPER, EXPRESSION);
-				getToken(builder, RPAR, message("rpar.expected"));
+				getToken(builder, RPAR, FanBundle.message("rpar.expected"));
 				if(res)
 				{
 					res = TermExpression.parseTermChainLoop(builder, stopper);
@@ -78,7 +78,7 @@ public class ParenExpression
 	{
 		if(TypeSpec.parse(builder))
 		{
-			if(getToken(builder, RPAR, message("rpar.expected")))
+			if(getToken(builder, RPAR, FanBundle.message("rpar.expected")))
 			{
 				return parse(builder, stopper);
 			}

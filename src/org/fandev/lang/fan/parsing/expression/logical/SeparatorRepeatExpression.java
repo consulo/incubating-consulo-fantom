@@ -16,9 +16,9 @@
  */
 package org.fandev.lang.fan.parsing.expression.logical;
 
-import static org.fandev.lang.fan.FanBundle.message;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.advanceNoNls;
 
+import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.expression.ExpressionParser;
 import org.fandev.lang.fan.parsing.expression.arithmetic.UnaryExpression;
 import com.intellij.lang.PsiBuilder;
@@ -69,7 +69,7 @@ public abstract class SeparatorRepeatExpression implements ExpressionParser
 				advanceNoNls(builder);
 				if(!rheParse(builder, newStopper, separator))
 				{
-					marker.error(message("expression.expected"));
+					marker.error(FanBundle.message("expression.expected"));
 					return false;
 				}
 				final PsiBuilder.Marker newMarker = marker.precede();
@@ -126,7 +126,7 @@ public abstract class SeparatorRepeatExpression implements ExpressionParser
 		advanceNoNls(builder);
 		if(!rheParse(builder, stopper, separator))
 		{
-			builder.error(message("expression.expected"));
+			builder.error(FanBundle.message("expression.expected"));
 			marker.drop();
 			return;
 		}

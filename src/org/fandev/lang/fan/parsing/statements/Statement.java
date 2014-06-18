@@ -1,6 +1,5 @@
 package org.fandev.lang.fan.parsing.statements;
 
-import static org.fandev.lang.fan.FanBundle.message;
 import static org.fandev.lang.fan.FanElementTypes.*;
 import static org.fandev.lang.fan.FanTokenTypes.*;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.advanceNoNls;
@@ -49,7 +48,7 @@ public class Statement
 			}
 			else
 			{
-				builder.error(message("separator.expected"));
+				builder.error(FanBundle.message("separator.expected"));
 			}
 		}
 		else if(FOR_KEYWORD.equals(tokenType))
@@ -117,23 +116,23 @@ public class Statement
 
 	private static boolean parseFor(final PsiBuilder builder)
 	{
-		if(!getToken(builder, FOR_KEYWORD, message("keywords.expected", FOR_KEYWORD)))
+		if(!getToken(builder, FOR_KEYWORD, FanBundle.message("keywords.expected", FOR_KEYWORD)))
 		{
 			return false;
 		}
 		removeNls(builder);
-		getToken(builder, LPAR, message("lpar.expected"));
+		getToken(builder, LPAR, FanBundle.message("lpar.expected"));
 		expressionOrLocalDef(builder, FOR_STOPPERS, FOR_INIT_EXPR, FOR_INIT_LOCAL_DEF);
 		removeNls(builder);
-		getToken(builder, SEMICOLON, message("semicolon.expected"));
+		getToken(builder, SEMICOLON, FanBundle.message("semicolon.expected"));
 		removeNls(builder);
 		Expression.parseExpr(builder, FOR_STOPPERS, FOR_CONDITION);
 		removeNls(builder);
-		getToken(builder, SEMICOLON, message("semicolon.expected"));
+		getToken(builder, SEMICOLON, FanBundle.message("semicolon.expected"));
 		removeNls(builder);
 		Expression.parseExpr(builder, FOR_STOPPERS, FOR_REPEAT);
 		removeNls(builder);
-		getToken(builder, RPAR, message("rpar.expected"));
+		getToken(builder, RPAR, FanBundle.message("rpar.expected"));
 		removeNls(builder);
 		Block.parse(builder, FOR_BLOCK);
 		removeNls(builder);
@@ -198,7 +197,7 @@ public class Statement
 
 	private static boolean parseIf(final PsiBuilder builder)
 	{
-		if(!getToken(builder, IF_KEYWORD, message("keywords.expected", IF_KEYWORD)))
+		if(!getToken(builder, IF_KEYWORD, FanBundle.message("keywords.expected", IF_KEYWORD)))
 		{
 			return false;
 		}
@@ -226,16 +225,16 @@ public class Statement
 	private static void parseIfCondition(final PsiBuilder builder)
 	{
 		removeNls(builder);
-		getToken(builder, LPAR, message("lpar.expected"));
+		getToken(builder, LPAR, FanBundle.message("lpar.expected"));
 		removeNls(builder);
 		Expression.parseExpr(builder, RPAR_STOPPER, CONDITION_EXPR);
-		getToken(builder, RPAR, message("rpar.expected"));
+		getToken(builder, RPAR, FanBundle.message("rpar.expected"));
 		removeNls(builder);
 	}
 
 	private static boolean parseReturnExpression(final PsiBuilder builder)
 	{
-		if(!getToken(builder, RETURN_KEYWORD, message("keywords.expected", RETURN_KEYWORD)))
+		if(!getToken(builder, RETURN_KEYWORD, FanBundle.message("keywords.expected", RETURN_KEYWORD)))
 		{
 			return false;
 		}
@@ -250,7 +249,7 @@ public class Statement
 
 	private static boolean parseThrowExpression(final PsiBuilder builder)
 	{
-		if(!getToken(builder, THROW_KEYWORD, message("keywords.expected", THROW_KEYWORD)))
+		if(!getToken(builder, THROW_KEYWORD, FanBundle.message("keywords.expected", THROW_KEYWORD)))
 		{
 			return false;
 		}
@@ -261,17 +260,17 @@ public class Statement
 
 	private static boolean parseSwitch(final PsiBuilder builder)
 	{
-		if(!getToken(builder, SWITCH_KEYWORD, message("keywords.expected", SWITCH_KEYWORD)))
+		if(!getToken(builder, SWITCH_KEYWORD, FanBundle.message("keywords.expected", SWITCH_KEYWORD)))
 		{
 			return false;
 		}
 		removeNls(builder);
-		getToken(builder, LPAR, message("lpar.expected"));
+		getToken(builder, LPAR, FanBundle.message("lpar.expected"));
 		removeNls(builder);
 		Expression.parseExpr(builder, RPAR_STOPPER, SWITCH_VALUE);
-		getToken(builder, RPAR, message("rpar.expected"));
+		getToken(builder, RPAR, FanBundle.message("rpar.expected"));
 		removeNls(builder);
-		getToken(builder, LBRACE, message("lcurly.expected"));
+		getToken(builder, LBRACE, FanBundle.message("lcurly.expected"));
 		removeNls(builder);
 		boolean hasDefault = false;
 		while(!builder.eof() && !RBRACE.equals(builder.getTokenType()))
@@ -281,7 +280,7 @@ public class Statement
 			{
 				if(hasDefault)
 				{
-					builder.error(message("case.after.default"));
+					builder.error(FanBundle.message("case.after.default"));
 				}
 				Expression.parseExpr(builder, SWITCH_CASE_STOPPER, SWITCH_CASE_VALUE);
 			}
@@ -291,11 +290,11 @@ public class Statement
 			}
 			else
 			{
-				inSwitchMark.error(message("case.default.expected"));
+				inSwitchMark.error(FanBundle.message("case.default.expected"));
 				advanceNoNls(builder);
 				continue;
 			}
-			if(getToken(builder, COLON, message("colon.expected")))
+			if(getToken(builder, COLON, FanBundle.message("colon.expected")))
 			{
 				removeNls(builder);
 				final PsiBuilder.Marker mark = builder.mark();
@@ -308,22 +307,22 @@ public class Statement
 			inSwitchMark.done(SWITCH_CASE);
 			removeNls(builder);
 		}
-		getToken(builder, RBRACE, message("rcurly.expected"));
+		getToken(builder, RBRACE, FanBundle.message("rcurly.expected"));
 		removeNls(builder);
 		return true;
 	}
 
 	private static boolean parseWhile(final PsiBuilder builder)
 	{
-		if(!getToken(builder, WHILE_KEYWORD, message("keywords.expected", WHILE_KEYWORD)))
+		if(!getToken(builder, WHILE_KEYWORD, FanBundle.message("keywords.expected", WHILE_KEYWORD)))
 		{
 			return false;
 		}
 		removeNls(builder);
-		getToken(builder, LPAR, message("lpar.expected"));
+		getToken(builder, LPAR, FanBundle.message("lpar.expected"));
 		removeNls(builder);
 		Expression.parseExpr(builder, RPAR_STOPPER, WHILE_CONDITION);
-		getToken(builder, RPAR, message("rpar.expected"));
+		getToken(builder, RPAR, FanBundle.message("rpar.expected"));
 		removeNls(builder);
 		Block.parse(builder, WHILE_BLOCK);
 		removeNls(builder);
@@ -332,7 +331,7 @@ public class Statement
 
 	private static boolean parseTry(final PsiBuilder builder)
 	{
-		if(!getToken(builder, TRY_KEYWORD, message("keywords.expected", TRY_KEYWORD)))
+		if(!getToken(builder, TRY_KEYWORD, FanBundle.message("keywords.expected", TRY_KEYWORD)))
 		{
 			return false;
 		}
@@ -341,7 +340,7 @@ public class Statement
 		removeNls(builder);
 		if(!TRY_BLOCK_TOKENS.contains(builder.getTokenType()))
 		{
-			builder.error(message("catch.finally.expected"));
+			builder.error(FanBundle.message("catch.finally.expected"));
 		}
 		else
 		{
@@ -353,7 +352,7 @@ public class Statement
 				{
 					if(hasFinally)
 					{
-						builder.error(message("catch.after.finally"));
+						builder.error(FanBundle.message("catch.after.finally"));
 					}
 					removeNls(builder);
 					// Catch definition: All Exceptions no obj is empty
@@ -363,7 +362,7 @@ public class Statement
 						SimpleTypeSpec.parseSimpleType(builder, false);
 						removeNls(builder);
 						final PsiBuilder.Marker nameMarker = builder.mark();
-						if(getToken(builder, IDENTIFIER_TOKENS_SET, message("identifier.expected")))
+						if(getToken(builder, IDENTIFIER_TOKENS_SET, FanBundle.message("identifier.expected")))
 						{
 							nameMarker.done(NAME_ELEMENT);
 						}
@@ -372,7 +371,7 @@ public class Statement
 							nameMarker.drop();
 						}
 						removeNls(builder);
-						getToken(builder, RPAR, message("rpar.expected"));
+						getToken(builder, RPAR, FanBundle.message("rpar.expected"));
 						removeNls(builder);
 					}
 					Block.parse(builder, CATCH_BLOCK);
