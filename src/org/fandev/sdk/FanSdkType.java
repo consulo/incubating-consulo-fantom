@@ -1,6 +1,8 @@
 package org.fandev.sdk;
 
 import java.io.File;
+import java.util.Collection;
+import java.util.Collections;
 
 import javax.swing.Icon;
 
@@ -11,7 +13,6 @@ import org.fandev.utils.OSUtil;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.projectRoots.SdkModificator;
@@ -26,7 +27,12 @@ import com.intellij.openapi.vfs.VirtualFile;
  */
 public class FanSdkType extends SdkType
 {
-	private static final String FAN_SDK_NAME = "FAN_SDK";
+
+	@NotNull
+	public static FanSdkType getInstance()
+	{
+		return EP_NAME.findExtension(FanSdkType.class);
+	}
 
 	public static final String FAN_LAUNCHER_WIN = "fan.exe";
 	public static final String FAN_LAUNCHER_UNIX = "fan";
@@ -41,7 +47,7 @@ public class FanSdkType extends SdkType
 
 	public FanSdkType()
 	{
-		super(FAN_SDK_NAME);
+		super("FAN_SDK");
 	}
 
 	public FanSdkType(@NonNls final String name)
@@ -79,8 +85,19 @@ public class FanSdkType extends SdkType
 		return "";
 	}
 
+	@NotNull
 	@Override
-	public String suggestHomePath()
+	public Collection<String> suggestHomePaths()
+	{
+		String s = suggestHomePath();
+		if(s != null)
+		{
+			return Collections.singletonList(s);
+		}
+		return super.suggestHomePaths();
+	}
+
+	private String suggestHomePath()
 	{
 		final String path = findFanLauncher();
 		if(path != null)
@@ -101,7 +118,7 @@ public class FanSdkType extends SdkType
 			return "/usr/share/fantom";
 		}
 
-		throw new IllegalStateException(FanBundle.message("os.not.supported"));
+		return null;
 	}
 
 	@Override
@@ -116,15 +133,11 @@ public class FanSdkType extends SdkType
 		return "Fantom SDK " + getVersionString(sdkHome);
 	}
 
+	@NotNull
 	@Override
 	public String getPresentableName()
 	{
 		return FanBundle.message("fan.sdk.title");
-	}
-
-	public static FanSdkType getInstance()
-	{
-		return ApplicationManager.getApplication().getComponent(FanSdkType.class);
 	}
 
 	@Override
