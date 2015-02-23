@@ -4,7 +4,7 @@
     <version>0.0.7</version>
     <category>Custom Languages</category>
     <vendor>Dror Bereznitsky and Fred Simon </vendor>
-    <resource-bundle>org.fandev.lang.fan.FanBundle</resource-bundle>
+    <resource-bundle>messages.FanBundle</resource-bundle>
 	<depends config-file="java.xml" optional="true">org.consulo.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
