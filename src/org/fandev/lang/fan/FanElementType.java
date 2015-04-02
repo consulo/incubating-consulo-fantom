@@ -10,15 +10,9 @@ import com.intellij.psi.tree.IElementType;
  */
 public class FanElementType extends IElementType
 {
-
 	public FanElementType(@NonNls @NotNull final String debugName)
 	{
-		this(debugName, true);
-	}
-
-	public FanElementType(@NonNls @NotNull final String debugName, final boolean register)
-	{
-		super(debugName, FanLanguage.INSTANCE, null, register);
+		super(debugName, FanLanguage.INSTANCE);
 	}
 
 	@Override
