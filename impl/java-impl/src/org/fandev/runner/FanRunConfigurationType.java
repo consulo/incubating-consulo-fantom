@@ -2,13 +2,12 @@ package org.fandev.runner;
 
 import org.fandev.lang.fan.psi.FanFile;
 import com.intellij.execution.JavaExecutionUtil;
-import com.intellij.execution.LocatableConfigurationType;
 import com.intellij.execution.Location;
 import com.intellij.execution.RunManagerEx;
 import com.intellij.execution.RunnerAndConfigurationSettings;
 import com.intellij.execution.configurations.ConfigurationFactory;
+import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.execution.configurations.ModuleBasedConfiguration;
-import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.configurations.RunConfigurationModule;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -25,7 +24,7 @@ import com.intellij.psi.search.GlobalSearchScope;
  *
  * @author Dror Bereznitsky
  */
-public abstract class FanRunConfigurationType implements LocatableConfigurationType
+public abstract class FanRunConfigurationType implements ConfigurationType
 {
 	protected ConfigurationFactory configurationFactory;
 
@@ -94,11 +93,6 @@ public abstract class FanRunConfigurationType implements LocatableConfigurationT
 			return null;
 		}
 		return null; //((FanFile) file).getScriptClass();
-	}
-
-	public boolean isConfigurationByLocation(final RunConfiguration configuration, final Location location)
-	{
-		return false;
 	}
 
 	public ConfigurationFactory[] getConfigurationFactories()

@@ -4,10 +4,8 @@ import javax.swing.Icon;
 
 import org.fandev.icons.Icons;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.execution.Location;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.configurations.ConfigurationTypeUtil;
-import com.intellij.execution.configurations.RunConfiguration;
 
 /**
  * @author Dror Bereznitsky
@@ -19,11 +17,6 @@ public class FanScriptRunConfigurationType extends FanRunConfigurationType
 	{
 		super();
 		configurationFactory = new FanScriptConfigurationFactory(this);
-	}
-
-	public boolean isConfigurationByLocation(final RunConfiguration configuration, final Location location)
-	{
-		return false;
 	}
 
 	public String getDisplayName()
