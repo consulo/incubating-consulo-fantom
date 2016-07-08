@@ -1,6 +1,6 @@
 package org.fandev.lang.fan.psi;
 
-import org.consulo.lombok.annotations.ArrayFactoryFields;
+import consulo.lombok.annotations.ArrayFactoryFields;
 
 /**
  * @author VISTALL
