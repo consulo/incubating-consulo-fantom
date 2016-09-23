@@ -1,6 +1,6 @@
-package org.mustbe.consulo.fantom.module.extension;
+package consulo.fantom.module.extension;
 
-import org.consulo.module.extension.ModuleExtensionWithSdk;
+import consulo.module.extension.ModuleExtensionWithSdk;
 
 /**
  * @author VISTALL

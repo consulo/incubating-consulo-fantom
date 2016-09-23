@@ -3,7 +3,7 @@ package org.fandev.lang.fan.structure.elements.itemsPresentations;
 import javax.swing.Icon;
 
 import org.jetbrains.annotations.Nullable;
-import com.intellij.ide.IconDescriptorUpdaters;
+import consulo.ide.IconDescriptorUpdaters;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.psi.PsiElement;

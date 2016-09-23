@@ -4,7 +4,7 @@ import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.topLevel.CompilationUnit;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
-import com.intellij.lang.LanguageVersion;
+import consulo.lang.LanguageVersion;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiParser;
 import com.intellij.openapi.diagnostic.Logger;

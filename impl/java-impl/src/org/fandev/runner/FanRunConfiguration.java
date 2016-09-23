@@ -3,7 +3,6 @@ package org.fandev.runner;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.consulo.compiler.ModuleCompilerPathsManager;
 import org.fandev.index.FanIndex;
 import org.fandev.sdk.FanSdkType;
 import org.fandev.utils.FanUtil;
@@ -11,8 +10,7 @@ import org.fandev.utils.TextUtil;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mustbe.consulo.fantom.module.extension.FanModuleExtension;
-import org.mustbe.consulo.roots.impl.ProductionContentFolderTypeProvider;
+import consulo.fantom.module.extension.FanModuleExtension;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.Executor;
 import com.intellij.execution.configurations.ConfigurationFactory;
@@ -32,6 +30,8 @@ import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.util.JDOMExternalizer;
 import com.intellij.openapi.util.WriteExternalException;
+import consulo.compiler.ModuleCompilerPathsManager;
+import consulo.roots.impl.ProductionContentFolderTypeProvider;
 import fan.sys.Env;
 import fan.sys.Map;
 

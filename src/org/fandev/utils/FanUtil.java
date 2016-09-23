@@ -19,7 +19,7 @@ import org.fandev.lang.fan.psi.impl.FanListReferenceType;
 import org.fandev.lang.fan.psi.impl.FanMapType;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mustbe.consulo.fantom.module.extension.FanModuleExtension;
+import consulo.fantom.module.extension.FanModuleExtension;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleUtilCore;

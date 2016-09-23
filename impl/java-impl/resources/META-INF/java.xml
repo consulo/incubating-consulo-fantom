@@ -1,5 +1,5 @@
 <idea-plugin>
-	<extensions defaultExtensionNs="org.consulo.java">
+	<extensions defaultExtensionNs="consulo.java">
 		<debuggerClassFilterProvider implementation="org.fandev.debugger.FanDebuggerClassFilterProvider"/>
 		<debugger.positionManagerFactory implementation="org.fandev.debugger.FanPositionManagerFactory" />
 	</extensions>

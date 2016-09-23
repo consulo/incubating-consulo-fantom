@@ -5,7 +5,7 @@ import javax.swing.Icon;
 import org.fandev.icons.Icons;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
-import com.intellij.ide.highlighter.ArchiveFileType;
+import consulo.fileTypes.ArchiveFileType;
 
 /**
  * @author Dror Bereznitsky

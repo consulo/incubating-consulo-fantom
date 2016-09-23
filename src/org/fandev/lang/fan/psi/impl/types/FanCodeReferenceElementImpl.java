@@ -3,7 +3,7 @@ package org.fandev.lang.fan.psi.impl.types;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.consulo.psi.PsiPackage;
+import consulo.psi.PsiPackage;
 import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.FanFileType;
 import org.fandev.lang.fan.psi.FanFile;

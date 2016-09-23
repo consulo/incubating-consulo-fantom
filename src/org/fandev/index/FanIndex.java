@@ -16,7 +16,7 @@ import org.fandev.utils.FanUtil;
 import org.fandev.utils.VirtualFileUtil;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import org.mustbe.consulo.fantom.module.extension.FanModuleExtension;
+import consulo.fantom.module.extension.FanModuleExtension;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.diagnostic.Logger;
