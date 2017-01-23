@@ -1,4 +1,4 @@
-<idea-plugin version="2">
+<idea-plugin>
 	<id>consulo.fantom</id>
 	<name>FAN Support</name>
 	<description>FAN programming language support</description>
