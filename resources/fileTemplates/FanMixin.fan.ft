@@ -1,4 +1,4 @@
-#parse("File Header.java")
+#parse("Fan File Header.fan")
 
 mixin ${NAME} {
 

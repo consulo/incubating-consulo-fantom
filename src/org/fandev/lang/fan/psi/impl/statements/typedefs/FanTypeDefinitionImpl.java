@@ -24,7 +24,6 @@ import org.fandev.lang.fan.psi.impl.FanClassReferenceType;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import consulo.ide.IconDescriptorUpdaters;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.diagnostic.Logger;
@@ -32,15 +31,17 @@ import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.util.Iconable;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
+import com.intellij.psi.StubBasedPsiElement;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.util.IncorrectOperationException;
+import consulo.ide.IconDescriptorUpdaters;
 
 /**
  * @author Dror Bereznitsky
  * @date Jan 9, 2009 11:42:19 PM
  */
-public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDefinitionStub> implements FanTypeDefinition
+public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDefinitionStub> implements FanTypeDefinition, StubBasedPsiElement<FanTypeDefinitionStub>
 {
 	protected FanField[] fanFields;
 	protected FanMethod[] fanMethods;
