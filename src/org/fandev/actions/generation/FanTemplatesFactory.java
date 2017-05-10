@@ -8,7 +8,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.fandev.PodModel;
-import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.utils.VirtualFileUtil;
 import org.jetbrains.annotations.NonNls;
@@ -24,6 +23,7 @@ import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.util.IncorrectOperationException;
+import consulo.fantom.FantomIcons;
 
 /**
  * @author Dror Bereznitsky
@@ -58,7 +58,7 @@ public class FanTemplatesFactory implements FileTemplateGroupDescriptorFactory
 
 	public FileTemplateGroupDescriptor getFileTemplatesDescriptor()
 	{
-		final FileTemplateGroupDescriptor group = new FileTemplateGroupDescriptor(FanBundle.message("file.template.group.title.fan"), Icons.FAN_16);
+		final FileTemplateGroupDescriptor group = new FileTemplateGroupDescriptor(FanBundle.message("file.template.group.title.fan"), FantomIcons.Fantom);
 		final FileTypeManager fileTypeManager = FileTypeManager.getInstance();
 		for(final String template : TEMPLATES)
 		{

@@ -2,9 +2,9 @@ package org.fandev.runner;
 
 import javax.swing.Icon;
 
-import org.fandev.icons.Icons;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.configurations.ConfigurationTypeUtil;
+import consulo.fantom.FantomIcons;
 
 /**
  * Date: Sep 4, 2009
@@ -32,7 +32,7 @@ public class FanPodRunConfigurationType extends FanRunConfigurationType
 
 	public Icon getIcon()
 	{
-		return Icons.FAN_16;
+		return FantomIcons.Fantom;
 	}
 
 	@NotNull

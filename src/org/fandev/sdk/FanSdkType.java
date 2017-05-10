@@ -6,11 +6,9 @@ import java.util.Collections;
 
 import javax.swing.Icon;
 
-import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.utils.FanUtil;
 import org.fandev.utils.OSUtil;
-import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.diagnostic.Logger;
@@ -20,6 +18,10 @@ import com.intellij.openapi.projectRoots.SdkType;
 import com.intellij.openapi.roots.OrderRootType;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.vfs.VirtualFile;
+import consulo.fantom.FantomIcons;
+import consulo.roots.types.BinariesOrderRootType;
+import consulo.roots.types.DocumentationOrderRootType;
+import consulo.roots.types.SourcesOrderRootType;
 
 /**
  * @author Dror Bereznitsky
@@ -27,6 +29,7 @@ import com.intellij.openapi.vfs.VirtualFile;
  */
 public class FanSdkType extends SdkType
 {
+	private static final Logger log = Logger.getInstance("org.fandev.sdk.FanSdkType");
 
 	@NotNull
 	public static FanSdkType getInstance()
@@ -34,8 +37,9 @@ public class FanSdkType extends SdkType
 		return EP_NAME.findExtension(FanSdkType.class);
 	}
 
-	public static final String FAN_LAUNCHER_WIN = "fan.exe";
-	public static final String FAN_LAUNCHER_UNIX = "fan";
+	public static final String FAN_LAUNCHER_WIN = "fanlaunch.bat";
+	public static final String FAN_LAUNCHER_UNIX = "fanlaunch";
+
 	public static final String JSTUB_WIN = "jstub.exe";
 	public static final String JSTUB_UNIX = "fanlaunch";
 	public static final String FAN_LAUNCHER_DIR = "bin";
@@ -43,22 +47,21 @@ public class FanSdkType extends SdkType
 	public static final String SRC_DIR = "src";
 	public static final String FAN_SRC_DIR = "fan";
 
-	private static final Logger log = Logger.getInstance("org.fandev.sdk.FanSdkType");
-
 	public FanSdkType()
 	{
 		super("FAN_SDK");
 	}
 
-	public FanSdkType(@NonNls final String name)
+	@Override
+	public boolean isRootTypeApplicable(OrderRootType type)
 	{
-		super(name);
+		return type == SourcesOrderRootType.getInstance() || type == BinariesOrderRootType.getInstance() || type == DocumentationOrderRootType.getInstance();
 	}
 
 	@Override
 	public Icon getIcon()
 	{
-		return Icons.FAN_16;
+		return FantomIcons.Fantom;
 	}
 
 	@Override

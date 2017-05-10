@@ -3,11 +3,14 @@ package org.fandev.icons;
 import javax.swing.Icon;
 
 import com.intellij.openapi.util.IconLoader;
+import consulo.annotations.DeprecationInfo;
 
 /**
  * @author Dror Bereznitsky
  * @date Jan 10, 2009 3:56:47 PM
  */
+@Deprecated
+@DeprecationInfo("See consulo.fantom.FantomIcons")
 public interface Icons
 {
 	Icon POD = IconLoader.getIcon("/icons/structure/pod.png");
@@ -17,8 +20,4 @@ public interface Icons
 	Icon ENUM = IconLoader.getIcon("/icons/structure/enum.png");
 	Icon METHOD = IconLoader.getIcon("/icons/structure/method.png");
 	Icon FIELD = IconLoader.getIcon("/icons/structure/field.png");
-	Icon FAN_16 = IconLoader.getIcon("/icons/fileTypes/fan.png");
-	Icon FAN_24 = IconLoader.getIcon("/icons/fan_24.png");
-	Icon FAN_MODULE_OPEN = IconLoader.getIcon("/icons/modules/fan_module_opened.png");
-	Icon FAN_MODULE_CLOSE = IconLoader.getIcon("/icons/modules/fan_module_closed.png");
 }

@@ -60,6 +60,8 @@
 
 		<projectService serviceInterface="org.fandev.lang.fan.psi.FanPsiElementFactory"
 						serviceImplementation="org.fandev.lang.fan.psi.FanPsiElementFactory"/>
+
+		<sdkType implementation="org.fandev.sdk.FanSdkType" />
 	</extensions>
 
 	<project-components>

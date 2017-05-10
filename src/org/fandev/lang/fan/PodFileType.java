@@ -2,9 +2,9 @@ package org.fandev.lang.fan;
 
 import javax.swing.Icon;
 
-import org.fandev.icons.Icons;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import consulo.fantom.FantomIcons;
 import consulo.fileTypes.ArchiveFileType;
 
 /**
@@ -31,7 +31,7 @@ public class PodFileType extends ArchiveFileType
 	@Override
 	public Icon getIcon()
 	{
-		return Icons.FAN_16;
+		return FantomIcons.Fantom;
 	}
 
 	@NotNull
@@ -50,7 +50,7 @@ public class PodFileType extends ArchiveFileType
 
 	@NotNull
 	@Override
-	public String getName()
+	public String getId()
 	{
 		return "Pod";
 	}

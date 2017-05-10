@@ -4,6 +4,7 @@ import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.topLevel.CompilationUnit;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
+import com.intellij.openapi.progress.ProcessCanceledException;
 import consulo.lang.LanguageVersion;
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiParser;
@@ -44,7 +45,7 @@ public class FanParser implements PsiParser
 		{
 			return psiBuilder.getTreeBuilt();
 		}
-		catch(BlockSupport.ReparsedSuccessfullyException e)
+		catch(BlockSupport.ReparsedSuccessfullyException | ProcessCanceledException e)
 		{
 			throw e;
 		}
