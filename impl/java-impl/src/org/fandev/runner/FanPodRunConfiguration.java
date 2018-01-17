@@ -2,7 +2,6 @@ package org.fandev.runner;
 
 import org.jdom.Element;
 import com.intellij.execution.configurations.ConfigurationFactory;
-import com.intellij.execution.configurations.JavaParameters;
 import com.intellij.execution.configurations.ModuleBasedConfiguration;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.configurations.RunConfigurationModule;
@@ -10,6 +9,7 @@ import com.intellij.openapi.options.SettingsEditor;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.util.JDOMExternalizer;
 import com.intellij.openapi.util.WriteExternalException;
+import consulo.java.execution.configurations.OwnJavaParameters;
 
 /**
  * You can use any of the following formats to execute a method in an installed pod
@@ -41,7 +41,7 @@ public class FanPodRunConfiguration extends FanRunConfiguration
 		super(name, runConfigurationModule, factory);
 	}
 
-	protected void setExecutable(final JavaParameters params)
+	protected void setExecutable(final OwnJavaParameters params)
 	{
 		final String typeToExecute = executableType == null || "".equals(executableType) ? "Main" : executableType;
 		params.getProgramParametersList().add(getModuleName() + "::" + typeToExecute);

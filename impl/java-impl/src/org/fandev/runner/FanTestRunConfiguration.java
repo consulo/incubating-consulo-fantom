@@ -1,11 +1,11 @@
 package org.fandev.runner;
 
 import com.intellij.execution.configurations.ConfigurationFactory;
-import com.intellij.execution.configurations.JavaParameters;
 import com.intellij.execution.configurations.ModuleBasedConfiguration;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.configurations.RunConfigurationModule;
 import com.intellij.openapi.options.SettingsEditor;
+import consulo.java.execution.configurations.OwnJavaParameters;
 
 /**
  * Date: Sep 16, 2009
@@ -33,7 +33,7 @@ public class FanTestRunConfiguration extends FanPodRunConfiguration
 	}
 
 	@Override
-	protected void setExecutable(final JavaParameters params)
+	protected void setExecutable(final OwnJavaParameters params)
 	{
 		final String typeToExecute = getModuleName() + (executableType == null || "".equals(executableType) ? "" : "::" + executableType);
 		params.getProgramParametersList().add(typeToExecute);

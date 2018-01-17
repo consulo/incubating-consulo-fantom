@@ -2,7 +2,6 @@ package org.fandev.runner;
 
 import org.jdom.Element;
 import com.intellij.execution.configurations.ConfigurationFactory;
-import com.intellij.execution.configurations.JavaParameters;
 import com.intellij.execution.configurations.ModuleBasedConfiguration;
 import com.intellij.execution.configurations.RunConfiguration;
 import com.intellij.execution.configurations.RunConfigurationModule;
@@ -10,6 +9,7 @@ import com.intellij.openapi.options.SettingsEditor;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.util.JDOMExternalizer;
 import com.intellij.openapi.util.WriteExternalException;
+import consulo.java.execution.configurations.OwnJavaParameters;
 
 /**
  * @author Dror Bereznitsky
@@ -34,7 +34,7 @@ public class FanScriptRunConfiguration extends FanRunConfiguration
 		return new FanScriptRunConfigurationEditor();
 	}
 
-	protected void setExecutable(final JavaParameters params)
+	protected void setExecutable(final OwnJavaParameters params)
 	{
 		params.getProgramParametersList().add(getScriptPath());
 	}

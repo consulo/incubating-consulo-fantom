@@ -10,7 +10,6 @@ import org.fandev.utils.TextUtil;
 import org.jdom.Element;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import consulo.fantom.module.extension.FanModuleExtension;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.Executor;
 import com.intellij.execution.configurations.ConfigurationFactory;
@@ -31,6 +30,8 @@ import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.util.JDOMExternalizer;
 import com.intellij.openapi.util.WriteExternalException;
 import consulo.compiler.ModuleCompilerPathsManager;
+import consulo.fantom.module.extension.FanModuleExtension;
+import consulo.java.execution.configurations.OwnJavaParameters;
 import consulo.roots.impl.ProductionContentFolderTypeProvider;
 import fan.sys.Env;
 import fan.sys.Map;
@@ -59,11 +60,11 @@ public abstract class FanRunConfiguration extends ModuleBasedConfiguration
 	{
 		final JavaCommandLineState state = new JavaCommandLineState(env)
 		{
-			protected JavaParameters createJavaParameters() throws ExecutionException
+			protected OwnJavaParameters createJavaParameters() throws ExecutionException
 			{
 				final String outDir = getModuleOutDir();
 
-				final JavaParameters params = new JavaParameters();
+				final OwnJavaParameters params = new OwnJavaParameters();
 
 				params.setJdk(createFanJdk(getSdk()));
 				params.getVMParametersList().add("-Dfan.home=" + getSdk().getHomePath());
@@ -74,7 +75,7 @@ public abstract class FanRunConfiguration extends ModuleBasedConfiguration
 				params.setMainClass(getMainClass());
 				setExecutable(params);
 				params.getProgramParametersList().addParametersString(getExecutionParameters());
-				params.configureByModule(getModule(), JavaParameters.CLASSES_ONLY);
+				params.configureByModule(getModule(), OwnJavaParameters.CLASSES_ONLY);
 
 				return params;
 			}
@@ -201,5 +202,5 @@ public abstract class FanRunConfiguration extends ModuleBasedConfiguration
 		this.executionParameters = executionParameters;
 	}
 
-	protected abstract void setExecutable(final JavaParameters params);
+	protected abstract void setExecutable(final OwnJavaParameters params);
 }
