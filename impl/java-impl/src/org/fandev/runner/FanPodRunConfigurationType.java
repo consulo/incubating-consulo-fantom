@@ -1,10 +1,9 @@
 package org.fandev.runner;
 
-import javax.swing.Icon;
-
 import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.configurations.ConfigurationTypeUtil;
 import consulo.fantom.FantomIcons;
+import consulo.ui.image.Image;
 
 /**
  * Date: Sep 4, 2009
@@ -30,7 +29,7 @@ public class FanPodRunConfigurationType extends FanRunConfigurationType
 		return "Fan Pod";
 	}
 
-	public Icon getIcon()
+	public Image getIcon()
 	{
 		return FantomIcons.Fantom;
 	}

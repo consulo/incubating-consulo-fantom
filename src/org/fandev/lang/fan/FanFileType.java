@@ -1,11 +1,10 @@
 package org.fandev.lang.fan;
 
-import javax.swing.Icon;
-
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import consulo.fantom.FantomIcons;
+import consulo.ui.image.Image;
 
 /**
  * @author Dror
@@ -44,7 +43,7 @@ public class FanFileType extends LanguageFileType
 	}
 
 	@Override
-	public Icon getIcon()
+	public Image getIcon()
 	{
 		return FantomIcons.Fantom;
 	}

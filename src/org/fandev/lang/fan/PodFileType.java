@@ -1,11 +1,10 @@
 package org.fandev.lang.fan;
 
-import javax.swing.Icon;
-
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import consulo.fantom.FantomIcons;
 import consulo.fileTypes.ArchiveFileType;
+import consulo.ui.image.Image;
 
 /**
  * @author Dror Bereznitsky
@@ -29,7 +28,7 @@ public class PodFileType extends ArchiveFileType
 	}
 
 	@Override
-	public Icon getIcon()
+	public Image getIcon()
 	{
 		return FantomIcons.Fantom;
 	}

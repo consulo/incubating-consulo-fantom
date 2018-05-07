@@ -30,11 +30,6 @@ public class FanColorsAndFontsPage implements ColorSettingsPage
 		return "Fantom";
 	}
 
-	public Icon getIcon()
-	{
-		return FanSupportLoader.FAN.getIcon();
-	}
-
 	@NotNull
 	public AttributesDescriptor[] getAttributeDescriptors()
 	{

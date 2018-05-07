@@ -4,8 +4,6 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Collections;
 
-import javax.swing.Icon;
-
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.utils.FanUtil;
 import org.fandev.utils.OSUtil;
@@ -22,6 +20,7 @@ import consulo.fantom.FantomIcons;
 import consulo.roots.types.BinariesOrderRootType;
 import consulo.roots.types.DocumentationOrderRootType;
 import consulo.roots.types.SourcesOrderRootType;
+import consulo.ui.image.Image;
 
 /**
  * @author Dror Bereznitsky
@@ -59,7 +58,7 @@ public class FanSdkType extends SdkType
 	}
 
 	@Override
-	public Icon getIcon()
+	public Image getIcon()
 	{
 		return FantomIcons.Fantom;
 	}

@@ -1,11 +1,10 @@
 package org.fandev.runner;
 
-import javax.swing.Icon;
-
 import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.configurations.ConfigurationTypeUtil;
 import consulo.fantom.FantomIcons;
+import consulo.ui.image.Image;
 
 /**
  * @author Dror Bereznitsky
@@ -29,7 +28,7 @@ public class FanScriptRunConfigurationType extends FanRunConfigurationType
 		return "Fantom Script";
 	}
 
-	public Icon getIcon()
+	public Image getIcon()
 	{
 		return FantomIcons.Fantom;
 	}
