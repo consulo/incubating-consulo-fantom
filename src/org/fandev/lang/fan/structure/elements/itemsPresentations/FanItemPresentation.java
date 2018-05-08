@@ -3,6 +3,7 @@ package org.fandev.lang.fan.structure.elements.itemsPresentations;
 import javax.swing.Icon;
 
 import org.jetbrains.annotations.Nullable;
+import consulo.awt.TargetAWT;
 import consulo.ide.IconDescriptorUpdaters;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
@@ -32,12 +33,6 @@ public abstract class FanItemPresentation implements ItemPresentation
 	@Nullable
 	public Icon getIcon(final boolean open)
 	{
-		return IconDescriptorUpdaters.getIcon(myElement, 0);
-	}
-
-	@Nullable
-	public TextAttributesKey getTextAttributesKey()
-	{
-		return null;
+		return TargetAWT.to(IconDescriptorUpdaters.getIcon(myElement, 0));
 	}
 }

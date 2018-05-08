@@ -14,14 +14,14 @@ import org.fandev.lang.fan.psi.stubs.FanEnumValueStub;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import consulo.ide.IconDescriptorUpdaters;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.util.Iconable;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.util.IncorrectOperationException;
+import consulo.awt.TargetAWT;
+import consulo.ide.IconDescriptorUpdaters;
 
 /**
  * Date: Mar 31, 2009
@@ -145,13 +145,7 @@ public class FanEnumValueImpl extends FanBaseElementImpl<FanEnumValueStub> imple
 			@Nullable
 			public Icon getIcon(final boolean open)
 			{
-				return IconDescriptorUpdaters.getIcon(FanEnumValueImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
-			}
-
-			@Nullable
-			public TextAttributesKey getTextAttributesKey()
-			{
-				return null;
+				return TargetAWT.to(IconDescriptorUpdaters.getIcon(FanEnumValueImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS));
 			}
 		};
 	}

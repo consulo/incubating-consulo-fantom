@@ -27,7 +27,6 @@ import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.util.Iconable;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
@@ -35,6 +34,7 @@ import com.intellij.psi.StubBasedPsiElement;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.util.IncorrectOperationException;
+import consulo.awt.TargetAWT;
 import consulo.ide.IconDescriptorUpdaters;
 
 /**
@@ -88,13 +88,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 			@Nullable
 			public Icon getIcon(final boolean open)
 			{
-				return IconDescriptorUpdaters.getIcon(FanTypeDefinitionImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
-			}
-
-			@Nullable
-			public TextAttributesKey getTextAttributesKey()
-			{
-				return null;
+				return TargetAWT.to(IconDescriptorUpdaters.getIcon(FanTypeDefinitionImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS));
 			}
 		};
 	}
