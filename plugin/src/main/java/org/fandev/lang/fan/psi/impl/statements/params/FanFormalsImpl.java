@@ -1,9 +1,10 @@
 package org.fandev.lang.fan.psi.impl.statements.params;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.psi.api.statements.params.FanFormal;
 import org.fandev.lang.fan.psi.api.statements.params.FanFormals;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 
 /**
@@ -20,7 +21,7 @@ public class FanFormalsImpl extends FanBaseElementImpl implements FanFormals
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanFormal[] getParameters()
 	{
 		return findChildrenByClass(FanFormal.class);

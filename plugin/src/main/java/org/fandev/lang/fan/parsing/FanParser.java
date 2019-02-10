@@ -2,7 +2,7 @@ package org.fandev.lang.fan.parsing;
 
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.topLevel.CompilationUnit;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.progress.ProcessCanceledException;
 import consulo.lang.LanguageVersion;
@@ -21,8 +21,8 @@ public class FanParser implements PsiParser
 	private final static Logger logger = Logger.getInstance(FanParser.class.getName());
 
 	@Override
-	@NotNull
-	public ASTNode parse(@NotNull final IElementType root, @NotNull final PsiBuilder psiBuilder, @NotNull LanguageVersion languageVersion)
+	@Nonnull
+	public ASTNode parse(@Nonnull final IElementType root, @Nonnull final PsiBuilder psiBuilder, @Nonnull LanguageVersion languageVersion)
 	{
 		psiBuilder.setDebugMode(true);
 		final PsiBuilder.Marker rootMarker = psiBuilder.mark();

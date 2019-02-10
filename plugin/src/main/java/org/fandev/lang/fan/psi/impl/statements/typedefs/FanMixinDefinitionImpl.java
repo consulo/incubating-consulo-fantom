@@ -8,7 +8,7 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.FanMixinDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
@@ -39,7 +39,7 @@ public class FanMixinDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 	}
 
 	@Override
-	public PsiElement setName(@NotNull @NonNls final String name) throws IncorrectOperationException
+	public PsiElement setName(@Nonnull @NonNls final String name) throws IncorrectOperationException
 	{
 		// TODO rename
 		return this;
@@ -77,7 +77,7 @@ public class FanMixinDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 		return null;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	protected Icon getIconInner()
 	{

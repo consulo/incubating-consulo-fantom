@@ -1,10 +1,11 @@
 package org.fandev.utils;
 
+import javax.annotation.Nullable;
+
 import org.fandev.lang.fan.psi.api.modifiers.FanModifierListOwner;
 import org.fandev.lang.fan.psi.api.statements.FanTopLevelDefintion;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMember;
-import org.jetbrains.annotations.Nullable;
 import com.intellij.openapi.compiler.CompilerManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectRootManager;

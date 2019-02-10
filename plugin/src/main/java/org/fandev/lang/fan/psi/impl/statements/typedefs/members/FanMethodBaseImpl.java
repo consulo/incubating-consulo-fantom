@@ -1,5 +1,6 @@
 package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
 import org.fandev.icons.Icons;
@@ -8,7 +9,6 @@ import org.fandev.lang.fan.psi.api.statements.blocks.FanPsiCodeBlock;
 import org.fandev.lang.fan.psi.api.statements.params.FanParameterList;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.api.types.FanTypeElement;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.NamedStub;
@@ -19,7 +19,7 @@ import com.intellij.psi.stubs.NamedStub;
  */
 public abstract class FanMethodBaseImpl<T extends NamedStub> extends FanSlotElementImpl<T> implements FanMethod
 {
-	public FanMethodBaseImpl(final T t, @NotNull final IStubElementType iStubElementType)
+	public FanMethodBaseImpl(final T t, @Nonnull final IStubElementType iStubElementType)
 	{
 		super(t, iStubElementType);
 	}
@@ -36,7 +36,7 @@ public abstract class FanMethodBaseImpl<T extends NamedStub> extends FanSlotElem
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanType getReturnType()
 	{
 		final FanTypeElement typeElement = findChildByClass(FanTypeElement.class);
@@ -47,7 +47,7 @@ public abstract class FanMethodBaseImpl<T extends NamedStub> extends FanSlotElem
 		return FanType.VOID;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public FanParameterList getParameterList()
 	{

@@ -3,6 +3,8 @@ package org.fandev.lang.fan.psi.impl.types;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.FanFileType;
 import org.fandev.lang.fan.psi.FanFile;
@@ -15,7 +17,6 @@ import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.FanReferenceElementImpl;
 import org.fandev.lang.fan.psi.impl.FanResolveResultImpl;
 import org.fandev.utils.PsiUtil;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.roots.ContentIterator;
 import com.intellij.openapi.roots.ProjectRootManager;
@@ -37,7 +38,7 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 {
 	private static final FanResolver RESOLVER = new FanResolver();
 
-	public FanCodeReferenceElementImpl(final StubElement stubElement, @NotNull final IStubElementType iStubElementType)
+	public FanCodeReferenceElementImpl(final StubElement stubElement, @Nonnull final IStubElementType iStubElementType)
 	{
 		super(stubElement, iStubElementType);
 	}
@@ -66,7 +67,7 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 		return results.length == 1 ? results[0].getElement() : null;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getCanonicalText()
 	{
@@ -88,7 +89,7 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 		return getManager().areElementsEquivalent(psiElement, resolve());
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public Object[] getVariants()
 	{
@@ -130,7 +131,7 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public ResolveResult[] multiResolve(final boolean incompleteCode)
 	{
 		return ResolveCache.getInstance(getProject()).resolveWithCaching(this, RESOLVER, false, incompleteCode);
@@ -139,7 +140,7 @@ public class FanCodeReferenceElementImpl extends FanReferenceElementImpl impleme
 	private static class FanResolver implements ResolveCache.PolyVariantResolver<FanCodeReferenceElementImpl>
 	{
 
-		@NotNull
+		@Nonnull
 		@Override
 		public ResolveResult[] resolve(final FanCodeReferenceElementImpl fanCodeReferenceElement, final boolean incompleteCode)
 		{

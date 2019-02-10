@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.FanFileType;
 import org.fandev.sdk.FanSdkType;
 import org.fandev.utils.FanUtil;
 import org.fandev.utils.VirtualFileUtil;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.execution.process.OSProcessHandler;
 import com.intellij.execution.process.ProcessAdapter;
 import com.intellij.execution.process.ProcessEvent;
@@ -120,21 +121,21 @@ public class FanCompiler implements TranslatingCompiler
 		}   */
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public FileType[] getInputFileTypes()
 	{
 		return new FileType[0];
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public FileType[] getOutputFileTypes()
 	{
 		return new FileType[0];
 	}
 
-	@NotNull
+	@Nonnull
 	public String getDescription()
 	{
 		return FAN_COMPILER;

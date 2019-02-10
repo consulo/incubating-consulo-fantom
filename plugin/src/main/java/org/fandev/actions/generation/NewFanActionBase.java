@@ -2,11 +2,11 @@ package org.fandev.actions.generation;
 
 import java.util.EnumMap;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
 import org.fandev.lang.fan.FanFileType;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.CommonBundle;
 import com.intellij.ide.actions.CreateElementActionBase;
 import com.intellij.openapi.project.Project;
@@ -27,7 +27,7 @@ public abstract class NewFanActionBase extends CreateElementActionBase
 		super(text, description, icon);
 	}
 
-	@NotNull
+	@Nonnull
 	protected PsiElement[] invokeDialog(final Project project, final PsiDirectory directory)
 	{
 		final MyInputValidator validator = new MyInputValidator(project, directory);
@@ -46,7 +46,7 @@ public abstract class NewFanActionBase extends CreateElementActionBase
 		return CommonBundle.getErrorTitle();
 	}
 
-	@NotNull
+	@Nonnull
 	protected PsiElement[] create(final String newName, final PsiDirectory directory) throws Exception
 	{
 		final EnumMap<TemplateProperty, String> parameters = new EnumMap<TemplateProperty, String>(TemplateProperty.class);

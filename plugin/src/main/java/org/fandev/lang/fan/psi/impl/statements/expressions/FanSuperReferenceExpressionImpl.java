@@ -1,9 +1,10 @@
 package org.fandev.lang.fan.psi.impl.statements.expressions;
 
+import javax.annotation.Nullable;
+
 import org.fandev.lang.fan.psi.api.statements.expressions.FanSuperReferenceExpression;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.utils.FanUtil;
-import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.ASTNode;
 
 /**

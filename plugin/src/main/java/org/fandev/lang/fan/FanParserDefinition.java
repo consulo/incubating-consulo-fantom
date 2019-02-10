@@ -2,10 +2,11 @@ package org.fandev.lang.fan;
 
 import static com.intellij.lang.ParserDefinition.SpaceRequirements.MAY;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.parser.FanPsiCreator;
 import org.fandev.lang.fan.parsing.FanParser;
 import org.fandev.lang.fan.psi.impl.FanFileImpl;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.ParserDefinition;
 import com.intellij.lang.PsiParser;
@@ -24,20 +25,20 @@ import consulo.lang.LanguageVersion;
 public class FanParserDefinition implements ParserDefinition
 {
 	@Override
-	@NotNull
-	public Lexer createLexer(@NotNull LanguageVersion languageVersion)
+	@Nonnull
+	public Lexer createLexer(@Nonnull LanguageVersion languageVersion)
 	{
 		return new FanParsingLexer();
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
-	public PsiParser createParser(@NotNull LanguageVersion languageVersion)
+	public PsiParser createParser(@Nonnull LanguageVersion languageVersion)
 	{
 		return new FanParser();
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public IFileElementType getFileNodeType()
 	{
@@ -45,28 +46,28 @@ public class FanParserDefinition implements ParserDefinition
 	}
 
 	@Override
-	@NotNull
-	public TokenSet getWhitespaceTokens(@NotNull LanguageVersion languageVersion)
+	@Nonnull
+	public TokenSet getWhitespaceTokens(@Nonnull LanguageVersion languageVersion)
 	{
 		return TokenSet.create(FanTokenTypes.WHITE_SPACE);
 	}
 
 	@Override
-	@NotNull
-	public TokenSet getCommentTokens(@NotNull LanguageVersion languageVersion)
+	@Nonnull
+	public TokenSet getCommentTokens(@Nonnull LanguageVersion languageVersion)
 	{
 		return FanTokenTypes.COMMENTS;
 	}
 
 	@Override
-	@NotNull
-	public TokenSet getStringLiteralElements(@NotNull LanguageVersion languageVersion)
+	@Nonnull
+	public TokenSet getStringLiteralElements(@Nonnull LanguageVersion languageVersion)
 	{
 		return FanTokenTypes.STRING_LITERALS;
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public PsiElement createElement(final ASTNode astNode)
 	{
 		return FanPsiCreator.createElement(astNode);

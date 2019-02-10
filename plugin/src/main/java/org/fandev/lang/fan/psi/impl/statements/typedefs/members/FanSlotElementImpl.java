@@ -16,6 +16,7 @@
  */
 package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
 import org.fandev.lang.fan.FanElementTypes;
@@ -26,8 +27,8 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMember;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.modifiers.FanModifierListImpl;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.util.Iconable;
@@ -45,7 +46,7 @@ import consulo.ide.IconDescriptorUpdaters;
  */
 public abstract class FanSlotElementImpl<T extends NamedStub> extends FanBaseElementImpl<T> implements FanMember, PsiNameIdentifierOwner
 {
-	protected FanSlotElementImpl(final T t, @NotNull final IStubElementType iStubElementType)
+	protected FanSlotElementImpl(final T t, @Nonnull final IStubElementType iStubElementType)
 	{
 		super(t, iStubElementType);
 	}

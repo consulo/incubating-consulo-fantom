@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.psi.impl;
 
 import org.fandev.lang.fan.psi.FanElement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.extapi.psi.StubBasedPsiElementBase;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.stubs.IStubElementType;
@@ -13,7 +13,7 @@ import com.intellij.psi.stubs.StubElement;
  */
 public class FanStubElementImpl<T extends StubElement> extends StubBasedPsiElementBase<T> implements FanElement
 {
-	public FanStubElementImpl(final T t, @NotNull final IStubElementType iStubElementType)
+	public FanStubElementImpl(final T t, @Nonnull final IStubElementType iStubElementType)
 	{
 		super(t, iStubElementType);
 	}

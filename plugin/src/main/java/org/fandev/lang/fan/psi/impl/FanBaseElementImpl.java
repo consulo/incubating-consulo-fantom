@@ -1,11 +1,12 @@
 package org.fandev.lang.fan.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.FanLanguage;
 import org.fandev.lang.fan.psi.FanElement;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.extapi.psi.StubBasedPsiElementBase;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.Language;
@@ -19,7 +20,7 @@ import com.intellij.psi.stubs.StubElement;
  */
 public class FanBaseElementImpl<T extends StubElement> extends StubBasedPsiElementBase<T> implements FanElement
 {
-	public FanBaseElementImpl(final T t, @NotNull final IStubElementType iStubElementType)
+	public FanBaseElementImpl(final T t, @Nonnull final IStubElementType iStubElementType)
 	{
 		super(t, iStubElementType);
 	}
@@ -30,7 +31,7 @@ public class FanBaseElementImpl<T extends StubElement> extends StubBasedPsiEleme
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public Language getLanguage()
 	{
 		return FanLanguage.INSTANCE;

@@ -3,7 +3,6 @@ package org.fandev.lang.fan;
 import javax.annotation.Nonnull;
 
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import consulo.fantom.FantomIcons;
 import consulo.fileTypes.ArchiveFileType;
 import consulo.ui.image.Image;
@@ -36,21 +35,21 @@ public class PodFileType extends ArchiveFileType
 		return FantomIcons.Fantom;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getDefaultExtension()
 	{
 		return DEFAULT_EXTENSION;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getDescription()
 	{
 		return FanBundle.message("fan.filetype.description");
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getId()
 	{

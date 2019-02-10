@@ -7,7 +7,7 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
 import org.fandev.lang.fan.psi.stubs.impl.FanTypeDefinitionStubImpl;
 import org.fandev.lang.fan.psi.stubs.index.FanShortClassNameIndex;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.psi.stubs.IndexSink;
 import com.intellij.psi.stubs.StubElement;
 import com.intellij.psi.stubs.StubInputStream;
@@ -20,7 +20,7 @@ import com.intellij.util.io.StringRef;
  */
 public abstract class FanTypeDefinitionElementType<TypeDef extends FanTypeDefinition> extends FanStubElementType<FanTypeDefinitionStub, TypeDef>
 {
-	public FanTypeDefinitionElementType(@NotNull final String debugName)
+	public FanTypeDefinitionElementType(@Nonnull final String debugName)
 	{
 		super(debugName);
 	}

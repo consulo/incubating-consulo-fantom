@@ -1,12 +1,13 @@
 package org.fandev.lang.fan.psi.impl.types;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.types.FanClassTypeElement;
 import org.fandev.lang.fan.psi.api.types.FanListTypeElement;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanListReferenceType;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 
 /**
@@ -23,7 +24,7 @@ public class FanListTypeElementImpl extends FanBaseElementImpl implements FanLis
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanType getType()
 	{
 		final FanClassTypeElement fanTypeElem = getTypeElement();
@@ -31,7 +32,7 @@ public class FanListTypeElementImpl extends FanBaseElementImpl implements FanLis
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanClassTypeElement getTypeElement()
 	{
 		return findChildByClass(FanClassTypeElement.class);

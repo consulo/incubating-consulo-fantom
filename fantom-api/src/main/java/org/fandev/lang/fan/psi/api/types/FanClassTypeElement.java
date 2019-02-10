@@ -1,6 +1,6 @@
 package org.fandev.lang.fan.psi.api.types;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Date: Jul 3, 2009
@@ -10,6 +10,6 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface FanClassTypeElement extends FanTypeElement
 {
-	@NotNull
+	@Nonnull
 	FanCodeReferenceElement getReferenceElement();
 }

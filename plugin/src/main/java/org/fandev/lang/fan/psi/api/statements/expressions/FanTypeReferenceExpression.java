@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.psi.api.statements.expressions;
 
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 
 /**
  * Date: Sep 12, 2009

@@ -19,7 +19,7 @@ package org.fandev.lang.fan.psi.impl.statements.blocks;
 import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.psi.api.statements.blocks.FanPsiCodeBlock;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanStatement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
@@ -30,13 +30,13 @@ import com.intellij.psi.PsiElement;
  */
 public class FanPsiCodeBlockImpl extends ASTWrapperPsiElement implements FanPsiCodeBlock
 {
-	public FanPsiCodeBlockImpl(@NotNull final ASTNode node)
+	public FanPsiCodeBlockImpl(@Nonnull final ASTNode node)
 	{
 		super(node);
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanStatement[] getStatements()
 	{
 		return findChildrenByClass(FanStatement.class);

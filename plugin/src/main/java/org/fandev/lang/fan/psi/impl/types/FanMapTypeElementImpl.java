@@ -6,7 +6,7 @@ import org.fandev.lang.fan.psi.api.types.FanMapTypeElement;
 import org.fandev.lang.fan.psi.api.types.FanTypeElement;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanMapType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.lang.ASTNode;
 
 /**
@@ -23,7 +23,7 @@ public class FanMapTypeElementImpl extends FanBaseElementImpl implements FanMapT
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanType getType()
 	{
 		final FanTypeElement[] keyValueTypes = findChildrenByClass(FanTypeElement.class);

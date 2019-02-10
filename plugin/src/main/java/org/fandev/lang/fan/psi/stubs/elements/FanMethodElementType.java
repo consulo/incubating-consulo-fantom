@@ -1,11 +1,12 @@
 package org.fandev.lang.fan.psi.stubs.elements;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.impl.statements.typedefs.members.FanMethodImpl;
 import org.fandev.lang.fan.psi.stubs.FanMethodStub;
 import org.fandev.lang.fan.psi.stubs.impl.FanMethodStubImpl;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.StubElement;
 import com.intellij.util.io.StringRef;
@@ -16,7 +17,7 @@ import com.intellij.util.io.StringRef;
  */
 public class FanMethodElementType extends FanSlotElementType<FanMethod, FanMethodStub>
 {
-	public FanMethodElementType(@NotNull final String debugName)
+	public FanMethodElementType(@Nonnull final String debugName)
 	{
 		super(debugName);
 	}

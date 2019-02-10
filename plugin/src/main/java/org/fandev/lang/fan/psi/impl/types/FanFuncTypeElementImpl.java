@@ -7,7 +7,7 @@ import org.fandev.lang.fan.psi.api.types.FanFuncTypeElement;
 import org.fandev.lang.fan.psi.api.types.FanTypeElement;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanFuncType;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.lang.ASTNode;
 
 /**
@@ -24,7 +24,7 @@ public class FanFuncTypeElementImpl extends FanBaseElementImpl implements FanFun
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanType getType()
 	{
 		return new FanFuncType(this);

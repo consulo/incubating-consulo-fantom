@@ -1,13 +1,16 @@
 package org.fandev.findUsages;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.psi.api.statements.FanVariable;
 import org.fandev.lang.fan.psi.api.statements.expressions.FanReferenceExpression;
 import org.fandev.lang.fan.psi.api.statements.params.FanParameter;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
+
 import com.intellij.lang.findUsages.FindUsagesProvider;
 import com.intellij.psi.PsiElement;
 
@@ -32,7 +35,7 @@ public class FanFindUsagesProvider implements FindUsagesProvider
 	}
 
 	@Override
-	public boolean canFindUsagesFor(@NotNull final PsiElement psiElement)
+	public boolean canFindUsagesFor(@Nonnull final PsiElement psiElement)
 	{
 		return psiElement instanceof FanTypeDefinition ||
 				psiElement instanceof FanMethod ||
@@ -41,14 +44,14 @@ public class FanFindUsagesProvider implements FindUsagesProvider
 
 	@Override
 	@Nullable
-	public String getHelpId(@NotNull final PsiElement psiElement)
+	public String getHelpId(@Nonnull final PsiElement psiElement)
 	{
 		return null;
 	}
 
 	@Override
-	@NotNull
-	public String getType(@NotNull final PsiElement element)
+	@Nonnull
+	public String getType(@Nonnull final PsiElement element)
 	{
 		if(element instanceof FanTypeDefinition)
 		{
@@ -74,8 +77,8 @@ public class FanFindUsagesProvider implements FindUsagesProvider
 	}
 
 	@Override
-	@NotNull
-	public String getDescriptiveName(@NotNull final PsiElement element)
+	@Nonnull
+	public String getDescriptiveName(@Nonnull final PsiElement element)
 	{
 		if(element instanceof FanTypeDefinition)
 		{
@@ -108,8 +111,8 @@ public class FanFindUsagesProvider implements FindUsagesProvider
 	}
 
 	@Override
-	@NotNull
-	public String getNodeText(@NotNull final PsiElement element, final boolean useFullName)
+	@Nonnull
+	public String getNodeText(@Nonnull final PsiElement element, final boolean useFullName)
 	{
 		if(element instanceof FanTypeDefinition)
 		{

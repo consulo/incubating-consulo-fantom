@@ -6,9 +6,10 @@ import static org.fandev.lang.fan.FanTokenTypes.FAN_SYS_TYPE;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.FanHighlightingLexer;
 import org.fandev.lang.fan.FanTokenTypes;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
@@ -36,14 +37,14 @@ public class FanHighlighter extends SyntaxHighlighterBase implements FanHighligh
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public Lexer getHighlightingLexer()
 	{
 		return new FanHighlightingLexer();
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public TextAttributesKey[] getTokenHighlights(final IElementType tokenType)
 	{
 		return pack(keys.get(tokenType));

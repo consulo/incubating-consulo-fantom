@@ -3,6 +3,7 @@ package org.fandev.lang.fan.psi.impl.statements.typedefs;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
 import org.fandev.lang.fan.FanElementTypes;
@@ -22,8 +23,8 @@ import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanClassReferenceType;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.diagnostic.Logger;
@@ -49,7 +50,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 
 	private final static Logger logger = Logger.getInstance("org.fandev.lang.fan.psi.impl.statements.typedefs.FanTypeDefinitionImpl");
 
-	public FanTypeDefinitionImpl(final FanTypeDefinitionStub stubElement, @NotNull final IStubElementType iStubElementType)
+	public FanTypeDefinitionImpl(final FanTypeDefinitionStub stubElement, @Nonnull final IStubElementType iStubElementType)
 	{
 		super(stubElement, iStubElementType);
 	}
@@ -94,7 +95,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanClassType[] getExtendsListTypes()
 	{
 		final List<FanClassType> extendsTypes = getReferenceListTypes(getInheritanceClause());
@@ -131,7 +132,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return getSuperClass();
 	}
 
-	@NotNull
+	@Nonnull
 	public FanTypeDefinition[] getSupers()
 	{
 		final FanClassType[] superTypes = getSuperTypes();
@@ -148,7 +149,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return result.toArray(new FanTypeDefinition[0]);
 	}
 
-	@NotNull
+	@Nonnull
 	public FanClassType[] getSuperTypes()
 	{
 		return getExtendsListTypes();
@@ -168,7 +169,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public String getPodName()
 	{
 		final PsiFile psiFile = getContainingFile();
@@ -224,7 +225,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanMethod[] getFanMethods()
 	{
 		if(fanMethods == null)
@@ -244,7 +245,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanField[] getFanFields()
 	{
 		if(fanFields == null)
@@ -264,7 +265,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanSlot[] getSlots()
 	{
 		if(fanSlots == null)
@@ -316,7 +317,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanSlot[] getSlots(final String modifier)
 	{
 		final List<FanSlot> slots = new ArrayList<FanSlot>();
@@ -331,7 +332,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanMethod[] getFanMethods(final String modifier)
 	{
 		final List<FanMethod> methods = new ArrayList<FanMethod>();
@@ -346,7 +347,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanField[] getFanFields(final String modifier)
 	{
 		final List<FanField> fields = new ArrayList<FanField>();
@@ -373,7 +374,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 	}
 
 	@Override
-	public PsiElement addMemberDeclaration(@NotNull final PsiElement decl, final PsiElement anchorBefore) throws IncorrectOperationException
+	public PsiElement addMemberDeclaration(@Nonnull final PsiElement decl, final PsiElement anchorBefore) throws IncorrectOperationException
 	{
 
 		final FanTypeDefinitionBody body = getBodyElement();

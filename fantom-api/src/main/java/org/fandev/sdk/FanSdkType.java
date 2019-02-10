@@ -4,11 +4,14 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Collections;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.utils.FanUtil;
 import org.fandev.utils.OSUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
+
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.projectRoots.Sdk;
 import com.intellij.openapi.projectRoots.SdkModificator;
@@ -30,7 +33,7 @@ public class FanSdkType extends SdkType
 {
 	private static final Logger log = Logger.getInstance("org.fandev.sdk.FanSdkType");
 
-	@NotNull
+	@Nonnull
 	public static FanSdkType getInstance()
 	{
 		return EP_NAME.findExtension(FanSdkType.class);
@@ -64,7 +67,7 @@ public class FanSdkType extends SdkType
 	}
 
 	@Override
-	public String getVersionString(@NotNull final String sdkHome)
+	public String getVersionString(@Nonnull final String sdkHome)
 	{
 		FanUtil.setFanHome(sdkHome);
 		ClassLoader cl = FanUtil.getSysClassloader(sdkHome);
@@ -87,7 +90,7 @@ public class FanSdkType extends SdkType
 		return "";
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public Collection<String> suggestHomePaths()
 	{
@@ -135,7 +138,7 @@ public class FanSdkType extends SdkType
 		return "Fantom SDK " + getVersionString(sdkHome);
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getPresentableName()
 	{

@@ -17,8 +17,8 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.impl.FanListReferenceType;
 import org.fandev.lang.fan.psi.impl.FanMapType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import consulo.fantom.module.extension.FanModuleExtension;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.module.Module;
@@ -58,18 +58,18 @@ public class FanUtil
 		setFanHome(getFanSdk(module));
 	}
 
-	public static void setFanHome(@NotNull final Sdk moduleSdk)
+	public static void setFanHome(@Nonnull final Sdk moduleSdk)
 	{
 		System.setProperty("fan.home", moduleSdk.getHomePath());
 	}
 
-	public static void setFanHome(@NotNull final String home)
+	public static void setFanHome(@Nonnull final String home)
 	{
 		System.setProperty("fan.home", home);
 	}
 
 	@Nullable
-	public static URLClassLoader getSysClassloader(@NotNull final String sdkHome)
+	public static URLClassLoader getSysClassloader(@Nonnull final String sdkHome)
 	{
 		final VirtualFile sysJar = VirtualFileUtil.refreshAndFindFileByLocalPath(sdkHome + "/lib/java/sys.jar");
 		try
@@ -88,7 +88,7 @@ public class FanUtil
 
 
 	@Nullable
-	public static FanTypeDefinition getContainingType(@NotNull final PsiElement element)
+	public static FanTypeDefinition getContainingType(@Nonnull final PsiElement element)
 	{
 		final PsiElement maybeClazz = PsiTreeUtil.getParentOfType(element, FanTypeDefinition.class, FanFile.class);
 		if(FanUtil.isFanType(maybeClazz))

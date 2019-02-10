@@ -1,5 +1,6 @@
 package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
 import org.fandev.lang.fan.FanElementTypes;
@@ -12,8 +13,8 @@ import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanEnumReferenceType;
 import org.fandev.lang.fan.psi.stubs.FanEnumValueStub;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.util.Iconable;
@@ -31,7 +32,7 @@ import consulo.ide.IconDescriptorUpdaters;
  */
 public class FanEnumValueImpl extends FanBaseElementImpl<FanEnumValueStub> implements FanEnumValue
 {
-	public FanEnumValueImpl(final FanEnumValueStub fanEnumValueStub, @NotNull final IStubElementType iStubElementType)
+	public FanEnumValueImpl(final FanEnumValueStub fanEnumValueStub, @Nonnull final IStubElementType iStubElementType)
 	{
 		super(fanEnumValueStub, iStubElementType);
 	}
@@ -42,7 +43,7 @@ public class FanEnumValueImpl extends FanBaseElementImpl<FanEnumValueStub> imple
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanType getType()
 	{
 		return new FanEnumReferenceType((FanEnumDefinition) getContainingClass());
@@ -70,7 +71,7 @@ public class FanEnumValueImpl extends FanBaseElementImpl<FanEnumValueStub> imple
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public PsiElement getNameIdentifier()
 	{
 		return findChildByType(FanElementTypes.NAME_ELEMENT);
@@ -114,7 +115,7 @@ public class FanEnumValueImpl extends FanBaseElementImpl<FanEnumValueStub> imple
 	}
 
 	@Override
-	public PsiElement setName(@NotNull @NonNls final String name) throws IncorrectOperationException
+	public PsiElement setName(@Nonnull @NonNls final String name) throws IncorrectOperationException
 	{
 		//TODO implement method
 		return this;

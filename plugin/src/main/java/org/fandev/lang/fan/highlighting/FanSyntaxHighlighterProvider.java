@@ -1,7 +1,8 @@
 package org.fandev.lang.fan.highlighting;
 
+import javax.annotation.Nullable;
+
 import org.fandev.lang.fan.FanSupportLoader;
-import org.jetbrains.annotations.Nullable;
 import com.intellij.lang.Language;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;

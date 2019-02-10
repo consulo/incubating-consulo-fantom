@@ -1,6 +1,6 @@
 package org.fandev.runner;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.configurations.ConfigurationType;
 import com.intellij.execution.configurations.RunConfiguration;
@@ -15,7 +15,7 @@ import com.intellij.openapi.project.Project;
  */
 public class FanTestConfigurationFactory extends ConfigurationFactory
 {
-	protected FanTestConfigurationFactory(@NotNull final ConfigurationType type)
+	protected FanTestConfigurationFactory(@Nonnull final ConfigurationType type)
 	{
 		super(type);
 	}

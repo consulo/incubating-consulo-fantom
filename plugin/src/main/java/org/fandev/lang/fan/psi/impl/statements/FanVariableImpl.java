@@ -3,7 +3,7 @@ package org.fandev.lang.fan.psi.impl.statements;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.statements.FanVariable;
 import org.fandev.lang.fan.psi.api.types.FanTypeElement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.stubs.IStubElementType;
@@ -17,7 +17,7 @@ import com.intellij.psi.stubs.StubElement;
  */
 public class FanVariableImpl extends FanVariableBaseImpl implements FanVariable
 {
-	public FanVariableImpl(final StubElement stubElement, @NotNull final IStubElementType iStubElementType)
+	public FanVariableImpl(final StubElement stubElement, @Nonnull final IStubElementType iStubElementType)
 	{
 		super(stubElement, iStubElementType);
 	}

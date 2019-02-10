@@ -1,5 +1,7 @@
 package org.fandev.lang.fan.parameterInfo;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.psi.FanElement;
 import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.FanResolveResult;
@@ -11,7 +13,6 @@ import org.fandev.lang.fan.psi.api.statements.params.FanParameter;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanConstructor;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.codeInsight.CodeInsightSettings;
 import com.intellij.codeInsight.lookup.LookupElement;
 import com.intellij.lang.parameterInfo.CreateParameterInfoContext;
@@ -67,7 +68,7 @@ public class FanParameterInfoHandler implements ParameterInfoHandler<FanElement,
 		return findAnchorElement(context.getEditor().getCaretModel().getOffset(), context.getFile());
 	}
 
-	public void showParameterInfo(@NotNull final FanElement place, final CreateParameterInfoContext context)
+	public void showParameterInfo(@Nonnull final FanElement place, final CreateParameterInfoContext context)
 	{
 		final PsiElement parent = place.getParent();
 		FanResolveResult[] variants = FanResolveResult.EMPTY_ARRAY;
@@ -84,7 +85,7 @@ public class FanParameterInfoHandler implements ParameterInfoHandler<FanElement,
 		return findAnchorElement(context.getEditor().getCaretModel().getOffset(), context.getFile());
 	}
 
-	public void updateParameterInfo(@NotNull final FanElement o, final UpdateParameterInfoContext context)
+	public void updateParameterInfo(@Nonnull final FanElement o, final UpdateParameterInfoContext context)
 	{
 
 	}

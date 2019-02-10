@@ -1,6 +1,7 @@
 package org.fandev.runner;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.execution.configurations.ConfigurationTypeUtil;
 import consulo.fantom.FantomIcons;
 import consulo.ui.image.Image;
@@ -34,7 +35,7 @@ public class FanPodRunConfigurationType extends FanRunConfigurationType
 		return FantomIcons.Fantom;
 	}
 
-	@NotNull
+	@Nonnull
 	public String getId()
 	{
 		return "FanPodRunConfiguration";

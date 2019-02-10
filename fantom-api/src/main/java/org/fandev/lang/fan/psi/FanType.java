@@ -1,6 +1,7 @@
 package org.fandev.lang.fan.psi;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.util.ArrayFactory;
 
 /**
@@ -13,7 +14,7 @@ public interface FanType
 
 	public static ArrayFactory<FanType> ARRAY_FACTORY = new ArrayFactory<FanType>()
 	{
-		@NotNull
+		@Nonnull
 		@Override
 		public FanType[] create(int count)
 		{

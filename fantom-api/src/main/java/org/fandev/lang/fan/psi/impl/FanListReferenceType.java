@@ -4,7 +4,7 @@ import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.types.FanClassTypeElement;
 import org.fandev.lang.fan.psi.api.types.FanListTypeElement;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 
 /**
  * Date: Jul 17, 2009
@@ -15,10 +15,10 @@ import org.jetbrains.annotations.NotNull;
 public class FanListReferenceType implements FanType
 {
 	private FanListTypeElement element;
-	@NotNull
+	@Nonnull
 	private final FanType myInnerType;
 
-	public FanListReferenceType(final FanListTypeElement element, @NotNull final FanType innerType)
+	public FanListReferenceType(final FanListTypeElement element, @Nonnull final FanType innerType)
 	{
 		this.element = element;
 		myInnerType = innerType;

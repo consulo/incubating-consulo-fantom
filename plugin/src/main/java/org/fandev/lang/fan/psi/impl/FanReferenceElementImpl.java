@@ -1,9 +1,10 @@
 package org.fandev.lang.fan.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.psi.FanReferenceElement;
 import org.fandev.lang.fan.psi.FanType;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
@@ -18,7 +19,7 @@ import com.intellij.util.IncorrectOperationException;
  */
 public abstract class FanReferenceElementImpl extends FanBaseElementImpl implements FanReferenceElement
 {
-	protected FanReferenceElementImpl(final StubElement stubElement, @NotNull final IStubElementType iStubElementType)
+	protected FanReferenceElementImpl(final StubElement stubElement, @Nonnull final IStubElementType iStubElementType)
 	{
 		super(stubElement, iStubElementType);
 	}
@@ -76,12 +77,12 @@ public abstract class FanReferenceElementImpl extends FanBaseElementImpl impleme
 		return null;
 	}
 
-	public PsiElement bindToElement(@NotNull final PsiElement element) throws IncorrectOperationException
+	public PsiElement bindToElement(@Nonnull final PsiElement element) throws IncorrectOperationException
 	{
 		return null;
 	}
 
-	@NotNull
+	@Nonnull
 	public FanType[] getTypeArguments()
 	{
 		/*final FanTypeArgumentList typeArgsList = getTypeArgumentList();

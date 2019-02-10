@@ -1,9 +1,12 @@
 package org.fandev.lang.fan.psi;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.psi.api.statements.FanTopLevelDefintion;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
+
 import com.intellij.psi.PsiFile;
 
 /**
@@ -18,7 +21,7 @@ public interface FanFile extends PsiFile
 	FanTypeDefinition[] getTypeDefinitions();
 
 	@Nullable
-	FanTypeDefinition getTypeByName(@NotNull final String name);
+	FanTypeDefinition getTypeByName(@Nonnull final String name);
 
 	public FanTopLevelDefintion[] getTopLevelDefinitions();
 }

@@ -1,7 +1,8 @@
 package org.fandev.lang.fan.psi.api.statements.params;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.psi.FanElement;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * Date: Aug 20, 2009
@@ -11,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public interface FanFormals extends FanElement
 {
-	@NotNull
+	@Nonnull
 	FanFormal[] getParameters();
 
 	int getParameterIndex(final FanFormal psiParameter);

@@ -6,6 +6,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.FanType;
@@ -41,7 +43,6 @@ import org.fandev.lang.fan.psi.stubs.index.FanShortClassNameIndex;
 import org.fandev.utils.FanUtil;
 import org.fandev.utils.PsiUtil;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.psi.PsiElement;
@@ -65,7 +66,7 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 
 	private static final Logger logger = Logger.getInstance(FanReferenceExpressionImpl.class.getName());
 
-	public FanReferenceExpressionImpl(final StubElement stubElement, @NotNull final IStubElementType iStubElementType)
+	public FanReferenceExpressionImpl(final StubElement stubElement, @Nonnull final IStubElementType iStubElementType)
 	{
 		super(stubElement, iStubElementType);
 	}
@@ -95,13 +96,13 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 	}
 
 	@Override
-	public PsiElement setName(@NotNull @NonNls final String s) throws IncorrectOperationException
+	public PsiElement setName(@Nonnull @NonNls final String s) throws IncorrectOperationException
 	{
 		//TODO [Dror] implement
 		return null;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public Object[] getVariants()
 	{
@@ -128,7 +129,7 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 		return false;
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public String getCanonicalText()
 	{
@@ -136,7 +137,7 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	//incomplete means we do not take arguments into consideration
 	public ResolveResult[] multiResolve(final boolean incompleteCode)
 	{
@@ -157,7 +158,7 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanResolveResult[] getSameNameVariants()
 	{
 		return RESOLVER.resolve(this, true);
@@ -166,9 +167,9 @@ public class FanReferenceExpressionImpl extends FanReferenceElementImpl implemen
 	private static class OurResolver implements ResolveCache.PolyVariantResolver<FanReferenceExpressionImpl>
 	{
 		//TODO [Dror] refactor this complex, ugly, HUGE method !!!
-		@NotNull
+		@Nonnull
 		@Override
-		public FanResolveResult[] resolve(@NotNull final FanReferenceExpressionImpl refExpr, final boolean incompleteCode)
+		public FanResolveResult[] resolve(@Nonnull final FanReferenceExpressionImpl refExpr, final boolean incompleteCode)
 		{
 			final List<FanResolveResult> results = new ArrayList<FanResolveResult>();
 

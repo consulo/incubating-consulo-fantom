@@ -2,8 +2,8 @@ package org.fandev.lang.fan.psi.api.statements.expressions;
 
 import org.fandev.lang.fan.psi.FanReferenceElement;
 import org.fandev.lang.fan.psi.api.FanResolveResult;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.psi.PsiNamedElement;
 
 /**
@@ -17,6 +17,6 @@ public interface FanReferenceExpression extends FanExpression, FanReferenceEleme
 	@Nullable
 	FanExpression getQualifierExpression();
 
-	@NotNull
+	@Nonnull
 	FanResolveResult[] getSameNameVariants();
 }

@@ -18,13 +18,14 @@ package org.fandev.lang.fan.psi.stubs.elements;
 
 import java.io.IOException;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.FanStubElementType;
 import org.fandev.lang.fan.psi.api.modifiers.FanFacet;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
 import org.fandev.lang.fan.psi.stubs.FanSlotStub;
 import org.fandev.lang.fan.psi.stubs.index.FanFacetNameSlotIndex;
 import org.fandev.lang.fan.psi.stubs.index.FanSlotNameIndex;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.stubs.IndexSink;
 import com.intellij.psi.stubs.StubElement;
 import com.intellij.psi.stubs.StubInputStream;
@@ -37,7 +38,7 @@ import com.intellij.util.io.StringRef;
  */
 public abstract class FanSlotElementType<T extends FanSlot, S extends FanSlotStub<T>> extends FanStubElementType<S, T>
 {
-	protected FanSlotElementType(@NotNull final String debugName)
+	protected FanSlotElementType(@Nonnull final String debugName)
 	{
 		super(debugName);
 	}

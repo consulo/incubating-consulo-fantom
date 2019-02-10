@@ -1,9 +1,11 @@
 package org.fandev.lang.fan.psi.api.statements.params;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.psi.api.statements.FanDefaultValue;
 import org.fandev.lang.fan.psi.api.statements.FanVariable;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.psi.PsiElement;
 
 /**
@@ -17,6 +19,6 @@ public interface FanParameter extends FanVariable
 	@Nullable
 	public FanDefaultValue getDefaultValue();
 
-	@NotNull
+	@Nonnull
 	PsiElement getDeclarationScope();
 }

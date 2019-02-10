@@ -1,6 +1,7 @@
 package org.fandev.lang.fan;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.openapi.fileTypes.FileTypeConsumer;
 import com.intellij.openapi.fileTypes.FileTypeFactory;
 import com.intellij.openapi.fileTypes.LanguageFileType;
@@ -17,7 +18,7 @@ public class FanSupportLoader extends FileTypeFactory
 	public static final PodFileType POD = PodFileType.POD_FILE_TYPE;
 
 	@Override
-	public void createFileTypes(@NotNull final FileTypeConsumer fileTypeConsumer)
+	public void createFileTypes(@Nonnull final FileTypeConsumer fileTypeConsumer)
 	{
 		fileTypeConsumer.consume(FanFileType.INSTANCE);
 		fileTypeConsumer.consume(POD, POD.getDefaultExtension());

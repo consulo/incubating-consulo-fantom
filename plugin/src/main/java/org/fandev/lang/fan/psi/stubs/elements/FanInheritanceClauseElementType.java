@@ -9,7 +9,7 @@ import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.statements.typedefs.FanInheritanceClauseImpl;
 import org.fandev.lang.fan.psi.stubs.FanReferenceListStub;
 import org.fandev.lang.fan.psi.stubs.impl.FanReferenceListStubImpl;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nullable;
 import com.intellij.psi.stubs.IndexSink;
 import com.intellij.psi.stubs.StubElement;
 import com.intellij.psi.stubs.StubInputStream;

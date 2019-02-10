@@ -1,11 +1,12 @@
 package org.fandev.lang.fan.psi.stubs.elements;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanConstructor;
 import org.fandev.lang.fan.psi.impl.statements.typedefs.members.FanConstructorImpl;
 import org.fandev.lang.fan.psi.stubs.FanConstructorStub;
 import org.fandev.lang.fan.psi.stubs.impl.FanConstructorStubImpl;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.StubElement;
 import com.intellij.util.io.StringRef;
@@ -16,7 +17,7 @@ import com.intellij.util.io.StringRef;
  */
 public class FanConstructorElementType extends FanSlotElementType<FanConstructor, FanConstructorStub>
 {
-	public FanConstructorElementType(@NotNull final String debugName)
+	public FanConstructorElementType(@Nonnull final String debugName)
 	{
 		super(debugName);
 	}

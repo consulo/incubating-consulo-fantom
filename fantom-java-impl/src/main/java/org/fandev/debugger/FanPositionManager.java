@@ -3,11 +3,13 @@ package org.fandev.debugger;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
 import com.intellij.debugger.NoDataException;
 import com.intellij.debugger.PositionManager;
 import com.intellij.debugger.SourcePosition;
@@ -69,7 +71,7 @@ public class FanPositionManager implements PositionManager
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public List<ReferenceType> getAllClasses(final SourcePosition classPosition) throws NoDataException
 	{
 		return ApplicationManager.getApplication().runReadAction(new Computable<List<ReferenceType>>()
@@ -94,7 +96,7 @@ public class FanPositionManager implements PositionManager
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public List<Location> locationsOfLine(final ReferenceType type, final SourcePosition position) throws NoDataException
 	{
 		try

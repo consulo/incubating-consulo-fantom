@@ -1,5 +1,7 @@
 package org.fandev.lang.fan.psi.api.statements.typeDefs;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.psi.FanClassType;
 import org.fandev.lang.fan.psi.FanElement;
 import org.fandev.lang.fan.psi.api.statements.FanTopLevelDefintion;
@@ -8,8 +10,9 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMember;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
 import org.fandev.lang.fan.psi.api.topLevel.FanTopStatement;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
+
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiNameIdentifierOwner;
 import com.intellij.psi.PsiNamedElement;
@@ -34,31 +37,31 @@ public interface FanTypeDefinition extends FanElement, PsiNamedElement, FanTopLe
 
 	boolean isInterface();
 
-	@NotNull
+	@Nonnull
 	String getPodName();
 
-	@NotNull
+	@Nonnull
 	FanSlot[] getSlots();
 
-	@NotNull
+	@Nonnull
 	FanSlot[] getSlots(final String modifier);
 
-	@NotNull
+	@Nonnull
 	FanMethod[] getFanMethods();
 
-	@NotNull
+	@Nonnull
 	FanMethod[] getFanMethods(final String modifier);
 
-	@NotNull
+	@Nonnull
 	FanField[] getFanFields();
 
-	@NotNull
+	@Nonnull
 	FanField[] getFanFields(final String modifier);
 
 	FanField getFieldByName(final String name);
 
 	@Nullable
-	FanMethod getMethodByName(@NotNull final String name);
+	FanMethod getMethodByName(@Nonnull final String name);
 
 	FanTypeDefinition getSuperType();
 
@@ -66,5 +69,5 @@ public interface FanTypeDefinition extends FanElement, PsiNamedElement, FanTopLe
 
 	PsiElement getBodyElement();
 
-	PsiElement addMemberDeclaration(@NotNull final PsiElement decl, final PsiElement anchorBefore) throws IncorrectOperationException;
+	PsiElement addMemberDeclaration(@Nonnull final PsiElement decl, final PsiElement anchorBefore) throws IncorrectOperationException;
 }

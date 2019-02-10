@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.structure;
 
 import org.fandev.lang.fan.structure.elements.FanStructureViewModel;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.ide.structureView.StructureViewBuilder;
 import com.intellij.ide.structureView.StructureViewModel;
 import com.intellij.ide.structureView.TreeBasedStructureViewBuilder;
@@ -21,7 +21,7 @@ public class FanStructureViewBuilderFactory implements PsiStructureViewFactory
 		return new TreeBasedStructureViewBuilder()
 		{
 			@Override
-			@NotNull
+			@Nonnull
 			public StructureViewModel createStructureViewModel(Editor editor)
 			{
 				return new FanStructureViewModel(psiFile);

@@ -8,13 +8,12 @@ import org.fandev.sdk.FanSdkType;
 import org.fandev.utils.FanUtil;
 import org.fandev.utils.TextUtil;
 import org.jdom.Element;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.execution.ExecutionException;
 import com.intellij.execution.Executor;
 import com.intellij.execution.configurations.ConfigurationFactory;
 import com.intellij.execution.configurations.JavaCommandLineState;
-import com.intellij.execution.configurations.JavaParameters;
 import com.intellij.execution.configurations.ModuleBasedConfiguration;
 import com.intellij.execution.configurations.RunConfigurationModule;
 import com.intellij.execution.configurations.RunProfileState;
@@ -54,7 +53,7 @@ public abstract class FanRunConfiguration extends ModuleBasedConfiguration
 		this.index = getProject().getComponent(FanIndex.class);
 	}
 
-	public RunProfileState getState(@NotNull final Executor executor, @NotNull final ExecutionEnvironment env) throws ExecutionException
+	public RunProfileState getState(@Nonnull final Executor executor, @Nonnull final ExecutionEnvironment env) throws ExecutionException
 	{
 		final JavaCommandLineState state = new JavaCommandLineState(env)
 		{

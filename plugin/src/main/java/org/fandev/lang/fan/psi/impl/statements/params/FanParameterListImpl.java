@@ -3,7 +3,7 @@ package org.fandev.lang.fan.psi.impl.statements.params;
 import org.fandev.lang.fan.psi.api.statements.params.FanParameter;
 import org.fandev.lang.fan.psi.api.statements.params.FanParameterList;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.lang.ASTNode;
 
 /**
@@ -20,7 +20,7 @@ public class FanParameterListImpl extends FanBaseElementImpl implements FanParam
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanParameter[] getParameters()
 	{
 		return findChildrenByClass(FanParameter.class);

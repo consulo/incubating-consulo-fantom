@@ -1,9 +1,10 @@
 package org.fandev.lang.fan.psi.impl.statements.arguments;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.psi.api.statements.arguments.FanArgument;
 import org.fandev.lang.fan.psi.api.statements.arguments.FanArgumentList;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 
 /**
@@ -32,7 +33,7 @@ public class FanArgumentListImpl extends FanBaseElementImpl implements FanArgume
 	}
 
 	@Override
-	public int indexOf(@NotNull final FanArgument arg)
+	public int indexOf(@Nonnull final FanArgument arg)
 	{
 		final FanArgument[] arguments = getArguments();
 		for(int index = 0; index < arguments.length; index++)

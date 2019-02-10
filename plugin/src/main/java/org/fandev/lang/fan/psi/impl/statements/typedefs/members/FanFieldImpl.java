@@ -16,6 +16,7 @@
  */
 package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
+import javax.annotation.Nullable;
 import javax.swing.Icon;
 
 import org.fandev.icons.Icons;
@@ -24,8 +25,8 @@ import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
 import org.fandev.lang.fan.psi.api.types.FanTypeElement;
 import org.fandev.lang.fan.psi.stubs.FanFieldStub;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.StubBasedPsiElement;
 import com.intellij.psi.stubs.IStubElementType;
@@ -36,7 +37,7 @@ import com.intellij.psi.stubs.IStubElementType;
  */
 public class FanFieldImpl extends FanSlotElementImpl<FanFieldStub> implements FanField, StubBasedPsiElement<FanFieldStub>
 {
-	public FanFieldImpl(final FanFieldStub fanFieldStub, @NotNull final IStubElementType iStubElementType)
+	public FanFieldImpl(final FanFieldStub fanFieldStub, @Nonnull final IStubElementType iStubElementType)
 	{
 		super(fanFieldStub, iStubElementType);
 	}
@@ -57,7 +58,7 @@ public class FanFieldImpl extends FanSlotElementImpl<FanFieldStub> implements Fa
 		return "";
 	}
 
-	@NotNull
+	@Nonnull
 	public FanType getType()
 	{
 		final FanTypeElement classTypeElement = findTypeElement();

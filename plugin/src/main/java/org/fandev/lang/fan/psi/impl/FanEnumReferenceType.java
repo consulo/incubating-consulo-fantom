@@ -1,9 +1,10 @@
 package org.fandev.lang.fan.psi.impl;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanEnumDefinition;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.search.GlobalSearchScope;
 
 /**
@@ -58,7 +59,7 @@ public class FanEnumReferenceType implements FanType
 				text.equals(getCanonicalText());
 	}
 
-	@NotNull
+	@Nonnull
 	public GlobalSearchScope getResolveScope()
 	{
 		return myEnum.getResolveScope();

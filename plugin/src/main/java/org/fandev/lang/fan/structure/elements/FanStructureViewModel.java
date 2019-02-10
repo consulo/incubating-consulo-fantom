@@ -1,7 +1,8 @@
 package org.fandev.lang.fan.structure.elements;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.structure.elements.impl.FanFileStructureViewElement;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.ide.structureView.StructureViewTreeElement;
 import com.intellij.ide.structureView.TextEditorBasedStructureViewModel;
 import com.intellij.ide.util.treeView.smartTree.Filter;
@@ -19,7 +20,7 @@ public class FanStructureViewModel extends TextEditorBasedStructureViewModel
 {
 	private PsiElement myRoot;
 
-	public FanStructureViewModel(@NotNull final PsiFile psiFile)
+	public FanStructureViewModel(@Nonnull final PsiFile psiFile)
 	{
 		super(psiFile);
 		myRoot = psiFile;
@@ -36,25 +37,25 @@ public class FanStructureViewModel extends TextEditorBasedStructureViewModel
 		return myRoot.getContainingFile();
 	}
 
-	@NotNull
+	@Nonnull
 	public StructureViewTreeElement getRoot()
 	{
 		return new FanFileStructureViewElement(myRoot);
 	}
 
-	@NotNull
+	@Nonnull
 	public Grouper[] getGroupers()
 	{
 		return Grouper.EMPTY_ARRAY;
 	}
 
-	@NotNull
+	@Nonnull
 	public Sorter[] getSorters()
 	{
 		return new Sorter[]{Sorter.ALPHA_SORTER};
 	}
 
-	@NotNull
+	@Nonnull
 	public Filter[] getFilters()
 	{
 		return Filter.EMPTY_ARRAY;

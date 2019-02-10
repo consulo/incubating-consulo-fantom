@@ -1,11 +1,12 @@
 package org.fandev.lang.fan.psi.api.statements.typeDefs.members;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.modifiers.FanModifierListOwner;
 import org.fandev.lang.fan.psi.api.statements.FanParameterOwner;
 import org.fandev.lang.fan.psi.api.statements.blocks.FanPsiCodeBlock;
 import org.fandev.lang.fan.psi.api.statements.params.FanParameterList;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Dror Bereznitsky
@@ -15,10 +16,10 @@ public interface FanMethod extends FanSlot, FanParameterOwner, FanModifierListOw
 {
 	FanMethod[] EMPTY_ARRAY = new FanMethod[0];
 
-	@NotNull
+	@Nonnull
 	FanParameterList getParameterList();
 
-	@NotNull
+	@Nonnull
 	FanType getReturnType();
 
 	FanPsiCodeBlock getBody();

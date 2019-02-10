@@ -4,7 +4,7 @@
     <modules>
       <module name="consulo.fantom.parent" dirurl="file://$PROJECT_DIR$" current-layer="Default">
         <module-layer name="Default">
-          <extension id="java" sdk-name="1.8 (predefined)" language-level-name="JDK_1_8" bytecode-version="1.8" />
+          <extension id="java" sdk-name="10 (predefined)" language-level-name="JDK_1_8" bytecode-version="1.8" />
           <extension id="maven" />
           <content url="file://$MODULE_DIR$">
             <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target" />
@@ -15,7 +15,7 @@
       </module>
       <module name="consulo.fantom" dirurl="file://$PROJECT_DIR$/plugin" current-layer="Default">
         <module-layer name="Default">
-          <extension id="java" sdk-name="1.8 (predefined)" language-level-name="JDK_1_8" bytecode-version="1.8" />
+          <extension id="java" sdk-name="10 (predefined)" language-level-name="JDK_1_8" bytecode-version="1.8" />
           <extension id="maven" />
           <content url="file://$MODULE_DIR$">
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src/main/java" />
@@ -23,15 +23,10 @@
             <content-folder type="TEST" url="file://$MODULE_DIR$/src/test/java" />
             <content-folder type="TEST_RESOURCE" url="file://$MODULE_DIR$/src/test/resources" />
             <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/classes" />
-            <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/consulo-plugin-dependencies" />
-            <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/consulo-plugin-extracted" />
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/target/generated-sources/lexers">
               <property key="is-generated-root" value="true" />
             </content-folder>
-            <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/maven-archiver" />
             <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/maven-status" />
-            <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/surefire-reports" />
-            <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/test-classes" />
           </content>
           <orderEntry type="module-extension-sdk" extension-id="java" />
           <orderEntry type="sourceFolder" />
@@ -66,6 +61,7 @@
           <orderEntry type="library" scope="PROVIDED" name="Maven: javax.inject:javax.inject:1" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-api:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-async-api:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-localize-api:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-api-shared:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: net.java.dev.jna:jna:4.4.0" level="project" />
@@ -97,7 +93,7 @@
           <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.gson:gson:2.8.0" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: args4j:args4j:2.33" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: org.jvnet.winp:winp:1.25" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-compress:1.14" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-compress:1.18" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lang-api:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-compiler-api:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lvcs-api:2-SNAPSHOT" level="project" />
@@ -137,12 +133,12 @@
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-impl:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-data:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xtest-sm-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-independent-plugin:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-base-plugin:2-SNAPSHOT" level="project" />
         </module-layer>
       </module>
       <module name="consulo.fantom-java.impl" dirurl="file://$PROJECT_DIR$/fantom-java-impl" current-layer="Default">
         <module-layer name="Default">
-          <extension id="java" sdk-name="1.8 (predefined)" language-level-name="JDK_1_8" bytecode-version="1.8" />
+          <extension id="java" sdk-name="10 (predefined)" language-level-name="JDK_1_8" bytecode-version="1.8" />
           <extension id="maven" />
           <content url="file://$MODULE_DIR$">
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src/main/java" />
@@ -214,6 +210,7 @@
           <orderEntry type="library" scope="PROVIDED" name="Maven: javax.inject:javax.inject:1" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-api:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-async-api:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-localize-api:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-api-shared:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: net.java.dev.jna:jna:4.4.0" level="project" />
@@ -245,7 +242,7 @@
           <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.gson:gson:2.8.0" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: args4j:args4j:2.33" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: org.jvnet.winp:winp:1.25" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-compress:1.14" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-compress:1.18" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lang-api:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-compiler-api:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lvcs-api:2-SNAPSHOT" level="project" />
@@ -286,12 +283,12 @@
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-data:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xtest-sm-impl:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:build.serviceMessages:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-independent-plugin:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-base-plugin:2-SNAPSHOT" level="project" />
         </module-layer>
       </module>
       <module name="consulo.fantom-fantom.api" dirurl="file://$PROJECT_DIR$/fantom-api" current-layer="Default">
         <module-layer name="Default">
-          <extension id="java" sdk-name="1.8 (predefined)" language-level-name="JDK_1_8" bytecode-version="1.8" />
+          <extension id="java" sdk-name="10 (predefined)" language-level-name="JDK_1_8" bytecode-version="1.8" />
           <extension id="maven" />
           <content url="file://$MODULE_DIR$">
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src/main/java" />
@@ -319,6 +316,7 @@
           <orderEntry type="library" scope="PROVIDED" name="Maven: javax.inject:javax.inject:1" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-api:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-async-api:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-localize-api:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-api-shared:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: net.java.dev.jna:jna:4.4.0" level="project" />
@@ -350,7 +348,7 @@
           <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.gson:gson:2.8.0" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: args4j:args4j:2.33" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: org.jvnet.winp:winp:1.25" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-compress:1.14" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-compress:1.18" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lang-api:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-compiler-api:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lvcs-api:2-SNAPSHOT" level="project" />
@@ -391,7 +389,7 @@
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-data:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xtest-sm-impl:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:build.serviceMessages:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-independent-plugin:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-base-plugin:2-SNAPSHOT" level="project" />
         </module-layer>
       </module>
     </modules>

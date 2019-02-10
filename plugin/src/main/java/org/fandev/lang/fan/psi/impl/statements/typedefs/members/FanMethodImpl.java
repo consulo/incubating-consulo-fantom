@@ -2,7 +2,7 @@ package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.stubs.FanMethodStub;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.StubBasedPsiElement;
 import com.intellij.psi.stubs.IStubElementType;
@@ -14,7 +14,7 @@ import com.intellij.psi.stubs.IStubElementType;
 public class FanMethodImpl extends FanMethodBaseImpl<FanMethodStub> implements FanMethod, StubBasedPsiElement<FanMethodStub>
 {
 
-	public FanMethodImpl(final FanMethodStub fanMethodStub, @NotNull final IStubElementType iStubElementType)
+	public FanMethodImpl(final FanMethodStub fanMethodStub, @Nonnull final IStubElementType iStubElementType)
 	{
 		super(fanMethodStub, iStubElementType);
 	}

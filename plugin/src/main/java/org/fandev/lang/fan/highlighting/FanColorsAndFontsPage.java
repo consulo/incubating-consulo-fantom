@@ -3,11 +3,10 @@ package org.fandev.lang.fan.highlighting;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.swing.Icon;
+import javax.annotation.Nonnull;
 
 import org.fandev.lang.fan.FanSupportLoader;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
@@ -24,31 +23,31 @@ public class FanColorsAndFontsPage implements ColorSettingsPage
 	@NonNls
 	private static final Map<String, TextAttributesKey> ADDITIONAL_HIGHLIGHT_DESCRIPTORS = new HashMap<String, TextAttributesKey>();
 
-	@NotNull
+	@Nonnull
 	public String getDisplayName()
 	{
 		return "Fantom";
 	}
 
-	@NotNull
+	@Nonnull
 	public AttributesDescriptor[] getAttributeDescriptors()
 	{
 		return ATTRS;
 	}
 
-	@NotNull
+	@Nonnull
 	public ColorDescriptor[] getColorDescriptors()
 	{
 		return ColorDescriptor.EMPTY_ARRAY;
 	}
 
-	@NotNull
+	@Nonnull
 	public SyntaxHighlighter getHighlighter()
 	{
 		return SyntaxHighlighter.PROVIDER.create(FanSupportLoader.FAN, null, null);
 	}
 
-	@NotNull
+	@Nonnull
 	public String getDemoText()
 	{
 		return "";

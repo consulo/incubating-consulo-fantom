@@ -3,6 +3,7 @@ package org.fandev.lang.fan.psi.impl.statements.typedefs;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.Nonnull;
 import javax.swing.Icon;
 
 import org.fandev.icons.Icons;
@@ -15,7 +16,6 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
 import org.fandev.utils.FanUtil;
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
@@ -73,7 +73,7 @@ public class FanBuildScriptDefinitionImpl extends FanTypeDefinitionImpl implemen
 		super.subtreeChanged();
 	}
 
-	@NotNull
+	@Nonnull
 	@Override
 	public FanField[] getFanFields()
 	{
@@ -97,13 +97,13 @@ public class FanBuildScriptDefinitionImpl extends FanTypeDefinitionImpl implemen
 		return fanFields;
 	}
 
-	@NotNull
+	@Nonnull
 	public FanMethod[] getFanMethods()
 	{
 		return FanMethod.EMPTY_ARRAY;
 	}
 
-	@NotNull
+	@Nonnull
 	public FanSlot[] getSlots()
 	{
 		return getFanFields();

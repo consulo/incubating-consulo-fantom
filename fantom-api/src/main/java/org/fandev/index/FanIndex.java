@@ -6,13 +6,16 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.PodFileType;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.stubs.index.FanShortClassNameIndex;
 import org.fandev.utils.FanUtil;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import javax.annotation.Nullable;
+
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.diagnostic.Logger;
@@ -54,7 +57,7 @@ public class FanIndex implements ProjectComponent
 		this.psiManager = PsiManager.getInstance(project);
 	}
 
-	public VirtualFile getVirtualFileByTypeName(@NotNull final String typeName)
+	public VirtualFile getVirtualFileByTypeName(@Nonnull final String typeName)
 	{
 		final Collection<FanTypeDefinition> typeDefs = getProjectTypes(typeName);
 		if(typeDefs != null && typeDefs.size() > 0)
@@ -64,13 +67,13 @@ public class FanIndex implements ProjectComponent
 		return typeToFile.get(typeName);
 	}
 
-	public VirtualFile getVirtualFileByPodName(@NotNull final String podName)
+	public VirtualFile getVirtualFileByPodName(@Nonnull final String podName)
 	{
 		return podToBuildFile.get(podName);
 	}
 
 	@Nullable
-	public FanFile getFanFileByTypeName(@NotNull final String typeName)
+	public FanFile getFanFileByTypeName(@Nonnull final String typeName)
 	{
 		final VirtualFile typeFile = getVirtualFileByTypeName(typeName);
 		if(typeFile != null)
@@ -80,7 +83,7 @@ public class FanIndex implements ProjectComponent
 		return null;
 	}
 
-	public Set<String> getLibraryTypeNames(@NotNull final String libName)
+	public Set<String> getLibraryTypeNames(@Nonnull final String libName)
 	{
 		if(libNameToTypesSet.containsKey(libName))
 		{
@@ -92,7 +95,7 @@ public class FanIndex implements ProjectComponent
 		}
 	}
 
-	public Set<String> getPodTypeNames(@NotNull final String podName)
+	public Set<String> getPodTypeNames(@Nonnull final String podName)
 	{
 		final String libName = podNameToLibName.get(podName);
 		if(libName != null && libNameToTypesSet.containsKey(libName))
@@ -111,7 +114,7 @@ public class FanIndex implements ProjectComponent
 	}
 
 	@Nullable
-	public FanFile getFanFileByPodName(@NotNull final String podName)
+	public FanFile getFanFileByPodName(@Nonnull final String podName)
 	{
 		final VirtualFile typeFile = getVirtualFileByPodName(podName);
 		if(typeFile != null)
@@ -121,7 +124,7 @@ public class FanIndex implements ProjectComponent
 		return null;
 	}
 
-	public Set<FanTypeDefinition> getPodStartingWith(@NotNull final String prefix)
+	public Set<FanTypeDefinition> getPodStartingWith(@Nonnull final String prefix)
 	{
 		final Set<FanTypeDefinition> matching = new HashSet<FanTypeDefinition>();
 
@@ -149,7 +152,7 @@ public class FanIndex implements ProjectComponent
 		return allTypes;
 	}
 
-	public Set<FanTypeDefinition> getAllTypesStartingWith(@NotNull final String prefix)
+	public Set<FanTypeDefinition> getAllTypesStartingWith(@Nonnull final String prefix)
 	{
 		final Set<FanTypeDefinition> matching = new HashSet<FanTypeDefinition>();
 		for(final String name : getAllTypeNames())
@@ -172,7 +175,7 @@ public class FanIndex implements ProjectComponent
 		return matching;
 	}
 
-	public Set<FanTypeDefinition> getPodTypesStartingWith(@NotNull final String podName, @NotNull final String prefix)
+	public Set<FanTypeDefinition> getPodTypesStartingWith(@Nonnull final String podName, @Nonnull final String prefix)
 	{
 		final Set<FanTypeDefinition> matching = new HashSet<FanTypeDefinition>();
 		for(final String name : getPodTypeNames(podName))
@@ -195,7 +198,7 @@ public class FanIndex implements ProjectComponent
 		return matching;
 	}
 
-	public Set<VirtualFile> getLibraryVirtualFiles(@NotNull final String libName)
+	public Set<VirtualFile> getLibraryVirtualFiles(@Nonnull final String libName)
 	{
 		final Set<String> types = getLibraryTypeNames(libName);
 		final Set<VirtualFile> files = new HashSet<VirtualFile>(types.size());
@@ -210,7 +213,7 @@ public class FanIndex implements ProjectComponent
 		return files;
 	}
 
-	public Set<PsiFile> getLibraryPsiFiles(@NotNull final String libName)
+	public Set<PsiFile> getLibraryPsiFiles(@Nonnull final String libName)
 	{
 		return getPsiFiles(getLibraryVirtualFiles(libName));
 	}
@@ -239,7 +242,7 @@ public class FanIndex implements ProjectComponent
 		return psiFiles;
 	}
 
-	private FanTypeDefinition getProjectType(@NotNull final String podName, @NotNull final String typeName)
+	private FanTypeDefinition getProjectType(@Nonnull final String podName, @Nonnull final String typeName)
 	{
 		final Collection<FanTypeDefinition> types = getProjectTypes(typeName);
 		if(types.size() > 0)
@@ -255,7 +258,7 @@ public class FanIndex implements ProjectComponent
 		return null;
 	}
 
-	private Collection<FanTypeDefinition> getProjectTypes(@NotNull final String typeName)
+	private Collection<FanTypeDefinition> getProjectTypes(@Nonnull final String typeName)
 	{
 		return StubIndex.getInstance().get(FanShortClassNameIndex.KEY, typeName, project, null);
 	}

@@ -2,8 +2,8 @@ package org.fandev.lang.fan.psi.api.statements;
 
 import org.fandev.lang.fan.psi.FanElement;
 import org.fandev.lang.fan.psi.FanType;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import com.intellij.psi.PsiNameIdentifierOwner;
 import com.intellij.psi.PsiNamedElement;
 
@@ -15,7 +15,7 @@ import com.intellij.psi.PsiNamedElement;
  */
 public interface FanVariable extends FanElement, PsiNamedElement, PsiNameIdentifierOwner
 {
-	@NotNull
+	@Nonnull
 	FanType getType();
 
 	@Nullable

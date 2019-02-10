@@ -1,7 +1,8 @@
 package org.fandev.lang.fan.psi.api.modifiers;
 
+import javax.annotation.Nullable;
+
 import org.fandev.lang.fan.psi.FanElement;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * @author VISTALL

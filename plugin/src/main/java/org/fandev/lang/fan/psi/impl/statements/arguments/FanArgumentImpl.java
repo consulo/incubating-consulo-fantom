@@ -1,9 +1,10 @@
 package org.fandev.lang.fan.psi.impl.statements.arguments;
 
+import javax.annotation.Nonnull;
+
 import org.fandev.lang.fan.psi.api.statements.arguments.FanArgument;
 import org.fandev.lang.fan.psi.api.statements.arguments.FanArgumentList;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.util.PsiTreeUtil;
 
@@ -27,7 +28,7 @@ public class FanArgumentImpl extends FanBaseElementImpl implements FanArgument
 	}
 
 	@Override
-	@NotNull
+	@Nonnull
 	public FanArgumentList getArgumentList()
 	{
 		return PsiTreeUtil.getParentOfType(this, FanArgumentList.class);

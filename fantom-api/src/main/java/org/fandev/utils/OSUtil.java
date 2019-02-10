@@ -6,8 +6,9 @@ import java.io.File;
 import java.util.StringTokenizer;
 
 import org.fandev.lang.fan.FanBundle;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.vfs.VirtualFileManager;
@@ -45,7 +46,7 @@ public class OSUtil
 		return null;
 	}
 
-	public static String appendToPATHenvVariable(@Nullable final String path, @NotNull final String additionalPath)
+	public static String appendToPATHenvVariable(@Nullable final String path, @Nonnull final String additionalPath)
 	{
 		final String pathValue;
 		if(TextUtil.isEmpty(path))
@@ -59,7 +60,7 @@ public class OSUtil
 		return toSystemDependentName(pathValue);
 	}
 
-	@NotNull
+	@Nonnull
 	public static String getDefaultSVNPath()
 	{
 		if(SystemInfo.isWindows)
@@ -90,7 +91,7 @@ public class OSUtil
 	 * @return path if found
 	 */
 	@Nullable
-	public static String findExecutableByName(@NotNull final String exeName)
+	public static String findExecutableByName(@Nonnull final String exeName)
 	{
 		final String path = getIdeaSystemPath();
 		final VirtualFileManager manager = VirtualFileManager.getInstance();

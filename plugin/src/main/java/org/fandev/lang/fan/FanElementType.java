@@ -1,7 +1,8 @@
 package org.fandev.lang.fan;
 
+import javax.annotation.Nonnull;
+
 import org.jetbrains.annotations.NonNls;
-import org.jetbrains.annotations.NotNull;
 import com.intellij.psi.tree.IElementType;
 
 /**
@@ -10,7 +11,7 @@ import com.intellij.psi.tree.IElementType;
  */
 public class FanElementType extends IElementType
 {
-	public FanElementType(@NonNls @NotNull final String debugName)
+	public FanElementType(@NonNls @Nonnull final String debugName)
 	{
 		super(debugName, FanLanguage.INSTANCE);
 	}

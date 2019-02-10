@@ -5,7 +5,7 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
 import org.fandev.lang.fan.psi.impl.statements.typedefs.members.FanFieldImpl;
 import org.fandev.lang.fan.psi.stubs.FanFieldStub;
 import org.fandev.lang.fan.psi.stubs.impl.FanFieldStubImpl;
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.StubElement;
 import com.intellij.util.io.StringRef;
@@ -16,7 +16,7 @@ import com.intellij.util.io.StringRef;
  */
 public class FanFieldElementType extends FanSlotElementType<FanField, FanFieldStub>
 {
-	public FanFieldElementType(@NotNull String debugName)
+	public FanFieldElementType(@Nonnull String debugName)
 	{
 		super(debugName);
 	}

@@ -3,6 +3,7 @@ package org.fandev.runner;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
+import javax.annotation.Nonnull;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
@@ -10,7 +11,6 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-import org.jetbrains.annotations.NotNull;
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.options.ConfigurationException;
@@ -80,7 +80,7 @@ public abstract class FanRunConfigurationEditor extends SettingsEditor<FanRunCon
 		configuration.setModule((Module) myModulesBox.getSelectedItem());
 	}
 
-	@NotNull
+	@Nonnull
 	protected JComponent createEditor()
 	{
 		myModulesBox.setModel(myModulesModel);

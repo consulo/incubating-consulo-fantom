@@ -1,6 +1,7 @@
 package org.fandev.lang.fan;
 
-import org.jetbrains.annotations.NotNull;
+import javax.annotation.Nonnull;
+
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.StubElement;
@@ -11,7 +12,7 @@ import com.intellij.psi.stubs.StubElement;
  */
 public abstract class FanStubElementType<S extends StubElement, T extends PsiElement> extends IStubElementType<S, T>
 {
-	public FanStubElementType(@NotNull final String debugName)
+	public FanStubElementType(@Nonnull final String debugName)
 	{
 		super(debugName, FanSupportLoader.FAN.getLanguage());
 	}
