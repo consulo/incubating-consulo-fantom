@@ -16,8 +16,8 @@
  */
 package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.swing.Icon;
 
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanElementTypes;
@@ -25,11 +25,10 @@ import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
 import org.fandev.lang.fan.psi.api.types.FanTypeElement;
 import org.fandev.lang.fan.psi.stubs.FanFieldStub;
-import javax.annotation.Nonnull;
-
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.StubBasedPsiElement;
 import com.intellij.psi.stubs.IStubElementType;
+import consulo.ui.image.Image;
 
 /**
  * @author freds
@@ -48,7 +47,7 @@ public class FanFieldImpl extends FanSlotElementImpl<FanFieldStub> implements Fa
 	}
 
 	@Override
-	public Icon getIconInner()
+	public Image getIconInner()
 	{
 		return Icons.FIELD;
 	}

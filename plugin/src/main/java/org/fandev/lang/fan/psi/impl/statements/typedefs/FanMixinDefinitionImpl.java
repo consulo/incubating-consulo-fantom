@@ -1,6 +1,6 @@
 package org.fandev.lang.fan.psi.impl.statements.typedefs;
 
-import javax.swing.Icon;
+import javax.annotation.Nonnull;
 
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanElementTypes;
@@ -8,11 +8,11 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.FanMixinDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
 import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nonnull;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.util.IncorrectOperationException;
+import consulo.ui.image.Image;
 
 /**
  * Date: Mar 23, 2009
@@ -79,7 +79,7 @@ public class FanMixinDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 
 	@Nonnull
 	@Override
-	protected Icon getIconInner()
+	protected Image getIconInner()
 	{
 		return Icons.MIXIN;
 	}

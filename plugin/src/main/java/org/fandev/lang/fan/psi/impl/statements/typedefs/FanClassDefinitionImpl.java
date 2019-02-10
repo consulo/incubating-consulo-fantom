@@ -1,7 +1,5 @@
 package org.fandev.lang.fan.psi.impl.statements.typedefs;
 
-import javax.swing.Icon;
-
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.modifiers.FanModifier;
@@ -14,6 +12,7 @@ import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.util.IncorrectOperationException;
+import consulo.ui.image.Image;
 
 /**
  * @author Dror Bereznitsky
@@ -34,7 +33,7 @@ public class FanClassDefinitionImpl extends FanTypeDefinitionImpl implements Fan
 	}
 
 	@Override
-	protected Icon getIconInner()
+	protected Image getIconInner()
 	{
 		if(hasModifierProperty(FanModifier.ABSTRACT))
 		{

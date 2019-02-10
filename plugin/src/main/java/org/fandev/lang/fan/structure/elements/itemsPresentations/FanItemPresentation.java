@@ -1,12 +1,11 @@
 package org.fandev.lang.fan.structure.elements.itemsPresentations;
 
 import javax.annotation.Nullable;
-import javax.swing.Icon;
 
-import consulo.awt.TargetAWT;
-import consulo.ide.IconDescriptorUpdaters;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.psi.PsiElement;
+import consulo.ide.IconDescriptorUpdaters;
+import consulo.ui.image.Image;
 
 /**
  * @author Dror Bereznitsky
@@ -30,8 +29,8 @@ public abstract class FanItemPresentation implements ItemPresentation
 
 	@Override
 	@Nullable
-	public Icon getIcon(final boolean open)
+	public Image getIcon()
 	{
-		return TargetAWT.to(IconDescriptorUpdaters.getIcon(myElement, 0));
+		return IconDescriptorUpdaters.getIcon(myElement, 0);
 	}
 }

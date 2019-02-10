@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-import javax.swing.Icon;
+import javax.annotation.Nullable;
 
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.FanTokenTypes;
@@ -23,8 +23,6 @@ import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanClassReferenceType;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
-
-import javax.annotation.Nullable;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.diagnostic.Logger;
@@ -35,8 +33,8 @@ import com.intellij.psi.StubBasedPsiElement;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.util.IncorrectOperationException;
-import consulo.awt.TargetAWT;
 import consulo.ide.IconDescriptorUpdaters;
+import consulo.ui.image.Image;
 
 /**
  * @author Dror Bereznitsky
@@ -87,9 +85,9 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 
 			@Override
 			@Nullable
-			public Icon getIcon(final boolean open)
+			public Image getIcon()
 			{
-				return TargetAWT.to(IconDescriptorUpdaters.getIcon(FanTypeDefinitionImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS));
+				return IconDescriptorUpdaters.getIcon(FanTypeDefinitionImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
 			}
 		};
 	}
@@ -400,7 +398,7 @@ public abstract class FanTypeDefinitionImpl extends FanBaseElementImpl<FanTypeDe
 		return decl;
 	}
 
-	protected abstract Icon getIconInner();
+	protected abstract Image getIconInner();
 
 	protected abstract IElementType getBodyElementType();
 }

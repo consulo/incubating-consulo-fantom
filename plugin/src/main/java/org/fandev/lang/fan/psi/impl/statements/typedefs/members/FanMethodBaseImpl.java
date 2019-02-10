@@ -1,7 +1,6 @@
 package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
 import javax.annotation.Nonnull;
-import javax.swing.Icon;
 
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.psi.FanType;
@@ -12,6 +11,7 @@ import org.fandev.lang.fan.psi.api.types.FanTypeElement;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.NamedStub;
+import consulo.ui.image.Image;
 
 /**
  * @author Dror Bereznitsky
@@ -30,7 +30,7 @@ public abstract class FanMethodBaseImpl<T extends NamedStub> extends FanSlotElem
 	}
 
 	@Override
-	public Icon getIconInner()
+	public Image getIconInner()
 	{
 		return Icons.METHOD;
 	}

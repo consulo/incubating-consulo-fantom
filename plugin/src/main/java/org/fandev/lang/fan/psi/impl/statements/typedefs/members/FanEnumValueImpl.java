@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
 import javax.annotation.Nonnull;
-import javax.swing.Icon;
+import javax.annotation.Nullable;
 
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.FanType;
@@ -13,16 +13,14 @@ import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanEnumReferenceType;
 import org.fandev.lang.fan.psi.stubs.FanEnumValueStub;
 import org.jetbrains.annotations.NonNls;
-
-import javax.annotation.Nullable;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.util.Iconable;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.util.IncorrectOperationException;
-import consulo.awt.TargetAWT;
 import consulo.ide.IconDescriptorUpdaters;
+import consulo.ui.image.Image;
 
 /**
  * Date: Mar 31, 2009
@@ -144,9 +142,9 @@ public class FanEnumValueImpl extends FanBaseElementImpl<FanEnumValueStub> imple
 
 			@Override
 			@Nullable
-			public Icon getIcon(final boolean open)
+			public Image getIcon()
 			{
-				return TargetAWT.to(IconDescriptorUpdaters.getIcon(FanEnumValueImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS));
+				return IconDescriptorUpdaters.getIcon(FanEnumValueImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
 			}
 		};
 	}

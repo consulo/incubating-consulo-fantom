@@ -6,6 +6,7 @@ import org.fandev.icons.Icons;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanEnumValue;
 import org.fandev.lang.fan.structure.elements.itemsPresentations.FanItemPresentation;
 import com.intellij.psi.PsiElement;
+import consulo.ui.image.Image;
 
 /**
  * Date: Apr 1, 2009
@@ -27,7 +28,7 @@ public class FanEnumValueDefinitionItemPresentation extends FanItemPresentation
 	}
 
 	@Override
-	public Icon getIcon(final boolean open)
+	public Image getIcon(final boolean open)
 	{
 		return Icons.FIELD;
 	}

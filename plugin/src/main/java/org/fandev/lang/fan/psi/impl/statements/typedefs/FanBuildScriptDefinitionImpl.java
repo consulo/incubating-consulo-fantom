@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Nonnull;
-import javax.swing.Icon;
 
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanElementTypes;
@@ -20,6 +19,7 @@ import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.util.IncorrectOperationException;
+import consulo.ui.image.Image;
 
 /**
  * Date: July 29, 2009
@@ -110,7 +110,7 @@ public class FanBuildScriptDefinitionImpl extends FanTypeDefinitionImpl implemen
 	}
 
 	@Override
-	protected Icon getIconInner()
+	protected Image getIconInner()
 	{
 		return Icons.POD;
 	}

@@ -17,7 +17,7 @@
 package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
 import javax.annotation.Nonnull;
-import javax.swing.Icon;
+import javax.annotation.Nullable;
 
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.modifiers.FanFacet;
@@ -27,8 +27,6 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMember;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.modifiers.FanModifierListImpl;
 import org.jetbrains.annotations.NonNls;
-
-import javax.annotation.Nullable;
 import com.intellij.lang.ASTNode;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.openapi.util.Iconable;
@@ -37,8 +35,8 @@ import com.intellij.psi.PsiNameIdentifierOwner;
 import com.intellij.psi.stubs.IStubElementType;
 import com.intellij.psi.stubs.NamedStub;
 import com.intellij.util.IncorrectOperationException;
-import consulo.awt.TargetAWT;
 import consulo.ide.IconDescriptorUpdaters;
+import consulo.ui.image.Image;
 
 /**
  * @author freds
@@ -132,7 +130,7 @@ public abstract class FanSlotElementImpl<T extends NamedStub> extends FanBaseEle
 		return new FanFacet[0];
 	}
 
-	protected abstract Icon getIconInner();
+	protected abstract Image getIconInner();
 
 	@Override
 	public ItemPresentation getPresentation()
@@ -157,9 +155,9 @@ public abstract class FanSlotElementImpl<T extends NamedStub> extends FanBaseEle
 
 			@Override
 			@Nullable
-			public Icon getIcon(final boolean open)
+			public Image getIcon()
 			{
-				return TargetAWT.to(IconDescriptorUpdaters.getIcon(FanSlotElementImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS));
+				return IconDescriptorUpdaters.getIcon(FanSlotElementImpl.this, Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
 			}
 		};
 	}

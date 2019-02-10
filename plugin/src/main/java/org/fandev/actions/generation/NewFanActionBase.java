@@ -3,7 +3,6 @@ package org.fandev.actions.generation;
 import java.util.EnumMap;
 
 import javax.annotation.Nonnull;
-import javax.swing.Icon;
 
 import org.fandev.lang.fan.FanFileType;
 import org.jetbrains.annotations.NonNls;
@@ -15,6 +14,7 @@ import com.intellij.psi.PsiDirectory;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.IncorrectOperationException;
+import consulo.ui.image.Image;
 
 /**
  * @author Dror Bereznitsky
@@ -22,7 +22,7 @@ import com.intellij.util.IncorrectOperationException;
  */
 public abstract class NewFanActionBase extends CreateElementActionBase
 {
-	protected NewFanActionBase(final String text, final String description, final Icon icon)
+	protected NewFanActionBase(final String text, final String description, final Image icon)
 	{
 		super(text, description, icon);
 	}

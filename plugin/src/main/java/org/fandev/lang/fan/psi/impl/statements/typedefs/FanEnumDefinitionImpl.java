@@ -3,7 +3,7 @@ package org.fandev.lang.fan.psi.impl.statements.typedefs;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.Icon;
+import javax.annotation.Nonnull;
 
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanElementTypes;
@@ -12,11 +12,11 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanEnumValue;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
 import org.jetbrains.annotations.NonNls;
-import javax.annotation.Nonnull;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.util.IncorrectOperationException;
+import consulo.ui.image.Image;
 
 /**
  * Date: Mar 28, 2009
@@ -108,7 +108,7 @@ public class FanEnumDefinitionImpl extends FanTypeDefinitionImpl implements FanE
 	}
 
 	@Override
-	protected Icon getIconInner()
+	protected Image getIconInner()
 	{
 		return Icons.ENUM;
 	}
