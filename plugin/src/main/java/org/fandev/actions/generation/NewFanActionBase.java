@@ -1,11 +1,5 @@
 package org.fandev.actions.generation;
 
-import java.util.EnumMap;
-
-import javax.annotation.Nonnull;
-
-import org.fandev.lang.fan.FanFileType;
-import org.jetbrains.annotations.NonNls;
 import com.intellij.CommonBundle;
 import com.intellij.ide.actions.CreateElementActionBase;
 import com.intellij.openapi.project.Project;
@@ -15,6 +9,12 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.util.IncorrectOperationException;
 import consulo.ui.image.Image;
+import org.fandev.lang.fan.FanFileType;
+import org.jetbrains.annotations.NonNls;
+
+import javax.annotation.Nonnull;
+import java.util.EnumMap;
+import java.util.function.Consumer;
 
 /**
  * @author Dror Bereznitsky
@@ -27,18 +27,12 @@ public abstract class NewFanActionBase extends CreateElementActionBase
 		super(text, description, icon);
 	}
 
-	@Nonnull
-	protected PsiElement[] invokeDialog(final Project project, final PsiDirectory directory)
+	protected void invokeDialog(final Project project, final PsiDirectory directory, Consumer<PsiElement[]> elementsConsumer)
 	{
 		final MyInputValidator validator = new MyInputValidator(project, directory);
 		Messages.showInputDialog(project, getDialogPrompt(), getDialogTitle(), Messages.getQuestionIcon(), "", validator);
 
-		return validator.getCreatedElements();
-	}
-
-	protected void checkBeforeCreate(final String newName, final PsiDirectory directory) throws IncorrectOperationException
-	{
-		//TODO
+		elementsConsumer.accept(validator.getCreatedElements());
 	}
 
 	protected String getErrorTitle()
