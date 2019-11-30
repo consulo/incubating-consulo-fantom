@@ -1,7 +1,7 @@
 package org.fandev.icons;
 
 import com.intellij.openapi.util.IconLoader;
-import consulo.annotations.DeprecationInfo;
+import consulo.annotation.DeprecationInfo;
 import consulo.ui.image.Image;
 
 /**
