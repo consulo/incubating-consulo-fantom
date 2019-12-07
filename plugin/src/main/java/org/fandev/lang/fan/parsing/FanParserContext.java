@@ -17,7 +17,7 @@
 package org.fandev.lang.fan.parsing;
 
 import com.intellij.lang.PsiBuilder;
-import com.intellij.openapi.util.Key;
+import consulo.util.dataholder.Key;
 
 /**
  * @author freds
@@ -25,7 +25,7 @@ import com.intellij.openapi.util.Key;
  */
 public class FanParserContext
 {
-	private final static Key<FanParserContext> KEY = new Key<FanParserContext>("FanParser");
+	private final static Key<FanParserContext> KEY = Key.create("FanParser");
 
 	public static FanParserContext get(final PsiBuilder builder)
 	{
@@ -37,5 +37,4 @@ public class FanParserContext
 		}
 		return context;
 	}
-
 }

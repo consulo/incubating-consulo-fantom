@@ -1,17 +1,5 @@
 package org.fandev.compiler;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-
-import org.fandev.lang.fan.FanFileType;
-import org.fandev.sdk.FanSdkType;
-import org.fandev.utils.FanUtil;
-import org.fandev.utils.VirtualFileUtil;
 import com.intellij.execution.process.OSProcessHandler;
 import com.intellij.execution.process.ProcessAdapter;
 import com.intellij.execution.process.ProcessEvent;
@@ -23,11 +11,22 @@ import com.intellij.openapi.compiler.TranslatingCompiler;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.Key;
 import com.intellij.openapi.util.SystemInfo;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.Chunk;
 import com.intellij.util.io.ZipUtil;
+import consulo.util.dataholder.Key;
+import org.fandev.lang.fan.FanFileType;
+import org.fandev.sdk.FanSdkType;
+import org.fandev.utils.FanUtil;
+import org.fandev.utils.VirtualFileUtil;
+
+import javax.annotation.Nonnull;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 /**
  * @author Dror Bereznitsky

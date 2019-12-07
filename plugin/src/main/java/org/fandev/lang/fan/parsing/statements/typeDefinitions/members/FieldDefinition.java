@@ -16,24 +16,10 @@
  */
 package org.fandev.lang.fan.parsing.statements.typeDefinitions.members;
 
-import static org.fandev.lang.fan.FanElementTypes.FIELD_DEFAULT;
-import static org.fandev.lang.fan.FanElementTypes.FIELD_DEFINITION;
-import static org.fandev.lang.fan.FanElementTypes.GETTER_SETTER_FIELD_DEFINITION;
-import static org.fandev.lang.fan.FanElementTypes.METHOD_BODY;
-import static org.fandev.lang.fan.FanTokenTypes.ALL_MODIFIERS;
-import static org.fandev.lang.fan.FanTokenTypes.COLON_EQ;
-import static org.fandev.lang.fan.FanTokenTypes.EOS;
-import static org.fandev.lang.fan.FanTokenTypes.IDENTIFIER_TOKENS_SET;
-import static org.fandev.lang.fan.FanTokenTypes.LBRACE;
-import static org.fandev.lang.fan.FanTokenTypes.NLS;
-import static org.fandev.lang.fan.FanTokenTypes.RBRACE;
-import static org.fandev.lang.fan.FanTokenTypes.SEMICOLON;
-import static org.fandev.lang.fan.FanTokenTypes.SEPARATOR;
-import static org.fandev.lang.fan.parsing.statements.declaration.DeclarationType.INNER_SET;
-import static org.fandev.lang.fan.parsing.util.ParserUtils.advanceNoNls;
-import static org.fandev.lang.fan.parsing.util.ParserUtils.parseName;
-import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
-
+import com.intellij.lang.PsiBuilder;
+import com.intellij.psi.tree.IElementType;
+import com.intellij.psi.tree.TokenSet;
+import consulo.util.dataholder.Key;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.parsing.auxiliary.facets.Facet;
@@ -43,10 +29,11 @@ import org.fandev.lang.fan.parsing.statements.Block;
 import org.fandev.lang.fan.parsing.statements.declaration.DeclarationType;
 import org.fandev.lang.fan.parsing.types.TypeSpec;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.openapi.util.Key;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+
+import static org.fandev.lang.fan.FanElementTypes.*;
+import static org.fandev.lang.fan.FanTokenTypes.*;
+import static org.fandev.lang.fan.parsing.statements.declaration.DeclarationType.INNER_SET;
+import static org.fandev.lang.fan.parsing.util.ParserUtils.*;
 
 /**
  * <p>Grammar Definition:<ul>

@@ -1,4 +1,4 @@
-<idea-plugin>
+<consulo-plugin>
 	<id>consulo.fantom</id>
 	<name>FAN Support</name>
 	<description>FAN programming language support</description>
@@ -96,4 +96,4 @@
 			<add-to-group group-id="AnalyzeMenu" anchor="after" relative-to-action="Unscramble"/>
 		</action>
 	</actions>
-</idea-plugin>
+</consulo-plugin>
