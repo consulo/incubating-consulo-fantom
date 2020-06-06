@@ -34,7 +34,7 @@ import org.junit.Test;
  * @author freds
  * @date Jan 12, 2009
  */
-public class TestSpecialLex extends BaseFanTest {
+public abstract class TestSpecialLex extends BaseFanTest {
 
     @Test
     public void testExpressions() throws Throwable {

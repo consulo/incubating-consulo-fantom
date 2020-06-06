@@ -26,7 +26,7 @@ import java.io.File;
  * @author freds
  * @date Jan 13, 2009
  */
-public class TestSpecialParse extends BaseFanTest {
+public abstract class TestSpecialParse extends BaseFanTest {
     @Before
     public void setUp() {
         setupProject();

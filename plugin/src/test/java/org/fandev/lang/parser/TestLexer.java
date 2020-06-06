@@ -31,7 +31,7 @@ import java.util.List;
  * @author freds
  * @date Jan 8, 2009
  */
-public class TestLexer extends BaseFanTest {
+public abstract class TestLexer extends BaseFanTest {
     @Test
     public void testHelloWorld() throws Throwable {
         final File file = new File("example/src/HelloWorld.fan");

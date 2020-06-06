@@ -24,7 +24,7 @@ import junit.framework.Assert;
 /**
  * @author Dror Bereznitsky Date: Jan 13, 2009 Time: 10:20:12 AM
  */
-public class TestParser extends BaseFanTest {
+public abstract class TestParser extends BaseFanTest {
 
     @Before
     public void setUp() {

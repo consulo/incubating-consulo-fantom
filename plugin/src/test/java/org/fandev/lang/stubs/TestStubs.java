@@ -36,7 +36,7 @@ import java.util.List;
  * @author freds
  * @date Jan 25, 2009
  */
-public class TestStubs extends BaseFanTest {
+public abstract class TestStubs extends BaseFanTest {
 
     @Before
     public void setUp() {
