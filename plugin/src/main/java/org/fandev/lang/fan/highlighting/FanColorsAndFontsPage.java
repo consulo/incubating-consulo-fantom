@@ -1,17 +1,15 @@
 package org.fandev.lang.fan.highlighting;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.annotation.Nonnull;
-
-import org.fandev.lang.fan.FanSupportLoader;
-import org.jetbrains.annotations.NonNls;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.fileTypes.SyntaxHighlighter;
 import com.intellij.openapi.options.colors.AttributesDescriptor;
 import com.intellij.openapi.options.colors.ColorDescriptor;
 import com.intellij.openapi.options.colors.ColorSettingsPage;
+import org.jetbrains.annotations.NonNls;
+
+import javax.annotation.Nonnull;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Dror Bereznitsky
@@ -44,7 +42,7 @@ public class FanColorsAndFontsPage implements ColorSettingsPage
 	@Nonnull
 	public SyntaxHighlighter getHighlighter()
 	{
-		return SyntaxHighlighter.PROVIDER.create(FanSupportLoader.FAN, null, null);
+		return new FanHighlighter();
 	}
 
 	@Nonnull
