@@ -1,22 +1,15 @@
 package org.fandev.runner;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-
-import javax.annotation.Nonnull;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-
 import com.intellij.icons.AllIcons;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.options.ConfigurationException;
 import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.ui.ListCellRendererWrapper;
+import com.intellij.ui.ColoredListCellRenderer;
 import com.intellij.ui.RawCommandLineEditor;
+
+import javax.annotation.Nonnull;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * Date: Sep 5, 2009
@@ -85,16 +78,16 @@ public abstract class FanRunConfigurationEditor extends SettingsEditor<FanRunCon
 	{
 		myModulesBox.setModel(myModulesModel);
 
-		myModulesBox.setRenderer(new ListCellRendererWrapper<Object>()
+		myModulesBox.setRenderer(new ColoredListCellRenderer()
 		{
 			@Override
-			public void customize(JList list, Object value, int index, boolean selected, boolean hasFocus)
+			protected void customizeCellRenderer(@Nonnull JList jList, Object value, int i, boolean b, boolean b1)
 			{
 				final Module module = (Module) value;
 				if(module != null)
 				{
 					setIcon(AllIcons.Nodes.Module);
-					setText(module.getName());
+					append(module.getName());
 				}
 			}
 		});

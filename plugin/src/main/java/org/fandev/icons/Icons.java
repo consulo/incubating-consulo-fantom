@@ -1,7 +1,7 @@
 package org.fandev.icons;
 
-import com.intellij.openapi.util.IconLoader;
 import consulo.annotation.DeprecationInfo;
+import consulo.fantom.api.icon.FantomApiIconGroup;
 import consulo.ui.image.Image;
 
 /**
@@ -12,11 +12,11 @@ import consulo.ui.image.Image;
 @DeprecationInfo("See consulo.fantom.FantomIcons")
 public interface Icons
 {
-	Image POD = IconLoader.getIcon("/icons/structure/pod.png");
-	Image CLASS = IconLoader.getIcon("/icons/structure/class.png");
-	Image ABSTRACT_CLASS = IconLoader.getIcon("/icons/structure/abstract-class.png");
-	Image MIXIN = IconLoader.getIcon("/icons/structure/mixin.png");
-	Image ENUM = IconLoader.getIcon("/icons/structure/enum.png");
-	Image METHOD = IconLoader.getIcon("/icons/structure/method.png");
-	Image FIELD = IconLoader.getIcon("/icons/structure/field.png");
+	Image POD = FantomApiIconGroup.structurePod();
+	Image CLASS = FantomApiIconGroup.structureClass();
+	Image ABSTRACT_CLASS = FantomApiIconGroup.structureAbstract_class();
+	Image MIXIN = FantomApiIconGroup.structureMixin();
+	Image ENUM = FantomApiIconGroup.structureEnum();
+	Image METHOD = FantomApiIconGroup.structureMethod();
+	Image FIELD = FantomApiIconGroup.structureField();
 }

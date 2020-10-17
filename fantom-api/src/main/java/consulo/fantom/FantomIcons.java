@@ -1,21 +1,21 @@
 package consulo.fantom;
 
-import com.intellij.openapi.util.IconLoader;
-import consulo.ui.migration.SwingImageRef;
+import consulo.fantom.api.icon.FantomApiIconGroup;
+import consulo.ui.image.Image;
 
 // Generated Consulo DevKit plugin 
 public interface FantomIcons
 {
 	interface Structure
 	{
-		SwingImageRef Abstract_class = IconLoader.getIcon("/icons/structure/abstract-class.png");  // 16x16
-		SwingImageRef Class = IconLoader.getIcon("/icons/structure/class.png");  // 16x16
-		SwingImageRef Enum = IconLoader.getIcon("/icons/structure/enum.png");  // 16x16
-		SwingImageRef Field = IconLoader.getIcon("/icons/structure/field.png");  // 16x16
-		SwingImageRef Method = IconLoader.getIcon("/icons/structure/method.png");  // 16x16
-		SwingImageRef Mixin = IconLoader.getIcon("/icons/structure/mixin.png");  // 16x16
-		SwingImageRef Pod = IconLoader.getIcon("/icons/structure/pod.png");  // 16x16
+		Image Abstract_class = FantomApiIconGroup.structureAbstract_class();
+		Image Class = FantomApiIconGroup.structureClass();
+		Image Enum = FantomApiIconGroup.structureEnum();
+		Image Field = FantomApiIconGroup.structureField();
+		Image Method = FantomApiIconGroup.structureMethod();
+		Image Mixin = FantomApiIconGroup.structureMixin();
+		Image Pod = FantomApiIconGroup.structurePod();
 	}
 
-	SwingImageRef Fantom = IconLoader.getIcon("/icons/fantom.png");  // 16x16
+	Image Fantom = FantomApiIconGroup.fantom();
 }
