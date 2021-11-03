@@ -2,11 +2,15 @@
 	<id>consulo.fantom</id>
 	<name>FAN Support</name>
 	<description>FAN programming language support</description>
-	<version>0.0.7</version>
+	<version>SNAPSHOT</version>
 	<category>Custom Languages</category>
 	<vendor>Dror Bereznitsky and Fred Simon</vendor>
 	<resource-bundle>messages.FanBundle</resource-bundle>
 	<depends config-file="java.xml" optional="true">consulo.java</depends>
+
+	<tags>
+		<tag>custom.language</tag>
+	</tags>
 
 	<extensions defaultExtensionNs="com.intellij">
 		<colorSettingsPage implementation="org.fandev.lang.fan.highlighting.FanColorsAndFontsPage"/>
