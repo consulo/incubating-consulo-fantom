@@ -163,9 +163,9 @@ mixins.cannot.declare.constructors:
 mixins.cannot.declare.once.methods:
   text: Mixins cannot declare once methods
 expecting.keyword.static:
-  text: Expecting keyword static {...}
+  text: "Expecting keyword static '{...}'"
 expecting.static:
-  text: Expecting static {...}
+  text: "Expecting static '{...}'"
 enums.must.have.private.constructors:
   text: Enums must have private constructors
 enums.wrong.modifiers:
