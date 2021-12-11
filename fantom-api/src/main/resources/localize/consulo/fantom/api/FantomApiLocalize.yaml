@@ -1,0 +1,236 @@
+plugin.Fan.description:
+  text: Provides support for the Fantom language
+fan.filetype.description:
+  text: Fantom files
+pod.filetype.description:
+  text: Pod files
+typedef.expected:
+  text: Type definition expected
+keywords.expected:
+  text: '{0} expected'
+identifier.expected:
+  text: Identifier expected
+lcurly.expected:
+  text: Left curly bracket expected
+rcurly.expected:
+  text: Right curly bracket expected
+separator.expected:
+  text: Separator expected
+separator.or.rcurly.expected:
+  text: Separator or right curly bracket expected
+rbrack.expected:
+  text: Right bracket expected
+lbrack.expected:
+  text: Left bracket expected
+rpar.expected:
+  text: Right parenthese expected
+lpar.expected:
+  text: Left parenthese expected
+type.expected:
+  text: Type expected
+type.parameter.expected:
+  text: Type parameter expected
+enum.value.expected:
+  text: Enum value expected
+super.or.this.expected:
+  text: super or this keywords expected
+argument.expected:
+  text: Argument expected
+expression.expected:
+  text: Expression expected
+params.expected:
+  text: parameter list expected
+rbrack.no.lbrack:
+  text: Right bracket with no matching left bracket
+or.expected:
+  text: '"|" sign expected'
+comma.expected:
+  text: Comma expected
+comma.rbracket.expected:
+  text: Comma , or rbracket ] expected
+colon.expected:
+  text: Colon expected
+semicolon.expected:
+  text: Semicolon expected
+localDef.assign.expected:
+  text: := expected
+mapListLiteral.type.expected:
+  text: List or map literal need a type
+namedSuper.type.expected:
+  text: Named super literal need a type
+case.default.expected:
+  text: case or default statement expected in a switch block
+case.after.default:
+  text: Cannot have case statement after default in switch
+catch.finally.expected:
+  text: catch or finally statement expected after a try block
+catch.after.finally:
+  text: Cannot have catch statement after finally
+illegal.modifier:
+  text: Illegal modifier {0} for statement of type {1}
+literal.listOrMap.expected:
+  text: List literal expected
+literal.list.unexpected:
+  text: List literal unexpected for Map type
+literal.map.unexpected:
+  text: Map literal unexpected for List type
+literal.simple.expected:
+  text: Simple literal expected
+fan.sdk.title:
+  text: Fantom SDK
+fan.module.title:
+  text: Fantom Module
+fan.module.description:
+  text: Encapsulates core functionality for building <b>Fantom</b> applications
+os.not.supported:
+  text: OS not supported
+module.fan.select.sdk:
+  text: Specify the Fantom SDK
+module.fan.prompt.label.project.sdk:
+  text: Project SDK
+button.configure:
+  text: Configure...
+sdk.select.prompt.title:
+  text: Select SDK
+sdk.error.no.sdk.prompt.messge.confirm.without.sdk:
+  text: Continue without any SDK specified?
+sdk.error.prompt.message.sdk.not.valid:
+  text: Fantom SDK required.
+cannot.compile:
+  text: Cannot Compile
+cannot.compile.fan.files.no.sdk:
+  text: |-
+    Cannot Compile Fantom Files.
+    Please Set up SDK for module ''{0}''.
+cannot.compile.fan.files.no.sdk.mult:
+  text: |-
+    Cannot Compile Fantom Files.
+    Please Set up SDK for modules ''{0}''.
+pod.name:
+  text: Pod name
+pod.version:
+  text: Pod version
+pod.description:
+  text: Pod description
+build.script.name:
+  text: Build script name
+build.script.path:
+  text: Build script path
+src.dirs.path:
+  text: Source directory
+src.dirs.path.description:
+  text: Directory(s) where Source files are
+res.dirs.path:
+  text: Resource directory
+res.dirs.path.description:
+  text: Directory(s) where Resource files are
+out.dir.path:
+  text: Output directory
+out.dir.path.description:
+  text: Directory where Project/Module pod file is created
+depend.dirs.path:
+  text: Dependency directory
+depend.dirs.path.description:
+  text: Directory where dependency files can be found
+pod.srcDirs:
+  text: Source Directory
+pod.resDirs:
+  text: Resource Directory
+pod.outDir:
+  text: Output Directory
+pod.dependDirs:
+  text: Dependency Directory
+pod.dependencies:
+  text: Dependency Package(s)
+pod.docApi:
+  text: Create Fantom Documentation
+pod.docSrc:
+  text: Annotate Documentation with Source
+pod.indexes:
+  text: Indexes
+pod.metas:
+  text: Metas
+validation.field.not.empty:
+  text: '"Field(s) ({0}) cannot be empty"'
+build.script.path.description:
+  text: Specify path to build script
+pod.build.file.changed:
+  text: Pod build file has been changed
+button.synchronize:
+  text: Synchronize
+mixins.cannot.declare.constructors:
+  text: Mixins cannot declare constructors
+mixins.cannot.declare.once.methods:
+  text: Mixins cannot declare once methods
+expecting.keyword.static:
+  text: Expecting keyword static {...}
+expecting.static:
+  text: Expecting static {...}
+enums.must.have.private.constructors:
+  text: Enums must have private constructors
+enums.wrong.modifiers:
+  text: It is a compile time error to use the abstract, final, or const modifiers with a enum - final and const are implied
+newclass.menu.action.text:
+  text: Fantom Class
+newclass.menu.action.description:
+  text: Creates new Fantom Class
+newclass.dlg.prompt:
+  text: Enter name for new Fantom Class
+newclass.dlg.title:
+  text: New Fantom Class
+newclass.command.name:
+  text: Create Fantom Class
+newclass.progress.text:
+  text: Creating Fantom Class ''{0}''
+newpod.menu.action.text:
+  text: Fantom Pod
+newpod.menu.action.description:
+  text: Creates new Fantom Pod
+newpod.dlg.prompt:
+  text: Enter name for new Fantom Pod
+newpod.dlg.title:
+  text: New Fantom Pod
+newpod.command.name:
+  text: Create Fantom Pod
+newpod.progress.text:
+  text: Creating Fantom Pod ''{0}''
+newmixin.menu.action.text:
+  text: Fantom Mixin
+newmixin.menu.action.description:
+  text: Creates new Fantom Mixin
+newmixin.dlg.prompt:
+  text: Enter name for new Fantom Mixin
+newmixin.dlg.title:
+  text: New Fantom Mixin
+newmixin.command.name:
+  text: Create Fantom Mixin
+newmixin.progress.text:
+  text: Creating Fantom Mixin ''{0}''
+newenum.menu.action.text:
+  text: Fantom Enum
+newenum.menu.action.description:
+  text: Creates new Fantom Enum
+newenum.dlg.prompt:
+  text: Enter name for new Fantom Enum
+newenum.dlg.title:
+  text: New Fantom Enum
+newenum.command.name:
+  text: Create Fantom Enum
+newenum.progress.text:
+  text: Creating Fantom Enum ''{0}''
+file.template.group.title.fan:
+  text: Fantom
+action.group.Fan.text:
+  text: Fantom
+action.group.Fan.description:
+  text: Fantom
+project.import.fan.error.adding.modules:
+  text: Could not import module ''{0}''
+unscramble.dialog.title:
+  text: Analyze Fantom Stacktrace
+unscramble.unscrambled.stacktrace.tab:
+  text: <Unscrambled Fantom Stacktrace>
+select.methods.to.implement:
+  text: Select methods to implement
+select.methods.to.override:
+  text: Select methods to override

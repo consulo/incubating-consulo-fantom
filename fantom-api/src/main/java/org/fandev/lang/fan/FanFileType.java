@@ -1,11 +1,12 @@
 package org.fandev.lang.fan;
 
-import javax.annotation.Nonnull;
-
-import org.jetbrains.annotations.NonNls;
 import com.intellij.openapi.fileTypes.LanguageFileType;
 import consulo.fantom.FantomIcons;
+import consulo.fantom.api.localize.FantomApiLocalize;
+import consulo.localize.LocalizeValue;
 import consulo.ui.image.Image;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author Dror
@@ -14,7 +15,6 @@ import consulo.ui.image.Image;
 public class FanFileType extends LanguageFileType
 {
 	public static final FanFileType INSTANCE = new FanFileType();
-	@NonNls
 	public static final String DEFAULT_EXTENSION = "fan";
 
 	private FanFileType()
@@ -31,9 +31,9 @@ public class FanFileType extends LanguageFileType
 
 	@Override
 	@Nonnull
-	public String getDescription()
+	public LocalizeValue getDescription()
 	{
-		return FanBundle.message("fan.filetype.description");
+		return FantomApiLocalize.fanFiletypeDescription();
 	}
 
 	@Override

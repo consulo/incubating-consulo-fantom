@@ -1,11 +1,13 @@
 package org.fandev.lang.fan;
 
-import javax.annotation.Nonnull;
-
-import org.jetbrains.annotations.NonNls;
 import consulo.fantom.FantomIcons;
+import consulo.fantom.api.localize.FantomApiLocalize;
 import consulo.fileTypes.ArchiveFileType;
+import consulo.localize.LocalizeValue;
 import consulo.ui.image.Image;
+import org.jetbrains.annotations.NonNls;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author Dror Bereznitsky
@@ -44,9 +46,9 @@ public class PodFileType extends ArchiveFileType
 
 	@Nonnull
 	@Override
-	public String getDescription()
+	public LocalizeValue getDescription()
 	{
-		return FanBundle.message("fan.filetype.description");
+		return FantomApiLocalize.podDescription();
 	}
 
 	@Nonnull
