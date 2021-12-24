@@ -1,4 +1,4 @@
-<consulo-plugin>
+<consulo-plugin url="https://github.com/consulo/incubating-consulo-fantom">
 	<id>consulo.fantom</id>
 	<name>FAN Support</name>
 	<description>FAN programming language support</description>
