@@ -2,7 +2,7 @@ package org.fandev.lang.fan.parsing.auxiliary.modifiers;
 
 import org.fandev.lang.fan.parsing.statements.declaration.DeclarationType;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * @author Dror Bereznitsky

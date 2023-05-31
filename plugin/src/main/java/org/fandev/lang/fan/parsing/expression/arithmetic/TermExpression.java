@@ -32,9 +32,9 @@ import org.fandev.lang.fan.parsing.statements.expressions.arguments.Arguments;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.members.FieldDefinition;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.members.PropertyBlock;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.ast.IElementType;
+import consulo.language.ast.TokenSet;
 
 /**
  * @author ilyas

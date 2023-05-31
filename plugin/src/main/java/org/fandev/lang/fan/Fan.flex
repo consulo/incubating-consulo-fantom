@@ -1,7 +1,8 @@
 package org.fandev.lang.fan;
 
-import com.intellij.lexer.FlexLexer;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.IElementType;
+import consulo.language.lexer.FlexLexer;
+
 import static org.fandev.lang.fan.FanTokenTypes.*;
 
 %%

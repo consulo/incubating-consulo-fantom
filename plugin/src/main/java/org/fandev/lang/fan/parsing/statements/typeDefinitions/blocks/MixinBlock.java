@@ -3,12 +3,12 @@ package org.fandev.lang.fan.parsing.statements.typeDefinitions.blocks;
 import static org.fandev.lang.fan.FanTokenTypes.LBRACE;
 import static org.fandev.lang.fan.FanTokenTypes.RBRACE;
 
+import consulo.language.parser.PsiBuilder;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.parsing.statements.declaration.DeclarationType;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.members.SlotDefinition;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
 
 /**
  * @author Dror Bereznitsky

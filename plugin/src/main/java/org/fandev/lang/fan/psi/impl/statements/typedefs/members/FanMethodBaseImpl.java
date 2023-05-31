@@ -2,15 +2,15 @@ package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
 import javax.annotation.Nonnull;
 
+import consulo.language.psi.stub.NamedStub;
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.blocks.FanPsiCodeBlock;
 import org.fandev.lang.fan.psi.api.statements.params.FanParameterList;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.api.types.FanTypeElement;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.NamedStub;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.stub.IStubElementType;
 import consulo.ui.image.Image;
 
 /**

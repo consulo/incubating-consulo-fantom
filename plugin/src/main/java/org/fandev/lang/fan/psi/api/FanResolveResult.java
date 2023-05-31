@@ -1,6 +1,6 @@
 package org.fandev.lang.fan.psi.api;
 
-import com.intellij.psi.ResolveResult;
+import consulo.language.psi.ResolveResult;
 
 /**
  * @author Dror Bereznitsky

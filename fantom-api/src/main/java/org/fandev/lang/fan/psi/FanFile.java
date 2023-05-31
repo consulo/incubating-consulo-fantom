@@ -2,12 +2,11 @@ package org.fandev.lang.fan.psi;
 
 import javax.annotation.Nonnull;
 
+import consulo.language.psi.PsiFile;
 import org.fandev.lang.fan.psi.api.statements.FanTopLevelDefintion;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 
 import javax.annotation.Nullable;
-
-import com.intellij.psi.PsiFile;
 
 /**
  * @author Dror Bereznitsky

@@ -1,10 +1,10 @@
 package org.fandev.lang.fan.psi.impl.modifiers;
 
+import consulo.language.ast.ASTNode;
 import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.psi.api.modifiers.FanModifier;
 import org.fandev.lang.fan.psi.api.modifiers.FanModifierList;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
-import com.intellij.lang.ASTNode;
 
 /**
  * @author Dror Bereznitsky

@@ -2,16 +2,16 @@ package org.fandev.utils;
 
 import javax.annotation.Nullable;
 
+import consulo.language.psi.PsiFile;
+import consulo.module.content.ProjectRootManager;
+import consulo.project.Project;
 import org.fandev.lang.fan.psi.api.modifiers.FanModifierListOwner;
 import org.fandev.lang.fan.psi.api.statements.FanTopLevelDefintion;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMember;
-import com.intellij.openapi.compiler.CompilerManager;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
+import consulo.compiler.CompilerManager;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.language.psi.PsiElement;
 
 /**
  * @author Dror Bereznitsky

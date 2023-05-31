@@ -20,9 +20,9 @@ import static org.fandev.lang.fan.FanTokenTypes.DIV;
 import static org.fandev.lang.fan.FanTokenTypes.MULT;
 import static org.fandev.lang.fan.FanTokenTypes.PERC;
 
+import consulo.language.parser.PsiBuilder;
 import org.fandev.lang.fan.parsing.expression.logical.SeparatorRepeatExpression;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.ast.TokenSet;
 
 /**
  * @author ilyas

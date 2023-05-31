@@ -2,9 +2,10 @@ package org.fandev.lang.fan;
 
 import consulo.fantom.FantomIcons;
 import consulo.fantom.api.localize.FantomApiLocalize;
-import consulo.fileTypes.ArchiveFileType;
 import consulo.localize.LocalizeValue;
 import consulo.ui.image.Image;
+import consulo.virtualFileSystem.VirtualFileManager;
+import consulo.virtualFileSystem.archive.ArchiveFileType;
 import org.jetbrains.annotations.NonNls;
 
 import javax.annotation.Nonnull;
@@ -16,12 +17,13 @@ import javax.annotation.Nonnull;
 public class PodFileType extends ArchiveFileType
 {
 	public static final PodFileType POD_FILE_TYPE = new PodFileType();
+
 	@NonNls
 	public static final String DEFAULT_EXTENSION = "pod";
 
 	public PodFileType()
 	{
-		super();
+		super(VirtualFileManager.getInstance());
 	}
 
 	@Nonnull

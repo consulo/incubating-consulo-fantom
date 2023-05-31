@@ -1,6 +1,6 @@
 package org.fandev.lang.fan;
 
-import com.intellij.lang.Language;
+import consulo.language.Language;
 
 /**
  * @author Dror

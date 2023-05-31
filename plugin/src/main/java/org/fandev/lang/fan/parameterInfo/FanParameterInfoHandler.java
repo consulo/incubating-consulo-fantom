@@ -1,7 +1,15 @@
 package org.fandev.lang.fan.parameterInfo;
 
-import javax.annotation.Nonnull;
-
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.editor.CodeInsightSettings;
+import consulo.language.editor.completion.lookup.LookupElement;
+import consulo.language.editor.parameterInfo.*;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiNamedElement;
+import consulo.language.psi.util.PsiTreeUtil;
+import org.fandev.lang.fan.FanLanguage;
 import org.fandev.lang.fan.psi.FanElement;
 import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.FanResolveResult;
@@ -13,17 +21,8 @@ import org.fandev.lang.fan.psi.api.statements.params.FanParameter;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanConstructor;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
-import com.intellij.codeInsight.CodeInsightSettings;
-import com.intellij.codeInsight.lookup.LookupElement;
-import com.intellij.lang.parameterInfo.CreateParameterInfoContext;
-import com.intellij.lang.parameterInfo.ParameterInfoContext;
-import com.intellij.lang.parameterInfo.ParameterInfoHandler;
-import com.intellij.lang.parameterInfo.ParameterInfoUIContext;
-import com.intellij.lang.parameterInfo.UpdateParameterInfoContext;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiNamedElement;
-import com.intellij.psi.util.PsiTreeUtil;
+
+import javax.annotation.Nonnull;
 
 /**
  * Date: Sep 14, 2009
@@ -31,6 +30,7 @@ import com.intellij.psi.util.PsiTreeUtil;
  *
  * @author Dror Bereznitsky
  */
+@ExtensionImpl
 public class FanParameterInfoHandler implements ParameterInfoHandler<FanElement, FanResolveResult>
 {
 	public boolean couldShowInLookup()
@@ -226,5 +226,12 @@ public class FanParameterInfoHandler implements ParameterInfoHandler<FanElement,
 			buffer.append(defaultValue.getText());
 			buffer.append(")");
 		}
+	}
+
+	@Nonnull
+	@Override
+	public Language getLanguage()
+	{
+		return FanLanguage.INSTANCE;
 	}
 }

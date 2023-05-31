@@ -1,7 +1,7 @@
 package org.fandev.lang.fan;
 
+import consulo.component.util.localize.AbstractBundle;
 import org.jetbrains.annotations.PropertyKey;
-import com.intellij.AbstractBundle;
 
 public class FanBundle extends AbstractBundle
 {

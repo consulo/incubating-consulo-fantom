@@ -18,8 +18,8 @@ package org.fandev.lang.fan.parsing.expression.logical;
 import static org.fandev.lang.fan.FanElementTypes.LOGICAL_OR_EXPR;
 import static org.fandev.lang.fan.FanTokenTypes.OROR;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.ast.TokenSet;
 
 /**
  * @author ilyas

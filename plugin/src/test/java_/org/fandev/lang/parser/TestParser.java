@@ -10,6 +10,8 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
 import org.fandev.lang.BaseFanTest;
 import org.fandev.lang.ParsingResult;
 import org.fandev.lang.ResultStatusCode;
@@ -17,8 +19,6 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.FanClassDefinition;
 import org.fandev.lang.fan.psi.impl.statements.typedefs.FanClassDefinitionImpl;
 import org.junit.Before;
 import org.junit.Test;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
 import junit.framework.Assert;
 
 /**

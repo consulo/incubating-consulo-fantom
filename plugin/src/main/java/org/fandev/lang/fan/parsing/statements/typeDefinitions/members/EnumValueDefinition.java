@@ -6,7 +6,7 @@ import static org.fandev.lang.fan.FanTokenTypes.LPAR;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.parsing.statements.expressions.arguments.Arguments;
-import com.intellij.lang.PsiBuilder;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * Date: Mar 28, 2009

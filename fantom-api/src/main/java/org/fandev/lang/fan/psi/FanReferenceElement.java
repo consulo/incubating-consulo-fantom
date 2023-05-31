@@ -1,9 +1,10 @@
 package org.fandev.lang.fan.psi;
 
 import javax.annotation.Nonnull;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiPolyVariantReference;
-import com.intellij.psi.PsiQualifiedReference;
+
+import consulo.language.psi.PsiPolyVariantReference;
+import consulo.language.psi.PsiQualifiedReference;
+import consulo.language.psi.PsiElement;
 
 /**
  * @author Dror Bereznitsky

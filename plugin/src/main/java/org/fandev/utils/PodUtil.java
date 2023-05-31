@@ -1,12 +1,12 @@
 package org.fandev.utils;
 
+import consulo.virtualFileSystem.VirtualFile;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-
-import com.intellij.openapi.vfs.VirtualFile;
 
 /**
  * Created by IntelliJ IDEA.

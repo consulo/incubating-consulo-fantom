@@ -4,6 +4,7 @@ import static org.fandev.lang.fan.FanElementTypes.CTOR_DEFINITION;
 import static org.fandev.lang.fan.FanElementTypes.METHOD_BODY;
 import static org.fandev.lang.fan.FanTokenTypes.LBRACE;
 
+import consulo.language.ast.TokenSet;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.FanTokenTypes;
@@ -15,8 +16,7 @@ import org.fandev.lang.fan.parsing.statements.expressions.arguments.Arguments;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.ReferenceElement;
 import org.fandev.lang.fan.parsing.types.TypeParameters;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * Grammar Definition:<ul>

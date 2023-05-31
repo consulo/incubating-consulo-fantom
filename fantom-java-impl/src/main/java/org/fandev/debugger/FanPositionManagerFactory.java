@@ -1,14 +1,17 @@
 package org.fandev.debugger;
 
+import com.intellij.java.debugger.PositionManager;
+import com.intellij.java.debugger.PositionManagerFactory;
+import com.intellij.java.debugger.engine.DebugProcess;
+import consulo.annotation.component.ExtensionImpl;
+
 import javax.annotation.Nullable;
-import com.intellij.debugger.PositionManager;
-import com.intellij.debugger.PositionManagerFactory;
-import com.intellij.debugger.engine.DebugProcess;
 
 /**
  * @author VISTALL
  * @since 03.02.14
  */
+@ExtensionImpl
 public class FanPositionManagerFactory extends PositionManagerFactory
 {
 	@Nullable

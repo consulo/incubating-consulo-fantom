@@ -42,6 +42,8 @@
         <sourceOutputDir name="target\generated-sources\annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <processor name="consulo.internal.injecting.binding.InjectingBindingProcessor" />
+        <processor name="consulo.internal.injecting.binding.TopicBindingProcessor" />
         <processorPath useClasspath="true" />
         <module name="consulo.fantom" />
       </profile>
@@ -49,6 +51,8 @@
         <sourceOutputDir name="target\generated-sources\annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <processor name="consulo.internal.injecting.binding.InjectingBindingProcessor" />
+        <processor name="consulo.internal.injecting.binding.TopicBindingProcessor" />
         <processorPath useClasspath="true" />
         <module name="consulo.fantom-java.impl" />
       </profile>
@@ -56,6 +60,8 @@
         <sourceOutputDir name="target\generated-sources\annotations" />
         <sourceTestOutputDir name="target\generated-test-sources\test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <processor name="consulo.internal.injecting.binding.InjectingBindingProcessor" />
+        <processor name="consulo.internal.injecting.binding.TopicBindingProcessor" />
         <processorPath useClasspath="true" />
         <module name="consulo.fantom-fantom.api" />
       </profile>

@@ -4,8 +4,8 @@ import org.fandev.lang.fan.psi.FanElement;
 import org.fandev.lang.fan.psi.FanType;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import com.intellij.psi.PsiNameIdentifierOwner;
-import com.intellij.psi.PsiNamedElement;
+import consulo.language.psi.PsiNameIdentifierOwner;
+import consulo.language.psi.PsiNamedElement;
 
 /**
  * Date: Apr 28, 2009

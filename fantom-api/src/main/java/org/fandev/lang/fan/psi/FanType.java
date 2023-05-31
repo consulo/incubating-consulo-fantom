@@ -2,7 +2,7 @@ package org.fandev.lang.fan.psi;
 
 import javax.annotation.Nonnull;
 
-import com.intellij.util.ArrayFactory;
+import consulo.util.collection.ArrayFactory;
 
 /**
  * @author VISTALL

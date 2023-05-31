@@ -1,7 +1,11 @@
 package org.fandev.lang.fan.psi.stubs.elements;
 
-import java.io.IOException;
-
+import consulo.language.psi.PsiQualifiedReference;
+import consulo.language.psi.stub.IndexSink;
+import consulo.language.psi.stub.StubElement;
+import consulo.language.psi.stub.StubInputStream;
+import consulo.language.psi.stub.StubOutputStream;
+import consulo.util.collection.ContainerUtil;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.FanStubElementType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanInheritanceClause;
@@ -9,13 +13,8 @@ import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.statements.typedefs.FanInheritanceClauseImpl;
 import org.fandev.lang.fan.psi.stubs.FanReferenceListStub;
 import org.fandev.lang.fan.psi.stubs.impl.FanReferenceListStubImpl;
-import javax.annotation.Nullable;
-import com.intellij.psi.stubs.IndexSink;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.stubs.StubInputStream;
-import com.intellij.psi.stubs.StubOutputStream;
-import com.intellij.util.Function;
-import com.intellij.util.containers.ContainerUtil;
+
+import java.io.IOException;
 
 /**
  * Created by IntelliJ IDEA.
@@ -38,14 +37,7 @@ public class FanInheritanceClauseElementType extends FanStubElementType<FanRefer
 	public FanReferenceListStub createStub(final FanInheritanceClause psi, final StubElement parentStub)
 	{
 		final FanCodeReferenceElement[] elements = psi.getReferenceElements();
-		final String[] refNames = ContainerUtil.map(elements, new Function<FanCodeReferenceElement, String>()
-		{
-			@Nullable
-			public String fun(final FanCodeReferenceElement element)
-			{
-				return element.getReferenceName();
-			}
-		}, new String[elements.length]);
+		final String[] refNames = ContainerUtil.map(elements, PsiQualifiedReference::getReferenceName, new String[elements.length]);
 
 		return new FanReferenceListStubImpl(parentStub, FanElementTypes.INHERITANCE_CLAUSE, refNames);
 	}

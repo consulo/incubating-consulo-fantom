@@ -2,8 +2,8 @@ package org.fandev.lang.fan;
 
 import javax.annotation.Nonnull;
 
+import consulo.language.ast.IElementType;
 import org.jetbrains.annotations.NonNls;
-import com.intellij.psi.tree.IElementType;
 
 /**
  * @author Dror

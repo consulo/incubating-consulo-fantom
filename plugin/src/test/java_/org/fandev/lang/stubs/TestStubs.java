@@ -16,14 +16,14 @@
  */
 package org.fandev.lang.stubs;
 
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.StubBuilder;
-import com.intellij.psi.stubs.NamedStub;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.IStubFileElementType;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IElementType;
+import consulo.language.psi.stub.NamedStub;
+import consulo.language.psi.stub.StubElement;
+import consulo.language.psi.stub.IStubFileElementType;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.stub.StubBuilder;
 import junit.framework.Assert;
 import org.fandev.lang.BaseFanTest;
 import org.junit.Before;

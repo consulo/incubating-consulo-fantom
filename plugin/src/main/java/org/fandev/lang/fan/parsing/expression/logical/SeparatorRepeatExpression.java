@@ -21,9 +21,9 @@ import static org.fandev.lang.fan.parsing.util.ParserUtils.advanceNoNls;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.expression.ExpressionParser;
 import org.fandev.lang.fan.parsing.expression.arithmetic.UnaryExpression;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.ast.IElementType;
+import consulo.language.ast.TokenSet;
 
 /**
  * @author freds

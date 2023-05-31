@@ -1,8 +1,8 @@
 package org.fandev.lang.fan.parsing.auxiliary;
 
-import static org.fandev.lang.fan.FanTokenTypes.SEPARATOR;
+import consulo.language.parser.PsiBuilder;
 
-import com.intellij.lang.PsiBuilder;
+import static org.fandev.lang.fan.FanTokenTypes.SEPARATOR;
 
 /**
  * @author Dror Bereznitsky

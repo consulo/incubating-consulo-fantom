@@ -16,25 +16,17 @@
  */
 package org.fandev.lang;
 
-import com.intellij.psi.tree.IElementType;
-
-import java.util.HashMap;
-import java.util.Map;
+import consulo.language.psi.PsiFile;
 
 /**
  * @author freds
  * @date Jan 16, 2009
  */
-public class LexerResult extends BasicResult {
-    public int nbTokens;
-    public Map<IElementType, Integer> totals = new HashMap<IElementType, Integer>();
+public class ParsingResult extends BasicResult {
+    public final PsiFile psiFile;
 
-    public LexerResult(String fileName, int nbTokens) {
-        super(null, ResultStatusCode.OK, fileName);
-        this.nbTokens = nbTokens;
-    }
-
-    public LexerResult(String errorMsg, ResultStatusCode status, String fileName) {
+    ParsingResult(ResultStatusCode status, String fileName, String errorMsg, PsiFile psiFile) {
         super(errorMsg, status, fileName);
+        this.psiFile = psiFile;
     }
 }

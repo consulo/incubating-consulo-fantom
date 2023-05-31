@@ -2,6 +2,8 @@ package org.fandev.lang.fan.psi.api.statements.typeDefs;
 
 import javax.annotation.Nonnull;
 
+import consulo.language.psi.PsiNameIdentifierOwner;
+import consulo.language.psi.PsiNamedElement;
 import org.fandev.lang.fan.psi.FanClassType;
 import org.fandev.lang.fan.psi.FanElement;
 import org.fandev.lang.fan.psi.api.statements.FanTopLevelDefintion;
@@ -13,10 +15,8 @@ import org.fandev.lang.fan.psi.api.topLevel.FanTopStatement;
 
 import javax.annotation.Nullable;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiNameIdentifierOwner;
-import com.intellij.psi.PsiNamedElement;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.psi.PsiElement;
+import consulo.language.util.IncorrectOperationException;
 
 /**
  * @author Dror Bereznitsky

@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.psi.stubs;
 
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
-import com.intellij.psi.stubs.NamedStub;
+import consulo.language.psi.stub.NamedStub;
 
 /**
  * @author Dror Bereznitsky

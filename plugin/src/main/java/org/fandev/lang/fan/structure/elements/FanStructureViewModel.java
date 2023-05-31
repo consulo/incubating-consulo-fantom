@@ -1,16 +1,16 @@
 package org.fandev.lang.fan.structure.elements;
 
-import javax.annotation.Nonnull;
-
+import consulo.codeEditor.Editor;
+import consulo.fileEditor.structureView.StructureViewTreeElement;
+import consulo.fileEditor.structureView.tree.Filter;
+import consulo.fileEditor.structureView.tree.Grouper;
+import consulo.fileEditor.structureView.tree.Sorter;
+import consulo.language.editor.structureView.TextEditorBasedStructureViewModel;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
 import org.fandev.lang.fan.structure.elements.impl.FanFileStructureViewElement;
-import com.intellij.ide.structureView.StructureViewTreeElement;
-import com.intellij.ide.structureView.TextEditorBasedStructureViewModel;
-import com.intellij.ide.util.treeView.smartTree.Filter;
-import com.intellij.ide.util.treeView.smartTree.Grouper;
-import com.intellij.ide.util.treeView.smartTree.Sorter;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
+
+import javax.annotation.Nonnull;
 
 /**
  * @author Dror Bereznitsky

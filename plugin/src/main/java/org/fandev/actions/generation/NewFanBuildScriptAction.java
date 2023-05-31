@@ -2,13 +2,13 @@ package org.fandev.actions.generation;
 
 import java.util.EnumMap;
 
+import consulo.language.psi.PsiFile;
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.FanFileType;
 import org.jetbrains.annotations.NonNls;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.psi.PsiFile;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.util.IncorrectOperationException;
 
 /**
  * Created by IntelliJ IDEA.
@@ -57,7 +57,7 @@ public class NewFanBuildScriptAction extends NewFanActionBase
 
 	@Override
 	protected PsiFile createClassFromTemplate(final PsiDirectory directory, final String className, String templateName,
-			@NonNls final EnumMap<TemplateProperty, String> parameters) throws IncorrectOperationException
+											  @NonNls final EnumMap<TemplateProperty, String> parameters) throws IncorrectOperationException
 	{
 		return FanTemplatesFactory.createFromTemplate(directory, "build." + FanFileType.DEFAULT_EXTENSION, templateName, parameters);
 	}

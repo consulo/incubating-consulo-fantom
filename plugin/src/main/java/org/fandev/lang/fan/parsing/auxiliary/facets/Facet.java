@@ -8,7 +8,7 @@ import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.parsing.expression.Expression;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * @author Dror Bereznitsky

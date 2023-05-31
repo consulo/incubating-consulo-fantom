@@ -7,9 +7,9 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.impl.statements.typedefs.members.FanMethodImpl;
 import org.fandev.lang.fan.psi.stubs.FanMethodStub;
 import org.fandev.lang.fan.psi.stubs.impl.FanMethodStubImpl;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.util.io.StringRef;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.psi.stub.StubElement;
+import consulo.index.io.StringRef;
 
 /**
  * @author Dror Bereznitsky

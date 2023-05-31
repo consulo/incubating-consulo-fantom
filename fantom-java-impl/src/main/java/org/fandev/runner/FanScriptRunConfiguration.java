@@ -1,15 +1,15 @@
 package org.fandev.runner;
 
-import org.jdom.Element;
-import com.intellij.execution.configurations.ConfigurationFactory;
-import com.intellij.execution.configurations.ModuleBasedConfiguration;
-import com.intellij.execution.configurations.RunConfiguration;
-import com.intellij.execution.configurations.RunConfigurationModule;
-import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.openapi.util.InvalidDataException;
-import com.intellij.openapi.util.JDOMExternalizer;
-import com.intellij.openapi.util.WriteExternalException;
+import consulo.execution.configuration.ConfigurationFactory;
+import consulo.execution.configuration.ModuleBasedConfiguration;
+import consulo.execution.configuration.RunConfiguration;
+import consulo.execution.configuration.RunConfigurationModule;
+import consulo.execution.configuration.ui.SettingsEditor;
 import consulo.java.execution.configurations.OwnJavaParameters;
+import consulo.util.xml.serializer.InvalidDataException;
+import consulo.util.xml.serializer.JDOMExternalizer;
+import consulo.util.xml.serializer.WriteExternalException;
+import org.jdom.Element;
 
 /**
  * @author Dror Bereznitsky

@@ -12,7 +12,7 @@ import org.fandev.lang.fan.parsing.statements.declaration.DeclarationType;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.InheritanceClause;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.blocks.ClassBlock;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * @author Dror Bereznitsky

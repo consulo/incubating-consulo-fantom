@@ -1,8 +1,8 @@
 package org.fandev.actions.generation;
 
+import consulo.language.psi.PsiDirectory;
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanBundle;
-import com.intellij.psi.PsiDirectory;
 
 /**
  * Date: Apr 1, 2009

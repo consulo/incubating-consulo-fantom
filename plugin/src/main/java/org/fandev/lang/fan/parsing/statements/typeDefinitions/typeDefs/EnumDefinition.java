@@ -5,6 +5,7 @@ import static org.fandev.lang.fan.FanTokenTypes.ENUM_KEYWORD;
 import static org.fandev.lang.fan.FanTokenTypes.FAN_SYS_TYPE;
 import static org.fandev.lang.fan.FanTokenTypes.IDENTIFIER_TOKENS_SET;
 
+import consulo.language.parser.PsiBuilder;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.parsing.auxiliary.modifiers.Modifiers;
@@ -12,7 +13,6 @@ import org.fandev.lang.fan.parsing.statements.declaration.DeclarationType;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.InheritanceClause;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.blocks.EnumBlock;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
 
 /**
  * <ul>

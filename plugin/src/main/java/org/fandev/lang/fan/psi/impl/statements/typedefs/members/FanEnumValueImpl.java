@@ -3,6 +3,8 @@ package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import consulo.language.ast.ASTNode;
+import consulo.navigation.ItemPresentation;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.modifiers.FanModifierList;
@@ -13,13 +15,11 @@ import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanEnumReferenceType;
 import org.fandev.lang.fan.psi.stubs.FanEnumValueStub;
 import org.jetbrains.annotations.NonNls;
-import com.intellij.lang.ASTNode;
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.openapi.util.Iconable;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.util.IncorrectOperationException;
-import consulo.ide.IconDescriptorUpdaters;
+import consulo.component.util.Iconable;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.util.IncorrectOperationException;
+import consulo.language.icon.IconDescriptorUpdaters;
 import consulo.ui.image.Image;
 
 /**

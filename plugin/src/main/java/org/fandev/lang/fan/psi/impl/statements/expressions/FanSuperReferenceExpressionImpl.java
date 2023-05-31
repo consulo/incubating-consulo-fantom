@@ -2,10 +2,10 @@ package org.fandev.lang.fan.psi.impl.statements.expressions;
 
 import javax.annotation.Nullable;
 
+import consulo.language.ast.ASTNode;
 import org.fandev.lang.fan.psi.api.statements.expressions.FanSuperReferenceExpression;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.utils.FanUtil;
-import com.intellij.lang.ASTNode;
 
 /**
  * Date: Jul 19, 2009

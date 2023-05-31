@@ -1,18 +1,14 @@
 package org.fandev.lang.fan.highlighting;
 
-import static org.fandev.lang.fan.FanTokenTypes.LBRACE;
-import static org.fandev.lang.fan.FanTokenTypes.LBRACKET;
-import static org.fandev.lang.fan.FanTokenTypes.LPAR;
-import static org.fandev.lang.fan.FanTokenTypes.RBRACE;
-import static org.fandev.lang.fan.FanTokenTypes.RBRACKET;
-import static org.fandev.lang.fan.FanTokenTypes.RPAR;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.BracePair;
+import consulo.language.Language;
+import consulo.language.PairedBraceMatcher;
+import org.fandev.lang.fan.FanLanguage;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import com.intellij.lang.BracePair;
-import com.intellij.lang.PairedBraceMatcher;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.tree.IElementType;
+
+import static org.fandev.lang.fan.FanTokenTypes.*;
 
 /**
  * Created by IntelliJ IDEA.
@@ -20,6 +16,7 @@ import com.intellij.psi.tree.IElementType;
  * Date: Mar 13, 2009
  * Time: 3:54:16 PM
  */
+@ExtensionImpl
 public class FanPairedBraceMatcher implements PairedBraceMatcher
 {
 	private static final BracePair[] PAIRS = new BracePair[]{
@@ -33,13 +30,10 @@ public class FanPairedBraceMatcher implements PairedBraceMatcher
 		return PAIRS;
 	}
 
-	public boolean isPairedBracesAllowedBeforeType(@Nonnull final IElementType lbraceType, @Nullable final IElementType contextType)
+	@Nonnull
+	@Override
+	public Language getLanguage()
 	{
-		return true;
-	}
-
-	public int getCodeConstructStart(final PsiFile file, final int openingBraceOffset)
-	{
-		return openingBraceOffset;
+		return FanLanguage.INSTANCE;
 	}
 }

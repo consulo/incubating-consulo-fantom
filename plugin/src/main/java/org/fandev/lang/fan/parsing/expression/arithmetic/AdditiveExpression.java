@@ -20,8 +20,8 @@ import static org.fandev.lang.fan.FanTokenTypes.MINUS;
 import static org.fandev.lang.fan.FanTokenTypes.PLUS;
 
 import org.fandev.lang.fan.parsing.expression.logical.SeparatorRepeatExpression;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.ast.TokenSet;
 
 /**
  * @author ilyas

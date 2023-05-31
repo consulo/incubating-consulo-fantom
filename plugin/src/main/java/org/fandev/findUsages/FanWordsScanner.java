@@ -2,11 +2,11 @@ package org.fandev.findUsages;
 
 import org.fandev.lang.fan.FanParsingLexer;
 import org.fandev.lang.fan.FanTokenTypes;
-import com.intellij.lang.cacheBuilder.WordOccurrence;
-import com.intellij.lang.cacheBuilder.WordsScanner;
-import com.intellij.lexer.Lexer;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.util.Processor;
+import consulo.language.cacheBuilder.WordOccurrence;
+import consulo.language.cacheBuilder.WordsScanner;
+import consulo.language.lexer.Lexer;
+import consulo.language.ast.IElementType;
+import consulo.application.util.function.Processor;
 
 /**
  * Date: Sep 18, 2009
@@ -74,7 +74,7 @@ public class FanWordsScanner implements WordsScanner
 	}
 
 	private static boolean stripWords(final Processor<WordOccurrence> processor, final CharSequence tokenText, int from, int to,
-			final WordOccurrence.Kind kind, WordOccurrence occurrence)
+									  final WordOccurrence.Kind kind, WordOccurrence occurrence)
 	{
 		// This code seems strange but it is more effective as Character.isJavaIdentifier_xxx_ is quite costly operation due to unicode
 		int index = from;

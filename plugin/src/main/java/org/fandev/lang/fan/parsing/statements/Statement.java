@@ -12,9 +12,9 @@ import org.fandev.lang.fan.parsing.expression.Expression;
 import org.fandev.lang.fan.parsing.types.SimpleTypeSpec;
 import org.fandev.lang.fan.parsing.types.TypeSpec;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.ast.IElementType;
+import consulo.language.ast.TokenSet;
 
 /**
  * @author Dror Bereznitsky
@@ -140,7 +140,7 @@ public class Statement
 	}
 
 	private static boolean expressionOrLocalDef(final PsiBuilder builder, final TokenSet stopper, final IElementType exprType,
-			final IElementType localDefType)
+												final IElementType localDefType)
 	{
 		removeNls(builder);
 		// Initialization it can only be an Type IDENTIFIER follow by := So { is a stopper

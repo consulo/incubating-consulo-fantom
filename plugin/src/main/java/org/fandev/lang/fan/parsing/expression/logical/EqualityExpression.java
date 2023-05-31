@@ -18,8 +18,8 @@ package org.fandev.lang.fan.parsing.expression.logical;
 import static org.fandev.lang.fan.FanElementTypes.EQUALITY_EXPR;
 import static org.fandev.lang.fan.FanTokenTypes.EQUALITY_OP;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.ast.TokenSet;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * @author ilyas

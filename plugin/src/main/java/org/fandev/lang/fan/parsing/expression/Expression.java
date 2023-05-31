@@ -31,11 +31,11 @@ import static org.fandev.lang.fan.parsing.util.ParserUtils.advanceNoNls;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.firstAfter;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
 
+import consulo.language.ast.IElementType;
 import org.fandev.lang.fan.parsing.expression.logical.LogicalOrExpression;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.ast.TokenSet;
 
 /**
  * @author freds

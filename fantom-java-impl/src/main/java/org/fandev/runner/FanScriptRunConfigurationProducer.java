@@ -1,17 +1,19 @@
 package org.fandev.runner;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.execution.RunnerAndConfigurationSettings;
+import consulo.execution.action.ConfigurationContext;
+import consulo.execution.action.Location;
+import consulo.execution.action.RuntimeConfigurationProducer;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
 import org.fandev.lang.fan.psi.FanFile;
-import com.intellij.execution.Location;
-import com.intellij.execution.actions.ConfigurationContext;
-import com.intellij.execution.impl.RunnerAndConfigurationSettingsImpl;
-import com.intellij.execution.junit.RuntimeConfigurationProducer;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
 
 /**
  * @author Dror Bereznitsky
  * @date Jan 20, 2009 9:10:00 PM
  */
+@ExtensionImpl
 public class FanScriptRunConfigurationProducer extends RuntimeConfigurationProducer implements Cloneable
 {
 	private PsiElement mySourceElement;
@@ -26,7 +28,7 @@ public class FanScriptRunConfigurationProducer extends RuntimeConfigurationProdu
 		return mySourceElement;
 	}
 
-	protected RunnerAndConfigurationSettingsImpl createConfigurationByElement(final Location location, final ConfigurationContext context)
+	protected RunnerAndConfigurationSettings createConfigurationByElement(final Location location, final ConfigurationContext context)
 	{
 		final PsiElement element = location.getPsiElement();
 
@@ -35,7 +37,7 @@ public class FanScriptRunConfigurationProducer extends RuntimeConfigurationProdu
 		{
 			final FanFile fanFile = (FanFile) file;
 			mySourceElement = element;
-			return (RunnerAndConfigurationSettingsImpl) FanScriptRunConfigurationType.getInstance().createConfigurationByLocation(location);
+			return FanScriptRunConfigurationType.getInstance().createConfigurationByLocation(location);
 
 		}
 

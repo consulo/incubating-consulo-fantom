@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.psi.stubs;
 
+import consulo.language.psi.stub.NamedStub;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
-import com.intellij.psi.stubs.NamedStub;
 
 /**
  * @author Dror Bereznitsky

@@ -5,6 +5,7 @@ import java.net.URLClassLoader;
 import java.util.LinkedList;
 import java.util.List;
 
+import consulo.language.psi.util.PsiTreeUtil;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.FanVariable;
@@ -20,14 +21,13 @@ import org.fandev.lang.fan.psi.impl.FanMapType;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import consulo.fantom.module.extension.FanModuleExtension;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.util.Pair;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.logging.Logger;
+import consulo.module.Module;
+import consulo.language.util.ModuleUtilCore;
+import consulo.content.bundle.Sdk;
+import consulo.util.lang.Pair;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.language.psi.PsiElement;
 
 /**
  * @author Dror Bereznitsky

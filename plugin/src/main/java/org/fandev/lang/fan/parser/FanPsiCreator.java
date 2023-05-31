@@ -2,6 +2,8 @@ package org.fandev.lang.fan.parser;
 
 import static org.fandev.lang.fan.FanElementTypes.*;
 
+import consulo.language.ast.IElementType;
+import consulo.language.psi.PsiElement;
 import org.fandev.lang.fan.psi.impl.modifiers.FanModifierListImpl;
 import org.fandev.lang.fan.psi.impl.statements.FanDefaultValueImpl;
 import org.fandev.lang.fan.psi.impl.statements.FanVariableImpl;
@@ -33,10 +35,8 @@ import org.fandev.lang.fan.psi.impl.types.FanCodeReferenceElementImpl;
 import org.fandev.lang.fan.psi.impl.types.FanFuncTypeElementImpl;
 import org.fandev.lang.fan.psi.impl.types.FanListTypeElementImpl;
 import org.fandev.lang.fan.psi.impl.types.FanMapTypeElementImpl;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.impl.psi.ASTWrapperPsiElement;
+import consulo.language.ast.ASTNode;
 
 /**
  * @author Dror Bereznitsky

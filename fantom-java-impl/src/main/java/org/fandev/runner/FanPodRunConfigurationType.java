@@ -1,10 +1,11 @@
 package org.fandev.runner;
 
-import javax.annotation.Nonnull;
-
-import com.intellij.execution.configurations.ConfigurationTypeUtil;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.execution.configuration.ConfigurationTypeUtil;
 import consulo.fantom.FantomIcons;
 import consulo.ui.image.Image;
+
+import javax.annotation.Nonnull;
 
 /**
  * Date: Sep 4, 2009
@@ -12,6 +13,7 @@ import consulo.ui.image.Image;
  *
  * @author Dror Bereznitsky
  */
+@ExtensionImpl
 public class FanPodRunConfigurationType extends FanRunConfigurationType
 {
 	public FanPodRunConfigurationType()

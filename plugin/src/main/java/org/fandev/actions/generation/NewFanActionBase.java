@@ -1,13 +1,13 @@
 package org.fandev.actions.generation;
 
-import com.intellij.CommonBundle;
-import com.intellij.ide.actions.CreateElementActionBase;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.ui.Messages;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.util.IncorrectOperationException;
+import consulo.application.CommonBundle;
+import consulo.ui.ex.awt.Messages;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.util.IncorrectOperationException;
+import consulo.ide.action.CreateElementActionBase;
+import consulo.project.Project;
 import consulo.ui.image.Image;
 import org.fandev.lang.fan.FanFileType;
 import org.jetbrains.annotations.NonNls;
@@ -58,7 +58,7 @@ public abstract class NewFanActionBase extends CreateElementActionBase
 	protected abstract String getTemplateName();
 
 	protected PsiFile createClassFromTemplate(final PsiDirectory directory, final String className, String templateName,
-			@NonNls final EnumMap<TemplateProperty, String> parameters) throws IncorrectOperationException
+																   @NonNls final EnumMap<TemplateProperty, String> parameters) throws IncorrectOperationException
 	{
 		return FanTemplatesFactory.createFromTemplate(directory, className + "." + FanFileType.DEFAULT_EXTENSION, templateName, parameters);
 	}

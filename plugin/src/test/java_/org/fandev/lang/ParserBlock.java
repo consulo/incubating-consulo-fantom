@@ -16,17 +16,22 @@
  */
 package org.fandev.lang;
 
-import com.intellij.psi.PsiFile;
+import consulo.language.ast.IElementType;
 
 /**
  * @author freds
- * @date Jan 16, 2009
- */
-public class ParsingResult extends BasicResult {
-    public final PsiFile psiFile;
+* @date Jan 12, 2009
+*/
+public class ParserBlock {
+    public IElementType type;
+    public int start, end;
 
-    ParsingResult(ResultStatusCode status, String fileName, String errorMsg, PsiFile psiFile) {
-        super(errorMsg, status, fileName);
-        this.psiFile = psiFile;
+    @Override
+    public String toString() {
+        return "Block{" +
+                "type=" + type +
+                ", start=" + start +
+                ", end=" + end +
+                '}';
     }
 }

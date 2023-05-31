@@ -1,6 +1,6 @@
 package org.fandev.lang.fan.psi.api.statements.expressions;
 
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 
 /**
  * Date: Sep 2, 2009

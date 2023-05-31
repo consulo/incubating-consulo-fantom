@@ -2,13 +2,13 @@ package org.fandev.lang.fan.psi.impl;
 
 import javax.annotation.Nonnull;
 
+import consulo.language.psi.scope.GlobalSearchScope;
 import org.fandev.lang.fan.psi.FanClassType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.jetbrains.annotations.NonNls;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.ResolveResult;
-import com.intellij.psi.search.GlobalSearchScope;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.ResolveResult;
 
 /**
  * Date: Mar 18, 2009

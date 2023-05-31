@@ -16,7 +16,7 @@
  */
 package org.fandev.lang.fan.psi.api.statements.expressions;
 
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 
 /**
  * @author freds

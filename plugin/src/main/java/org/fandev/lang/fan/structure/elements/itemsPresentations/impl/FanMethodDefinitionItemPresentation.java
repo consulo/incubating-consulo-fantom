@@ -1,8 +1,8 @@
 package org.fandev.lang.fan.structure.elements.itemsPresentations.impl;
 
+import consulo.language.psi.PsiElement;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.structure.elements.itemsPresentations.FanItemPresentation;
-import com.intellij.psi.PsiElement;
 
 /**
  * @author Dror Bereznitsky

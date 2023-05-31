@@ -1,8 +1,8 @@
 package org.fandev.lang.fan;
 
-import com.intellij.openapi.fileTypes.LanguageFileType;
 import consulo.fantom.FantomIcons;
 import consulo.fantom.api.localize.FantomApiLocalize;
+import consulo.language.file.LanguageFileType;
 import consulo.localize.LocalizeValue;
 import consulo.ui.image.Image;
 

@@ -16,22 +16,25 @@
  */
 package org.fandev.lang;
 
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.IElementType;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author freds
-* @date Jan 12, 2009
-*/
-public class ParserBlock {
-    public IElementType type;
-    public int start, end;
+ * @date Jan 16, 2009
+ */
+public class LexerResult extends BasicResult {
+    public int nbTokens;
+    public Map<IElementType, Integer> totals = new HashMap<IElementType, Integer>();
 
-    @Override
-    public String toString() {
-        return "Block{" +
-                "type=" + type +
-                ", start=" + start +
-                ", end=" + end +
-                '}';
+    public LexerResult(String fileName, int nbTokens) {
+        super(null, ResultStatusCode.OK, fileName);
+        this.nbTokens = nbTokens;
+    }
+
+    public LexerResult(String errorMsg, ResultStatusCode status, String fileName) {
+        super(errorMsg, status, fileName);
     }
 }

@@ -11,8 +11,8 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
 import org.fandev.lang.fan.structure.elements.FanStructureViewElement;
 import org.fandev.lang.fan.structure.elements.itemsPresentations.impl.FanTypeDefinitionItemPresentation;
-import com.intellij.ide.util.treeView.smartTree.TreeElement;
-import com.intellij.navigation.ItemPresentation;
+import consulo.fileEditor.structureView.tree.TreeElement;
+import consulo.navigation.ItemPresentation;
 
 /**
  * @author Dror Bereznitsky

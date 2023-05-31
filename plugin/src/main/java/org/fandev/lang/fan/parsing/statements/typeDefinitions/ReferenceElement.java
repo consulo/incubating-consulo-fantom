@@ -4,7 +4,7 @@ import static org.fandev.lang.fan.FanTokenTypes.IDENTIFIER_TOKENS_SET;
 
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.FanTokenTypes;
-import com.intellij.lang.PsiBuilder;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * @author Dror Bereznitsky

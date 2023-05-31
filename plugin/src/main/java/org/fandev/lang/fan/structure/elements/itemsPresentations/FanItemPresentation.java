@@ -2,9 +2,9 @@ package org.fandev.lang.fan.structure.elements.itemsPresentations;
 
 import javax.annotation.Nullable;
 
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.psi.PsiElement;
-import consulo.ide.IconDescriptorUpdaters;
+import consulo.language.psi.PsiElement;
+import consulo.navigation.ItemPresentation;
+import consulo.language.icon.IconDescriptorUpdaters;
 import consulo.ui.image.Image;
 
 /**

@@ -2,16 +2,16 @@ package org.fandev.lang.fan.psi.impl.statements.typedefs;
 
 import javax.annotation.Nonnull;
 
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.util.IncorrectOperationException;
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanMixinDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
 import org.jetbrains.annotations.NonNls;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.ast.IElementType;
 import consulo.ui.image.Image;
 
 /**

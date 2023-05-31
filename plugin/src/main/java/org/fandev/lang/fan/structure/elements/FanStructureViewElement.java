@@ -1,8 +1,8 @@
 package org.fandev.lang.fan.structure.elements;
 
-import com.intellij.ide.structureView.StructureViewTreeElement;
-import com.intellij.pom.Navigatable;
-import com.intellij.psi.PsiElement;
+import consulo.navigation.Navigatable;
+import consulo.language.psi.PsiElement;
+import consulo.fileEditor.structureView.StructureViewTreeElement;
 
 /**
  * @author Dror Bereznitsky

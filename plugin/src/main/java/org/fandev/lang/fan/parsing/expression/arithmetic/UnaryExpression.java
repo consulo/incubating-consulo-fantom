@@ -21,8 +21,8 @@ import static org.fandev.lang.fan.parsing.util.ParserUtils.advanceNoNls;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.parsing.expression.ExpressionParser;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.ast.TokenSet;
 
 /**
  * @author ilyas

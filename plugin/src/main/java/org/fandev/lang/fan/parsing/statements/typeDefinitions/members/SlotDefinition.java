@@ -13,6 +13,8 @@ import static org.fandev.lang.fan.FanTokenTypes.STATIC_KEYWORD;
 import java.util.HashSet;
 import java.util.Set;
 
+import consulo.language.ast.IElementType;
+import consulo.language.parser.PsiBuilder;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.FanTokenTypes;
@@ -20,8 +22,6 @@ import org.fandev.lang.fan.parsing.auxiliary.facets.Facet;
 import org.fandev.lang.fan.parsing.statements.Block;
 import org.fandev.lang.fan.parsing.statements.declaration.DeclarationType;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.IElementType;
 
 /**
  * <p>Grammar Definition:<ul>

@@ -8,13 +8,13 @@ import static org.fandev.lang.fan.parsing.util.ParserUtils.getToken;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.parseName;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
 
+import consulo.language.parser.PsiBuilder;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.parsing.expression.Expression;
 import org.fandev.lang.fan.parsing.statements.expressions.arguments.Arguments;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.IElementType;
 
 /**
  * @author Dror Bereznitsky

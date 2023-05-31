@@ -3,9 +3,9 @@ package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanConstructor;
 import org.fandev.lang.fan.psi.stubs.FanConstructorStub;
 import javax.annotation.Nonnull;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.StubBasedPsiElement;
-import com.intellij.psi.stubs.IStubElementType;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.StubBasedPsiElement;
+import consulo.language.psi.stub.IStubElementType;
 
 /**
  * @author Dror Bereznitsky

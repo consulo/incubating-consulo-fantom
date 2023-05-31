@@ -25,6 +25,7 @@ import static org.fandev.lang.fan.FanTokenTypes.SEPARATOR;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.removeStoppers;
 
+import consulo.language.ast.TokenSet;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.parsing.auxiliary.facets.Facet;
@@ -34,8 +35,7 @@ import org.fandev.lang.fan.parsing.statements.declaration.DeclarationType;
 import org.fandev.lang.fan.parsing.types.TypeParameters;
 import org.fandev.lang.fan.parsing.types.TypeSpec;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * <p>Grammar Definition:<ul>

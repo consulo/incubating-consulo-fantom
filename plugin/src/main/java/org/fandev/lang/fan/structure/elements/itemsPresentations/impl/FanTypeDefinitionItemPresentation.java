@@ -2,7 +2,7 @@ package org.fandev.lang.fan.structure.elements.itemsPresentations.impl;
 
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.structure.elements.itemsPresentations.FanItemPresentation;
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 
 /**
  * @author Dror Bereznitsky

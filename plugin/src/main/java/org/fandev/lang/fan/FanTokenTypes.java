@@ -1,8 +1,8 @@
 package org.fandev.lang.fan;
 
-import com.intellij.psi.TokenType;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.ast.TokenSet;
+import consulo.language.ast.TokenType;
+import consulo.language.ast.IElementType;
 
 /**
  * @author Dror

@@ -1,17 +1,18 @@
 package org.fandev.lang;
 
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.io.FileUtil;
-import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.psi.PsiErrorElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiRecursiveElementVisitor;
+import consulo.module.Module;
+import consulo.util.lang.StringUtil;
+import consulo.language.psi.PsiErrorElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiRecursiveElementVisitor;
 import com.intellij.testFramework.fixtures.IdeaProjectTestFixture;
 import com.intellij.testFramework.fixtures.IdeaTestFixtureFactory;
 import com.intellij.testFramework.fixtures.TestFixtureBuilder;
 import static junit.framework.Assert.assertEquals;
+
+import consulo.logging.Logger;
+import consulo.project.Project;
+import consulo.util.io.FileUtil;
 import org.fandev.lang.fan.FanHighlightingLexer;
 import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.util.TestUtils;

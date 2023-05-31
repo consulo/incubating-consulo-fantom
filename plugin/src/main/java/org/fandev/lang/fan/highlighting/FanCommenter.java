@@ -1,9 +1,13 @@
 package org.fandev.lang.fan.highlighting;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.CodeDocumentationAwareCommenter;
+import consulo.language.Language;
+import jakarta.annotation.Nonnull;
+import org.fandev.lang.fan.FanLanguage;
 import org.fandev.lang.fan.FanTokenTypes;
-import com.intellij.lang.CodeDocumentationAwareCommenter;
-import com.intellij.psi.PsiComment;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.psi.PsiComment;
+import consulo.language.ast.IElementType;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,6 +15,7 @@ import com.intellij.psi.tree.IElementType;
  * Date: Mar 13, 2009
  * Time: 9:26:52 AM
  */
+@ExtensionImpl
 public class FanCommenter implements CodeDocumentationAwareCommenter
 {
 	@Override
@@ -83,5 +88,12 @@ public class FanCommenter implements CodeDocumentationAwareCommenter
 	public String getCommentedBlockCommentSuffix()
 	{
 		return null;
+	}
+
+	@Nonnull
+	@Override
+	public Language getLanguage()
+	{
+		return FanLanguage.INSTANCE;
 	}
 }

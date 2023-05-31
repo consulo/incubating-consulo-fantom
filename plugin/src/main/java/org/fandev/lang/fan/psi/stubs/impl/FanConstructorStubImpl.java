@@ -1,11 +1,11 @@
 package org.fandev.lang.fan.psi.stubs.impl;
 
+import consulo.language.psi.stub.IStubElementType;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanConstructor;
 import org.fandev.lang.fan.psi.stubs.FanConstructorStub;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.util.io.StringRef;
+import consulo.language.psi.stub.StubElement;
+import consulo.index.io.StringRef;
 
 /**
  * @author Dror Bereznitsky

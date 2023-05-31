@@ -1,10 +1,10 @@
 package org.fandev.lang.fan.structure.elements.impl;
 
+import consulo.fileEditor.structureView.tree.TreeElement;
 import org.fandev.lang.fan.structure.elements.FanStructureViewElement;
 import org.fandev.lang.fan.structure.elements.itemsPresentations.impl.FanFieldDefinitionItemPresentation;
-import com.intellij.ide.util.treeView.smartTree.TreeElement;
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.psi.PsiElement;
+import consulo.navigation.ItemPresentation;
+import consulo.language.psi.PsiElement;
 
 /**
  * @author Dror Bereznitsky

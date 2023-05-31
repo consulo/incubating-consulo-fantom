@@ -1,10 +1,14 @@
 package org.fandev.lang.fan.editor;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.codeEditor.Editor;
+import consulo.codeEditor.HighlighterIterator;
+import consulo.language.Language;
+import consulo.language.ast.IElementType;
+import consulo.language.editor.action.LanguageQuoteHandler;
+import jakarta.annotation.Nonnull;
+import org.fandev.lang.fan.FanLanguage;
 import org.fandev.lang.fan.FanTokenTypes;
-import com.intellij.codeInsight.editorActions.QuoteHandler;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.editor.highlighter.HighlighterIterator;
-import com.intellij.psi.tree.IElementType;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,11 +16,12 @@ import com.intellij.psi.tree.IElementType;
  * Date: Mar 13, 2009
  * Time: 9:45:40 AM
  */
-public class FanQuoteHandler implements QuoteHandler
+@ExtensionImpl
+public class FanQuoteHandler implements LanguageQuoteHandler
 {
 	public boolean isClosingQuote(final HighlighterIterator iterator, final int offset)
 	{
-		final IElementType tokenType = iterator.getTokenType();
+		final IElementType tokenType = (IElementType) iterator.getTokenType();
 
 		if(tokenType == FanTokenTypes.STRING_LITERAL)
 		{
@@ -29,7 +34,7 @@ public class FanQuoteHandler implements QuoteHandler
 
 	public boolean isOpeningQuote(final HighlighterIterator iterator, final int offset)
 	{
-		final IElementType tokenType = iterator.getTokenType();
+		final IElementType tokenType = (IElementType) iterator.getTokenType();
 
 		//TODO use a more fine grained token type
 		if(tokenType == FanTokenTypes.BAD_CHARACTER)
@@ -47,7 +52,14 @@ public class FanQuoteHandler implements QuoteHandler
 
 	public boolean isInsideLiteral(final HighlighterIterator iterator)
 	{
-		final IElementType tokenType = iterator.getTokenType();
+		final IElementType tokenType = (IElementType) iterator.getTokenType();
 		return tokenType == FanTokenTypes.STRING_LITERAL;
+	}
+
+	@Nonnull
+	@Override
+	public Language getLanguage()
+	{
+		return FanLanguage.INSTANCE;
 	}
 }

@@ -5,8 +5,8 @@ import javax.annotation.Nonnull;
 import org.fandev.lang.fan.psi.api.statements.arguments.FanArgument;
 import org.fandev.lang.fan.psi.api.statements.arguments.FanArgumentList;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.util.PsiTreeUtil;
 
 /**
  * Date: Sep 17, 2009

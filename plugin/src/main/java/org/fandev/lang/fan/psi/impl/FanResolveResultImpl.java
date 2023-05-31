@@ -2,7 +2,7 @@ package org.fandev.lang.fan.psi.impl;
 
 import org.fandev.lang.fan.psi.FanElement;
 import org.fandev.lang.fan.psi.api.FanResolveResult;
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 
 /**
  * @author Dror Bereznitsky

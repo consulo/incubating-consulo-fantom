@@ -20,9 +20,9 @@ import static org.fandev.lang.fan.FanTokenTypes.RELATIONAL_OP;
 
 import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.parsing.types.TypeSpec;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.ast.IElementType;
+import consulo.language.ast.TokenSet;
 
 /**
  * @author ilyas

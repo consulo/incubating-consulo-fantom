@@ -1,6 +1,6 @@
 package org.fandev.lang.fan.psi;
 
-import com.intellij.psi.NavigatablePsiElement;
+import consulo.language.psi.NavigatablePsiElement;
 
 /**
  * @author Dror

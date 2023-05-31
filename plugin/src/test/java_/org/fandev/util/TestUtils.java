@@ -1,11 +1,11 @@
 package org.fandev.util;
 
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiFileFactory;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.fileTypes.FileTypeManager;
-import com.intellij.util.IncorrectOperationException;
-import com.intellij.util.LocalTimeCounter;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiFileFactory;
+import consulo.project.Project;
+import consulo.language.file.FileTypeManager;
+import consulo.language.util.IncorrectOperationException;
+import consulo.util.lang.LocalTimeCounter;
 
 /**
  *
@@ -19,7 +19,8 @@ public class TestUtils {
         return createPseudoFanFile(project, TEMP_FILE, text);
     }
 
-    public static PsiFile createPseudoFanFile(final Project project, final String fileName, final String text) throws IncorrectOperationException {
+    public static PsiFile createPseudoFanFile(final Project project, final String fileName, final String text) throws IncorrectOperationException
+	{
         return PsiFileFactory.getInstance(project).createFileFromText(
                 fileName,
                 FileTypeManager.getInstance().getFileTypeByFileName(fileName),

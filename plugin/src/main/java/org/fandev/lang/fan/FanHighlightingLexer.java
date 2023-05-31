@@ -1,6 +1,6 @@
 package org.fandev.lang.fan;
 
-import com.intellij.lexer.LayeredLexer;
+import consulo.language.lexer.LayeredLexer;
 
 /**
  * @author Dror Bereznitsky

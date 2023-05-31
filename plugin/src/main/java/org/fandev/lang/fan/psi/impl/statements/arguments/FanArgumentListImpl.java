@@ -2,10 +2,10 @@ package org.fandev.lang.fan.psi.impl.statements.arguments;
 
 import javax.annotation.Nonnull;
 
+import consulo.language.ast.ASTNode;
 import org.fandev.lang.fan.psi.api.statements.arguments.FanArgument;
 import org.fandev.lang.fan.psi.api.statements.arguments.FanArgumentList;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
-import com.intellij.lang.ASTNode;
 
 /**
  * Date: Sep 15, 2009

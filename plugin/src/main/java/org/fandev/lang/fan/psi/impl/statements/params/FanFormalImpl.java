@@ -2,13 +2,13 @@ package org.fandev.lang.fan.psi.impl.statements.params;
 
 import javax.annotation.Nonnull;
 
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.statements.params.FanFormal;
 import org.fandev.lang.fan.psi.api.types.FanFuncTypeElement;
 import org.fandev.lang.fan.psi.impl.statements.FanVariableBaseImpl;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.util.PsiTreeUtil;
+import consulo.language.psi.util.PsiTreeUtil;
 
 /**
  * Date: Aug 20, 2009

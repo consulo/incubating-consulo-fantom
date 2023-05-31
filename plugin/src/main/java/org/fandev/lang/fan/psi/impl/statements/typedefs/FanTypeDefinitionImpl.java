@@ -6,6 +6,8 @@ import java.util.List;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
+import consulo.language.psi.StubBasedPsiElement;
+import consulo.logging.Logger;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.psi.FanClassType;
@@ -23,17 +25,15 @@ import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanClassReferenceType;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
-import com.intellij.lang.ASTNode;
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.util.Iconable;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.StubBasedPsiElement;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.util.IncorrectOperationException;
-import consulo.ide.IconDescriptorUpdaters;
+import consulo.language.ast.ASTNode;
+import consulo.navigation.ItemPresentation;
+import consulo.component.util.Iconable;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.ast.IElementType;
+import consulo.language.util.IncorrectOperationException;
+import consulo.language.icon.IconDescriptorUpdaters;
 import consulo.ui.image.Image;
 
 /**

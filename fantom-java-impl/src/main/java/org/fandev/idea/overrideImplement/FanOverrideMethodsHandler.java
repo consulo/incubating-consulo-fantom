@@ -1,10 +1,14 @@
 package org.fandev.idea.overrideImplement;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.codeEditor.Editor;
+import consulo.language.Language;
+import consulo.language.editor.generation.OverrideMethodHandler;
+import consulo.language.psi.PsiFile;
+import consulo.project.Project;
+import jakarta.annotation.Nonnull;
 import org.fandev.lang.fan.FanFileType;
-import com.intellij.lang.LanguageCodeInsightActionHandler;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiFile;
+import org.fandev.lang.fan.FanLanguage;
 
 /**
  * Date: Sep 26, 2009
@@ -12,7 +16,8 @@ import com.intellij.psi.PsiFile;
  *
  * @author Dror Bereznitsky
  */
-public class FanOverrideMethodsHandler implements LanguageCodeInsightActionHandler
+@ExtensionImpl
+public class FanOverrideMethodsHandler implements OverrideMethodHandler
 {
 	public boolean isValidFor(final Editor editor, final PsiFile psiFile)
 	{
@@ -27,5 +32,12 @@ public class FanOverrideMethodsHandler implements LanguageCodeInsightActionHandl
 	public boolean startInWriteAction()
 	{
 		return false;
+	}
+
+	@Nonnull
+	@Override
+	public Language getLanguage()
+	{
+		return FanLanguage.INSTANCE;
 	}
 }

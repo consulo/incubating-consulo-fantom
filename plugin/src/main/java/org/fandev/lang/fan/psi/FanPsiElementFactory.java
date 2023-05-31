@@ -1,17 +1,22 @@
 package org.fandev.lang.fan.psi;
 
-import javax.annotation.Nullable;
-
+import consulo.annotation.component.ComponentScope;
+import consulo.annotation.component.ServiceAPI;
+import consulo.annotation.component.ServiceImpl;
+import consulo.ide.ServiceManager;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiFileFactory;
+import consulo.project.Project;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import org.fandev.lang.fan.FanFileType;
 import org.fandev.lang.fan.psi.api.statements.blocks.FanPsiCodeBlock;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.api.topLevel.FanTopStatement;
-import com.intellij.openapi.components.ServiceManager;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiFileFactory;
+
+import javax.annotation.Nullable;
 
 /**
  * Date: Sep 26, 2009
@@ -19,12 +24,16 @@ import com.intellij.psi.PsiFileFactory;
  *
  * @author Dror Bereznitsky
  */
+@ServiceAPI(ComponentScope.PROJECT)
+@ServiceImpl
+@Singleton
 public class FanPsiElementFactory
 {
 	private Project myProject;
 
 	private static String DUMMY = "dummy.";
 
+	@Inject
 	public FanPsiElementFactory(final Project project)
 	{
 		myProject = project;

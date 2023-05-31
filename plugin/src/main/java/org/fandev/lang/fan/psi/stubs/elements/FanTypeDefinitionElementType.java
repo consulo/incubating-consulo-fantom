@@ -8,11 +8,11 @@ import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
 import org.fandev.lang.fan.psi.stubs.impl.FanTypeDefinitionStubImpl;
 import org.fandev.lang.fan.psi.stubs.index.FanShortClassNameIndex;
 import javax.annotation.Nonnull;
-import com.intellij.psi.stubs.IndexSink;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.stubs.StubInputStream;
-import com.intellij.psi.stubs.StubOutputStream;
-import com.intellij.util.io.StringRef;
+import consulo.language.psi.stub.IndexSink;
+import consulo.language.psi.stub.StubElement;
+import consulo.language.psi.stub.StubInputStream;
+import consulo.language.psi.stub.StubOutputStream;
+import consulo.index.io.StringRef;
 
 /**
  * @author Dror Bereznitsky

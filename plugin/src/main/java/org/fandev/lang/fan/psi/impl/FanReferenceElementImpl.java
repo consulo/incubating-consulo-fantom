@@ -2,16 +2,16 @@ package org.fandev.lang.fan.psi.impl;
 
 import javax.annotation.Nonnull;
 
+import consulo.document.util.TextRange;
+import consulo.language.psi.PsiReference;
 import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.psi.FanReferenceElement;
 import org.fandev.lang.fan.psi.FanType;
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.util.TextRange;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiReference;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.psi.stub.StubElement;
+import consulo.language.util.IncorrectOperationException;
 
 /**
  * @author Dror Bereznitsky

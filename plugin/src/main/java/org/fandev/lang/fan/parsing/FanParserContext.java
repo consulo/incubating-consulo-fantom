@@ -16,7 +16,7 @@
  */
 package org.fandev.lang.fan.parsing;
 
-import com.intellij.lang.PsiBuilder;
+import consulo.language.parser.PsiBuilder;
 import consulo.util.dataholder.Key;
 
 /**

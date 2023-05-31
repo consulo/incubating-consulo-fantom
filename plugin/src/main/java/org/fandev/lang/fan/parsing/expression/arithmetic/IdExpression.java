@@ -30,7 +30,7 @@ import static org.fandev.lang.fan.parsing.util.ParserUtils.getToken;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
 
 import org.fandev.lang.fan.parsing.statements.expressions.arguments.Arguments;
-import com.intellij.lang.PsiBuilder;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * @author freds

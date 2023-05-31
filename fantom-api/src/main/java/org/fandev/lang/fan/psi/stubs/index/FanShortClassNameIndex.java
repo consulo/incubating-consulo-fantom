@@ -16,14 +16,16 @@
  */
 package org.fandev.lang.fan.psi.stubs.index;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.psi.stub.StringStubIndexExtension;
+import consulo.language.psi.stub.StubIndexKey;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
-import com.intellij.psi.stubs.StringStubIndexExtension;
-import com.intellij.psi.stubs.StubIndexKey;
 
 /**
  * @author freds
  * @date Jan 27, 2009
  */
+@ExtensionImpl
 public class FanShortClassNameIndex extends StringStubIndexExtension<FanTypeDefinition>
 {
 	public static final StubIndexKey<String, FanTypeDefinition> KEY = StubIndexKey.createIndexKey("fan.class.shortName");

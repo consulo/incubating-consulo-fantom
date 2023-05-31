@@ -2,6 +2,7 @@ package org.fandev.lang.fan.psi.impl;
 
 import javax.annotation.Nonnull;
 
+import consulo.virtualFileSystem.fileType.FileType;
 import org.fandev.PodModel;
 import org.fandev.lang.fan.FanSupportLoader;
 import org.fandev.lang.fan.psi.FanFile;
@@ -10,14 +11,13 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.FanClassDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.utils.VirtualFileUtil;
-import com.intellij.extapi.psi.PsiFileBase;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.FileViewProvider;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.psi.PsiFile;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.impl.psi.PsiFileBase;
+import consulo.logging.Logger;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.language.file.FileViewProvider;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.PsiFile;
+import consulo.language.util.IncorrectOperationException;
 
 /**
  * @author Dror Bereznitsky

@@ -1,10 +1,10 @@
 package org.fandev.lang.fan;
 
-import javax.annotation.Nonnull;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.psi.stub.StubElement;
 
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
+import javax.annotation.Nonnull;
 
 /**
  * @author Dror Bereznitsky

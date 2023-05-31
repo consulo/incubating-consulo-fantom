@@ -1,12 +1,12 @@
 package org.fandev.runner;
 
-import javax.annotation.Nonnull;
+import consulo.execution.configuration.ConfigurationFactory;
+import consulo.execution.configuration.ConfigurationType;
+import consulo.execution.configuration.RunConfiguration;
+import consulo.execution.configuration.RunConfigurationModule;
+import consulo.project.Project;
 
-import com.intellij.execution.configurations.ConfigurationFactory;
-import com.intellij.execution.configurations.ConfigurationType;
-import com.intellij.execution.configurations.RunConfiguration;
-import com.intellij.execution.configurations.RunConfigurationModule;
-import com.intellij.openapi.project.Project;
+import javax.annotation.Nonnull;
 
 /**
  * @author Dror Bereznitsky

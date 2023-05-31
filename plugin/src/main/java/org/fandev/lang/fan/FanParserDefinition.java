@@ -1,29 +1,39 @@
 package org.fandev.lang.fan;
 
-import static com.intellij.lang.ParserDefinition.SpaceRequirements.MAY;
-
-import javax.annotation.Nonnull;
-
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.ast.ASTNode;
+import consulo.language.ast.IFileElementType;
+import consulo.language.ast.TokenSet;
+import consulo.language.file.FileViewProvider;
+import consulo.language.lexer.Lexer;
+import consulo.language.parser.ParserDefinition;
+import consulo.language.parser.PsiParser;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.version.LanguageVersion;
 import org.fandev.lang.fan.parser.FanPsiCreator;
 import org.fandev.lang.fan.parsing.FanParser;
 import org.fandev.lang.fan.psi.impl.FanFileImpl;
-import com.intellij.lang.ASTNode;
-import com.intellij.lang.ParserDefinition;
-import com.intellij.lang.PsiParser;
-import com.intellij.lexer.Lexer;
-import com.intellij.psi.FileViewProvider;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.tree.IFileElementType;
-import com.intellij.psi.tree.TokenSet;
-import consulo.lang.LanguageVersion;
+
+import javax.annotation.Nonnull;
+
+import static consulo.language.parser.ParserDefinition.SpaceRequirements.MAY;
 
 /**
  * @author Dror
  * @date Dec 11, 2008 11:50:55 PM
  */
+@ExtensionImpl
 public class FanParserDefinition implements ParserDefinition
 {
+	@Nonnull
+	@Override
+	public Language getLanguage()
+	{
+		return FanLanguage.INSTANCE;
+	}
+
 	@Override
 	@Nonnull
 	public Lexer createLexer(@Nonnull LanguageVersion languageVersion)

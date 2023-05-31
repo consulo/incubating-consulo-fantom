@@ -2,17 +2,17 @@ package org.fandev.lang.fan.psi.impl;
 
 import javax.annotation.Nonnull;
 
+import consulo.language.ast.ASTNode;
+import consulo.language.impl.psi.stub.StubBasedPsiElementBase;
+import consulo.language.psi.stub.IStubElementType;
 import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.FanLanguage;
 import org.fandev.lang.fan.psi.FanElement;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
-import com.intellij.extapi.psi.StubBasedPsiElementBase;
-import com.intellij.lang.ASTNode;
-import com.intellij.lang.Language;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
+import consulo.language.Language;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.stub.StubElement;
 
 /**
  * @author Dror Bereznitsky

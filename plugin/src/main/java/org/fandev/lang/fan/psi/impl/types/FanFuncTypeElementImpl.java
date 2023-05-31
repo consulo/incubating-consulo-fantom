@@ -8,7 +8,7 @@ import org.fandev.lang.fan.psi.api.types.FanTypeElement;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanFuncType;
 import javax.annotation.Nonnull;
-import com.intellij.lang.ASTNode;
+import consulo.language.ast.ASTNode;
 
 /**
  * Date: Jul 19, 2009

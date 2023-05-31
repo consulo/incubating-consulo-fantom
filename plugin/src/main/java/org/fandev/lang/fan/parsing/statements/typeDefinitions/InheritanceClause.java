@@ -6,9 +6,9 @@ import static org.fandev.lang.fan.FanElementTypes.WRONGWAY;
 import static org.fandev.lang.fan.FanTokenTypes.COLON;
 import static org.fandev.lang.fan.FanTokenTypes.COMMA;
 
+import consulo.language.parser.PsiBuilder;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.IElementType;
 
 /**
  * @author Dror Bereznitsky

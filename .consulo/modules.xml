@@ -4,7 +4,7 @@
     <modules>
       <module name="consulo.fantom.parent" dirurl="file://$PROJECT_DIR$" current-layer="Default">
         <module-layer name="Default">
-          <extension id="java" sdk-name="11.0 (predefined)" language-level-name="JDK_16" bytecode-version="11" />
+          <extension id="java" sdk-name="17.0 (predefined)" language-level-name="JDK_17" bytecode-version="17" />
           <extension id="maven" />
           <content url="file://$MODULE_DIR$">
             <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target" />
@@ -15,16 +15,17 @@
       </module>
       <module name="consulo.fantom" dirurl="file://$PROJECT_DIR$/plugin" current-layer="Default">
         <module-layer name="Default">
-          <extension id="java" sdk-name="11.0 (predefined)" language-level-name="JDK_16" bytecode-version="11" />
+          <extension id="consulo-plugin" />
+          <extension id="java" sdk-name="17.0 (predefined)" language-level-name="JDK_17" bytecode-version="17" />
           <extension id="maven" />
           <content url="file://$MODULE_DIR$">
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src/main/java" />
             <content-folder type="PRODUCTION_RESOURCE" url="file://$MODULE_DIR$/src/main/resources" />
-            <content-folder type="TEST" url="file://$MODULE_DIR$/src/test/java" />
             <content-folder type="TEST_RESOURCE" url="file://$MODULE_DIR$/src/test/resources" />
             <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/classes" />
             <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/consulo-plugin-dependencies" />
             <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/consulo-plugin-extracted" />
+            <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/target/generated-sources/annotations" />
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/target/generated-sources/lexers" />
             <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/maven-archiver" />
             <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/maven-status" />
@@ -34,169 +35,123 @@
           <orderEntry type="sourceFolder" />
           <orderEntry type="module" module-name="consulo.fantom-fantom.api" />
           <orderEntry type="module" module-name="consulo.fantom-java.impl" scope="RUNTIME" />
-          <orderEntry type="library" scope="TEST" name="Maven: consulo:consulo-lang-impl-testing:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: consulo:consulo-util-testing:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-container-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-diff-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: consulo:consulo-test-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: consulo:consulo-injecting-pico-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: consulo:consulo-disposer-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-disposer-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-usage-view:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: consulo:consulo-compiler-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-build-ui-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: dk.brics.automaton:automaton:1.11-8" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.lz4:lz4-java:1.8.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:build.serviceMessages:1.0" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock:2.5.1" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-library:1.1" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock-junit4:2.5.1" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock-legacy:2.5.1" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-api:2.0.0-alpha1" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:forms_rt:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-annotations:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-annotation:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.annotation:jakarta.annotation-api:2.1.1" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:jsr305:3.0.3" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-annotation:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-core-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-container-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-base-icon-library:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-base-localize-library:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-collection:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-collection-primitive:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-lang:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-desktop-util-awt:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-logging-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-concurrent:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-serializer:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-jdom:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-io:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-dataholder:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ide-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-compiler-artifact-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-compiler-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-coverage-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-data:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-ui-view-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-editor-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-find-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-usage-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-diff-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-repository-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-spellchecker-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-spellchecker-editor-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-local-history-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-code-style-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-ex-awt-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-debug-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-remote-server-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-service-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-system-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-system-rt:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-path-macro-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-editor-refactoring-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-module-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-web-browser-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-credential-storage-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-version-control-system-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-version-control-system-log-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-version-control-system-distributed-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-build-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-bookmark-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-builtin-web-server-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-task-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-http-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-component-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-container-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-disposer-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-concurrent:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-logging-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-dataholder:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-lang:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-collection:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-collection-primitive:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-xml-serializer:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-io:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-jdom:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-virtual-file-system-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-proxy:3-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: org.jdom:jdom-core:3.0-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: net.java.dev.jna:jna-jpms:5.8.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: net.java.dev.jna:jna-platform-jpms:5.8.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-injecting-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:jakarta.inject-api:1.0.3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-virtual-file-watcher-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-application-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-interner:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-application-content-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-configurable-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-application-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-ex-api:3-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:kava.beans:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-core-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:30.1.1-jre" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.checkerframework:checker-qual:3.8.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-model-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-editor-ui-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-indexing-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: be.cyberelf.nanoxml:nanoxml:2.2.3" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-analysis-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:pty4j:0.7.3" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:purejavacomm:0.0.17" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: commons-codec:commons-codec:1.15" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpcore:4.4.13" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpmime:4.5.13" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-service-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-service-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-model-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-analysis-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-editor-ui-ex:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-indexing-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-diff-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.gson:gson:2.8.7" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: args4j:args4j:2.33" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-compress:1.21" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lang-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-editor-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-compiler-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lvcs-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lang-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.velocity:velocity-engine-core:2.2" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-lang3:3.12.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.miglayout:miglayout:3.7.4" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xdebugger-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xdebugger-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-api-core:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:microba:0.4.4" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-system-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-system-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-built-in-server-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-built-in-server-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-log-graph-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-log-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-dvcs-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-log-graph-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-log-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-dvcs-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-storage-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-graph-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-graph-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-resources:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-resources-en:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lvcs-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-remote-servers-agent-rt:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-remote-servers-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-remote-servers-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xtest-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-data:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xtest-sm-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-base-plugin:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-desktop-bootstrap:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lang-injecting-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-localize-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-tools-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-tools-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-build-ui-impl:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-datacontext-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-content-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-module-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-module-content-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-code-editor-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-document-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-color-scheme-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-undo-redo-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-file-editor-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-navigation-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-file-chooser-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-process-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-test-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-test-sm-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-test-thrift-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.thrift:libthrift:0.14.1" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-api:2.0.0-alpha6" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.5.46" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-annotations-api:8.5.46" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: javax.annotation:javax.annotation-api:1.3.2" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-index-io:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-editor-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-code-style-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-virtual-file-status-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-copyright-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-file-template-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-base-localize-library:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-localize-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-base-icon-library:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-xml-fast-reader:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:jakarta.inject-api:1.0.3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-injecting-binding-processor:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup:javapoet:1.12.1" level="project" />
         </module-layer>
       </module>
       <module name="consulo.fantom-java.impl" dirurl="file://$PROJECT_DIR$/fantom-java-impl" current-layer="Default">
         <module-layer name="Default">
-          <extension id="java" sdk-name="11.0 (predefined)" language-level-name="JDK_16" bytecode-version="11" />
+          <extension id="consulo-plugin" />
+          <extension id="java" sdk-name="17.0 (predefined)" language-level-name="JDK_17" bytecode-version="17" />
           <extension id="maven" />
           <content url="file://$MODULE_DIR$">
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src/main/java" />
             <content-folder type="PRODUCTION_RESOURCE" url="file://$MODULE_DIR$/src/main/resources" />
-            <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target" />
+            <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/classes" />
+            <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/target/generated-sources/annotations" />
+            <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/maven-archiver" />
+            <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/maven-status" />
           </content>
           <orderEntry type="module-extension-sdk" extension-id="java" />
           <orderEntry type="sourceFolder" />
-          <orderEntry type="module" module-name="consulo.fantom-fantom.api" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.rt.shaded:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.psi.api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.psi.impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.analysis.api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.analysis.impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.indexing.api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.indexing.impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.debugger.api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.debugger.impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.execution.api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.compiler.api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.compiler.impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.manifest:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.execution.impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.coverage.impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.coverage.rt:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.spellchecker:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.intelliLang:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.compiler.artifact.impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-jvm.bytecode.viewer:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-guava.impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-gson.impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.rt.common:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-jam.api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-jdk.annotations:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-jam.impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:jdi:2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal.org.objectweb.asm:asm:9.0-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal.org.objectweb.asm:asm-commons:9.0-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal.org.objectweb.asm:asm-tree:9.0-SNAPSHOT" level="project" />
@@ -205,132 +160,159 @@
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:instrumentation-util:2.2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:instrumentation-util8:2.2-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:notnull-compiler:2.2-SNAPSHOT" level="project" />
+          <orderEntry type="module" module-name="consulo.fantom-fantom.api" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.language.api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.language.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.analysis.api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.analysis.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.indexing.api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.indexing.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.debugger.api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.debugger.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.debugger.image.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.properties.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.execution.api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.compiler.api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.compiler.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-api:2.0.0-alpha6" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.manifest:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.execution.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.coverage.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.coverage.rt:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.spellchecker:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.regexp.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.intelliLang:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.compiler.artifact.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-jvm.bytecode.viewer:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-guava.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-gson.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-java.rt.common:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-jam.api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.plugin:consulo.java-jam.impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:jdi:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal.org.objectweb.asm:asm:9.2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal.org.objectweb.asm:asm-commons:9.2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal.org.objectweb.asm:asm-tree:9.2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal.org.objectweb.asm:asm-analysis:9.2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal.org.objectweb.asm:asm-util:9.2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:instrumentation-util:2.3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:instrumentation-util8:2.3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:notnull-compiler:2.3-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: one.util:streamex:0.7.1" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: org.jacoco:org.jacoco.core:0.7.9" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-debug-all:5.2" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock:2.5.1" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-library:1.1" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock-junit4:2.5.1" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock-legacy:2.5.1" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-api:2.0.0-alpha1" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:forms_rt:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-annotations:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-annotation:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.annotation:jakarta.annotation-api:2.1.1" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:jsr305:3.0.3" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-annotation:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-core-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-container-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-base-icon-library:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-base-localize-library:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-collection:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-collection-primitive:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-lang:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-desktop-util-awt:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-logging-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-disposer-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-concurrent:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-serializer:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-jdom:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-io:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-dataholder:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ide-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-compiler-artifact-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-compiler-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-coverage-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-data:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-ui-view-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-editor-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-find-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-usage-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-diff-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-repository-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-spellchecker-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-spellchecker-editor-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-local-history-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-code-style-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-ex-awt-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-debug-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-remote-server-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-service-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-system-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-system-rt:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-path-macro-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-editor-refactoring-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-module-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-web-browser-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-credential-storage-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-version-control-system-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-version-control-system-log-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-version-control-system-distributed-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-build-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-bookmark-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-builtin-web-server-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-task-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-http-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-component-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-container-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-disposer-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-concurrent:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-logging-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-dataholder:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-lang:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-collection:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-collection-primitive:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-xml-serializer:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-io:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-jdom:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-virtual-file-system-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-proxy:3-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: org.jdom:jdom-core:3.0-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: net.java.dev.jna:jna-jpms:5.8.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: net.java.dev.jna:jna-platform-jpms:5.8.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-injecting-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:jakarta.inject-api:1.0.3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-virtual-file-watcher-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-application-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-interner:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-application-content-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-configurable-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-application-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-ex-api:3-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:kava.beans:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-core-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:30.1.1-jre" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.checkerframework:checker-qual:3.8.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-model-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-editor-ui-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-indexing-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: be.cyberelf.nanoxml:nanoxml:2.2.3" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-analysis-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:pty4j:0.7.3" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:purejavacomm:0.0.17" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: commons-codec:commons-codec:1.15" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpcore:4.4.13" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpmime:4.5.13" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-service-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-service-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-model-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-analysis-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-editor-ui-ex:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-indexing-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-diff-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.gson:gson:2.8.7" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: args4j:args4j:2.33" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-compress:1.21" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lang-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-editor-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-compiler-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lvcs-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lang-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.velocity:velocity-engine-core:2.2" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-lang3:3.12.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.miglayout:miglayout:3.7.4" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xdebugger-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xdebugger-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-api-core:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:microba:0.4.4" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-diff-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-system-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-system-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-built-in-server-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-built-in-server-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-log-graph-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-log-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-dvcs-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-log-graph-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-log-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-dvcs-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-storage-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-graph-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-graph-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-resources:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-resources-en:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lvcs-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-remote-servers-agent-rt:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-remote-servers-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-remote-servers-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xtest-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-usage-view:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-data:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xtest-sm-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:build.serviceMessages:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-base-plugin:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-desktop-bootstrap:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-container-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lang-injecting-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-localize-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-tools-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-tools-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-build-ui-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-build-ui-api:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-datacontext-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-content-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-module-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-module-content-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-code-editor-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-document-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-color-scheme-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-undo-redo-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-file-editor-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-navigation-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-file-chooser-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-process-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-test-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-test-sm-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-test-thrift-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.thrift:libthrift:0.14.1" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.5.46" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-annotations-api:8.5.46" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: javax.annotation:javax.annotation-api:1.3.2" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-index-io:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-editor-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-code-style-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-virtual-file-status-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-copyright-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-file-template-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-base-localize-library:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-localize-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-base-icon-library:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-xml-fast-reader:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:jakarta.inject-api:1.0.3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-injecting-binding-processor:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup:javapoet:1.12.1" level="project" />
         </module-layer>
       </module>
       <module name="consulo.fantom-fantom.api" dirurl="file://$PROJECT_DIR$/fantom-api" current-layer="Default">
         <module-layer name="Default">
-          <extension id="java" sdk-name="11.0 (predefined)" language-level-name="JDK_16" bytecode-version="11" />
+          <extension id="consulo-plugin" />
+          <extension id="java" sdk-name="17.0 (predefined)" language-level-name="JDK_17" bytecode-version="17" />
           <extension id="maven" />
           <content url="file://$MODULE_DIR$">
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/src/main/java" />
             <content-folder type="PRODUCTION_RESOURCE" url="file://$MODULE_DIR$/src/main/resources" />
             <content-folder type="EXCLUDED" url="file://$MODULE_DIR$/target/classes" />
+            <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/target/generated-sources/annotations" />
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/target/generated-sources/icon" />
             <content-folder type="PRODUCTION" url="file://$MODULE_DIR$/target/generated-sources/localize">
               <property key="is-generated-root" value="true" />
@@ -340,119 +322,106 @@
           </content>
           <orderEntry type="module-extension-sdk" extension-id="java" />
           <orderEntry type="sourceFolder" />
-          <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock:2.5.1" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-library:1.1" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock-junit4:2.5.1" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.jmock:jmock-legacy:2.5.1" level="project" />
-          <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-api:2.0.0-alpha1" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:forms_rt:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-annotations:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-annotation:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: jakarta.annotation:jakarta.annotation-api:2.1.1" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:jsr305:3.0.3" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-annotation:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-core-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-container-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-base-icon-library:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-base-localize-library:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-collection:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-collection-primitive:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-lang:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-desktop-util-awt:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-logging-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-disposer-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-concurrent:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-serializer:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-jdom:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-io:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-dataholder:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ide-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-compiler-artifact-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-compiler-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-coverage-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-data:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-ui-view-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-editor-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-impl:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-find-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-usage-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-diff-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-repository-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-spellchecker-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-spellchecker-editor-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-local-history-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-code-style-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-ex-awt-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-debug-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-remote-server-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-service-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-system-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-system-rt:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-path-macro-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-editor-refactoring-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-module-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-web-browser-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-credential-storage-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-version-control-system-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-version-control-system-log-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-version-control-system-distributed-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-build-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-bookmark-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-builtin-web-server-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-task-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-http-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-component-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-container-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-disposer-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-concurrent:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-logging-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-dataholder:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-lang:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-collection:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-collection-primitive:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-xml-serializer:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-io:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-jdom:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-virtual-file-system-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-proxy:3-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: org.jdom:jdom-core:3.0-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: net.java.dev.jna:jna-jpms:5.8.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: net.java.dev.jna:jna-platform-jpms:5.8.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-injecting-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:jakarta.inject-api:1.0.3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-virtual-file-watcher-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-application-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-interner:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-application-content-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-configurable-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-application-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-ui-ex-api:3-SNAPSHOT" level="project" />
           <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:kava.beans:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-core-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:guava:30.1.1-jre" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.checkerframework:checker-qual:3.8.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-model-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-editor-ui-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-indexing-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: be.cyberelf.nanoxml:nanoxml:2.2.3" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-analysis-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:pty4j:0.7.3" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:purejavacomm:0.0.17" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: commons-codec:commons-codec:1.15" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpcore:4.4.13" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.httpcomponents:httpmime:4.5.13" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-service-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-service-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-model-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-analysis-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-editor-ui-ex:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-indexing-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-diff-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.google.code.gson:gson:2.8.7" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: args4j:args4j:2.33" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-compress:1.21" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lang-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-editor-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-compiler-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lvcs-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lang-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.velocity:velocity-engine-core:2.2" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.commons:commons-lang3:3.12.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: com.miglayout:miglayout:3.7.4" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xdebugger-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xdebugger-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-api-core:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:microba:0.4.4" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-diff-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-system-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-system-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-built-in-server-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-built-in-server-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-log-graph-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-log-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-dvcs-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-log-graph-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-vcs-log-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-dvcs-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-storage-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-graph-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-graph-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-resources:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-resources-en:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lvcs-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-remote-servers-agent-rt:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-remote-servers-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-remote-servers-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xtest-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-usage-view:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xcoverage-data:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-xtest-sm-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:build.serviceMessages:1.0" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-platform-base-plugin:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-desktop-bootstrap:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-container-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-lang-injecting-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-localize-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-tools-api:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-external-tools-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-build-ui-impl:2-SNAPSHOT" level="project" />
-          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-build-ui-api:2-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-datacontext-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-content-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-project-ui-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-module-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-module-content-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-code-editor-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-document-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-color-scheme-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-undo-redo-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-file-editor-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-navigation-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-file-chooser-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-process-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-test-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-test-sm-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-execution-test-thrift-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.thrift:libthrift:0.14.1" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.slf4j:slf4j-api:2.0.0-alpha6" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.5.46" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.tomcat:tomcat-annotations-api:8.5.46" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: javax.annotation:javax.annotation-api:1.3.2" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-index-io:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-editor-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-code-style-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-virtual-file-status-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-language-copyright-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-file-template-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-base-localize-library:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-localize-api:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-base-icon-library:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-util-xml-fast-reader:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo.internal:jakarta.inject-api:1.0.3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: consulo:consulo-injecting-binding-processor:3-SNAPSHOT" level="project" />
+          <orderEntry type="library" scope="PROVIDED" name="Maven: com.squareup:javapoet:1.12.1" level="project" />
         </module-layer>
       </module>
     </modules>

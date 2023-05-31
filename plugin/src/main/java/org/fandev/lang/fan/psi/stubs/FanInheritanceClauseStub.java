@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.psi.stubs;
 
+import consulo.language.psi.stub.StubElement;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanReferenceList;
-import com.intellij.psi.stubs.StubElement;
 
 /**
  * Date: Mar 18, 2009

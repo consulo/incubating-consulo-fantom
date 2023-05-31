@@ -20,7 +20,7 @@ import static org.fandev.lang.fan.parsing.util.ParserUtils.getToken;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.typeDefs.TypeDefinition;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * <ul>

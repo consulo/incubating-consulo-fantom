@@ -1,8 +1,8 @@
 package org.fandev.lang.fan.types;
 
+import consulo.language.Language;
 import org.jetbrains.annotations.NonNls;
-import com.intellij.lang.Language;
-import com.intellij.psi.tree.IStubFileElementType;
+import consulo.language.psi.stub.IStubFileElementType;
 
 /**
  * @author Dror

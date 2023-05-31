@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.psi.impl.statements.expressions;
 
+import consulo.language.ast.ASTNode;
 import org.fandev.lang.fan.psi.api.statements.expressions.PodReferenceExpression;
-import com.intellij.lang.ASTNode;
 
 /**
  * Date: Sep 12, 2009

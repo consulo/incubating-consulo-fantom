@@ -1,11 +1,11 @@
 package org.fandev.lang.fan.psi.impl.statements.typedefs.members;
 
+import consulo.language.psi.StubBasedPsiElement;
+import consulo.language.psi.stub.IStubElementType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 import org.fandev.lang.fan.psi.stubs.FanMethodStub;
 import javax.annotation.Nonnull;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.StubBasedPsiElement;
-import com.intellij.psi.stubs.IStubElementType;
+import consulo.language.ast.ASTNode;
 
 /**
  * @author Dror Bereznitsky

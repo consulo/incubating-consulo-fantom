@@ -21,7 +21,7 @@ import static org.fandev.lang.fan.FanTokenTypes.IDENTIFIER_TOKENS_SET;
 
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.ReferenceElement;
-import com.intellij.lang.PsiBuilder;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * @author freds

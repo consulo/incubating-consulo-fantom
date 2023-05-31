@@ -19,7 +19,7 @@ package org.fandev.lang.fan.psi.api.statements.typeDefs.members;
 import org.fandev.lang.fan.psi.FanElement;
 import org.fandev.lang.fan.psi.api.modifiers.FanFacet;
 import org.fandev.lang.fan.psi.api.statements.FanTopLevelDefintion;
-import com.intellij.psi.PsiNameIdentifierOwner;
+import consulo.language.psi.PsiNameIdentifierOwner;
 
 /**
  * @author freds

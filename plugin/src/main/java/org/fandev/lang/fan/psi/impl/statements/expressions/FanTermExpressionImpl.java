@@ -1,7 +1,7 @@
 package org.fandev.lang.fan.psi.impl.statements.expressions;
 
+import consulo.language.ast.ASTNode;
 import org.fandev.lang.fan.psi.api.statements.expressions.FanTermExpression;
-import com.intellij.lang.ASTNode;
 
 /**
  * Date: Aug 24, 2009

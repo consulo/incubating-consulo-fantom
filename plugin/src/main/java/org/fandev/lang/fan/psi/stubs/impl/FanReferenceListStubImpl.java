@@ -1,10 +1,10 @@
 package org.fandev.lang.fan.psi.stubs.impl;
 
+import consulo.language.psi.stub.StubBase;
+import consulo.language.psi.stub.StubElement;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanReferenceList;
 import org.fandev.lang.fan.psi.stubs.FanReferenceListStub;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubBase;
-import com.intellij.psi.stubs.StubElement;
+import consulo.language.psi.stub.IStubElementType;
 
 /**
  * Created by IntelliJ IDEA.

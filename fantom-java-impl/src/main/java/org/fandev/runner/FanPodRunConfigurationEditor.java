@@ -1,13 +1,10 @@
 package org.fandev.runner;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
+import consulo.configurable.ConfigurationException;
+import consulo.ui.ex.awt.FieldPanel;
 
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import com.intellij.openapi.options.ConfigurationException;
-import com.intellij.ui.FieldPanel;
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * Date: Sep 5, 2009

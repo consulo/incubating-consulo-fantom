@@ -16,8 +16,8 @@
  */
 package org.fandev.lang.fan.parsing.expression;
 
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.ast.TokenSet;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * @author freds

@@ -2,14 +2,14 @@ package org.fandev.lang.fan.psi.stubs.elements;
 
 import javax.annotation.Nonnull;
 
+import consulo.index.io.StringRef;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanConstructor;
 import org.fandev.lang.fan.psi.impl.statements.typedefs.members.FanConstructorImpl;
 import org.fandev.lang.fan.psi.stubs.FanConstructorStub;
 import org.fandev.lang.fan.psi.stubs.impl.FanConstructorStubImpl;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.util.io.StringRef;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.psi.stub.StubElement;
 
 /**
  * @author Dror Bereznitsky

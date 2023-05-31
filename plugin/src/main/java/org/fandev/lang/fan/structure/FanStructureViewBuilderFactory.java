@@ -1,18 +1,23 @@
 package org.fandev.lang.fan.structure;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.codeEditor.Editor;
+import consulo.fileEditor.structureView.StructureViewBuilder;
+import consulo.fileEditor.structureView.StructureViewModel;
+import consulo.fileEditor.structureView.TreeBasedStructureViewBuilder;
+import consulo.language.Language;
+import consulo.language.editor.structureView.PsiStructureViewFactory;
+import consulo.language.psi.PsiFile;
+import org.fandev.lang.fan.FanLanguage;
 import org.fandev.lang.fan.structure.elements.FanStructureViewModel;
+
 import javax.annotation.Nonnull;
-import com.intellij.ide.structureView.StructureViewBuilder;
-import com.intellij.ide.structureView.StructureViewModel;
-import com.intellij.ide.structureView.TreeBasedStructureViewBuilder;
-import com.intellij.lang.PsiStructureViewFactory;
-import com.intellij.openapi.editor.Editor;
-import com.intellij.psi.PsiFile;
 
 /**
  * @author Dror Bereznitsky
  * @date Jan 7, 2009 4:23:57 PM
  */
+@ExtensionImpl
 public class FanStructureViewBuilderFactory implements PsiStructureViewFactory
 {
 	@Override
@@ -27,5 +32,12 @@ public class FanStructureViewBuilderFactory implements PsiStructureViewFactory
 				return new FanStructureViewModel(psiFile);
 			}
 		};
+	}
+
+	@Nonnull
+	@Override
+	public Language getLanguage()
+	{
+		return FanLanguage.INSTANCE;
 	}
 }

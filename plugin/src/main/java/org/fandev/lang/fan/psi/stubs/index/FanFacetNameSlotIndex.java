@@ -16,14 +16,16 @@
  */
 package org.fandev.lang.fan.psi.stubs.index;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.psi.stub.StringStubIndexExtension;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
-import com.intellij.psi.stubs.StringStubIndexExtension;
-import com.intellij.psi.stubs.StubIndexKey;
+import consulo.language.psi.stub.StubIndexKey;
 
 /**
  * @author freds
  * @date Jan 27, 2009
  */
+@ExtensionImpl
 public class FanFacetNameSlotIndex extends StringStubIndexExtension<FanSlot>
 {
 	public static final StubIndexKey<String, FanSlot> KEY = StubIndexKey.createIndexKey("fan.facet.slot");

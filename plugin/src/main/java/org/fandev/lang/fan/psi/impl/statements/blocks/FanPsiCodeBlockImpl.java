@@ -20,9 +20,9 @@ import org.fandev.lang.fan.FanTokenTypes;
 import org.fandev.lang.fan.psi.api.statements.blocks.FanPsiCodeBlock;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanStatement;
 import javax.annotation.Nonnull;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
+import consulo.language.impl.psi.ASTWrapperPsiElement;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
 
 /**
  * @author freds

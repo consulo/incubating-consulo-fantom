@@ -24,7 +24,7 @@ import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.parsing.statements.Block;
 import org.fandev.lang.fan.parsing.types.FuncTypeSpec;
 import org.fandev.lang.fan.parsing.types.TypeType;
-import com.intellij.lang.PsiBuilder;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * @author freds

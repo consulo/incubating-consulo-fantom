@@ -1,5 +1,20 @@
 package org.fandev.actions.generation;
 
+import consulo.annotation.component.ExtensionImpl;
+import consulo.fantom.FantomIcons;
+import consulo.fileTemplate.*;
+import consulo.language.file.FileTypeManager;
+import consulo.language.psi.PsiDirectory;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiManager;
+import consulo.language.util.IncorrectOperationException;
+import consulo.logging.Logger;
+import consulo.virtualFileSystem.VirtualFile;
+import org.fandev.PodModel;
+import org.fandev.lang.fan.FanBundle;
+import org.fandev.utils.VirtualFileUtil;
+import org.jetbrains.annotations.NonNls;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -7,28 +22,11 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.fandev.PodModel;
-import org.fandev.lang.fan.FanBundle;
-import org.fandev.utils.VirtualFileUtil;
-import org.jetbrains.annotations.NonNls;
-import com.intellij.ide.fileTemplates.FileTemplate;
-import com.intellij.ide.fileTemplates.FileTemplateDescriptor;
-import com.intellij.ide.fileTemplates.FileTemplateGroupDescriptor;
-import com.intellij.ide.fileTemplates.FileTemplateGroupDescriptorFactory;
-import com.intellij.ide.fileTemplates.FileTemplateManager;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.fileTypes.FileTypeManager;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiDirectory;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiManager;
-import com.intellij.util.IncorrectOperationException;
-import consulo.fantom.FantomIcons;
-
 /**
  * @author Dror Bereznitsky
  * @date Apr 1, 2009 3:52:01 PM
  */
+@ExtensionImpl
 public class FanTemplatesFactory implements FileTemplateGroupDescriptorFactory
 {
 	@NonNls
@@ -74,7 +72,7 @@ public class FanTemplatesFactory implements FileTemplateGroupDescriptorFactory
 
 
 	public static PsiFile createFromTemplate(final PsiDirectory directory, final String fileName, final String templateName,
-			@NonNls final EnumMap<TemplateProperty, String> parameters) throws IncorrectOperationException
+											 @NonNls final EnumMap<TemplateProperty, String> parameters) throws IncorrectOperationException
 	{
 		final FileTemplate template = FileTemplateManager.getInstance().getDefaultTemplate(templateName);
 

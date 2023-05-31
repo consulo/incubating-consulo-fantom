@@ -1,10 +1,10 @@
 package org.fandev.lang.fan.structure.elements.impl;
 
+import consulo.language.psi.PsiElement;
+import consulo.navigation.ItemPresentation;
 import org.fandev.lang.fan.structure.elements.FanStructureViewElement;
 import org.fandev.lang.fan.structure.elements.itemsPresentations.impl.FanEnumValueDefinitionItemPresentation;
-import com.intellij.ide.util.treeView.smartTree.TreeElement;
-import com.intellij.navigation.ItemPresentation;
-import com.intellij.psi.PsiElement;
+import consulo.fileEditor.structureView.tree.TreeElement;
 
 /**
  * Date: Apr 1, 2009

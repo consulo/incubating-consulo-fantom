@@ -1,6 +1,6 @@
 package org.fandev.utils;
 
-import com.intellij.openapi.util.text.StringUtil;
+import consulo.util.lang.StringUtil;
 
 /**
  * @author Dror Bereznitsky

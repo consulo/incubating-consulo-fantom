@@ -7,7 +7,7 @@ import org.fandev.lang.fan.psi.api.types.FanClassTypeElement;
 import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.impl.FanClassReferenceType;
-import com.intellij.lang.ASTNode;
+import consulo.language.ast.ASTNode;
 
 /**
  * Date: Jul 3, 2009

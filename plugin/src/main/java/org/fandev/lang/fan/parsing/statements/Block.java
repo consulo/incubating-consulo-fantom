@@ -24,8 +24,8 @@ import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
 
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.ast.IElementType;
 
 /**
  * @author freds

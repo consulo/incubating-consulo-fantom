@@ -5,14 +5,14 @@ import static org.fandev.lang.fan.FanTokenTypes.CONST_KEYWORD;
 import static org.fandev.lang.fan.FanTokenTypes.FAN_SYS_TYPE;
 import static org.fandev.lang.fan.FanTokenTypes.MIXIN_KEYWORD;
 
+import consulo.language.ast.TokenSet;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.auxiliary.modifiers.Modifiers;
 import org.fandev.lang.fan.parsing.statements.declaration.DeclarationType;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.InheritanceClause;
 import org.fandev.lang.fan.parsing.statements.typeDefinitions.blocks.MixinBlock;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * <ul>

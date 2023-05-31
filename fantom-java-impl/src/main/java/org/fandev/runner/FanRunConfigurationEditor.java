@@ -1,11 +1,11 @@
 package org.fandev.runner;
 
-import com.intellij.icons.AllIcons;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.options.ConfigurationException;
-import com.intellij.openapi.options.SettingsEditor;
-import com.intellij.ui.ColoredListCellRenderer;
-import com.intellij.ui.RawCommandLineEditor;
+import consulo.application.AllIcons;
+import consulo.configurable.ConfigurationException;
+import consulo.execution.configuration.ui.SettingsEditor;
+import consulo.ui.ex.awt.ColoredListCellRenderer;
+import consulo.execution.ui.awt.RawCommandLineEditor;
+import consulo.module.Module;
 
 import javax.annotation.Nonnull;
 import javax.swing.*;

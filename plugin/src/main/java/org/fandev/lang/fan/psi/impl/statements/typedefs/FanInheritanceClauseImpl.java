@@ -1,12 +1,12 @@
 package org.fandev.lang.fan.psi.impl.statements.typedefs;
 
+import consulo.language.ast.ASTNode;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanInheritanceClause;
 import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
 import org.fandev.lang.fan.psi.stubs.FanReferenceListStub;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.StubBasedPsiElement;
+import consulo.language.psi.StubBasedPsiElement;
 
 /**
  * Date: Mar 18, 2009

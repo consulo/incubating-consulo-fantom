@@ -26,8 +26,8 @@ import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.expression.Expression;
 import org.fandev.lang.fan.parsing.types.TypeSpec;
 import org.fandev.lang.fan.parsing.types.TypeType;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.ast.TokenSet;
 
 /**
  * @author freds

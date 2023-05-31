@@ -1,6 +1,6 @@
 package org.fandev.lang.fan.parsing.statements.typeDefinitions.members;
 
-import com.intellij.lang.PsiBuilder;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * <p>Enums Rules:<ul>

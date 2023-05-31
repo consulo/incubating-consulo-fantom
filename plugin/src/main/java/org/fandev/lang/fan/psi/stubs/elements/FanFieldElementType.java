@@ -1,14 +1,15 @@
 package org.fandev.lang.fan.psi.stubs.elements;
 
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.psi.stub.StubElement;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
 import org.fandev.lang.fan.psi.impl.statements.typedefs.members.FanFieldImpl;
 import org.fandev.lang.fan.psi.stubs.FanFieldStub;
 import org.fandev.lang.fan.psi.stubs.impl.FanFieldStubImpl;
 import javax.annotation.Nonnull;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.util.io.StringRef;
+
+import consulo.index.io.StringRef;
 
 /**
  * @author Dror Bereznitsky

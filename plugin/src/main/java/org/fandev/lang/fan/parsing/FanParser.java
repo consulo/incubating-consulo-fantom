@@ -1,16 +1,16 @@
 package org.fandev.lang.fan.parsing;
 
+import consulo.component.ProcessCanceledException;
+import consulo.language.impl.internal.psi.diff.BlockSupport;
+import consulo.language.parser.PsiParser;
+import consulo.logging.Logger;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.topLevel.CompilationUnit;
 import javax.annotation.Nonnull;
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.progress.ProcessCanceledException;
-import consulo.lang.LanguageVersion;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.lang.PsiParser;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.psi.text.BlockSupport;
-import com.intellij.psi.tree.IElementType;
+import consulo.language.ast.ASTNode;
+import consulo.language.version.LanguageVersion;
+import consulo.language.parser.PsiBuilder;
+import consulo.language.ast.IElementType;
 
 /**
  * @author Dror

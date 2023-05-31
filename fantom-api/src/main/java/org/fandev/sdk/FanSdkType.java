@@ -1,42 +1,41 @@
 package org.fandev.sdk;
 
-import java.io.File;
-import java.util.Collection;
-import java.util.Collections;
-
-import javax.annotation.Nonnull;
-
+import consulo.annotation.component.ExtensionImpl;
+import consulo.application.util.SystemInfo;
+import consulo.content.OrderRootType;
+import consulo.content.base.BinariesOrderRootType;
+import consulo.content.base.DocumentationOrderRootType;
+import consulo.content.base.SourcesOrderRootType;
+import consulo.content.bundle.Sdk;
+import consulo.content.bundle.SdkModificator;
+import consulo.content.bundle.SdkType;
+import consulo.fantom.FantomIcons;
+import consulo.logging.Logger;
+import consulo.ui.image.Image;
+import consulo.virtualFileSystem.VirtualFile;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.utils.FanUtil;
 import org.fandev.utils.OSUtil;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.projectRoots.SdkModificator;
-import com.intellij.openapi.projectRoots.SdkType;
-import com.intellij.openapi.roots.OrderRootType;
-import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.vfs.VirtualFile;
-import consulo.fantom.FantomIcons;
-import consulo.roots.types.BinariesOrderRootType;
-import consulo.roots.types.DocumentationOrderRootType;
-import consulo.roots.types.SourcesOrderRootType;
-import consulo.ui.image.Image;
+import java.io.File;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * @author Dror Bereznitsky
  * @date Jan 18, 2009 4:27:47 PM
  */
+@ExtensionImpl
 public class FanSdkType extends SdkType
 {
-	private static final Logger log = Logger.getInstance("org.fandev.sdk.FanSdkType");
+	private static final Logger log = Logger.getInstance(FanSdkType.class);
 
 	@Nonnull
 	public static FanSdkType getInstance()
 	{
-		return EP_NAME.findExtension(FanSdkType.class);
+		return EP_NAME.findExtensionOrFail(FanSdkType.class);
 	}
 
 	public static final String FAN_LAUNCHER_WIN = "fanlaunch.bat";
@@ -164,10 +163,10 @@ public class FanSdkType extends SdkType
 			}
 			final SdkModificator sdkModificator = sdk.getSdkModificator();
 
-			sdkModificator.addRoot(sysJar, OrderRootType.CLASSES);
+			sdkModificator.addRoot(sysJar, BinariesOrderRootType.getInstance());
 			if(sysSources == null)
 			{
-				sdkModificator.addRoot(sysSources, OrderRootType.SOURCES);
+				sdkModificator.addRoot(sysSources, SourcesOrderRootType.getInstance());
 			}
 
 			final VirtualFile extDir = getExtDir(sdk);
@@ -178,7 +177,7 @@ public class FanSdkType extends SdkType
 				{
 					if("jar".equals(lib.getExtension()))
 					{
-						sdkModificator.addRoot(lib, OrderRootType.CLASSES);
+						sdkModificator.addRoot(lib, BinariesOrderRootType.getInstance());
 					}
 				}
 			}

@@ -2,7 +2,7 @@ package org.fandev.lang.fan.psi.impl.statements.typedefs;
 
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinitionBody;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
-import com.intellij.lang.ASTNode;
+import consulo.language.ast.ASTNode;
 
 /**
  * Date: Sep 26, 2009

@@ -16,12 +16,12 @@
  */
 package org.fandev.lang.fan.psi.stubs.impl;
 
+import consulo.language.psi.stub.IStubElementType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
 import org.fandev.lang.fan.psi.stubs.FanSlotStub;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubBase;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.util.io.StringRef;
+import consulo.language.psi.stub.StubBase;
+import consulo.language.psi.stub.StubElement;
+import consulo.index.io.StringRef;
 
 /**
  * @author freds

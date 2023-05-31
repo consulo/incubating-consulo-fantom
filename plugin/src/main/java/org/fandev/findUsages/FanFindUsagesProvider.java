@@ -1,7 +1,10 @@
 package org.fandev.findUsages;
 
-import javax.annotation.Nonnull;
-
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.Language;
+import consulo.language.findUsage.FindUsagesProvider;
+import consulo.language.psi.PsiElement;
+import org.fandev.lang.fan.FanLanguage;
 import org.fandev.lang.fan.psi.api.statements.FanVariable;
 import org.fandev.lang.fan.psi.api.statements.expressions.FanReferenceExpression;
 import org.fandev.lang.fan.psi.api.statements.params.FanParameter;
@@ -9,10 +12,8 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanField;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import com.intellij.lang.findUsages.FindUsagesProvider;
-import com.intellij.psi.PsiElement;
 
 /**
  * Date: Sep 18, 2009
@@ -20,9 +21,9 @@ import com.intellij.psi.PsiElement;
  *
  * @author Dror Bereznitsky
  */
+@ExtensionImpl
 public class FanFindUsagesProvider implements FindUsagesProvider
 {
-
 	public FanFindUsagesProvider()
 	{
 	}
@@ -139,6 +140,13 @@ public class FanFindUsagesProvider implements FindUsagesProvider
 			}
 		}
 		return "";
+	}
+
+	@Nonnull
+	@Override
+	public Language getLanguage()
+	{
+		return FanLanguage.INSTANCE;
 	}
 }
 

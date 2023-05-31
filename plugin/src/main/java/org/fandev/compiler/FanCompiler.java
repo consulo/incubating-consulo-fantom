@@ -1,21 +1,23 @@
 package org.fandev.compiler;
 
-import com.intellij.execution.process.OSProcessHandler;
-import com.intellij.execution.process.ProcessAdapter;
-import com.intellij.execution.process.ProcessEvent;
-import com.intellij.execution.process.ProcessListener;
-import com.intellij.openapi.compiler.CompileContext;
-import com.intellij.openapi.compiler.CompileScope;
-import com.intellij.openapi.compiler.CompilerMessageCategory;
-import com.intellij.openapi.compiler.TranslatingCompiler;
-import com.intellij.openapi.fileTypes.FileType;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.util.Chunk;
-import com.intellij.util.io.ZipUtil;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.application.util.SystemInfo;
+import consulo.compiler.CompileContext;
+import consulo.compiler.CompilerMessageCategory;
+import consulo.compiler.TranslatingCompiler;
+import consulo.compiler.scope.CompileScope;
+import consulo.ide.util.ZipUtil;
+import consulo.module.Module;
+import consulo.process.event.ProcessAdapter;
+import consulo.process.event.ProcessEvent;
+import consulo.process.event.ProcessListener;
+import consulo.process.internal.OSProcessHandler;
+import consulo.project.Project;
+import consulo.util.collection.Chunk;
 import consulo.util.dataholder.Key;
+import consulo.virtualFileSystem.VirtualFile;
+import consulo.virtualFileSystem.fileType.FileType;
+import jakarta.inject.Inject;
 import org.fandev.lang.fan.FanFileType;
 import org.fandev.sdk.FanSdkType;
 import org.fandev.utils.FanUtil;
@@ -32,26 +34,18 @@ import java.util.Set;
  * @author Dror Bereznitsky
  * @date Jan 25, 2009 12:08:47 AM
  */
+@ExtensionImpl
 public class FanCompiler implements TranslatingCompiler
 {
 	private static final String FAN_COMPILER = "Fantom compiler";
-
-	private Project myProject;
-
-	public FanCompiler(final Project project)
-	{
-		myProject = project;
-	}
 
 	public boolean isCompilableFile(final VirtualFile file, final CompileContext context)
 	{
 		return FanFileType.INSTANCE.equals(file.getFileType());
 	}
 
-
-
 	public void compile(final CompileContext context, final Chunk<Module> moduleChunk, final VirtualFile[] files,
-			final OutputSink sink)
+						final OutputSink sink)
 	{
 		/*Set<VirtualFile> toRecompile = new HashSet<VirtualFile>();
 		Set<TranslatingCompiler.OutputItem> successfullyCompiled = new HashSet<TranslatingCompiler.OutputItem>();

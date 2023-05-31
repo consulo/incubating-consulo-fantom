@@ -1,32 +1,30 @@
 package org.fandev.debugger;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
-import org.fandev.index.FanIndex;
-import org.fandev.lang.fan.psi.FanFile;
-import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
-
-import javax.annotation.Nullable;
-import com.intellij.debugger.NoDataException;
-import com.intellij.debugger.PositionManager;
-import com.intellij.debugger.SourcePosition;
-import com.intellij.debugger.engine.CompoundPositionManager;
-import com.intellij.debugger.engine.DebugProcess;
-import com.intellij.debugger.engine.DebugProcessImpl;
-import com.intellij.debugger.requests.ClassPrepareRequestor;
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.util.Computable;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.java.debugger.NoDataException;
+import com.intellij.java.debugger.PositionManager;
+import com.intellij.java.debugger.SourcePosition;
+import com.intellij.java.debugger.engine.DebugProcess;
+import com.intellij.java.debugger.impl.engine.CompoundPositionManager;
+import com.intellij.java.debugger.impl.engine.DebugProcessImpl;
+import com.intellij.java.debugger.requests.ClassPrepareRequestor;
+import consulo.application.ApplicationManager;
+import consulo.application.util.function.Computable;
 import consulo.internal.com.sun.jdi.AbsentInformationException;
 import consulo.internal.com.sun.jdi.Location;
 import consulo.internal.com.sun.jdi.ReferenceType;
 import consulo.internal.com.sun.jdi.request.ClassPrepareRequest;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.project.Project;
+import org.fandev.index.FanIndex;
+import org.fandev.lang.fan.psi.FanFile;
+import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Date: Sep 2, 2009

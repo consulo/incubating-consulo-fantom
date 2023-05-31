@@ -1,15 +1,17 @@
 package org.fandev.lang.fan;
 
-import javax.annotation.Nonnull;
+import consulo.annotation.component.ExtensionImpl;
+import consulo.language.file.LanguageFileType;
+import consulo.virtualFileSystem.fileType.FileTypeConsumer;
+import consulo.virtualFileSystem.fileType.FileTypeFactory;
 
-import com.intellij.openapi.fileTypes.FileTypeConsumer;
-import com.intellij.openapi.fileTypes.FileTypeFactory;
-import com.intellij.openapi.fileTypes.LanguageFileType;
+import javax.annotation.Nonnull;
 
 /**
  * @author Dror
  * @date Dec 12, 2008 12:00:55 AM
  */
+@ExtensionImpl
 public class FanSupportLoader extends FileTypeFactory
 {
 	@Deprecated
@@ -22,10 +24,5 @@ public class FanSupportLoader extends FileTypeFactory
 	{
 		fileTypeConsumer.consume(FanFileType.INSTANCE);
 		fileTypeConsumer.consume(POD, POD.getDefaultExtension());
-	}
-
-	public String getFileExtension()
-	{
-		return "fan";
 	}
 }

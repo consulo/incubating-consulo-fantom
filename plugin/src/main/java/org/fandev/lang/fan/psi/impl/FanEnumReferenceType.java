@@ -5,7 +5,7 @@ import javax.annotation.Nonnull;
 import org.fandev.lang.fan.psi.FanType;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanEnumDefinition;
 import org.jetbrains.annotations.NonNls;
-import com.intellij.psi.search.GlobalSearchScope;
+import consulo.language.psi.scope.GlobalSearchScope;
 
 /**
  * Date: Sep 8, 2009

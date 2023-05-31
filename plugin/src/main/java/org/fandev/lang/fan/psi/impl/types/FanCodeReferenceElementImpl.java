@@ -1,10 +1,13 @@
 package org.fandev.lang.fan.psi.impl.types;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nonnull;
-
+import consulo.content.ContentIterator;
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.*;
+import consulo.language.psi.resolve.ResolveCache;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.psi.stub.StubElement;
+import consulo.module.content.ProjectRootManager;
+import consulo.virtualFileSystem.VirtualFile;
 import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.FanFileType;
 import org.fandev.lang.fan.psi.FanFile;
@@ -17,18 +20,10 @@ import org.fandev.lang.fan.psi.api.types.FanCodeReferenceElement;
 import org.fandev.lang.fan.psi.impl.FanReferenceElementImpl;
 import org.fandev.lang.fan.psi.impl.FanResolveResultImpl;
 import org.fandev.utils.PsiUtil;
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.roots.ContentIterator;
-import com.intellij.openapi.roots.ProjectRootManager;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiManager;
-import com.intellij.psi.ResolveResult;
-import com.intellij.psi.impl.source.resolve.ResolveCache;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
-import consulo.psi.PsiPackage;
+
+import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Dror Bereznitsky

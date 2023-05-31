@@ -1,10 +1,10 @@
 package org.fandev.runner;
 
-import com.intellij.execution.configurations.ConfigurationFactory;
-import com.intellij.execution.configurations.ModuleBasedConfiguration;
-import com.intellij.execution.configurations.RunConfiguration;
-import com.intellij.execution.configurations.RunConfigurationModule;
-import com.intellij.openapi.options.SettingsEditor;
+import consulo.execution.configuration.RunConfiguration;
+import consulo.execution.configuration.RunConfigurationModule;
+import consulo.execution.configuration.ui.SettingsEditor;
+import consulo.execution.configuration.ConfigurationFactory;
+import consulo.execution.configuration.ModuleBasedConfiguration;
 import consulo.java.execution.configurations.OwnJavaParameters;
 
 /**

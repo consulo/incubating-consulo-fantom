@@ -1,11 +1,9 @@
 package org.fandev.lang.fan.structure.elements.itemsPresentations.impl;
 
-import javax.swing.Icon;
-
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanEnumValue;
 import org.fandev.lang.fan.structure.elements.itemsPresentations.FanItemPresentation;
-import com.intellij.psi.PsiElement;
+import consulo.language.psi.PsiElement;
 import consulo.ui.image.Image;
 
 /**

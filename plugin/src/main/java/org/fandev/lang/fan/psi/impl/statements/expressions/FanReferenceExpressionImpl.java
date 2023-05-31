@@ -8,6 +8,10 @@ import java.util.Set;
 
 import javax.annotation.Nonnull;
 
+import consulo.language.psi.ResolveResult;
+import consulo.language.psi.stub.StubIndex;
+import consulo.language.psi.util.PsiTreeUtil;
+import consulo.language.util.IncorrectOperationException;
 import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.FanType;
@@ -43,16 +47,12 @@ import org.fandev.lang.fan.psi.stubs.index.FanShortClassNameIndex;
 import org.fandev.utils.FanUtil;
 import org.fandev.utils.PsiUtil;
 import org.jetbrains.annotations.NonNls;
-import com.intellij.lang.ASTNode;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.ResolveResult;
-import com.intellij.psi.impl.source.resolve.ResolveCache;
-import com.intellij.psi.stubs.IStubElementType;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.stubs.StubIndex;
-import com.intellij.psi.util.PsiTreeUtil;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.ast.ASTNode;
+import consulo.logging.Logger;
+import consulo.language.psi.PsiElement;
+import consulo.language.psi.resolve.ResolveCache;
+import consulo.language.psi.stub.IStubElementType;
+import consulo.language.psi.stub.StubElement;
 
 /**
  * Date: Jun 24, 2009

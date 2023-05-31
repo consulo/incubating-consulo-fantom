@@ -1,8 +1,8 @@
 package org.fandev.lang.fan.psi.stubs.index;
 
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanReferenceList;
-import com.intellij.psi.stubs.StringStubIndexExtension;
-import com.intellij.psi.stubs.StubIndexKey;
+import consulo.language.psi.stub.StringStubIndexExtension;
+import consulo.language.psi.stub.StubIndexKey;
 
 /**
  * Created by IntelliJ IDEA.

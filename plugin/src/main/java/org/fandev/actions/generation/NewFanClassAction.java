@@ -2,7 +2,7 @@ package org.fandev.actions.generation;
 
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanBundle;
-import com.intellij.psi.PsiDirectory;
+import consulo.language.psi.PsiDirectory;
 
 /**
  * @author Dror Bereznitsky

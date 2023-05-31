@@ -16,33 +16,38 @@
  */
 package org.fandev.idea.gotoclass;
 
-import java.util.Collection;
-
+import consulo.annotation.component.ExtensionImpl;
+import consulo.application.util.function.Processor;
+import consulo.content.scope.SearchScope;
+import consulo.ide.navigation.GotoSymbolContributor;
+import consulo.language.psi.search.FindSymbolParameters;
+import consulo.language.psi.stub.IdFilter;
+import consulo.language.psi.stub.StubIndex;
+import consulo.navigation.NavigationItem;
+import consulo.project.content.scope.ProjectAwareSearchScope;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
 import org.fandev.lang.fan.psi.stubs.index.FanSlotNameIndex;
-import com.intellij.navigation.ChooseByNameContributor;
-import com.intellij.navigation.NavigationItem;
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.search.GlobalSearchScope;
-import com.intellij.psi.stubs.StubIndex;
 
 /**
  * @author freds
  * @date Jan 27, 2009
  */
-public class FanGoToSlotContributor implements ChooseByNameContributor
+@ExtensionImpl
+public class FanGoToSlotContributor implements GotoSymbolContributor
 {
-	public String[] getNames(final Project project, final boolean includeNonProjectItems)
+	@Override
+	public void processNames(@Nonnull Processor<String> processor, @Nonnull SearchScope searchScope, @Nullable IdFilter idFilter)
 	{
-		final Collection<String> slotNames = StubIndex.getInstance().getAllKeys(FanSlotNameIndex.KEY, project);
-		return slotNames.toArray(new String[0]);
+		StubIndex.getInstance().processAllKeys(FanSlotNameIndex.KEY, processor, (ProjectAwareSearchScope) searchScope, idFilter);
 	}
 
-	@SuppressWarnings({"SuspiciousToArrayCall"})
-	public NavigationItem[] getItemsByName(final String name, final String pattern, final Project project, final boolean includeNonProjectItems)
+	@Override
+	public void processElementsWithName(@Nonnull String key, @Nonnull Processor<NavigationItem> processor, @Nonnull FindSymbolParameters findSymbolParameters)
 	{
-		final GlobalSearchScope scope = includeNonProjectItems ? null : GlobalSearchScope.projectScope(project);
-		final Collection<FanSlot> slots = StubIndex.getInstance().get(FanSlotNameIndex.KEY, name, project, scope);
-		return slots.toArray(new NavigationItem[0]);
+		StubIndex.getInstance().processElements(FanSlotNameIndex.KEY, key, findSymbolParameters.getProject(), findSymbolParameters.getSearchScope(),
+				findSymbolParameters.getIdFilter(),
+				FanSlot.class, processor);
 	}
 }

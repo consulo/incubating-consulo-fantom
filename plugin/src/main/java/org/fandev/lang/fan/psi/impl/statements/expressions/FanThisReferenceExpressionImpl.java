@@ -3,7 +3,7 @@ package org.fandev.lang.fan.psi.impl.statements.expressions;
 import org.fandev.lang.fan.psi.api.statements.expressions.FanThisReferenceExpression;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.utils.FanUtil;
-import com.intellij.lang.ASTNode;
+import consulo.language.ast.ASTNode;
 
 /**
  * Date: Jul 16, 2009

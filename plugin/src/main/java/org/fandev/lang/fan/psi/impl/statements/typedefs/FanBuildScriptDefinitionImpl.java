@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.annotation.Nonnull;
 
+import consulo.language.ast.ASTNode;
+import consulo.language.psi.PsiElement;
 import org.fandev.icons.Icons;
 import org.fandev.lang.fan.FanElementTypes;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanBuildScriptDefinition;
@@ -15,10 +17,8 @@ import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
 import org.fandev.lang.fan.psi.stubs.FanTypeDefinitionStub;
 import org.fandev.utils.FanUtil;
 import org.jetbrains.annotations.NonNls;
-import com.intellij.lang.ASTNode;
-import com.intellij.psi.PsiElement;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.util.IncorrectOperationException;
+import consulo.language.ast.IElementType;
+import consulo.language.util.IncorrectOperationException;
 import consulo.ui.image.Image;
 
 /**

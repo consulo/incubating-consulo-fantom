@@ -5,7 +5,7 @@ import javax.annotation.Nonnull;
 import org.fandev.lang.fan.psi.api.statements.params.FanFormal;
 import org.fandev.lang.fan.psi.api.statements.params.FanFormals;
 import org.fandev.lang.fan.psi.impl.FanBaseElementImpl;
-import com.intellij.lang.ASTNode;
+import consulo.language.ast.ASTNode;
 
 /**
  * Date: Aug 20, 2009

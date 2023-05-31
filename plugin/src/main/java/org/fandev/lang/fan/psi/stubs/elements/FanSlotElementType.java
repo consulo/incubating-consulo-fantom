@@ -20,17 +20,17 @@ import java.io.IOException;
 
 import javax.annotation.Nonnull;
 
+import consulo.language.psi.stub.IndexSink;
+import consulo.language.psi.stub.StubInputStream;
 import org.fandev.lang.fan.FanStubElementType;
 import org.fandev.lang.fan.psi.api.modifiers.FanFacet;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanSlot;
 import org.fandev.lang.fan.psi.stubs.FanSlotStub;
 import org.fandev.lang.fan.psi.stubs.index.FanFacetNameSlotIndex;
 import org.fandev.lang.fan.psi.stubs.index.FanSlotNameIndex;
-import com.intellij.psi.stubs.IndexSink;
-import com.intellij.psi.stubs.StubElement;
-import com.intellij.psi.stubs.StubInputStream;
-import com.intellij.psi.stubs.StubOutputStream;
-import com.intellij.util.io.StringRef;
+import consulo.language.psi.stub.StubElement;
+import consulo.language.psi.stub.StubOutputStream;
+import consulo.index.io.StringRef;
 
 /**
  * @author freds

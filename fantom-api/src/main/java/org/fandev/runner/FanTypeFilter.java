@@ -1,16 +1,15 @@
 package org.fandev.runner;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
+import consulo.execution.ui.console.Filter;
+import consulo.execution.ui.console.OpenFileHyperlinkInfo;
+import consulo.project.Project;
 import org.fandev.index.FanIndex;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.members.FanMethod;
-import com.intellij.execution.filters.Filter;
-import com.intellij.execution.filters.OpenFileHyperlinkInfo;
-import com.intellij.openapi.fileEditor.OpenFileDescriptor;
-import com.intellij.openapi.project.Project;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Date: Sep 23, 2009
@@ -61,7 +60,7 @@ public class FanTypeFilter implements Filter
 					// We have the line number in the stack trace
 					offset = Integer.valueOf(m.group(2)).intValue() - 1;
 					return new Result(entireLength - line.length() + start, entireLength - line.length() + start + id.length(),
-							new OpenFileHyperlinkInfo(new OpenFileDescriptor(project, file.getVirtualFile(), offset, 0)));
+							new OpenFileHyperlinkInfo(project, file.getVirtualFile(), offset, 0));
 				}
 				else
 				{
@@ -78,7 +77,7 @@ public class FanTypeFilter implements Filter
 						}
 					}
 					return new Result(entireLength - line.length() + start, entireLength - line.length() + start + id.length(),
-							new OpenFileHyperlinkInfo(new OpenFileDescriptor(project, file.getVirtualFile(), offset)));
+							new OpenFileHyperlinkInfo(project, file.getVirtualFile(), offset));
 				}
 
 			}

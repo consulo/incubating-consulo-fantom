@@ -1,45 +1,46 @@
 package org.fandev.index;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-import javax.annotation.Nonnull;
-
+import consulo.annotation.component.ComponentScope;
+import consulo.annotation.component.ServiceAPI;
+import consulo.annotation.component.ServiceImpl;
+import consulo.application.ApplicationManager;
+import consulo.content.base.BinariesOrderRootType;
+import consulo.content.bundle.Sdk;
+import consulo.content.library.Library;
+import consulo.content.library.LibraryTable;
+import consulo.fantom.module.extension.FanModuleExtension;
+import consulo.language.psi.PsiFile;
+import consulo.language.psi.PsiManager;
+import consulo.language.psi.stub.StubIndex;
+import consulo.language.util.ModuleUtilCore;
+import consulo.logging.Logger;
+import consulo.module.Module;
+import consulo.module.ModuleManager;
+import consulo.module.content.ModuleRootManager;
+import consulo.module.content.layer.ModifiableRootModel;
+import consulo.project.Project;
+import consulo.virtualFileSystem.VirtualFile;
+import jakarta.inject.Inject;
+import jakarta.inject.Singleton;
 import org.fandev.lang.fan.PodFileType;
 import org.fandev.lang.fan.psi.FanFile;
 import org.fandev.lang.fan.psi.api.statements.typeDefs.FanTypeDefinition;
 import org.fandev.lang.fan.psi.stubs.index.FanShortClassNameIndex;
 import org.fandev.utils.FanUtil;
 
+import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
-import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.components.ProjectComponent;
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.module.Module;
-import com.intellij.openapi.module.ModuleManager;
-import com.intellij.openapi.module.ModuleUtilCore;
-import com.intellij.openapi.project.Project;
-import com.intellij.openapi.projectRoots.Sdk;
-import com.intellij.openapi.roots.ModifiableRootModel;
-import com.intellij.openapi.roots.ModuleRootManager;
-import com.intellij.openapi.roots.OrderRootType;
-import com.intellij.openapi.roots.libraries.Library;
-import com.intellij.openapi.roots.libraries.LibraryTable;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiFile;
-import com.intellij.psi.PsiManager;
-import com.intellij.psi.stubs.StubIndex;
-import consulo.fantom.module.extension.FanModuleExtension;
+import java.util.*;
 
 /**
  * @author Dror Bereznitsky
  * @date Mar 4, 2009 11:37:54 PM
  */
-public class FanIndex implements ProjectComponent
+@Singleton
+@ServiceAPI(value = ComponentScope.PROJECT, lazy = false)
+@ServiceImpl
+@Deprecated // TODO need rework
+public class FanIndex
 {
 	private final Project project;
 	private final PsiManager psiManager;
@@ -49,12 +50,12 @@ public class FanIndex implements ProjectComponent
 	private final Map<String, VirtualFile> podToBuildFile = new HashMap<String, VirtualFile>();
 
 	private static final Logger logger = Logger.getInstance("org.fandev.index.FanIndex");
-	public static final String COMPONENT_NAME = "Fantom Index";
 
-	public FanIndex(final Project project)
+	@Inject
+	public FanIndex(final Project project, PsiManager psiManager)
 	{
 		this.project = project;
-		this.psiManager = PsiManager.getInstance(project);
+		this.psiManager = psiManager;
 	}
 
 	public VirtualFile getVirtualFileByTypeName(@Nonnull final String typeName)
@@ -299,7 +300,7 @@ public class FanIndex implements ProjectComponent
 		{
 			public void run()
 			{
-				final VirtualFile[] files = library.getFiles(OrderRootType.CLASSES);
+				final VirtualFile[] files = library.getFiles(BinariesOrderRootType.getInstance());
 				for(final VirtualFile libFile : files)
 				{
 					if(libFile.isDirectory())
@@ -330,33 +331,33 @@ public class FanIndex implements ProjectComponent
 								continue;
 							}
 							// Index Pod types
-//							final Pod pod = Pod.find(podName);
-//							if(pod != null)
-//							{
-//								final VirtualFile[] srcFiles = library.getFiles(OrderRootType.SOURCES);
-//								if(srcFiles.length > 0)
-//								{
-//									final VirtualFile srcRoot = srcFiles[0];
-//									final VirtualFile podBuildFile = srcRoot.findFileByRelativePath("build.fan"); // Assuming we have only one source lib
-//									if(podBuildFile != null)
-//									{
-//										podToBuildFile.put(podName, podBuildFile);
-//									}
-//
-//									final fan.sys.List podTypes = pod.types();
-//									for(int i = 0; i < podTypes.size(); i++)
-//									{
-//										final fan.sys.Type type = (fan.sys.Type) podTypes.get(i);
-//										final VirtualFile srcFilePath = srcRoot.findFileByRelativePath(String.format("%s%s%s.%s", FanSdkType.getFanSrcDir(),
-//												VirtualFileUtil.VFS_PATH_SEPARATOR, type.name(), FanFileType.DEFAULT_EXTENSION));
-//										libTypes.add(type.name());
-//										if(srcFilePath != null)
-//										{
-//											typeToFile.put(type.name(), srcFilePath);
-//										}
-//									}
-//								}
-//							}
+							//							final Pod pod = Pod.find(podName);
+							//							if(pod != null)
+							//							{
+							//								final VirtualFile[] srcFiles = library.getFiles(OrderRootType.SOURCES);
+							//								if(srcFiles.length > 0)
+							//								{
+							//									final VirtualFile srcRoot = srcFiles[0];
+							//									final VirtualFile podBuildFile = srcRoot.findFileByRelativePath("build.fan"); // Assuming we have only one source lib
+							//									if(podBuildFile != null)
+							//									{
+							//										podToBuildFile.put(podName, podBuildFile);
+							//									}
+							//
+							//									final fan.sys.List podTypes = pod.types();
+							//									for(int i = 0; i < podTypes.size(); i++)
+							//									{
+							//										final fan.sys.Type type = (fan.sys.Type) podTypes.get(i);
+							//										final VirtualFile srcFilePath = srcRoot.findFileByRelativePath(String.format("%s%s%s.%s", FanSdkType.getFanSrcDir(),
+							//												VirtualFileUtil.VFS_PATH_SEPARATOR, type.name(), FanFileType.DEFAULT_EXTENSION));
+							//										libTypes.add(type.name());
+							//										if(srcFilePath != null)
+							//										{
+							//											typeToFile.put(type.name(), srcFilePath);
+							//										}
+							//									}
+							//								}
+							//							}
 						}
 						catch(Exception e)
 						{

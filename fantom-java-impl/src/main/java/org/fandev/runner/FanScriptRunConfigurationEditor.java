@@ -6,12 +6,12 @@ import java.awt.GridLayout;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import consulo.virtualFileSystem.VirtualFile;
 import org.fandev.lang.fan.FanFileType;
-import com.intellij.ide.util.BrowseFilesListener;
-import com.intellij.openapi.fileChooser.FileChooserDescriptor;
-import com.intellij.openapi.options.ConfigurationException;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.ui.FieldPanel;
+import consulo.ui.ex.awt.util.BrowseFilesListener;
+import consulo.fileChooser.FileChooserDescriptor;
+import consulo.configurable.ConfigurationException;
+import consulo.ui.ex.awt.FieldPanel;
 
 /**
  * @author Dror Bereznitsky

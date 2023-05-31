@@ -1,10 +1,11 @@
 package org.fandev.debugger;
 
+import com.intellij.java.debugger.ui.classFilter.ClassFilter;
+import com.intellij.java.debugger.ui.classFilter.DebuggerClassFilterProvider;
+import consulo.annotation.component.ExtensionImpl;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import com.intellij.ui.classFilter.ClassFilter;
-import com.intellij.ui.classFilter.DebuggerClassFilterProvider;
 
 /**
  * Date: Sep 3, 2009
@@ -12,6 +13,7 @@ import com.intellij.ui.classFilter.DebuggerClassFilterProvider;
  *
  * @author Dror Bereznitsky
  */
+@ExtensionImpl
 public class FanDebuggerClassFilterProvider implements DebuggerClassFilterProvider
 {
 	@Override

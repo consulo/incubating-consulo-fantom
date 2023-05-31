@@ -10,10 +10,10 @@ import static org.fandev.lang.fan.FanTokenTypes.LBRACE;
 import static org.fandev.lang.fan.FanTokenTypes.MIXIN_KEYWORD;
 import static org.fandev.lang.fan.FanTokenTypes.POD_KEYWORD;
 
+import consulo.language.parser.PsiBuilder;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.auxiliary.facets.Facet;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
 
 /**
  * @author Dror Bereznitsky

@@ -1,6 +1,6 @@
 package org.fandev.utils;
 
-import static com.intellij.openapi.util.io.FileUtil.toSystemDependentName;
+import static consulo.util.io.FileUtil.toSystemDependentName;
 
 import java.io.File;
 import java.util.StringTokenizer;
@@ -9,9 +9,9 @@ import org.fandev.lang.fan.FanBundle;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-import com.intellij.openapi.diagnostic.Logger;
-import com.intellij.openapi.util.SystemInfo;
-import com.intellij.openapi.vfs.VirtualFileManager;
+import consulo.logging.Logger;
+import consulo.application.util.SystemInfo;
+import consulo.virtualFileSystem.VirtualFileManager;
 
 /**
  * Created by IntelliJ IDEA.

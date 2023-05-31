@@ -1,20 +1,19 @@
 package org.fandev.lang.fan.highlighting;
 
-import static org.fandev.lang.fan.FanTokenTypes.FAN_KEYWORDS;
-import static org.fandev.lang.fan.FanTokenTypes.FAN_SYS_TYPE;
+import consulo.colorScheme.TextAttributesKey;
+import consulo.language.ast.IElementType;
+import consulo.language.ast.TokenSet;
+import consulo.language.editor.highlight.SyntaxHighlighterBase;
+import consulo.language.lexer.Lexer;
+import org.fandev.lang.fan.FanHighlightingLexer;
+import org.fandev.lang.fan.FanTokenTypes;
 
+import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.annotation.Nonnull;
-
-import org.fandev.lang.fan.FanHighlightingLexer;
-import org.fandev.lang.fan.FanTokenTypes;
-import com.intellij.lexer.Lexer;
-import com.intellij.openapi.editor.colors.TextAttributesKey;
-import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
-import com.intellij.psi.tree.IElementType;
-import com.intellij.psi.tree.TokenSet;
+import static org.fandev.lang.fan.FanTokenTypes.FAN_KEYWORDS;
+import static org.fandev.lang.fan.FanTokenTypes.FAN_SYS_TYPE;
 
 /**
  * @author Dror Bereznitsky

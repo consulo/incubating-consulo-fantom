@@ -24,13 +24,13 @@ import static org.fandev.lang.fan.FanTokenTypes.RPAR;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.getToken;
 import static org.fandev.lang.fan.parsing.util.ParserUtils.removeNls;
 
+import consulo.language.ast.TokenSet;
 import org.fandev.lang.fan.FanBundle;
 import org.fandev.lang.fan.parsing.expression.Expression;
 import org.fandev.lang.fan.parsing.statements.Statement;
 import org.fandev.lang.fan.parsing.types.TypeSpec;
 import org.fandev.lang.fan.parsing.util.ParserUtils;
-import com.intellij.lang.PsiBuilder;
-import com.intellij.psi.tree.TokenSet;
+import consulo.language.parser.PsiBuilder;
 
 /**
  * @author freds
