@@ -13,23 +13,23 @@
 	</tags>
 
 	<actions>
-		<action id="org.fandev.actions.execution.RunFanScriptAction"
-				class="org.fandev.actions.execution.RunFanScriptAction"
+		<action id="org.fandev.impl.actions.execution.RunFanScriptAction"
+				class="org.fandev.impl.actions.execution.RunFanScriptAction"
 				text="Run Fantom script..." description="Runs Fantom scripts">
 		</action>
-		<action id="Fan.NewClass" class="org.fandev.actions.generation.NewFanClassAction"
+		<action id="Fan.NewClass" class="org.fandev.impl.actions.generation.NewFanClassAction"
 				text="Fantom Class" description="Create new Fantom class">
 			<add-to-group group-id="NewGroup" anchor="last"/>
 		</action>
-		<action id="Fan.Mixin" class="org.fandev.actions.generation.NewFanMixinAction"
+		<action id="Fan.Mixin" class="org.fandev.impl.actions.generation.NewFanMixinAction"
 				text="Fantom Mixin" description="Create new Fantom mixin">
 			<add-to-group group-id="NewGroup" anchor="after" relative-to-action="Fan.NewClass"/>
 		</action>
-		<action id="Fan.Enum" class="org.fandev.actions.generation.NewFanEnumAction"
+		<action id="Fan.Enum" class="org.fandev.impl.actions.generation.NewFanEnumAction"
 				text="Fantom Enum" description="Create new Fantom enum">
 			<add-to-group group-id="NewGroup" anchor="after" relative-to-action="Fan.Mixin"/>
 		</action>
-		<action id="Fan.NewBuildScript" class="org.fandev.actions.generation.NewFanBuildScriptAction"
+		<action id="Fan.NewBuildScript" class="org.fandev.impl.actions.generation.NewFanBuildScriptAction"
 				text="Fantom Build Script" description="Create new Fantom Build Script">
 			<add-to-group group-id="NewGroup" anchor="after" relative-to-action="Fan.Enum"/>
 		</action>

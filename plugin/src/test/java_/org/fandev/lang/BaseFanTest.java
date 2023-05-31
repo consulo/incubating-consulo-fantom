@@ -13,8 +13,8 @@ import static junit.framework.Assert.assertEquals;
 import consulo.logging.Logger;
 import consulo.project.Project;
 import consulo.util.io.FileUtil;
-import org.fandev.lang.fan.FanHighlightingLexer;
-import org.fandev.lang.fan.FanTokenTypes;
+import org.fandev.impl.lang.fan.FanHighlightingLexer;
+import org.fandev.impl.lang.fan.FanTokenTypes;
 import org.fandev.util.TestUtils;
 import org.junit.Assert;
 

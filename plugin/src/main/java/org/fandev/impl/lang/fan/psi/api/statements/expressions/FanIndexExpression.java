@@ -1,0 +1,14 @@
+package org.fandev.impl.lang.fan.psi.api.statements.expressions;
+
+import consulo.language.psi.PsiElement;
+
+/**
+ * Date: Sep 2, 2009
+ * Time: 12:22:42 AM
+ *
+ * @author Dror Bereznitsky
+ */
+public interface FanIndexExpression extends PsiElement
+{
+	public int getIndex();
+}
