@@ -4,6 +4,8 @@ import consulo.execution.configuration.ConfigurationFactory;
 import consulo.execution.configuration.ConfigurationType;
 import consulo.execution.configuration.RunConfiguration;
 import consulo.execution.configuration.RunConfigurationModule;
+import consulo.fantom.module.extension.FanModuleExtension;
+import consulo.module.extension.ModuleExtensionHelper;
 import consulo.project.Project;
 
 import javax.annotation.Nonnull;
@@ -24,5 +26,11 @@ public class FanPodConfigurationFactory extends ConfigurationFactory
 	public RunConfiguration createTemplateConfiguration(final Project project)
 	{
 		return new FanPodRunConfiguration("Fantom Pod", new RunConfigurationModule(project), this);
+	}
+
+	@Override
+	public boolean isApplicable(@Nonnull Project project)
+	{
+		return ModuleExtensionHelper.getInstance(project).hasModuleExtension(FanModuleExtension.class);
 	}
 }
